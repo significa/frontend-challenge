@@ -57,6 +57,6 @@ Take a look on `/layout` folder
 
 ### Contact or doubts
 
-Use the issues or send us a email: hello@significa.pt
+Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us a email: hello@significa.pt
 
 _Break a leg!_
