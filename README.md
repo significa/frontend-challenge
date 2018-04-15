@@ -4,7 +4,7 @@
 
 ## About the challenge
 
-This is a pretty simple test, in which you should be able to write an app in React, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
 
 You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
 
@@ -18,12 +18,7 @@ You can use any boilerplate/approach you prefer, but try to keep it simple. We e
 
   _Think about loading state and movie not found_
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach to composing a simple web app given a set of screens and an API feed. We will also assess the generated HTML, CSS, and JS output.
-
-### Two important points:
-
-1.  There's no screens for the mobile version, but don’t forget to build a responsive app. We would love to see your design skills as well!
-2.  There's a "like" button on the details page. It would be great if this information is persistent!
+The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
 
 ## Getting Started
 
@@ -39,6 +34,9 @@ The purpose of this challenge is to evaluate your HTML, CSS, Javascript and Reac
 ### Tips
 
 * Write a good README with basic information (e.g.: how to start the project and how to build it);
+* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
+* Feel free to work and improve on the available designs. Think of them as guidelines.
+* There's a "like" button on the details page. It would be great if this information is persistent!
 * Prefer to use a css methodology, such as BEM, ITCSS, etc;
 * Asking questions is good. We will not penalize you for asking questions;
 * The API server is sometimes slow, so think about loading and empty states throughout your application;
@@ -51,9 +49,11 @@ The purpose of this challenge is to evaluate your HTML, CSS, Javascript and Reac
 
 #### API:
 
-#### Layout screen:
+We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
 
-Take a look on `/layout` folder
+#### Screens / Assets / Styleguide:
+
+Take a look at the `/layout` folder
 
 ### Contact or doubts
 
