@@ -53,7 +53,10 @@ We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any o
 
 #### Screens / Assets / Styleguide:
 
-Take a look at the `/layout` folder
+Take a look at the `/layout` folder, there you will find everything you need.
+
+[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
+[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
 
 ### Contact or doubts
 
