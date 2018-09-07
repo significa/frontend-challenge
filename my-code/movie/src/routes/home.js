@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Like, Faved } from '../components/like'
+import { Faved } from '../components/like'
 
 const Home = ({searchHandler, res, search, submit, props}) => (
     <div>
@@ -19,7 +19,7 @@ const Home = ({searchHandler, res, search, submit, props}) => (
                     {res.map(cur => (
                         <Link to={`/details/${cur.imdbID}`} className="movieCard" key={cur.imdbID} style={{backgroundImage: `url(${cur.Poster})`}}>
                             <div className="info">
-                                <header><Like /></header>
+                                <header><Faved /></header>
                                 <footer>
                                     <p className='title'>{cur.Title}</p>
                                     <p className='year'>{cur.Year}</p>

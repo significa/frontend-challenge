@@ -1,20 +1,63 @@
 :root {
   /* Colors */
+  --yellow: #ff9f1c;
+  --red: #ff4040;
+  --green: #2ec4b6;
   --dark: #0a1014;
   --grey: #1b2329;
+  --mid-grey: #353f4c;
+  --light-grey: #7a8c99;
+  --white: #fff;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 
 html, body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	height: 100%;
-	/* font: calc(100% + 0.25vw)/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI"; */
-  font: 16px/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI";
+	font: calc(100% + 0.1vw)/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI";
+  /* font: 16px/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI"; */
   font-weight: 400;
   background: var(--dark);
+  color: var(--white);
+}
+
+a, 
+a:link, 
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 1px solid var(--mid-grey);
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+}
+
+.bigTitle {
+  font-size: 4.25rem;
+  line-height: 4.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.smallTitle {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: var(--light-grey);
 }
 
 section {
@@ -60,14 +103,14 @@ section {
   height: 100%;
   margin: 0;
   padding: 12px;
-  color: #fff;  
+  color: var(--white);
 }
 
 .info:hover {
   opacity: 1;
   transition: 300ms ease;
   cursor: pointer;
-  background-color: rgba(259, 67, 95, 0.7);
+  background-color: rgba(27, 35, 41, 0.7);
 }
 
 .info header {
@@ -77,15 +120,10 @@ section {
 }
 
 .info svg {
-  stroke: #fff;
+  stroke: var(--white);
   stroke-width: 20;
   paint-order: stroke;
   fill-opacity: 0;
-}
-
-.info img {
-  width: 1.5rem;
-  color: #fff;
 }
 
 .info footer {
@@ -105,21 +143,88 @@ section {
 }
 
 .details{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  color: #fff;
+  color: var(--white);
 }
 
-.fav h1 {
-  font-size: 106px;
+.nav {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+  color: var(--light-grey)
 }
 
-p.fav {
+.sub {
+  color: var(--light-grey);
+  font-size: 1.25rem;
+}
+
+.sub span:last-child {
+  background: var(--light-grey);
+  border-radius: 4px;
+  color: var(--dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.2rem;
+}
+
+.sub > span:not(:last-child):after {
+  content: '.';
+  position: relative;
+  margin: 0.25em;
+  bottom: 0.25em;
+}
+
+.poster {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.poster img{
+  height: 100%;
+  width: auto;
+  max-height: 50vh;
+}
+
+.btnBlock {
+  display: flex;
+  width: 80%;
+  margin: 1rem 0;
+}
+
+@media only screen and (min-width: 45rem) {
+  .details {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: 'main poster';
+  }
+
+  .poster {
+    grid-area: poster;
+    display: flex;
+    align-items: center;
+  }
+
+  .poster img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+
+  }
+
+  .description {
+    grid-area: main;
+  }
+}
+
+.fav {
   width: 2rem;
 }
 
 .fav svg {
-  fill: red;
+  fill: rgba(255, 255, 255, 0.35);
 }
 
 
