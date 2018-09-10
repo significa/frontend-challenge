@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { Faved } from '../components/like'
 
-const Home = ({searchHandler, res, search, submit, props}) => (
+const Home = ({searchHandler, res, search, props}) => (
     <div>
         <section className='searchBar'>
             <input
@@ -11,10 +11,10 @@ const Home = ({searchHandler, res, search, submit, props}) => (
                 value={search} 
                 placeholder='Search movies...'
                 onChange={searchHandler }/>
-            <button onClick={submit}>Click</button>
+            {/* <button className='btn' onClick={submit}>Click</button> */}
         </section>
         <section>
-            {res && 
+            {res && res.length > 0 &&
                 <div className='movieGrid'>
                     {res.map(cur => (
                         <Link to={`/details/${cur.imdbID}`} className="movieCard" key={cur.imdbID} style={{backgroundImage: `url(${cur.Poster})`}}>
@@ -26,15 +26,10 @@ const Home = ({searchHandler, res, search, submit, props}) => (
                                 </footer>
                             </div>
                         </Link>
-                        // <li className='movieCard' key={cur.imdbID}>
-                        //     <a href={`details/${cur.imdbID}`}>
-                        //         <img src={cur.Poster} alt=""/>
-                        //     </a>
-                        // </li>
-                        // style={{backgroundImage: `url(${cur.Poster})`}}
                     ))}
                 </div>
             }
+            <div className="emptyState">No matches...</div>
         </section>
     </div>
 )

@@ -44,7 +44,6 @@ export const Faved = () => {
 <g>
 </g>
 </svg>
-<span>Add to favourites</span>
 </div>
 	)
 }

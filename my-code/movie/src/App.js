@@ -38,9 +38,11 @@ class App extends Component {
   }
 
   changeText(event) {
+    if(event.key === 'Enter')
+      return this.getMovies
     this.setState({
       search: event.target.value
-    })
+    }, this.getMovies)
   }
 
   async getDetails(id) {
@@ -49,9 +51,11 @@ class App extends Component {
     console.log(detail)
   }
 
-  async getMovies() {    
-    let search = await movieSearch(this.state.search)
-    this.setState({results: search.Search})  
+  async getMovies() { 
+    if(this.state.search.length > 3) {
+      let search = await movieSearch(this.state.search)
+      this.setState({results: search.Search})
+    }
   }
 
   render() {
@@ -61,24 +65,6 @@ class App extends Component {
           <Route exact path = '/' render={(props) => <Home {...props} res={this.state.results} search={this.state.value} searchHandler={this.changeText} submit={this.getMovies}/>} />
           <Route path = '/details/:id' render={(props) => <Details {...props} fetch={this.getDetails} detail={this.state.detail} like={this.handleLikes}/>} />
         </div>
-        
-        {/* <div className="App">
-          <header className="App-header">
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-          <input type="text" value={this.state.search} onChange={this.changeText}/>
-          <button onClick={this.getMovies}>Click</button>
-          {this.state.results && 
-            <ul>
-              {this.state.results.map(cur => {
-                return (<li key={cur.imdbID} onClick={() => this.getDetails(cur.imdbID)}>{cur.Title}</li>)
-              })}
-            </ul>
-          }
-        </div> */}
       </Router>
       
     );
