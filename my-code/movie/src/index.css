@@ -1,0 +1,244 @@
+:root {
+  /* Colors */
+  --yellow: #ff9f1c;
+  --red: #ff4040;
+  --green: #2ec4b6;
+  --dark: #0a1014;
+  --grey: #1b2329;
+  --mid-grey: #353f4c;
+  --light-grey: #7a8c99;
+  --white: #fff;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+html, body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	height: 100%;
+	font: calc(100% + 0.1vw)/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI";
+  /* font: 16px/1.5 Roboto, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI"; */
+  font-weight: 400;
+  background: var(--dark);
+  color: var(--white);
+}
+
+a, 
+a:link, 
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  border: 1px solid var(--mid-grey);
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+}
+
+.bigTitle {
+  font-size: 4.25rem;
+  line-height: 4.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.smallTitle {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+  color: var(--light-grey);
+}
+
+section {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.searchBar {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0;
+}
+
+.searchBar input {
+  width: 80%;
+  padding: 12px;
+  padding-left: 16px;
+  margin-right: 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  border: none;
+}
+
+.movieGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-auto-rows: minmax(280px, auto);
+  grid-gap: 1rem;
+  list-style: none;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.movieCard {
+  overflow: hidden;
+  border-radius: 3px;
+  background-size: cover;
+  background-position: center;
+}
+
+.info {
+  position: relative;
+  box-sizing: border-box;
+  opacity: 0;
+  height: 100%;
+  margin: 0;
+  padding: 12px;
+  color: var(--white);
+}
+
+.info:hover {
+  opacity: 1;
+  transition: 300ms ease;
+  cursor: pointer;
+  background-color: rgba(27, 35, 41, 0.7);
+}
+
+.info header {
+  float: right;
+  width: 1.5rem;
+  box-sizing: border-box;
+}
+
+.info svg {
+  stroke: var(--white);
+  stroke-width: 20;
+  paint-order: stroke;
+  fill-opacity: 0;
+}
+
+.info footer {
+  position: absolute;
+  bottom: 0;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+.info .title {
+  margin-bottom: 0;
+}
+
+.info .year {
+  font-size: 1rem;
+}
+
+.details{
+  color: var(--white);
+}
+
+.nav {
+  font-size: 2.5rem;
+  margin: 0.5rem 0;
+  color: var(--light-grey)
+}
+
+.sub {
+  color: var(--light-grey);
+  font-size: 1.25rem;
+}
+
+.sub span:last-child {
+  background: var(--light-grey);
+  border-radius: 4px;
+  color: var(--dark);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.2rem;
+}
+
+.sub > span:not(:last-child):after {
+  content: '.';
+  position: relative;
+  margin: 0.25em;
+  bottom: 0.25em;
+}
+
+.poster {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.poster img{
+  height: 100%;
+  width: auto;
+  max-height: 50vh;
+}
+
+.btnBlock {
+  display: flex;
+  width: 80%;
+  margin: 1rem 0;
+}
+
+.col-3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 45rem) {
+  .details {
+    display: grid;
+    grid-gap: 5rem;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-areas: 'main poster';
+  }
+
+  .poster {
+    grid-area: poster;
+    display: flex;
+    align-items: center;
+  }
+
+  .poster img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    max-height: none;
+
+  }
+
+  .description {
+    grid-area: main;
+  }
+}
+
+.fav {
+  width: 2rem;
+}
+
+.fav svg {
+  fill: rgba(255, 255, 255, 0.35);
+}
+
+
+
+
