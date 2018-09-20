@@ -1,12 +1,12 @@
-import { types } from '../actions';
+import { types } from "../actions";
 
 export default function(state = {}, action) {
   const { type, payload } = action;
 
-  switch(type) {
+  switch (type) {
     case types.FETCH_CATALOGUE_COMPLETE:
-      return payload.data
-    
+      return payload;
+
     default:
       return state;
   }

@@ -1,44 +1,43 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { injectGlobal } from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import { injectGlobal } from "styled-components";
 
-import reset from './reset';
-import colors from './colors';
+import reset from "./reset";
+import colors from "./colors";
 
 const defaultStyles = () => injectGlobal`
   ${reset}
 
   html {
-    -webkit-overflow-scrolling: touch;
-
   	box-sizing: border-box;
-
-  	-webkit-tap-highwhite-color: transparent;
-  	-webkit-text-size-adjust: 100%;
+  	text-rendering: optimizeLegibility;
+  	-moz-osx-font-smoothing: grayscale;
   	-ms-text-size-adjust: 100%;
   	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-  	text-rendering: optimizeLegibility;
+    -webkit-overflow-scrolling: touch;
+    -webkit-tap-highwhite-color: transparent;
+  	-webkit-text-size-adjust: 100%;
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    background-color: ${colors.greyscale.black};
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     overflow: hidden;
   }
 
   ::selection {
-    background-color: ${colors.green.default};
+    background-color: ${colors.green};
     color: ${colors.white}
   }
 `;
 
 defaultStyles();
 
-const Provider = ({ children }) => <div>{children}</div>
+const Provider = ({ children }) => <div>{children}</div>;
 
 Provider.propTypes = {
   children: PropTypes.shape({}).isRequired
-}
+};
 
 export default Provider;

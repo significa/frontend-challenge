@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash.debounce": "^4.0.8",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
@@ -11,8 +12,9 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.5",
     "redux": "^4.0.0",
-    "redux-promise": "^0.6.0",
-    "styled-components": "^3.4.6"
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.4.6",
+    "typeface-roboto": "^0.0.54"
   },
   "scripts": {
     "start": "react-scripts start",
