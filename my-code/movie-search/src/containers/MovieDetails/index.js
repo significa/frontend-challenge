@@ -15,6 +15,8 @@ import {
 import Template from "../../components/UI/Layout/template";
 import { Button, Icon } from "../../components/UI/Buttons";
 import { camelCase } from "../../components/UI/Provider/utils";
+import IMDB from "../../components/UI/Logos/IMDB";
+import RottenTomatoes from "../../components/UI/Logos/RottenTomatoes";
 
 class MovieDetails extends Component {
   componentDidMount() {
@@ -42,13 +44,28 @@ class MovieDetails extends Component {
     }
   }
 
+  applyIcon(src) {
+    switch (src) {
+      case "internetMovieDatabase":
+        return <IMDB />;
+
+      case "rottenTomatoes":
+        return <RottenTomatoes />;
+
+      default:
+        return <Text bold>{src}</Text>;
+    }
+  }
+
   render() {
     const { chosenMovie: movie } = this.props;
     const getValues =
       movie.Ratings &&
       movie.Ratings.map(review => (
         <LabelRating key={camelCase(review.Source)}>
-          <RatingIcon src={camelCase(review.Source)} />
+          <RatingIcon src={camelCase(review.Source)}>
+            {this.applyIcon(camelCase(review.Source))}
+          </RatingIcon>
           <Rating>
             <Text>{review.Value}</Text>
           </Rating>
