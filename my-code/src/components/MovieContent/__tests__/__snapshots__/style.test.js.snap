@@ -1,0 +1,255 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieContent Heading renders correctly 1`] = `
+.c0 {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  color: theme.greyLight;
+  margin-top: 16px;
+}
+
+<span
+  className="c0"
+>
+  content
+</span>
+`;
+
+exports[`MovieContent MetaText renders correctly 1`] = `
+.c0 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  color: theme.greyLight;
+}
+
+<span
+  className="c0"
+>
+  content
+</span>
+`;
+
+exports[`MovieContent Paragraph renders correctly 1`] = `
+.c0 {
+  max-width: 54ch;
+  margin: 0;
+}
+
+<p
+  className="c0"
+>
+  content
+</p>
+`;
+
+exports[`MovieContent Poster renders correctly 1`] = `
+.c0 {
+  border-radius: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 100%;
+}
+
+<img
+  className="c0"
+>
+  content
+</img>
+`;
+
+exports[`MovieContent PosterWrapper renders correctly 1`] = `
+.c0 {
+  grid-column: 2;
+  grid-row: 2 / 7;
+  position: relative;
+}
+
+@media (max-width:1000px) {
+  .c0 {
+    grid-row: 2 / 4;
+  }
+}
+
+@media (max-width:700px) {
+  .c0 {
+    display: none;
+  }
+}
+
+<div
+  className="c0"
+>
+  content
+</div>
+`;
+
+exports[`MovieContent Row renders correctly 1`] = `
+.c0 {
+  grid-column: 1;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+<div
+  className="c0"
+>
+  content
+</div>
+`;
+
+exports[`MovieContent Subgrid renders correctly 1`] = `
+.c0 {
+  grid-column: 1;
+  display: grid;
+  grid-gap: 56px;
+  grid-template-columns: repeat(3,minmax(0,max-content));
+}
+
+@media (max-width:480px) {
+  .c0 {
+    grid-template-columns: none;
+    grid-gap: 24px;
+  }
+}
+
+<div
+  className="c0"
+>
+  content
+</div>
+`;
+
+exports[`MovieContent Text renders correctly 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+}
+
+<span
+  className="c0"
+>
+  content
+</span>
+`;
+
+exports[`MovieContent Title renders correctly 1`] = `
+.c0 {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.1em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  display: block;
+  max-width: 20ch;
+  margin: 0 0 8px;
+}
+
+@media (max-width:1024px) {
+  .c0 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width:800px) {
+  .c0 {
+    font-size: 48px;
+  }
+}
+
+<span
+  className="c0"
+>
+  content
+</span>
+`;
+
+exports[`MovieContent Title renders correctly 2`] = `
+.c0 {
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1.1em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  display: block;
+  max-width: 20ch;
+  margin: 0 0 8px;
+}
+
+@media (max-width:1024px) {
+  .c0 {
+    font-size: 56px;
+  }
+}
+
+@media (max-width:800px) {
+  .c0 {
+    font-size: 48px;
+  }
+}
+
+<span
+  className="c0"
+>
+  content
+</span>
+`;
+
+exports[`MovieContent Wrapper renders correctly 1`] = `
+.c0 {
+  margin-top: 24px;
+  display: grid;
+  grid-gap: 24px 96px;
+  grid-template-columns: 0.6fr 0.4fr;
+}
+
+@media (max-width:1024px) {
+  .c0 {
+    grid-column-gap: 24px;
+    grid-template-columns: auto minmax(30vw,0.4fr);
+  }
+}
+
+@media (max-width:700px) {
+  .c0 {
+    grid-template-columns: 1fr;
+  }
+}
+
+<div
+  className="c0"
+>
+  content
+</div>
+`;

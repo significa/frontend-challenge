@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie renders correctly 1`] = `<Connect(MovieContent) />`;
+
+exports[`Movie renders error correctly 1`] = `
+<Message
+  subtitle="Error message goes here"
+  title="Something went wrong"
+/>
+`;
+
+exports[`Movie renders not loaded correctly 1`] = `""`;

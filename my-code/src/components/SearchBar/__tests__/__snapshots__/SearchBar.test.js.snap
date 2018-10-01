@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar Icon renders correctly 1`] = `
+.c0 {
+  color: theme.greyLight;
+}
+
+<Component
+  className="c0"
+/>
+`;
+
+exports[`SearchBar Input renders correctly 1`] = `
+.c0 {
+  background: none;
+  border: none;
+  margin: 0;
+  font: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  color: theme.greyDark;
+  display: block;
+  padding: 12px;
+  height: 44px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0::-webkit-input-placeholder {
+  color: theme.greyLight;
+}
+
+.c0:-moz-placeholder {
+  color: theme.greyLight;
+}
+
+.c0::-moz-placeholder {
+  color: theme.greyLight;
+}
+
+.c0:-ms-input-placeholder {
+  color: theme.greyLight;
+}
+
+<input
+  className="c0"
+/>
+`;
+
+exports[`SearchBar Wrapper renders correctly 1`] = `
+.c0 {
+  margin: 24px 0;
+  padding-left: 12px;
+  border-radius: 4px;
+  color: theme.greyDark;
+  background: theme.greyWhite;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`SearchBar renders correctly 1`] = `
+<Wrapper>
+  <Icon />
+  <Input
+    onChange={[Function]}
+    placeholder="Search movies..."
+    value="search value"
+  />
+</Wrapper>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchContent renders correctly 1`] = `<Connect(SearchResults) />`;
+
+exports[`SearchContent renders error correctly 1`] = `
+<Message
+  subtitle="Error message goes here"
+  title="Something went wrong"
+/>
+`;
+
+exports[`SearchContent renders no results correctly 1`] = `
+<Message
+  subtitle="Try searching for something else"
+  title="Nothing found"
+/>
+`;
+
+exports[`SearchContent renders no search correctly 1`] = `
+<Message
+  subtitle="Here’s an offer you can’t refuse"
+  title="Don’t know what to search?"
+/>
+`;

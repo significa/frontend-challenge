@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconLabel IconWrapper renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: #0f0;
+  border-radius: 4px 0 0 4px;
+  padding: 8px;
+  min-width: 40px;
+  box-sizing: border-box;
+}
+
+<div
+  className="c0"
+  color="#0f0"
+/>
+`;
+
+exports[`IconLabel TextWrapper renders correctly 1`] = `
+.c0 {
+  border: 1px solid theme.greyMid;
+  border-left: none;
+  padding: 8px 7px 8px 8px;
+  border-radius: 0 4px 4px 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`IconLabel Wrapper renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  height: 40px;
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`IconLabel renders correctly 1`] = `
+<Wrapper
+  onClick={[Function]}
+>
+  <IconWrapper
+    color="#f00"
+  >
+    <MockIcon />
+  </IconWrapper>
+  <TextWrapper>
+    text label
+  </TextWrapper>
+</Wrapper>
+`;

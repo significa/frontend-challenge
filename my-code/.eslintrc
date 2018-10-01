@@ -1,0 +1,12 @@
+{
+  "extends": "@significa/significa",
+  "env": {
+    "browser": true
+  },
+  "overrides": {
+    "files": ["**/__tests__/**/*.js?(x)", "**/?(*.)+(spec|test).js?(x)"],
+    "env": {
+      "jest": true
+    }
+  }
+}

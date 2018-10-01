@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <Connect(ConnectedRouter)
+    history={Object {}}
+  >
+    <ThemeProvider
+      theme={Object {}}
+    >
+      <Layout>
+        <Switch>
+          <Route
+            component={[Function]}
+            path="/movie"
+          />
+          <Route
+            component={[Function]}
+          />
+        </Switch>
+      </Layout>
+    </ThemeProvider>
+  </Connect(ConnectedRouter)>
+</Provider>
+`;

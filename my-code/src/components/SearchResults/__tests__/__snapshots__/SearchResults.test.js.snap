@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResults Wrapper renders correctly 1`] = `
+.c0 {
+  margin-top: 8px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill,minmax(155px,1fr));
+}
+
+@media (max-width:800px) {
+  .c0 {
+    grid-template-columns: repeat(auto-fill,minmax(140px,1fr));
+  }
+}
+
+@media (max-width:400px) {
+  .c0 {
+    grid-template-columns: repeat(auto-fill,minmax(125px,1fr));
+  }
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`SearchResults renders correctly 1`] = `
+<Wrapper>
+  <Connect(MovieCard)
+    id="tt0086567"
+    key="tt0086567"
+  />
+  <Connect(MovieCard)
+    id="tt0434409"
+    key="tt0434409"
+  />
+</Wrapper>
+`;
