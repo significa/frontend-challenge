@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton Wrapper renders correctly 1`] = `
+.c0 {
+  height: 40px;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: none;
+  color: theme.greyLight;
+  cursor: pointer;
+  -webkit-transition: color theme.transitionTiming theme.transitionDuration;
+  transition: color theme.transitionTiming theme.transitionDuration;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c0:focus,
+.c0:hover {
+  color: theme.greyWhite;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`IconButton renders correctly 1`] = `
+<Wrapper
+  aria-label="text label"
+  onClick={[Function]}
+>
+  <MockIcon />
+</Wrapper>
+`;

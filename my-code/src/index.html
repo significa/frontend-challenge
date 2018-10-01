@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What's in</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Non-blocking -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:400,500,700"
+    rel="stylesheet"
+    media="nomatch"
+    onload="this.media=''"
+  >
+
+  <style>
+    body {
+      margin: 0;
+      background: #0a1014;
+      color: #fff;
+      /* Roboto first, fall back to system font */
+      font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+                   "Helvetica Neue", sans-serif;
+      text-rendering: optimizeLegibility;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-smoothing: antialiased;
+    }
+
+    * {
+      -webkit-tap-highlight-color: none;
+    }
+
+    noscript {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+</body>
+</html>

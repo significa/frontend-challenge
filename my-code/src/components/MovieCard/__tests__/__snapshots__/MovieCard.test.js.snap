@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieCard Content renders correctly 1`] = `
+.c0 {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  background: theme.scrimColor;
+  will-change: opacity;
+  -webkit-transition: opacity theme.transitionTiming theme.transitionDuration;
+  transition: opacity theme.transitionTiming theme.transitionDuration;
+}
+
+.c2 ~ .c0 {
+  opacity: 0;
+}
+
+.c2 ~ .c1:hover ~ .c0,
+.c2 ~ .c1:focus ~ .c0,
+.c2 ~ .FavoriteButtonWrapper-eTymEw:hover ~ .c0,
+.c2 ~ .FavoriteButtonWrapper-eTymEw:focus ~ .c0 {
+  opacity: 1;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`MovieCard CoverLink renders correctly 1`] = `
+.c0 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+<Link
+  className="c0"
+  replace={false}
+  to="some-url"
+/>
+`;
+
+exports[`MovieCard FavoriteButtonWrapper renders correctly 1`] = `
+.c0 {
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  color: theme.greyWhite;
+  will-change: opacity;
+  -webkit-transition: opacity theme.transitionTiming theme.transitionDuration;
+  transition: opacity theme.transitionTiming theme.transitionDuration;
+  -webkit-filter: drop-shadow(0 0 2px rgba(0,0,0,.2));
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.2));
+  opacity: 1;
+}
+
+.c2 ~ .c1:hover ~ .c0,
+.c2 ~ .c1:focus ~ .c0,
+.c2 ~ .c0:hover,
+.c2 ~ .c0:focus {
+  opacity: 1;
+}
+
+<IconButton
+  className="c0"
+  icon={[Function]}
+  onClick={[Function]}
+/>
+`;
+
+exports[`MovieCard FavoriteButtonWrapper renders non-visble correctly 1`] = `
+.c0 {
+  height: auto;
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  color: theme.greyWhite;
+  will-change: opacity;
+  -webkit-transition: opacity theme.transitionTiming theme.transitionDuration;
+  transition: opacity theme.transitionTiming theme.transitionDuration;
+  -webkit-filter: drop-shadow(0 0 2px rgba(0,0,0,.2));
+  filter: drop-shadow(0 0 2px rgba(0,0,0,.2));
+  opacity: 0;
+}
+
+.c2 ~ .c1:hover ~ .c0,
+.c2 ~ .c1:focus ~ .c0,
+.c2 ~ .c0:hover,
+.c2 ~ .c0:focus {
+  opacity: 1;
+}
+
+<IconButton
+  className="c0"
+  icon={[Function]}
+  onClick={[Function]}
+  visible={false}
+/>
+`;
+
+exports[`MovieCard Poster renders correctly 1`] = `
+.c0 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: theme.greyMain;
+  background-image: url(poster-url);
+}
+
+<div
+  className="c0"
+  poster="poster-url"
+/>
+`;
+
+exports[`MovieCard Subtitle renders correctly 1`] = `
+.c0 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+}
+
+<span
+  className="c0"
+/>
+`;
+
+exports[`MovieCard Title renders correctly 1`] = `
+.c0 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.4em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+}
+
+<span
+  className="c0"
+/>
+`;
+
+exports[`MovieCard Wrapper renders correctly 1`] = `
+.c0 {
+  width: 100%;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  color: theme.greyWhite;
+}
+
+.c0:focus {
+  outline: none;
+}
+
+.c0:before {
+  content: '';
+  display: block;
+  padding-top: 133.3333333%;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`MovieCard renders correctly 1`] = `
+<Wrapper>
+  <Poster
+    poster="https://poster.url"
+  />
+  <CoverLink
+    aria-label="The Movie Title"
+    to="/movie-link"
+  />
+  <FavoriteButtonWrapper
+    icon={[Function]}
+    label="Favorite The Movie Title"
+    onClick={[Function]}
+    visible={false}
+  />
+  <Content>
+    <Title>
+      The Movie Title
+    </Title>
+    <Subtitle>
+      2000
+    </Subtitle>
+  </Content>
+</Wrapper>
+`;
+
+exports[`MovieCard renders favorite correctly 1`] = `
+<Wrapper>
+  <Poster
+    poster="https://poster.url"
+  />
+  <CoverLink
+    aria-label="The Movie Title"
+    to="/movie-link"
+  />
+  <FavoriteButtonWrapper
+    icon={[Function]}
+    label="Unfavorite The Movie Title"
+    onClick={[Function]}
+    visible={true}
+  />
+  <Content>
+    <Title>
+      The Movie Title
+    </Title>
+    <Subtitle>
+      2000
+    </Subtitle>
+  </Content>
+</Wrapper>
+`;
+
+exports[`MovieCard renders favorite without poster correctly 1`] = `
+<Wrapper>
+  <CoverLink
+    aria-label="The Movie Title"
+    to="/movie-link"
+  />
+  <FavoriteButtonWrapper
+    icon={[Function]}
+    label="Unfavorite The Movie Title"
+    onClick={[Function]}
+    visible={true}
+  />
+  <Content>
+    <Title>
+      The Movie Title
+    </Title>
+    <Subtitle>
+      2000
+    </Subtitle>
+  </Content>
+</Wrapper>
+`;
+
+exports[`MovieCard renders without poster correctly 1`] = `
+<Wrapper>
+  <CoverLink
+    aria-label="The Movie Title"
+    to="/movie-link"
+  />
+  <FavoriteButtonWrapper
+    icon={[Function]}
+    label="Favorite The Movie Title"
+    onClick={[Function]}
+    visible={true}
+  />
+  <Content>
+    <Title>
+      The Movie Title
+    </Title>
+    <Subtitle>
+      2000
+    </Subtitle>
+  </Content>
+</Wrapper>
+`;

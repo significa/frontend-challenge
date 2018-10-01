@@ -1,0 +1,64 @@
+{
+  "dependencies": {
+    "connected-react-router": "^4.4.1",
+    "history": "^4.7.2",
+    "polished": "^1.9.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-localstorage": "^0.4.1",
+    "redux-saga": "^0.16.0",
+    "styled-components": "^3.4.2",
+    "styled-tools": "^1.3.0"
+  },
+  "devDependencies": {
+    "@significa/eslint-config-significa": "^0.2.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "8.2.5",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.14",
+    "clean-webpack-plugin": "^0.1.19",
+    "deep-freeze": "^0.0.1",
+    "dotenv-webpack": "^1.5.7",
+    "enzyme": "^3.4.4",
+    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^4.19.1",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.5.0",
+    "jest-styled-components": "^6.0.1",
+    "localstorage-polyfill": "^1.0.1",
+    "redux-mock-store": "^1.5.3",
+    "redux-saga-test-plan": "^3.7.0",
+    "svg-react-loader": "^0.4.5",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode=production",
+    "lint": "eslint 'src/**/*.js'",
+    "test": "jest --watch src"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./src/setupTests.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/imageMock.js",
+      "\\.svg$": "<rootDir>/__mocks__/svgMock.js"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button IconWrapper renders correctly 1`] = `
+.c0 {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div
+  className="c0"
+/>
+`;
+
+exports[`Button Wrapper renders correclty when active 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 15px 0 11px;
+  height: 40px;
+  outline: none;
+  background: none;
+  color: theme.greyLight;
+  border: 1px solid theme.greyMid;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition-timing-function: theme.transitionTiming;
+  transition-timing-function: theme.transitionTiming;
+  -webkit-transition-duration: theme.transitionDuration;
+  transition-duration: theme.transitionDuration;
+  -webkit-transition-property: color,border-color,background-color;
+  transition-property: color,border-color,background-color;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  border-color: theme.mainRed;
+  background-color: theme.mainRed;
+  color: theme.greyWhite;
+}
+
+.c0:focus,
+.c0:hover {
+  border-color: theme.mainRed;
+  color: theme.greyWhite;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`Button Wrapper renders correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 15px 0 11px;
+  height: 40px;
+  outline: none;
+  background: none;
+  color: theme.greyLight;
+  border: 1px solid theme.greyMid;
+  border-radius: 4px;
+  cursor: pointer;
+  -webkit-transition-timing-function: theme.transitionTiming;
+  transition-timing-function: theme.transitionTiming;
+  -webkit-transition-duration: theme.transitionDuration;
+  transition-duration: theme.transitionDuration;
+  -webkit-transition-property: color,border-color,background-color;
+  transition-property: color,border-color,background-color;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+}
+
+.c0:focus,
+.c0:hover {
+  border-color: theme.mainRed;
+  color: theme.greyWhite;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`Button renders active correctly 1`] = `
+<Wrapper
+  active={true}
+  onClick={[Function]}
+>
+  active button text
+</Wrapper>
+`;
+
+exports[`Button renders correctly 1`] = `
+<Wrapper
+  active={false}
+  onClick={[Function]}
+>
+  button label
+</Wrapper>
+`;
+
+exports[`Button renders correctly with icon 1`] = `
+<Wrapper
+  active={false}
+  onClick={[Function]}
+>
+  <IconWrapper>
+    <MockIcon />
+  </IconWrapper>
+  icon button label
+</Wrapper>
+`;

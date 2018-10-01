@@ -1,0 +1,21 @@
+<svg
+  width="16"
+  height="16"
+  viewBox="0 0 16 16"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M14.667 14.667l-4-4"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="square"
+  />
+  <circle
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    cx="6.667"
+    cy="6.667"
+    r="5.333"
+  />
+</svg>

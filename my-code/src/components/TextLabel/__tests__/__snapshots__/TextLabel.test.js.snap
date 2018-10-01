@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextLabel renders correctly 1`] = `
+.c0 {
+  display: block;
+  padding: 4px 6px;
+  height: 28px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5em;
+  -webkit-letter-spacing: 0.01em;
+  -moz-letter-spacing: 0.01em;
+  -ms-letter-spacing: 0.01em;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  line-height: 20px;
+  background-color: theme.greyLight;
+  color: theme.greyDark;
+  margin-left: 8px;
+}
+
+<div
+  className="c0"
+>
+  label text
+</div>
+`;
