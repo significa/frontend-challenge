@@ -15,7 +15,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/config/CSSStub.js"
+      "^.+\\.(css|scss|jpg|png|svg)$": "<rootDir>/config/CSSStub.js"
     }
   },
   "standard": {
@@ -37,11 +37,15 @@
     "clean-webpack-plugin": "^0.1.16",
     "cross-env": "^5.0.5",
     "css-loader": "^0.28.7",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-15": "^1.1.1",
+    "enzyme-adapter-react-16": "^1.6.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.30.1",
     "jest": "^21.1.0",
+    "node-sass": "^4.9.4",
     "react-hot-loader": "3.0.0",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^7.1.0",
