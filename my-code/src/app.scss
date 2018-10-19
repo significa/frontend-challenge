@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
 body {
   background-color: rgb(10, 16, 20);
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
 }
 .container {
   width: 100%;
   box-sizing: border-box;
-  max-width: 1140px;
+  max-width: 1180px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
