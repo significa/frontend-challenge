@@ -3,6 +3,7 @@
 import React, { PureComponent } from 'react'
 import Header from 'components/header'
 import Search from 'components/search'
+import Showcase from 'components/showcase'
 import './app.scss'
 
 class App extends PureComponent {
@@ -11,6 +12,7 @@ class App extends PureComponent {
       <div className='container'>
         <Header />
         <Search />
+        <Showcase />
       </div>
     )
   }
