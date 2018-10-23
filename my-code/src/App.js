@@ -1,16 +1,15 @@
 // @flow
 import React from "react"
+import Button from "./components/Button/index"
+import IconButton from "./components/IconButton/index"
+import SearchBar from "./components/Input"
 
-type Props = {}
-
-class App extends React.Component<Props> {
-  render() {
-    return (
-      <div>
-        <p>Initial setup.</p>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <div>
+    <Button text="Add to favourites" />
+    <SearchBar />
+    <IconButton />
+  </div>
+)
 
 export default App

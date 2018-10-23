@@ -7,6 +7,12 @@ import App from "./App"
 import theme from "./styles/theme"
 import GlobalStyle from "./styles/styles"
 
+// Error handling on root Element
+const root = document.getElementById("root")
+if (root == null) {
+  throw new Error("No root element present on the HTML")
+}
+
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <React.Fragment>
@@ -14,5 +20,5 @@ ReactDOM.render(
       <GlobalStyle />
     </React.Fragment>
   </ThemeProvider>,
-  document.getElementById("root")
+  root
 )

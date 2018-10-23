@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
 
     font-family: ${theme.font.family};
     font-size: ${theme.font.base};
+
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
 `

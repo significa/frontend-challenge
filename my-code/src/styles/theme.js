@@ -17,5 +17,9 @@ export default {
   font: {
     base: "16px",
     family: "Roboto, sans-serif"
-  }
+  },
+  spacing: {
+    small: "12px"
+  },
+  transition: "all .2s"
 }
