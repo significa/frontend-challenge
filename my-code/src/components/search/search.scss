@@ -3,7 +3,7 @@
     width: 100%;
     display: flex;
   }
-  &__button{
+  &__button {
     width: initial;
     height: 48px;
     padding-left: 12px;
@@ -12,6 +12,7 @@
     border: 0;
     border-radius: 5px 0 0 5px;
     outline: 0;
+    cursor: pointer;
     svg {
       width: 16px;
       height: 16px;
@@ -25,5 +26,21 @@
     color: rgb(10, 16, 20);
     font-size: 16px;
     outline: 0;
+  }
+  &__button,
+  &__input {
+    &.error {
+      border: 2px solid rgb(242, 0, 0);
+    }
+  }
+  &__button {
+    &.error {
+      border-right: 0;
+    }
+  }
+  &__input {
+    &.error {
+      border-left: 0;
+    }
   }
 }

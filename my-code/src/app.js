@@ -10,17 +10,24 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      showcase: []
+      showcase: [],
+      searchEmpty: ''
     }
     this.handleSearch = (e) => {
       e.preventDefault()
       const value = e.target.search.value
-      fetch(`http://www.omdbapi.com/?s=${value}&apikey=296eb63f`)
+      if (value === '') {
+        this.setState({searchEmpty: 'error'})
+        return
+      }
+      fetch(`http://www.omdbapi.com/?type=movie&s=${value}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
           const result = data.Search
-          this.setState({showcase: result})
-          console.log(this.state.showcase)
+          this.setState({
+            searchEmpty: '',
+            showcase: result
+          })
         })
     }
   }
@@ -34,6 +41,7 @@ class App extends Component {
             <Route path='/' exact render={(...props) => <Home
               handleSearch={this.handleSearch}
               items={this.state.showcase}
+              searchEmpty={this.state.searchEmpty}
             />} />
           </Switch>
         </BrowserRouter>
