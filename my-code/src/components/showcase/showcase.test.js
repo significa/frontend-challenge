@@ -34,7 +34,7 @@ describe('<Showcase />', () => {
         'imdbID': 'tt1905042'
       }
     ]
-    wrapper = shallow(<Showcase items={data} />)
+    wrapper = shallow(<Showcase items={data} loaderShowcase='hide' movieEmpty='hide' />)
     wrapper2 = shallow(<Showcase items={data2} />)
   })
 
@@ -83,5 +83,13 @@ describe('<Showcase />', () => {
     const link2 = wrapper2.find('Link').at(1)
     expect(link1.prop('to')).to.equal('/movie-tt1905041')
     expect(link2.prop('to')).to.equal('/movie-tt1905042')
+  })
+  it('Should return class hide in loader if passed to prop with loaderShowcase as hide', () => {
+    const loader = wrapper.find('.showcase__loader.hide')
+    expect(loader).to.have.length(1)
+  })
+  it('Should return class hide in empty if passed to prop with movieEmpty as hide', () => {
+    const empty = wrapper.find('.showcase-empty.hide')
+    expect(empty).to.have.length(1)
   })
 })

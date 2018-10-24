@@ -11,22 +11,44 @@ class App extends Component {
     super(props)
     this.state = {
       showcase: [],
-      searchEmpty: ''
+      searchEmpty: '',
+      loaderShowcase: 'hide',
+      movieEmpty: 'hide'
     }
     this.handleSearch = (e) => {
       e.preventDefault()
       const value = e.target.search.value
+      this.setState({
+        loaderShowcase: 'show',
+        showcase: [],
+        movieEmpty: 'hide'
+      })
       if (value === '') {
-        this.setState({searchEmpty: 'error'})
+        this.setState({
+          loaderShowcase: 'hide',
+          searchEmpty: 'error',
+          movieEmpty: 'hide'
+        })
         return
       }
       fetch(`http://www.omdbapi.com/?type=movie&s=${value}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
+          const status = data.Response
           const result = data.Search
+          if (status === 'False') {
+            this.setState({
+              searchEmpty: '',
+              loaderShowcase: 'hide',
+              movieEmpty: 'show'
+            })
+            return
+          }
           this.setState({
             searchEmpty: '',
-            showcase: result
+            movieEmpty: 'hide',
+            showcase: result,
+            loaderShowcase: 'hide'
           })
         })
     }
@@ -42,6 +64,8 @@ class App extends Component {
               handleSearch={this.handleSearch}
               items={this.state.showcase}
               searchEmpty={this.state.searchEmpty}
+              loaderShowcase={this.state.loaderShowcase}
+              movieEmpty={this.state.movieEmpty}
             />} />
           </Switch>
         </BrowserRouter>

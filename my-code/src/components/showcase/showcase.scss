@@ -1,3 +1,11 @@
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .showcase {
   width: 100%;
   display: flex;
@@ -5,6 +13,59 @@
   margin: 32px 0 0;
   padding: 0;
   list-style: none;
+  &__loader {
+    width: 100%;
+    margin-top: 30px;
+    &.hide {
+      display: none;
+    }
+    &.show {
+      display: block;
+    }
+    &::before {
+      content: "";
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 5px solid red;
+      display: inherit;
+      border-bottom: 5px solid transparent;
+      animation: loader 2s linear infinite;
+    }
+  }
+  &-empty {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    &.hide {
+      display: none;
+    }
+    &.show {
+      display: flex;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-top: 140px;
+    }
+    img {
+      width: 100%;
+      max-width: 360px;
+    }
+    &__title {
+      width: 100%;
+      text-align: center;
+      color: rgb(255,255,255);
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    &__text {
+      width: 100%;
+      text-align: center;
+      color: rgb(122, 140, 153);
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+  }
   &-item {
     width: 48%;
     position: relative;
