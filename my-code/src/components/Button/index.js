@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import RegularButton from "./styled"
-
+// @flow
 import Heart from "../Icons/Heart"
 
 type PropsType = {

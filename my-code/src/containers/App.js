@@ -5,6 +5,7 @@ import Topbar from "../layout/topbar"
 
 import empty from "../assets/illustration-empty-state@2x.png"
 import Flex from "../layout/Flex"
+import Results from "../components/Results"
 
 import omdbApi from "../constants/omdbApi"
 
@@ -41,8 +42,7 @@ class App extends React.Component<StateType, PropsType> {
     const res = await fetch(url)
     const data = await res.json()
 
-    this.setState({ results: data || [] })
-    console.log(data)
+    this.setState({ results: data.Search || [] })
   }
 
   render() {
@@ -53,7 +53,7 @@ class App extends React.Component<StateType, PropsType> {
       <Flex>
         <Flex width={1180}>
           <Topbar />
-          <form onSubmit={this.handleSubmit}>
+          <form style={{ width: "100%" }} onSubmit={this.handleSubmit}>
             <Input
               width={1}
               type="text"
@@ -65,12 +65,14 @@ class App extends React.Component<StateType, PropsType> {
             />
           </form>
 
-          {results.length === 0 && (
+          {results.length === 0 ? (
             <Flex>
               <img width={396} src={empty} alt="Empty state" />
               <p>Don’t know what to search?</p>
               <p>Here’s an offer you can’t refuse</p>
             </Flex>
+          ) : (
+            <Results data={results} />
           )}
         </Flex>
       </Flex>

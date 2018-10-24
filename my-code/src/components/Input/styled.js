@@ -1,3 +1,4 @@
+// @flow
 import styled from "styled-components"
 import { width } from "styled-system"
 
@@ -18,6 +19,7 @@ const Input = styled.input`
   line-height: 19px;
   letter-spacing: 0.17;
   padding: 12px;
+  margin-bottom: 32px;
 
   transition: ${p => p.theme.transition};
 
