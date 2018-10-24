@@ -2,14 +2,18 @@
 import React from "react"
 import Button from "./components/Button/index"
 import IconButton from "./components/IconButton/index"
-import SearchBar from "./components/Input"
+import SearchBar from "./components/Input/index"
+import Topbar from "./layout/topbar"
+
+import Flex from "./layout/Flex"
 
 const App = () => (
-  <div>
-    <Button text="Add to favourites" />
+  <Flex width={1}>
+    <Topbar />
     <SearchBar />
+    <Button text="Add to favourites" />
     <IconButton />
-  </div>
+  </Flex>
 )
 
 export default App

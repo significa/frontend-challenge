@@ -1,6 +1,8 @@
 import styled from "styled-components"
+import { width } from "styled-system"
 
 const Input = styled.input`
+  ${width};
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -27,4 +29,5 @@ const Input = styled.input`
     outline: none;
   }
 `
+
 export default Input
