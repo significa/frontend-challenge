@@ -12,6 +12,7 @@ const Input = styled.input`
   background: ${p => p.theme.color.grey.white};
   border: none;
   border-radius: 4px;
+  box-sizing: border-box;
   color: ${p => p.theme.color.grey.lightgrey};
   font-family: ${p => p.theme.font.family};
   font-size: 1em;

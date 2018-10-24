@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  align-items: flex-start;
 `
 
 export default Wrapper
