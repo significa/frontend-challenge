@@ -6,7 +6,10 @@ import omdbApi from "../constants/omdbApi"
 import Wrapper from "../layout/Wrapper"
 import { FlexLeft, FlexRight } from "../layout/Flex"
 
-import { LargeThumbnail } from "../components/Thumbnail/styled"
+import {
+  LargeThumbnail,
+  LargeEmptyThumbnail
+} from "../components/Thumbnail/styled"
 import Button from "../components/Button/index"
 import { IMDBLabel, RottenLabel } from "../components/Label/index"
 import Arrow from "../components/Icons/Arrow"
@@ -100,6 +103,8 @@ class Detail extends React.Component<PropsType, StateType> {
   render() {
     const { info } = this.state
     const { active } = this.state
+
+    console.log(info)
 
     return (
       <Wrapper width={1180}>
@@ -195,7 +200,11 @@ class Detail extends React.Component<PropsType, StateType> {
         </FlexLeft>
 
         <FlexRight width={1 / 2}>
-          <LargeThumbnail src={info.Poster} alt="The movie poster" />
+          {info.Poster === "N/A" ? (
+            <LargeEmptyThumbnail />
+          ) : (
+            <LargeThumbnail src={info.Poster} alt="The movie poster" />
+          )}
         </FlexRight>
       </Wrapper>
     )
