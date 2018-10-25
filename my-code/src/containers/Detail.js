@@ -23,6 +23,24 @@ type PropsType = {
   }
 }
 
+type StateType = {
+  info: {
+    Title?: string,
+    Runtime?: string,
+    Genre?: string,
+    Plot?: string,
+    Rated?: string,
+    Poster?: string,
+    Director?: string,
+    Actors?: string,
+    Year?: string,
+    Ratings?: {
+      Source: string,
+      Value: string
+    }
+  }
+}
+
 type ActorType = {
   actor: string
 }
@@ -31,11 +49,11 @@ type GenreType = {
 }
 
 type RatingsType = {
-  source: string,
-  value: string
+  Source: string,
+  Value: string
 }
 
-class Detail extends React.Component<PropsType> {
+class Detail extends React.Component<PropsType, StateType> {
   constructor() {
     super()
     this.state = {

@@ -3,8 +3,10 @@ import React from "react"
 import Grid from "../layout/Grid"
 import { SmallThumbnail } from "./Thumbnail/styled"
 
+import { Text100, Text200 } from "./Typography/styled"
+
 type PropsType = {
-  data: {}
+  data: []
 }
 
 type MovieType = {
@@ -30,8 +32,8 @@ const Results = (props: PropsType) => {
         >
           <SmallThumbnail style={{ backgroundImage: `url(${movie.Poster})` }} />
           <div style={{ position: "absolute", bottom: "12px", left: "12px" }}>
-            <p>{movie.Title}</p>
-            <p>{movie.Year}</p>
+            <Text200>{movie.Title}</Text200>
+            <Text100>{movie.Year}</Text100>
           </div>
         </a>
       ))}

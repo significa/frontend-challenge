@@ -3,8 +3,27 @@ import styled from "styled-components"
 import imdb from "../../assets/logo-imdb.svg"
 import rotten from "../../assets/logo-rotten-tomatoes.svg"
 
+type ThemeType = {
+  theme: {
+    color: {
+      main: {
+        yellow: string,
+        red: string,
+        green: string
+      },
+      grey: {
+        dark: string,
+        grey: string,
+        midgrey: string,
+        lightgrey: string,
+        white: string
+      }
+    }
+  }
+}
+
 const Label = styled.div`
-  border: 1px solid ${p => p.theme.color.grey.grey};
+  border: 1px solid ${(p: ThemeType) => p.theme.color.grey.grey};
   border-radius: 4px;
   display: relative;
   letter-spacing: 0.17;
@@ -14,7 +33,7 @@ const Label = styled.div`
 
 const IMDB = styled.div`
   border-radius: 4px 0px 0px 4px;
-  background-color: ${p => p.theme.color.main.yellow};
+  background-color: ${(p: ThemeType) => p.theme.color.main.yellow};
   background-image: url(${imdb});
   background-repeat: no-repeat;
   background-position: center;
@@ -24,7 +43,7 @@ const IMDB = styled.div`
 
 const Rotten = styled.div`
   border-radius: 4px 0px 0px 4px;
-  background-color: ${p => p.theme.color.main.red};
+  background-color: ${(p: ThemeType) => p.theme.color.main.red};
   background-image: url(${rotten});
   background-repeat: no-repeat;
   background-position: center;

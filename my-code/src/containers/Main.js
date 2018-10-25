@@ -9,17 +9,12 @@ import Results from "../components/Results"
 
 import omdbApi from "../constants/omdbApi"
 
-type PropsType = {
-  term: string,
-  results: []
-}
-
 type StateType = {
   term: string,
-  results: []
+  results: Array<string>
 }
 
-class App extends React.Component<StateType, PropsType> {
+class App extends React.Component<{}, StateType> {
   constructor() {
     super()
     this.state = {
