@@ -48,6 +48,10 @@ type GenreType = {
   actor: string
 }
 
+type DirectorType = {
+  actor: string
+}
+
 type RatingsType = {
   Source: string,
   Value: string
@@ -57,7 +61,9 @@ class Detail extends React.Component<PropsType, StateType> {
   constructor() {
     super()
     this.state = {
-      info: {}
+      info: {},
+      favourite: false,
+      active: false
     }
   }
 
@@ -79,8 +85,21 @@ class Detail extends React.Component<PropsType, StateType> {
     this.setState({ info: data || {} })
   }
 
+  saveToFavourites = () => {
+    const { favourite } = this.state
+
+    this.setState(
+      prevState => ({
+        favourite: !prevState.favourite,
+        active: !prevState.active
+      }),
+      () => localStorage.setItem("favourite", !favourite)
+    )
+  }
+
   render() {
     const { info } = this.state
+    const { active } = this.state
 
     return (
       <Wrapper width={1180}>
@@ -116,7 +135,11 @@ class Detail extends React.Component<PropsType, StateType> {
                   </div>
                 </div>
               ))}
-              <Button text="Add to favourites" />
+              <Button
+                text="Add to favourites"
+                onClick={this.saveToFavourites}
+                active={active}
+              />
             </Wrapper>
           ) : null}
 
@@ -160,9 +183,13 @@ class Detail extends React.Component<PropsType, StateType> {
               <Text100 grey mb={2}>
                 Director
               </Text100>
-              <Text100>
-                {info.Director ? info.Director : "Unknow director"}
-              </Text100>
+              <div>
+                {info.Director
+                  ? info.Director.split(",").map((director: DirectorType) => (
+                      <Text100>{director}</Text100>
+                    ))
+                  : "Unknow director"}
+              </div>
             </FlexLeft>
           </Wrapper>
         </FlexLeft>

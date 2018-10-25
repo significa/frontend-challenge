@@ -2,7 +2,7 @@
 import React from "react"
 
 const Heart = () => (
-  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+  <svg width="24" height="16" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fillRule="evenodd">
       <path d="M0 0h16v16H0z" />
       <path

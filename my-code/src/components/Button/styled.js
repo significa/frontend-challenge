@@ -2,33 +2,36 @@
 import styled from "styled-components"
 
 type ThemeType = {
-  theme: {
-    color: {
-      main: {
-        yellow: string,
-        red: string,
-        green: string
-      },
-      grey: {
-        dark: string,
-        grey: string,
-        midgrey: string,
-        lightgrey: string,
-        white: string
-      }
+  color: {
+    main: {
+      yellow: string,
+      red: string,
+      green: string
     },
-    font: {
-      family: string,
-      base: string,
-      family: string,
-      smaller: string,
-      small: string,
-      large: string,
-      display: string
-    },
-    space: Array<string>,
-    transition: string
-  }
+    grey: {
+      dark: string,
+      grey: string,
+      midgrey: string,
+      lightgrey: string,
+      white: string
+    }
+  },
+  font: {
+    family: string,
+    base: string,
+    family: string,
+    smaller: string,
+    small: string,
+    large: string,
+    display: string
+  },
+  space: Array<string>,
+  transition: string
+}
+
+type PropType = {
+  theme: ThemeType,
+  active: boolean
 }
 
 const RegularButton = styled.button`
@@ -38,23 +41,30 @@ const RegularButton = styled.button`
   justify-content: center;
 
   background: none;
-  border: 1px solid ${(p: ThemeType) => p.theme.color.grey.grey};
+  background-color: ${(p: PropType) =>
+    p.active ? p.theme.color.main.red : ""};
+  border: 1px solid ${({ theme }: PropType) => theme.color.grey.grey};
   border-radius: 4px;
-  color: ${(p: ThemeType) => p.theme.color.grey.lightgrey};
+  color: ${(p: PropType) => (p.active ? "white" : p.theme.color.grey.grey)};
+
   letter-spacing: 0.17;
+  font-family: ${(p: ThemeType) => p.theme.font.family};
+  font-size: ${(p: ThemeType) => p.theme.font.smaller};
+  font-weight: bold;
+  line-height: 24px;
   padding: 12px;
   outline: none;
 
-  transition: ${(p: ThemeType) => p.theme.transition};
+  transition: ${({ theme }: PropType) => theme.transition};
 
   &:hover {
-    border: 1px solid ${(p: ThemeType) => p.theme.color.main.red};
+    border: 1px solid ${({ theme }: PropType) => theme.color.main.red};
     color: ${(p: ThemeType) => p.theme.color.grey.white};
     outline: none;
   }
 
   &:active {
-    background-color: ${(p: ThemeType) => p.theme.color.main.red};
+    background-color: ${({ theme }: PropType) => theme.color.main.red};
     outline: none;
   }
 `
