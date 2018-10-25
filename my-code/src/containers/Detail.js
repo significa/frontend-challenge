@@ -3,7 +3,11 @@ import React from "react"
 import omdbApi from "../constants/omdbApi"
 
 import Wrapper from "../layout/Wrapper"
-import Flex from "../layout/Flex"
+import { FlexLeft, FlexRight } from "../layout/Flex"
+import { LargeThumbnail } from "../components/Thumbnail/styled"
+import Button from "../components/Button/index"
+
+import { Text100, Text200, Text400 } from "../components/Typography/styled"
 
 type IdType = string
 
@@ -27,7 +31,6 @@ class Detail extends React.Component<PropsType> {
 
   componentDidMount() {
     const { id } = this.props.match.params
-    console.log(this.props.match)
     this.loadMovies(id)
   }
 
@@ -43,42 +46,68 @@ class Detail extends React.Component<PropsType> {
     const { info } = this.state
 
     return (
-      <Wrapper>
-        <a href="/">Go back</a>
-        <div>
-          <Wrapper>
-            <p>{info.Runtime}</p>
-            <p>{info.Year}</p>
+      <Wrapper width={1180}>
+        <FlexLeft width={1 / 2}>
+          <a href="/">Go back</a>
+
+          <Wrapper mt={4} mb={4}>
+            <Text200 grey>
+              {info.Runtime ? info.Runtime : "Unknown runtime"} ·
+            </Text200>
+            <Text200 grey>{info.Year ? info.Year : "Unknown year"} ·</Text200>
+            <Text200 grey>R</Text200>
           </Wrapper>
-          <p>{info.Title}</p>
+
+          <Text400 mb={5}>{info.Title}</Text400>
           {info.Ratings ? (
-            <div>
+            <FlexLeft mb={5}>
               {info.Ratings.map((ratings: RatingsType) => (
                 <p>{ratings.Source}</p>
               ))}
-            </div>
+              <Button text="Add to favourites" />
+            </FlexLeft>
           ) : null}
 
-          <p>Plot</p>
-          <p>{info.Plot}</p>
+          <FlexLeft mb={5}>
+            <Text100 grey mb={2}>
+              Plot
+            </Text100>
+            <Text100>
+              {info.Plot ? info.Plot : "There's no information available"}
+            </Text100>
+          </FlexLeft>
 
-          <Wrapper>
-            <Flex>
-              <p>Cast</p>
-              <p>{info.Actors}</p>
-            </Flex>
+          <Wrapper mb={5}>
+            <FlexLeft>
+              <Text100 grey mb={2}>
+                Cast
+              </Text100>
+              <Text100>
+                {info.Actors ? info.Actors : "There's no information available"}
+              </Text100>
+            </FlexLeft>
 
-            <p>Genre</p>
-            <p>{info.Genre}</p>
+            <FlexLeft>
+              <Text100 grey mb={2}>
+                Genre
+              </Text100>
+              <Text100>{info.Genre ? info.Genre : "Unknow genre"}</Text100>
+            </FlexLeft>
 
-            <p>Director</p>
-            <p>{info.Director}</p>
+            <FlexLeft>
+              <Text100 grey mb={2}>
+                Director
+              </Text100>
+              <Text100>
+                {info.Director ? info.Director : "Unknow director"}
+              </Text100>
+            </FlexLeft>
           </Wrapper>
-        </div>
+        </FlexLeft>
 
-        <div style={{ width: "480px" }}>
-          <img src={info.Poster} alt="The movie poster" />
-        </div>
+        <FlexRight width={1 / 2}>
+          <LargeThumbnail src={info.Poster} alt="The movie poster" />
+        </FlexRight>
       </Wrapper>
     )
   }

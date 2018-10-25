@@ -16,7 +16,11 @@ export default {
   },
   font: {
     base: "16px",
-    family: "Roboto, sans-serif"
+    family: "Roboto, sans-serif",
+    smaller: "16px",
+    small: "20px",
+    large: "24px",
+    display: "80px"
   },
   breakpoints: {
     xs: 0,
@@ -25,6 +29,6 @@ export default {
     lg: 992,
     xl: 1200
   },
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+  space: [0, 4, 8, 16, 24, 32, 64, 128, 256, 512],
   transition: "all .2s"
 }

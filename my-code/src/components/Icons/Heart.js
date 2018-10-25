@@ -3,13 +3,13 @@
 import React from "react"
 
 const Heart = () => (
-  <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+  <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
     <g fill="none" fillRule="evenodd">
-      <path d="M0 0h24v24H0z" />
+      <path d="M0 0h16v16H0z" />
       <path
-        d="M12 5.738C24.316-3.878 26.313 14.49 12 20-2.313 15.57-.316-3.878 12 5.738z"
+        d="M8 4.19c8.222-6.593 9.555 5.999 0 9.776C-1.555 10.93-.222-2.403 8 4.19z"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1.5"
       />
     </g>
   </svg>

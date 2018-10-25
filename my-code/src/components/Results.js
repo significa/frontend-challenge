@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import Grid from "../layout/Grid"
-import Thumbnail from "./Thumbnail/styled"
+import { SmallThumbnail } from "./Thumbnail/styled"
 
 type PropsType = {
   data: {}
@@ -28,7 +28,7 @@ const Results = (props: PropsType) => {
             marginBottom: "20px"
           }}
         >
-          <Thumbnail style={{ backgroundImage: `url(${movie.Poster})` }} />
+          <SmallThumbnail style={{ backgroundImage: `url(${movie.Poster})` }} />
           <div style={{ position: "absolute", bottom: "12px", left: "12px" }}>
             <p>{movie.Title}</p>
             <p>{movie.Year}</p>

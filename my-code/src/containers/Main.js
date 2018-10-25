@@ -2,8 +2,9 @@
 import React from "react"
 import Input from "../components/Input/styled"
 
+import { Text100, Text300 } from "../components/Typography/styled"
 import empty from "../assets/illustration-empty-state@2x.png"
-import Flex from "../layout/Flex"
+import { Flex } from "../layout/Flex"
 import Results from "../components/Results"
 
 import omdbApi from "../constants/omdbApi"
@@ -64,10 +65,10 @@ class App extends React.Component<StateType, PropsType> {
           </form>
 
           {results.length === 0 ? (
-            <Flex>
+            <Flex mt={6}>
               <img width={396} src={empty} alt="Empty state" />
-              <p>Don’t know what to search?</p>
-              <p>Here’s an offer you can’t refuse</p>
+              <Text300 mb={2}>Don’t know what to search?</Text300>
+              <Text100 grey>Here’s an offer you can’t refuse</Text100>
             </Flex>
           ) : (
             <Results data={results} />
