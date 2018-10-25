@@ -1,5 +1,6 @@
 // @flow
 import React from "react"
+import { Link } from "react-router-dom"
 import omdbApi from "../constants/omdbApi"
 
 import Wrapper from "../layout/Wrapper"
@@ -8,6 +9,7 @@ import { FlexLeft, FlexRight } from "../layout/Flex"
 import { LargeThumbnail } from "../components/Thumbnail/styled"
 import Button from "../components/Button/index"
 import { IMDBLabel, RottenLabel } from "../components/Label/index"
+import Arrow from "../components/Icons/Arrow"
 
 import { Text100, Text200, Text400 } from "../components/Typography/styled"
 
@@ -21,7 +23,17 @@ type PropsType = {
   }
 }
 
-type RatingsType = {}
+type ActorType = {
+  actor: string
+}
+type GenreType = {
+  actor: string
+}
+
+type RatingsType = {
+  source: string,
+  value: string
+}
 
 class Detail extends React.Component<PropsType> {
   constructor() {
@@ -32,7 +44,12 @@ class Detail extends React.Component<PropsType> {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props
+
     this.loadMovies(id)
   }
 
@@ -46,14 +63,15 @@ class Detail extends React.Component<PropsType> {
 
   render() {
     const { info } = this.state
-    console.log(info)
 
     return (
       <Wrapper width={1180}>
         <FlexLeft width={1 / 2}>
-          <a href="/">Go back</a>
+          <Link to="/">
+            <Arrow />
+          </Link>
 
-          <Wrapper mt={4} mb={4}>
+          <Wrapper mt={6} mb={4}>
             <Text200 grey>
               {info.Runtime ? info.Runtime : "Unknown runtime"} ·&nbsp;
             </Text200>
@@ -94,23 +112,33 @@ class Detail extends React.Component<PropsType> {
           </FlexLeft>
 
           <Wrapper mb={5}>
-            <FlexLeft>
+            <FlexLeft pr={56}>
               <Text100 grey mb={2}>
                 Cast
               </Text100>
-              <Text100>
-                {info.Actors ? info.Actors : "There's no information available"}
-              </Text100>
+              <div>
+                {info.Actors
+                  ? info.Actors.split(",").map((actor: ActorType) => (
+                      <Text100>{actor}</Text100>
+                    ))
+                  : "There's no information available"}
+              </div>
             </FlexLeft>
 
-            <FlexLeft>
+            <FlexLeft pr={56}>
               <Text100 grey mb={2}>
                 Genre
               </Text100>
-              <Text100>{info.Genre ? info.Genre : "Unknow genre"}</Text100>
+              <div>
+                {info.Genre
+                  ? info.Genre.split(",").map((genre: GenreType) => (
+                      <Text100>{genre}</Text100>
+                    ))
+                  : "Unknow genre"}
+              </div>
             </FlexLeft>
 
-            <FlexLeft>
+            <FlexLeft pr={56}>
               <Text100 grey mb={2}>
                 Director
               </Text100>

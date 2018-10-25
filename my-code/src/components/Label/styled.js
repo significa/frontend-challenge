@@ -1,3 +1,4 @@
+// @flow
 import styled from "styled-components"
 import imdb from "../../assets/logo-imdb.svg"
 import rotten from "../../assets/logo-rotten-tomatoes.svg"
