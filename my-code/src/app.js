@@ -1,9 +1,8 @@
-'use strict'
-
 import React, { Component } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Header from 'components/header'
 import Home from './views/home'
+import Movie from './views/movie'
 import './app.scss'
 
 class App extends Component {
@@ -67,6 +66,7 @@ class App extends Component {
               loaderShowcase={this.state.loaderShowcase}
               movieEmpty={this.state.movieEmpty}
             />} />
+            <Route path='/movie-:id' component={Movie} />
           </Switch>
         </BrowserRouter>
       </div>

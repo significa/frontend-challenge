@@ -1,0 +1,49 @@
+.ratings {
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding-right: 12px;
+  margin-right: 14px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid rgb(27, 35, 41);
+  @media screen and (min-width: 462px) {
+    margin-bottom: 0;
+  }
+  @media screen and (min-width: 1090px) {
+    margin-right: 15px;
+  }
+  &__image {
+    display: flex;
+    margin: 0 12px 0 0;
+    padding: 6px 6px;
+    border-radius: 5px 0 0 5px;
+    @media screen and (min-width: 462px) {
+      padding: 12px 6px;
+    }
+    @media screen and (min-width: 768px) {
+      padding: 12px 12px;
+    }
+    @media screen and (min-width: 1090px) {
+      padding: 12px 8px;
+    }
+    &.yellow {
+      background-color: rgb(255, 159, 28);
+    }
+    &.red {
+      background-color: rgb(255, 64, 64);
+      @media screen and (min-width: 1090px) {
+        max-width: 19px;
+      }
+    }
+    svg {
+      max-width: 37px;
+      max-height: 17px;
+    }
+  }
+  p {
+    padding: 0;
+    margin: 0;
+    color: rgb(255,255,255);
+  }
+}

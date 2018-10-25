@@ -1,0 +1,27 @@
+.movie {
+  &-add {
+    width: auto;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid rgb(27, 35, 41);
+    background-color: transparent;
+    color: rgb(122, 140, 153);
+    font-size: 16px;
+    transition: all .25s ease-out;
+    cursor: pointer;
+    @media screen and (min-width: 1090px) {
+      &:hover {
+        border-color: rgb(255, 64, 64);
+        color: rgb(255,255,255);
+        transition: all .25s ease-in;
+      }
+    }
+    svg {
+      width: 17px;
+      height: 18px;
+      margin-right: 12px;
+    }
+  }
+}

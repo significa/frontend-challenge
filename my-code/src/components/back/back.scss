@@ -1,0 +1,11 @@
+.back {
+  width: 100%;
+  margin-bottom: 10px;
+  @media screen and (min-width: 1090px) {
+    margin-bottom: 24px;
+  }
+  svg {
+    width: 26px;
+    height: 26px;
+  }
+}

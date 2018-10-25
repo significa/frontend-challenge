@@ -1,0 +1,19 @@
+.movie {
+  &-title {
+    width: 100%;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: rgb(255,255,255);
+    font-weight: bold;
+    font-size: 24px;
+    @media screen and (min-width: 768px) {
+      font-size: 80px;
+      line-height: 1.1;
+    }
+    @media screen and (min-width: 1090px) {
+      margin-top: 24px;
+      margin-bottom: 34px;
+    }
+  }
+}

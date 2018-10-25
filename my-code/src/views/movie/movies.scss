@@ -1,0 +1,32 @@
+.movie {
+  @media screen and (min-width: 1090px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &-info {
+    width: 100%;
+    @media screen and (min-width: 1090px) {
+      max-width: 530px;
+    }
+  }
+  &-figure {
+    width: 100%;
+    @media screen and (min-width: 1090px) {
+      max-width: 530px;
+    }
+  }
+  &-rating {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+    @media screen and (min-width: 1090px) {
+      margin-bottom: 45px
+    }
+  }
+  &-lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,37 @@
+.movie {
+  &-runtime {
+    display: flex;
+    p {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      color: rgb(122, 140, 153);
+      font-weight: 400;
+      font-size: 16px;
+      @media screen and (min-width: 1090px) {
+        font-size: 20px;
+      }
+      &:after {
+        content: '';
+        width: 2px;
+        height: 2px;
+        display: inline-block;
+        margin-left: 8px;
+        margin-right: 8px;
+        background-color: rgb(122, 140, 153);
+        border-radius: 50%;
+      }
+    }
+    &__symbol {
+      width: 23px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      background-color: rgb(122, 140, 153);
+      color: rgb(10, 16, 20);
+      font-size: 16px;
+    }
+  }
+}

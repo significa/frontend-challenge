@@ -1,0 +1,15 @@
+.movie {
+  &-image {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    @media screen and (min-width: 1090px) {
+      text-align: right;
+    }
+    img {
+      width: 100%;
+      max-width: 482px;
+      border-radius: 10px;
+    }
+  }
+}
