@@ -8,13 +8,9 @@ const RegularButton = styled.button`
   justify-content: center;
 
   background: none;
-  border: 1px solid ${p => p.theme.color.grey.lightgrey};
+  border: 1px solid ${p => p.theme.color.grey.grey};
   border-radius: 4px;
   color: ${p => p.theme.color.grey.lightgrey};
-  font-family: ${p => p.theme.font.family};
-  font-size: 1em;
-  font-weight: bold;
-  line-height: 19px;
   letter-spacing: 0.17;
   padding: 12px;
   outline: none;

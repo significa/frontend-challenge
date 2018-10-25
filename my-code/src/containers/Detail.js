@@ -4,8 +4,10 @@ import omdbApi from "../constants/omdbApi"
 
 import Wrapper from "../layout/Wrapper"
 import { FlexLeft, FlexRight } from "../layout/Flex"
+
 import { LargeThumbnail } from "../components/Thumbnail/styled"
 import Button from "../components/Button/index"
+import { IMDBLabel, RottenLabel } from "../components/Label/index"
 
 import { Text100, Text200, Text400 } from "../components/Typography/styled"
 
@@ -44,6 +46,7 @@ class Detail extends React.Component<PropsType> {
 
   render() {
     const { info } = this.state
+    console.log(info)
 
     return (
       <Wrapper width={1180}>
@@ -52,20 +55,33 @@ class Detail extends React.Component<PropsType> {
 
           <Wrapper mt={4} mb={4}>
             <Text200 grey>
-              {info.Runtime ? info.Runtime : "Unknown runtime"} ·
+              {info.Runtime ? info.Runtime : "Unknown runtime"} ·&nbsp;
             </Text200>
-            <Text200 grey>{info.Year ? info.Year : "Unknown year"} ·</Text200>
-            <Text200 grey>R</Text200>
+            <Text200 grey>
+              {info.Year ? info.Year : "Unknown year"} ·&nbsp;
+            </Text200>
+            <Text200 grey>{info.Rated ? info.Rated : "No rating"}</Text200>
           </Wrapper>
 
           <Text400 mb={5}>{info.Title}</Text400>
           {info.Ratings ? (
-            <FlexLeft mb={5}>
+            <Wrapper mb={5}>
               {info.Ratings.map((ratings: RatingsType) => (
-                <p>{ratings.Source}</p>
+                <div>
+                  <div>
+                    {ratings.Source === "Internet Movie Database" && (
+                      <IMDBLabel value={ratings.Value} />
+                    )}
+                  </div>
+                  <div>
+                    {ratings.Source === "Rotten Tomatoes" && (
+                      <RottenLabel value={ratings.Value} />
+                    )}
+                  </div>
+                </div>
               ))}
               <Button text="Add to favourites" />
-            </FlexLeft>
+            </Wrapper>
           ) : null}
 
           <FlexLeft mb={5}>
