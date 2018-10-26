@@ -30,13 +30,13 @@ const Movie = ({ movie, handleBack }) => (
       </div>
       <MoviePlot plotText={movie.Plot === 'N/A' ? '' : movie.Plot} />
       <div className='movie-lists'>
-        <MovieList />
-        <MovieList />
-        <MovieList />
+        <MovieList listTitle='Cast' list={movie.Actors} />
+        <MovieList listTitle='Genre' list={movie.Genre} />
+        <MovieList listTitle='Director' list={movie.Director} />
       </div>
     </article>
     <section className='movie-figure'>
-      <MovieImage />
+      <MovieImage imageURl={movie.Poster} imageAlt={movie.Title} />
     </section>
   </main>
 )
