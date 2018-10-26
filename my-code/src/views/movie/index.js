@@ -13,7 +13,9 @@ const Movie = ({ movie }) => (
   <main className='movie'>
     <Back />
     <article className='movie-info'>
-      <MovieRuntime />
+      <MovieRuntime
+        movieTime={movie.Runtime}
+        movieYear={movie.Year} />
       <MovieTitle title={movie.Title} />
       <div className='movie-rating'>
         <MovieRatings

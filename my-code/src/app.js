@@ -54,6 +54,9 @@ class App extends Component {
     }
     this.handleGetMovie = (id) => () => {
       const imdbID = id
+      this.setState({
+        movie: {}
+      })
       fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {

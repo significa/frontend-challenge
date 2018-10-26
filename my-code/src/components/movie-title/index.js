@@ -11,7 +11,7 @@ MovieTitle.defaultProps = {
 }
 
 MovieTitle.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string
 }
 
 export default MovieTitle
