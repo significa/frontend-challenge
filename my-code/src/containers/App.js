@@ -6,7 +6,7 @@ import Main from "./Main"
 import Detail from "./Detail"
 import TopBar from "../layout/topbar"
 
-import { Flex } from "../layout/Flex"
+import { Flex } from "../layout/Layout"
 
 const App = () => (
   <BrowserRouter>

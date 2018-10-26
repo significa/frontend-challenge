@@ -1,14 +1,10 @@
 // @flow
 import React from "react"
-
-import RegularButton from "./styled"
 import Heart from "../Icons/Heart"
+import RegularButton from "./styled"
+import { ButtonPropsType } from "../../types"
 
-type PropsType = {
-  text: string
-}
-
-const Button = ({ text, ...props }: PropsType) => (
+const Button = ({ text, ...props }: ButtonPropsType) => (
   <RegularButton {...props}>
     <Heart />
     {text}

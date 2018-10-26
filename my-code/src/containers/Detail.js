@@ -1,20 +1,22 @@
 // @flow
 import React from "react"
 import { Link } from "react-router-dom"
-import omdbApi from "../constants/omdbApi"
-
-import Wrapper from "../layout/Wrapper"
-import { FlexLeft, FlexRight } from "../layout/Flex"
-
+import type {
+  ActorType,
+  GenreType,
+  DirectorType,
+  RatingsType
+} from "../types.js"
+import { Wrapper, FlexLeft, FlexRight } from "../layout/Layout"
 import {
   LargeThumbnail,
   LargeEmptyThumbnail
-} from "../components/Thumbnail/styled"
+} from "../components/Thumbnail/index"
 import Button from "../components/Button/index"
 import { IMDBLabel, RottenLabel } from "../components/Label/index"
+import { Text100, Text200, Text400 } from "../components/Typography/index"
 import Arrow from "../components/Icons/Arrow"
-
-import { Text100, Text200, Text400 } from "../components/Typography/styled"
+import omdbApi from "../constants/omdbApi"
 
 type IdType = string
 
@@ -42,22 +44,6 @@ type StateType = {
       Value: string
     }
   }
-}
-
-type ActorType = {
-  actor: string
-}
-type GenreType = {
-  actor: string
-}
-
-type DirectorType = {
-  actor: string
-}
-
-type RatingsType = {
-  Source: string,
-  Value: string
 }
 
 class Detail extends React.Component<PropsType, StateType> {
@@ -103,8 +89,6 @@ class Detail extends React.Component<PropsType, StateType> {
   render() {
     const { info } = this.state
     const { active } = this.state
-
-    console.log(info)
 
     return (
       <Wrapper width={1180}>

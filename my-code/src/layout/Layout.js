@@ -32,4 +32,20 @@ const FlexRight = styled.div`
   justify-content: flex-end;
 `
 
-export { Flex, FlexLeft, FlexRight }
+const Grid = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  width: 100%;
+`
+
+const Wrapper = styled.div`
+  ${width};
+  ${space};
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+`
+
+export { Flex, FlexLeft, FlexRight, Grid, Wrapper }

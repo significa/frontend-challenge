@@ -2,11 +2,11 @@
 import React from "react"
 import Input from "../components/Input/styled"
 
-import { Text100, Text300 } from "../components/Typography/styled"
 import empty from "../assets/illustration-empty-state@2x.png"
-import { Flex } from "../layout/Flex"
-import Results from "../components/Results"
 
+import { Flex } from "../layout/Layout"
+import { Text100, Text300 } from "../components/Typography/index"
+import Results from "../components/Results"
 import omdbApi from "../constants/omdbApi"
 
 type StateType = {

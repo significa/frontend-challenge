@@ -1,8 +1,7 @@
 // @flow
 import React from "react"
-import Grid from "../layout/Grid"
+import { Grid } from "../layout/Layout"
 import { SmallThumbnail, SmallEmptyThumbnail } from "./Thumbnail/styled"
-
 import { Text100, Text200 } from "./Typography/styled"
 
 type PropsType = {

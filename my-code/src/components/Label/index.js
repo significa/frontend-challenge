@@ -1,15 +1,11 @@
 // @flow
 import React from "react"
-
-import Wrapper from "../../layout/Wrapper"
 import { Text100 } from "../Typography/styled"
 import { IMDB, Rotten, Label } from "./styled"
+import { Wrapper } from "../../layout/Layout"
+import type { LabelPropsType } from "../../types.js"
 
-type PropsType = {
-  value: string
-}
-
-export const IMDBLabel = ({ value }: PropsType) => (
+export const IMDBLabel = ({ value }: LabelPropsType) => (
   <Label>
     <Wrapper>
       <IMDB />
@@ -18,7 +14,7 @@ export const IMDBLabel = ({ value }: PropsType) => (
   </Label>
 )
 
-export const RottenLabel = ({ value }: PropsType) => (
+export const RottenLabel = ({ value }: LabelPropsType) => (
   <Label>
     <Wrapper>
       <Rotten />
