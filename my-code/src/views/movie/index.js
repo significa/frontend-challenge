@@ -24,7 +24,7 @@ const Movie = ({ movie, handleBack }) => (
           ratingsBG='yellow' />
         <MovieRatings
           ratingsSvg='logo-rotten-tomatoes'
-          ratingsText={`${movie.Metascore}%`}
+          ratingsText={movie.Metascore === 'N/A' ? '0%' : `${movie.Metascore}%`}
           ratingsBG='red' />
         <MovieAdd />
       </div>
