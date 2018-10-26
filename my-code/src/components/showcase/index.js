@@ -5,7 +5,7 @@ import IconSvg from '../icon-svg'
 import imageEmpty from './empty-state.png'
 import './showcase.scss'
 
-const Showcase = ({ items, loaderShowcase, movieEmpty }) => (
+const Showcase = ({ items, loaderShowcase, movieEmpty, handleGetMovie }) => (
   <div>
     <div className={`showcase__loader ${loaderShowcase}`} />
     <div className={`showcase-empty ${movieEmpty}`}>
@@ -16,7 +16,7 @@ const Showcase = ({ items, loaderShowcase, movieEmpty }) => (
     <ul className='showcase'>
       {items.map((item) =>
         <li className='showcase-item' key={item.imdbID}>
-          <Link to={`/movie-${item.imdbID}`}>
+          <Link to={`/movie-${item.imdbID}`} onClick={handleGetMovie(item.imdbID)}>
             <div className='showcase-item__favorite'>
               <button>
                 <IconSvg name='icon-heart-white' />

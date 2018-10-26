@@ -9,12 +9,12 @@ import MoviePlot from 'components/movie-plot'
 import MovieList from 'components/movie-list'
 import './movies.scss'
 
-const Movie = () => (
+const Movie = ({ movie }) => (
   <main className='movie'>
     <Back />
     <article className='movie-info'>
       <MovieRuntime />
-      <MovieTitle />
+      <MovieTitle title={movie.Title} />
       <div className='movie-rating'>
         <MovieRatings
           ratingsSvg='logo-imdb'

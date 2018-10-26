@@ -7,14 +7,16 @@ const Home = ({
   items,
   searchEmpty,
   loaderShowcase,
-  movieEmpty
+  movieEmpty,
+  handleGetMovie
 }) => (
   <div>
     <Search handleSearch={handleSearch} searchEmpty={searchEmpty} />
     <Showcase
       items={items}
       loaderShowcase={loaderShowcase}
-      movieEmpty={movieEmpty} />
+      movieEmpty={movieEmpty}
+      handleGetMovie={handleGetMovie} />
   </div>
 )
 

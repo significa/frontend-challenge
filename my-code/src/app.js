@@ -12,7 +12,8 @@ class App extends Component {
       showcase: [],
       searchEmpty: '',
       loaderShowcase: 'hide',
-      movieEmpty: 'hide'
+      movieEmpty: 'hide',
+      movie: {}
     }
     this.handleSearch = (e) => {
       e.preventDefault()
@@ -51,6 +52,16 @@ class App extends Component {
           })
         })
     }
+    this.handleGetMovie = (id) => () => {
+      const imdbID = id
+      fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
+        .then(response => response.json())
+        .then((data) => {
+          this.setState({
+            movie: data
+          })
+        })
+    }
   }
 
   render () {
@@ -65,8 +76,9 @@ class App extends Component {
               searchEmpty={this.state.searchEmpty}
               loaderShowcase={this.state.loaderShowcase}
               movieEmpty={this.state.movieEmpty}
+              handleGetMovie={this.handleGetMovie}
             />} />
-            <Route path='/movie-:id' component={Movie} />
+            <Route path='/movie-:id' render={(...props) => <Movie movie={this.state.movie} />} />
           </Switch>
         </BrowserRouter>
       </div>

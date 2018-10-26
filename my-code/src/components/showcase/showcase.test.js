@@ -7,7 +7,7 @@ import Adapter from 'enzyme-adapter-react-15'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('<Showcase />', () => {
-  let wrapper, wrapper2, data, data2
+  let wrapper, wrapper2, data, data2, handleGetMovie
   beforeEach(() => {
     data = [
       {
@@ -34,8 +34,9 @@ describe('<Showcase />', () => {
         'imdbID': 'tt1905042'
       }
     ]
-    wrapper = shallow(<Showcase items={data} loaderShowcase='hide' movieEmpty='hide' />)
-    wrapper2 = shallow(<Showcase items={data2} />)
+    handleGetMovie = (id) => () => {}
+    wrapper = shallow(<Showcase items={data} loaderShowcase='hide' movieEmpty='hide' handleGetMovie={handleGetMovie} />)
+    wrapper2 = shallow(<Showcase items={data2} handleGetMovie={handleGetMovie} />)
   })
 
   it('Should wrapper return one li', () => {
