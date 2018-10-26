@@ -20,11 +20,11 @@ const Movie = ({ movie }) => (
       <div className='movie-rating'>
         <MovieRatings
           ratingsSvg='logo-imdb'
-          ratingsText='7.6/10'
+          ratingsText={movie.imdbRating}
           ratingsBG='yellow' />
         <MovieRatings
           ratingsSvg='logo-rotten-tomatoes'
-          ratingsText='96%'
+          ratingsText={`${movie.Metascore}%`}
           ratingsBG='red' />
         <MovieAdd />
       </div>
