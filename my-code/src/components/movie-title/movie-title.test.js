@@ -15,8 +15,8 @@ describe('<MovieTitle />', () => {
     const wrapper = shallow(<MovieTitle title='Movie' />)
     expect(wrapper.text()).to.equal('Movie')
   })
-  it('Should MovieTitle return the component with default text that is title when not passing the prop', () => {
+  it('Should MovieTitle return the component with default text that is empty when not passing the prop', () => {
     const wrapper = shallow(<MovieTitle />)
-    expect(wrapper.text()).to.equal('Title')
+    expect(wrapper.text()).to.equal('')
   })
 })

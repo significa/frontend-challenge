@@ -7,7 +7,7 @@ const MovieTitle = ({ title }) => (
 )
 
 MovieTitle.defaultProps = {
-  title: 'Title'
+  title: ''
 }
 
 MovieTitle.propTypes = {
