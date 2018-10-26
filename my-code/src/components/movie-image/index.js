@@ -1,10 +1,21 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './movie-image.scss'
 
-const MovieImage = () => (
+const MovieImage = ({ imageURl, imageAlt }) => (
   <figure className='movie-image'>
-    <img src='https://m.media-amazon.com/images/M/MV5BYTdlODI0YTYtNjk5ZS00YzZjLTllZjktYmYzNWM4NmI5MmMxXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg' alt='Image' />
+    <img src={imageURl} alt={imageAlt} />
   </figure>
 )
+
+MovieImage.defaultProps = {
+  imageURl: '',
+  imageAlt: ''
+}
+
+MovieImage.propTypes = {
+  imageURl: PropTypes.string,
+  imageAlt: PropTypes.string
+}
 
 export default MovieImage
