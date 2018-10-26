@@ -31,7 +31,8 @@ export type ThemeType = {
 
 export type PropType = {
   theme: ThemeType,
-  active: boolean
+  active: boolean,
+  grey: string
 }
 
 // Favourites button
@@ -45,18 +46,11 @@ export type LabelPropsType = {
 }
 
 // Relative to the detail page
-export type ActorType = {
-  actor: string
-}
-export type GenreType = {
-  actor: string
-}
-
-export type DirectorType = {
-  actor: string
-}
-
 export type RatingsType = {
   Source: string,
   Value: string
 }
+
+export type DirectorType = string
+export type ActorType = string
+export type GenreType = string

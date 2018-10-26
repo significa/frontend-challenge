@@ -5,7 +5,7 @@ import { SmallThumbnail, SmallEmptyThumbnail } from "./Thumbnail/styled"
 import { Text100, Text200 } from "./Typography/styled"
 
 type PropsType = {
-  data: []
+  data: Array<{ Poster: string, Title: string, Year: string, imdbID: string }>
 }
 
 type MovieType = {
@@ -17,6 +17,7 @@ type MovieType = {
 
 const Results = (props: PropsType) => {
   const { data } = props
+  console.log(data)
 
   return (
     <Grid>

@@ -2,7 +2,7 @@
 import React from "react"
 import Heart from "../Icons/Heart"
 import RegularButton from "./styled"
-import { ButtonPropsType } from "../../types"
+import type { ButtonPropsType } from "../../types"
 
 const Button = ({ text, ...props }: ButtonPropsType) => (
   <RegularButton {...props}>

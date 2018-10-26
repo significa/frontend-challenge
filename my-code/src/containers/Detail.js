@@ -2,10 +2,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import type {
+  RatingsType,
   ActorType,
   GenreType,
-  DirectorType,
-  RatingsType
+  DirectorType
 } from "../types.js"
 import { Wrapper, FlexLeft, FlexRight } from "../layout/Layout"
 import {
@@ -39,11 +39,15 @@ type StateType = {
     Director?: string,
     Actors?: string,
     Year?: string,
-    Ratings?: {
-      Source: string,
-      Value: string
-    }
-  }
+    Ratings?: Array<{ Source: string, Value: string }>
+  },
+  favourite: boolean,
+  active: boolean
+}
+
+type PrevStateType = {
+  favourite: boolean,
+  active: boolean
 }
 
 class Detail extends React.Component<PropsType, StateType> {
@@ -78,11 +82,11 @@ class Detail extends React.Component<PropsType, StateType> {
     const { favourite } = this.state
 
     this.setState(
-      prevState => ({
+      (prevState: PrevStateType) => ({
         favourite: !prevState.favourite,
         active: !prevState.active
       }),
-      () => localStorage.setItem("favourite", !favourite)
+      () => localStorage.setItem("favourite", JSON.stringify(!favourite))
     )
   }
 

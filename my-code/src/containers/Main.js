@@ -11,7 +11,12 @@ import omdbApi from "../constants/omdbApi"
 
 type StateType = {
   term: string,
-  results: Array<string>
+  results: Array<{
+    Poster: string,
+    Title: string,
+    Year: string,
+    imdbID: string
+  }>
 }
 
 class App extends React.Component<{}, StateType> {
