@@ -28,7 +28,7 @@ const Movie = ({ movie, handleBack }) => (
           ratingsBG='red' />
         <MovieAdd />
       </div>
-      <MoviePlot />
+      <MoviePlot plotText={movie.Plot === 'N/A' ? '' : movie.Plot} />
       <div className='movie-lists'>
         <MovieList />
         <MovieList />
