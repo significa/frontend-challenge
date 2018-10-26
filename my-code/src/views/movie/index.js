@@ -9,9 +9,9 @@ import MoviePlot from 'components/movie-plot'
 import MovieList from 'components/movie-list'
 import './movies.scss'
 
-const Movie = ({ movie }) => (
+const Movie = ({ movie, handleBack }) => (
   <main className='movie'>
-    <Back />
+    <Back handleBack={handleBack} />
     <article className='movie-info'>
       <MovieRuntime
         movieTime={movie.Runtime}

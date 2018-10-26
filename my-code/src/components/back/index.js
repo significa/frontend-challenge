@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import IconSvg from '../icon-svg'
 import './back.scss'
 
-const Back = () => (
+const Back = ({ handleBack }) => (
   <section className='back'>
-    <IconSvg name='icon-arrow-grey' />
+    <Link to='/' onClick={handleBack}>
+      <IconSvg name='icon-arrow-grey' />
+    </Link>
   </section>
 )
 

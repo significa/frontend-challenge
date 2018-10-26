@@ -54,9 +54,6 @@ class App extends Component {
     }
     this.handleGetMovie = (id) => () => {
       const imdbID = id
-      this.setState({
-        movie: {}
-      })
       fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
@@ -64,6 +61,12 @@ class App extends Component {
             movie: data
           })
         })
+    }
+    this.handleBack = () => {
+      this.setState({
+        movie: {},
+        showcase: []
+      })
     }
   }
 
@@ -81,7 +84,9 @@ class App extends Component {
               movieEmpty={this.state.movieEmpty}
               handleGetMovie={this.handleGetMovie}
             />} />
-            <Route path='/movie-:id' render={(...props) => <Movie movie={this.state.movie} />} />
+            <Route path='/movie-:id' render={(...props) => <Movie
+              movie={this.state.movie}
+              handleBack={this.handleBack} />} />
           </Switch>
         </BrowserRouter>
       </div>
