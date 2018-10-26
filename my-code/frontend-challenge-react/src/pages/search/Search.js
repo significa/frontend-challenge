@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from './Search.module.scss';
 
 const Search = () => (
-  <div>
+  <div className={styles.container}>
     Search
   </div>
 );
