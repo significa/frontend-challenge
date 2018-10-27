@@ -3,10 +3,22 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import IconSvg from '../icon-svg'
 import Empty from '../empty'
+import imageEmpty from './empty-state.png'
 import './showcase.scss'
 
-const Showcase = ({ items, loaderShowcase, movieEmpty, handleGetMovie }) => (
-  <div>
+const Showcase = ({
+  items,
+  loaderShowcase,
+  movieEmpty,
+  handleGetMovie,
+  statusWelcome
+}) => (
+  <main>
+    <div className={`showcase-welcome ${statusWelcome}`}>
+      <img src={imageEmpty} alt='welcome' />
+      <h3 className='showcase-welcome__title'>Don't know what to search?</h3>
+      <p className='showcase-welcome__text'>Here's an offer you can't refuse</p>
+    </div>
     <div className={`showcase__loader ${loaderShowcase}`} />
     <Empty statusEmpty={movieEmpty} />
     <ul className='showcase'>
@@ -28,7 +40,7 @@ const Showcase = ({ items, loaderShowcase, movieEmpty, handleGetMovie }) => (
         </li>
       )}
     </ul>
-  </div>
+  </main>
 )
 
 Showcase.defaultProps = {

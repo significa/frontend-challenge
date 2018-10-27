@@ -15,6 +15,7 @@ class App extends Component {
       movieEmpty: 'hide',
       statusMovie: 'hide',
       statusEmpty: 'hide',
+      statusWelcome: 'show',
       movie: {}
     }
     this.handleSearch = (e) => {
@@ -23,7 +24,8 @@ class App extends Component {
       this.setState({
         loaderShowcase: 'show',
         showcase: [],
-        movieEmpty: 'hide'
+        movieEmpty: 'hide',
+        statusWelcome: 'hide'
       })
       if (value === '') {
         this.setState({
@@ -77,7 +79,8 @@ class App extends Component {
         movie: {},
         showcase: [],
         statusMovie: 'hide',
-        statusEmpty: 'hide'
+        statusEmpty: 'hide',
+        statusWelcome: 'show'
       })
     }
   }
@@ -115,6 +118,7 @@ class App extends Component {
               loaderShowcase={this.state.loaderShowcase}
               movieEmpty={this.state.movieEmpty}
               handleGetMovie={this.handleGetMovie}
+              statusWelcome={this.state.statusWelcome}
             />} />
             <Route path='/movie-:id' render={(...props) => <Movie
               movie={this.state.movie}

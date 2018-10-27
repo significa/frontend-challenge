@@ -22,7 +22,9 @@
     "globals": [
       "it",
       "expect",
-      "fetch"
+      "fetch",
+      "describe",
+      "beforeEach"
     ]
   },
   "devDependencies": {

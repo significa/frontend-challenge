@@ -22,7 +22,7 @@ module.exports = {
   },
 
   htmlPluginConfig: {
-    title: 'What is in' ,
+    title: 'What is in',
     template: join(paths.src, 'html', 'template.html')
   },
 

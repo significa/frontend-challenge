@@ -8,7 +8,8 @@ const Home = ({
   searchEmpty,
   loaderShowcase,
   movieEmpty,
-  handleGetMovie
+  handleGetMovie,
+  statusWelcome
 }) => (
   <div>
     <Search handleSearch={handleSearch} searchEmpty={searchEmpty} />
@@ -16,7 +17,8 @@ const Home = ({
       items={items}
       loaderShowcase={loaderShowcase}
       movieEmpty={movieEmpty}
-      handleGetMovie={handleGetMovie} />
+      handleGetMovie={handleGetMovie}
+      statusWelcome={statusWelcome} />
   </div>
 )
 
