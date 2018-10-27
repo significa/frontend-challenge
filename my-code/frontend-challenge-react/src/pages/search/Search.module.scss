@@ -1,4 +1,34 @@
+@import '../../shared/colors.scss';
+
 .container {
     max-width: 1180px;
     margin: 0 auto;
+}
+
+.emptyContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 17%;
+
+    .searchIllustration {
+        margin-top: 20%
+    }
+
+    .searchIllustrationDesc {
+        font-size: 24px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+        color: $white;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .searchIllustrationSecondDesc {
+        color: $light-grey;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        margin: 0;
+    }
 }
