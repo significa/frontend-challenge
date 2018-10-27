@@ -2,10 +2,10 @@ import React from 'react'
 import IconSvg from '../icon-svg'
 import './movie-add.scss'
 
-const MovieAdd = () => (
-  <button className='movie-add'>
-    <IconSvg name='icon-heart-grey' />
-    Add to favourites
+const MovieAdd = ({ handleFavourites, imdb, disableFavourites }) => (
+  <button className='movie-add' onClick={handleFavourites(imdb)} disabled={disableFavourites}>
+    <IconSvg name={disableFavourites === false ? 'icon-heart-grey' : 'icon-heart-all'} />
+    {disableFavourites === false ? 'Add to favourites' : 'Added'}
   </button>
 )
 

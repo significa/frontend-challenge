@@ -16,7 +16,9 @@ class App extends Component {
       statusMovie: 'hide',
       statusEmpty: 'hide',
       statusWelcome: 'show',
-      movie: {}
+      movie: {},
+      favourites: [],
+      disableFavourites: false
     }
     this.handleSearch = (e) => {
       e.preventDefault()
@@ -58,6 +60,8 @@ class App extends Component {
     }
     this.handleGetMovie = (id) => () => {
       const imdbID = id
+      const favourites = JSON.parse(localStorage.getItem('favourites'))
+      const isFavourites = favourites.filter((item) => item.imdb === imdbID)
       fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
@@ -66,6 +70,11 @@ class App extends Component {
               statusEmpty: 'show'
             })
             return
+          }
+          if (isFavourites.length > 0) {
+            this.setState({
+              disableFavourites: true
+            })
           }
           this.setState({
             movie: data,
@@ -80,14 +89,26 @@ class App extends Component {
         showcase: [],
         statusMovie: 'hide',
         statusEmpty: 'hide',
-        statusWelcome: 'show'
+        statusWelcome: 'show',
+        disableFavourites: false
       })
+    }
+    this.handleFavourites = (id) => () => {
+      const newFavourite = this.state.favourites
+      newFavourite.push({'imdb': id})
+      this.setState({
+        disableFavourites: true,
+        favourites: newFavourite
+      })
+      localStorage.setItem('favourites', JSON.stringify(this.state.favourites))
     }
   }
   componentDidMount () {
     const url = window.location.href
     if (url.indexOf('movie') > 0) {
       const imdbID = url.split('-')[1]
+      const favourites = JSON.parse(localStorage.getItem('favourites'))
+      const isFavourites = favourites.filter((item) => item.imdb === imdbID)
       fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
@@ -96,6 +117,11 @@ class App extends Component {
               statusEmpty: 'show'
             })
             return
+          }
+          if (isFavourites.length > 0) {
+            this.setState({
+              disableFavourites: true
+            })
           }
           this.setState({
             movie: data,
@@ -124,7 +150,10 @@ class App extends Component {
               movie={this.state.movie}
               handleBack={this.handleBack}
               status={this.state.statusMovie}
-              statusEmpty={this.state.statusEmpty} />} />
+              statusEmpty={this.state.statusEmpty}
+              handleFavourites={this.handleFavourites}
+              disableFavourites={this.state.disableFavourites}
+            />} />
           </Switch>
         </BrowserRouter>
       </div>

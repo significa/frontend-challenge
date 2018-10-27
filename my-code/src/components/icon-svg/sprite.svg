@@ -1,5 +1,9 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
+<symbol id="icon-icon-heart-all" viewBox="0 0 32 32">
+<title>icon-heart-all</title>
+<path fill="#FFF" stroke="#FFF" stroke-width="2.6667" stroke-miterlimit="4" stroke-linecap="butt" stroke-linejoin="miter" style="stroke: var(--color1, #FFF)" d="M16 7.651c16.421-12.821 19.084 11.669 0 19.015-19.084-5.906-16.421-31.837 0-19.015z"></path>
+</symbol>
 <symbol id="icon-icon-heart-grey" viewBox="0 0 32 32">
 <title>icon-heart-grey</title>
 <path fill="none" stroke="#7a8c99" stroke-width="2.6667" stroke-miterlimit="4" stroke-linecap="butt" stroke-linejoin="miter" style="stroke: var(--color1, #7a8c99)" d="M16 7.651c16.421-12.821 19.084 11.669 0 19.015-19.084-5.906-16.421-31.837 0-19.015z"></path>
@@ -45,5 +49,6 @@
 <path fill="none" stroke="#fff" stroke-width="3" stroke-miterlimit="4" stroke-linecap="butt" stroke-linejoin="miter" style="stroke: var(--color1, #fff)" d="M30.5 16c0 8.008-6.492 14.5-14.5 14.5s-14.5-6.492-14.5-14.5c0-8.008 6.492-14.5 14.5-14.5s14.5 6.492 14.5 14.5z"></path>
 <path fill="#ff9f1c" style="fill: var(--color2, #ff9f1c)" d="M14.554 11.033l6.79 4.514c0.46 0.306 0.585 0.926 0.279 1.386-0.073 0.11-0.167 0.204-0.277 0.278l-6.79 4.541c-0.459 0.307-1.080 0.184-1.387-0.275-0.11-0.165-0.169-0.358-0.169-0.556v-9.055c0-0.552 0.448-1 1-1 0.197 0 0.39 0.058 0.554 0.167z"></path>
 </symbol>
+
 </defs>
 </svg>

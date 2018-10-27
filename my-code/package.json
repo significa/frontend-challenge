@@ -24,7 +24,8 @@
       "expect",
       "fetch",
       "describe",
-      "beforeEach"
+      "beforeEach",
+      "localStorage"
     ]
   },
   "devDependencies": {

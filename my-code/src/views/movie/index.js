@@ -10,7 +10,14 @@ import MovieList from 'components/movie-list'
 import Empty from 'components/empty'
 import './movies.scss'
 
-const Movie = ({ movie, handleBack, status, statusEmpty }) => (
+const Movie = ({
+  movie,
+  handleBack,
+  status,
+  statusEmpty,
+  handleFavourites,
+  disableFavourites
+}) => (
   <main className='movie'>
     <Back handleBack={handleBack} />
     <Empty statusEmpty={statusEmpty} />
@@ -28,7 +35,10 @@ const Movie = ({ movie, handleBack, status, statusEmpty }) => (
           ratingsSvg='logo-rotten-tomatoes'
           ratingsText={movie.Metascore === 'N/A' ? '0%' : `${movie.Metascore}%`}
           ratingsBG='red' />
-        <MovieAdd />
+        <MovieAdd
+          handleFavourites={handleFavourites}
+          imdb={movie.imdbID}
+          disableFavourites={disableFavourites} />
       </div>
       <MoviePlot plotText={movie.Plot === 'N/A' ? '' : movie.Plot} />
       <div className='movie-lists'>
