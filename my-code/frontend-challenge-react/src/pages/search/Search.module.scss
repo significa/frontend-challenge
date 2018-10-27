@@ -32,3 +32,64 @@
         margin: 0;
     }
 }
+
+.movieList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -20px;
+    margin-top: 32px;
+
+    .movieContainer {
+        width: 180px;
+        height: 240px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    .movieImage {
+        background-size: cover;
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    .movieImageInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background: #131C25;
+        color: $white;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    .movieImageInfo:hover {
+        opacity: 0.9;
+        transition: 0.3s;
+    }
+
+    .movieYear {
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        margin-top: 4px;
+    }
+
+    .movieTitle {
+        font-size: 20px;
+        letter-spacing: 0.2px;
+        font-weight: 500;
+    }
+
+    .likeButton {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        cursor: pointer;
+    }
+}
