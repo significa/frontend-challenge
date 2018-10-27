@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="16px" viewBox="0 0 24 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>left_arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="🍿-Movie-search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3.Details" transform="translate(-130.000000, -92.000000)">
+            <rect fill="#0A1014" x="0" y="0" width="1440" height="920"></rect>
+            <g id="left_arrow" transform="translate(130.000000, 88.000000)">
+                <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
+                <polyline id="Rectangle-3" stroke="#7A8C99" stroke-width="2" transform="translate(9.000000, 12.000000) rotate(-45.000000) translate(-9.000000, -12.000000) " points="4 17 4 7 4 7 14 7"></polyline>
+                <path d="M3,12 L23,12" id="Line" stroke="#7A8C99" stroke-width="2" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>
