@@ -16,13 +16,15 @@ const Search = () => (
             <img src={searchIllustration} alt="illustration" className={styles.searchIllustration} />
             <div>
               <h3 className={styles.searchIllustrationDesc}>
-                Don't know what to
+                Don&apos;t know what to
                 <br />
                 search?
               </h3>
 
             </div>
-            <p className={styles.searchIllustrationSecondDesc}>Here's an offer you can't refuse</p>
+            <p className={styles.searchIllustrationSecondDesc}>
+              Here&apos;s an offer you can&apos;t refuse
+            </p>
           </div>
         </div>
       </div>
