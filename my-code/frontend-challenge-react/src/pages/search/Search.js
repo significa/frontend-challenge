@@ -7,6 +7,8 @@ import like from '../../img/like.svg';
 import likeFilled from '../../img/likeFilled.svg';
 import leftArrow from '../../img/leftArrow.svg';
 
+import MovieDetails from '../details/MovieDetails';
+
 const Error = {
   TOO_MANY_RESULTS: 'Too many results.',
   MOVIE_NOT_FOUND: 'Movie not found!',
@@ -85,16 +87,14 @@ class Search extends React.Component {
       );
     }
 
-    if (error === Error.TOO_MANY_RESULTS) {
-      return (
+    switch (error) {
+      case Error.TOO_MANY_RESULTS: return (
         this.renderEmptyState('Too many results!', 'Please be more specific')
       );
-    }
-
-    if (error === Error.MOVIE_NOT_FOUND) {
-      return (
+      case Error.MOVIE_NOT_FOUND: return (
         this.renderEmptyState('Movie not found!', 'Please enter another title')
       );
+      default: break;
     }
 
     if (isLoading) {
@@ -112,19 +112,13 @@ class Search extends React.Component {
     );
   }
 
-  presentMovie = (index) => {
-    this.setState({
-      indexSelected: index,
-    });
-  }
-
   renderMovies = movies => (
     movies.map((movie, index) => (
       <div
         className={styles.movieContainer}
         key={movie.imdbID}
-        onClick={() => { this.presentMovie(index); }}
-        onKeyPress={() => { this.presentMovie(index); }}
+        onClick={() => { this.setState({ indexSelected: index }); }}
+        onKeyPress={() => { this.setState({ indexSelected: index }); }}
         role="presentation"
       >
         <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieImage}>
@@ -172,52 +166,7 @@ class Search extends React.Component {
           role="presentation"
           style={{ cursor: 'pointer' }}
         />
-        <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-            <div className={styles.movieDetails}>
-              <span>
-                {movie.Runtime}
-                {' '}
-                ·
-                {' '}
-                {movie.Year}
-                {' '}
-                ·
-              </span>
-              <span className={styles.movieDetailsBadge}>{movie.Rated}</span>
-            </div>
-            <h1 className={styles.movieDetailsTitle}>{movie.Title}</h1>
-            <section className={styles.movieDetailsPlot}>
-              <span className={styles.movieSectionTitle}>Plot</span>
-              <p className={styles.moviePlot}>{movie.Plot}</p>
-            </section>
-            <section className={styles.movieDetailsFooter}>
-              <div className={styles.movieDetailsList}>
-                <span className={styles.movieSectionTitle}>Cast</span>
-                <ul className={styles.movieSectionList}>
-                  {movie.Actors.split(', ').map(actor => <li key={actor}>{actor}</li>)}
-                </ul>
-              </div>
-              <div className={styles.movieDetailsList}>
-                <span className={styles.movieSectionTitle}>Genre</span>
-                <ul className={styles.movieSectionList}>
-                  {movie.Genre.split(', ').map(actor => <li key={actor}>{actor}</li>)}
-                </ul>
-              </div>
-              <div className={styles.movieDetailsList}>
-                <span className={styles.movieSectionTitle}>Director</span>
-                <ul className={styles.movieSectionList}>
-                  {movie.Director.split(', ').map(actor => <li key={actor}>{actor}</li>)}
-                </ul>
-              </div>
-            </section>
-          </div>
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-            <div className={styles.movieDetailsImageContainer}>
-              <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieDetailsImage} />
-            </div>
-          </div>
-        </div>
+        <MovieDetails movie={movie} />
       </div>
     </React.Fragment>
   )
