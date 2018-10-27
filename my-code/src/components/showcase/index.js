@@ -2,17 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import IconSvg from '../icon-svg'
-import imageEmpty from './empty-state.png'
+import Empty from '../empty'
 import './showcase.scss'
 
 const Showcase = ({ items, loaderShowcase, movieEmpty, handleGetMovie }) => (
   <div>
     <div className={`showcase__loader ${loaderShowcase}`} />
-    <div className={`showcase-empty ${movieEmpty}`}>
-      <img src={imageEmpty} alt='Empty' />
-      <h3 className='showcase-empty__title'>Don't know what to search?</h3>
-      <p className='showcase-empty__text'>Here's an offer you can't refuse</p>
-    </div>
+    <Empty statusEmpty={movieEmpty} />
     <ul className='showcase'>
       {items.map((item) =>
         <li className='showcase-item' key={item.imdbID}>
@@ -38,13 +34,15 @@ const Showcase = ({ items, loaderShowcase, movieEmpty, handleGetMovie }) => (
 Showcase.defaultProps = {
   items: [],
   loaderShowcase: 'hide',
-  movieEmpty: 'hide'
+  movieEmpty: 'hide',
+  statusEmpty: 'hide'
 }
 
 Showcase.propTypes = {
   items: PropTypes.array,
   loaderShowcase: PropTypes.string,
-  movieEmpty: PropTypes.string
+  movieEmpty: PropTypes.string,
+  statusEmpty: PropTypes.string
 }
 
 export default Showcase

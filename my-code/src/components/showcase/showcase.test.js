@@ -90,7 +90,7 @@ describe('<Showcase />', () => {
     expect(loader).to.have.length(1)
   })
   it('Should return class hide in empty if passed to prop with movieEmpty as hide', () => {
-    const empty = wrapper.find('.showcase-empty.hide')
+    const empty = wrapper.find('.hide')
     expect(empty).to.have.length(1)
   })
 })

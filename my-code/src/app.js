@@ -13,6 +13,8 @@ class App extends Component {
       searchEmpty: '',
       loaderShowcase: 'hide',
       movieEmpty: 'hide',
+      statusMovie: 'hide',
+      statusEmpty: 'hide',
       movie: {}
     }
     this.handleSearch = (e) => {
@@ -57,16 +59,46 @@ class App extends Component {
       fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
         .then(response => response.json())
         .then((data) => {
+          if (data.Response === 'False') {
+            this.setState({
+              statusEmpty: 'show'
+            })
+            return
+          }
           this.setState({
-            movie: data
+            movie: data,
+            statusMovie: 'show',
+            statusEmpty: 'hide'
           })
         })
     }
     this.handleBack = () => {
       this.setState({
         movie: {},
-        showcase: []
+        showcase: [],
+        statusMovie: 'hide',
+        statusEmpty: 'hide'
       })
+    }
+  }
+  componentDidMount () {
+    const url = window.location.href
+    if (url.indexOf('movie') > 0) {
+      const imdbID = url.split('-')[1]
+      fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
+        .then(response => response.json())
+        .then((data) => {
+          if (data.Response === 'False') {
+            this.setState({
+              statusEmpty: 'show'
+            })
+            return
+          }
+          this.setState({
+            movie: data,
+            statusMovie: 'show'
+          })
+        })
     }
   }
 
@@ -86,7 +118,9 @@ class App extends Component {
             />} />
             <Route path='/movie-:id' render={(...props) => <Movie
               movie={this.state.movie}
-              handleBack={this.handleBack} />} />
+              handleBack={this.handleBack}
+              status={this.state.statusMovie}
+              statusEmpty={this.state.statusEmpty} />} />
           </Switch>
         </BrowserRouter>
       </div>

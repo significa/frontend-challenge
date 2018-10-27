@@ -7,12 +7,14 @@ import MovieRatings from 'components/movie-ratings'
 import MovieAdd from 'components/movie-add'
 import MoviePlot from 'components/movie-plot'
 import MovieList from 'components/movie-list'
+import Empty from 'components/empty'
 import './movies.scss'
 
-const Movie = ({ movie, handleBack }) => (
+const Movie = ({ movie, handleBack, status, statusEmpty }) => (
   <main className='movie'>
     <Back handleBack={handleBack} />
-    <article className='movie-info'>
+    <Empty statusEmpty={statusEmpty} />
+    <article className={`movie-info ${status}`}>
       <MovieRuntime
         movieTime={movie.Runtime}
         movieYear={movie.Year} />
@@ -35,7 +37,7 @@ const Movie = ({ movie, handleBack }) => (
         <MovieList listTitle='Director' list={movie.Director} />
       </div>
     </article>
-    <section className='movie-figure'>
+    <section className={`movie-figure ${status}`}>
       <MovieImage imageURl={movie.Poster} imageAlt={movie.Title} />
     </section>
   </main>

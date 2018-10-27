@@ -4,6 +4,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  &-info,
+  &-figure {
+    &.hide {
+      opacity: 0;
+    }
+    &.show {
+      opacity: 1;
+    }
+  }
   &-info {
     width: 100%;
     @media screen and (min-width: 1090px) {
