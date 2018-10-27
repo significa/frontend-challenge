@@ -5,6 +5,7 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import searchIllustration from '../../img/searchIllustration.png';
 import like from '../../img/like.svg';
 import likeFilled from '../../img/likeFilled.svg';
+import leftArrow from '../../img/leftArrow.svg';
 
 const Error = {
   TOO_MANY_RESULTS: 'Too many results.',
@@ -16,6 +17,7 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
+      indexSelected: null,
       query: '',
       error: null,
       movies: [],
@@ -25,7 +27,7 @@ class Search extends React.Component {
   }
 
   fetchMovie = async (id) => {
-    const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=4391171d`);
+    const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=4391171d&plot=full`);
     const json = await response.json();
     this.setState(prevState => ({
       movies: [...prevState.movies, json],
@@ -72,7 +74,7 @@ class Search extends React.Component {
     });
   }
 
-  handleRender = () => {
+  renderSearchPage = () => {
     const {
       query, error, movies, isLoading,
     } = this.state;
@@ -85,13 +87,13 @@ class Search extends React.Component {
 
     if (error === Error.TOO_MANY_RESULTS) {
       return (
-        <div style={{ color: 'white' }}>too many results</div>
+        this.renderEmptyState('Too many results!', 'Please be more specific')
       );
     }
 
     if (error === Error.MOVIE_NOT_FOUND) {
       return (
-        <div style={{ color: 'white' }}>movie not found</div>
+        this.renderEmptyState('Movie not found!', 'Please enter another title')
       );
     }
 
@@ -110,9 +112,21 @@ class Search extends React.Component {
     );
   }
 
+  presentMovie = (index) => {
+    this.setState({
+      indexSelected: index,
+    });
+  }
+
   renderMovies = movies => (
-    movies.map(movie => (
-      <div className={styles.movieContainer} key={movie.imdbID}>
+    movies.map((movie, index) => (
+      <div
+        className={styles.movieContainer}
+        key={movie.imdbID}
+        onClick={() => { this.presentMovie(index); }}
+        onKeyPress={() => { this.presentMovie(index); }}
+        role="presentation"
+      >
         <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieImage}>
           <div className={styles.movieImageInfo}>
             <span className={styles.movieTitle}>{movie.Title}</span>
@@ -125,35 +139,114 @@ class Search extends React.Component {
 
   )
 
-  renderEmptyState = () => (
+  renderEmptyState = (error, errorDesc) => (
     <React.Fragment>
       <div className={styles.emptyContainer}>
         <img src={searchIllustration} alt="illustration" className={styles.searchIllustration} />
         <div>
           <h3 className={styles.searchIllustrationDesc}>
-            Don&apos;t know what to
-            <br />
-            search?
+            {error || 'Dont know what to search?'}
           </h3>
         </div>
         <p className={styles.searchIllustrationSecondDesc}>
-          Here&apos;s an offer you can&apos;t refuse
+          {errorDesc || 'Heres an offer you cant refuse'}
         </p>
       </div>
     </React.Fragment>
   )
+
+  goBack = () => {
+    this.setState({
+      indexSelected: null,
+    });
+  }
+
+  renderMovieDetails = movie => (
+    <React.Fragment>
+      <div className={styles.movieDetailsContainer}>
+        <img
+          src={leftArrow}
+          alt="Go back"
+          onClick={this.goBack}
+          onKeyPress={this.goBack}
+          role="presentation"
+          style={{ cursor: 'pointer' }}
+        />
+        <div className="row">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div className={styles.movieDetails}>
+              <span>
+                {movie.Runtime}
+                {' '}
+                ·
+                {' '}
+                {movie.Year}
+                {' '}
+                ·
+              </span>
+              <span className={styles.movieDetailsBadge}>{movie.Rated}</span>
+            </div>
+            <h1 className={styles.movieDetailsTitle}>{movie.Title}</h1>
+            <section className={styles.movieDetailsPlot}>
+              <span className={styles.movieSectionTitle}>Plot</span>
+              <p className={styles.moviePlot}>{movie.Plot}</p>
+            </section>
+            <section className={styles.movieDetailsFooter}>
+              <div className={styles.movieDetailsList}>
+                <span className={styles.movieSectionTitle}>Cast</span>
+                <ul className={styles.movieSectionList}>
+                  {movie.Actors.split(', ').map(actor => <li key={actor}>{actor}</li>)}
+                </ul>
+              </div>
+              <div className={styles.movieDetailsList}>
+                <span className={styles.movieSectionTitle}>Genre</span>
+                <ul className={styles.movieSectionList}>
+                  {movie.Genre.split(', ').map(actor => <li key={actor}>{actor}</li>)}
+                </ul>
+              </div>
+              <div className={styles.movieDetailsList}>
+                <span className={styles.movieSectionTitle}>Director</span>
+                <ul className={styles.movieSectionList}>
+                  {movie.Director.split(', ').map(actor => <li key={actor}>{actor}</li>)}
+                </ul>
+              </div>
+            </section>
+          </div>
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div className={styles.movieDetailsImageContainer}>
+              <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieDetailsImage} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </React.Fragment>
+  )
+
+  handleRender = () => {
+    const { indexSelected } = this.state;
+    if (indexSelected == null) {
+      return (
+        <React.Fragment>
+          <SearchBar action={this.queryHandler} />
+          {this.renderSearchPage()}
+        </React.Fragment>
+      );
+    }
+    const { movies } = this.state;
+    const movie = movies[indexSelected];
+
+    return (
+      this.renderMovieDetails(movie)
+    );
+  }
 
   render() {
     return (
       <div className={styles.container}>
         <div className="row">
           <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div className="box">
-              <Header />
-              <SearchBar action={this.queryHandler} />
-
-              {this.handleRender()}
-            </div>
+            <Header />
+            {this.handleRender()}
           </div>
         </div>
       </div>
