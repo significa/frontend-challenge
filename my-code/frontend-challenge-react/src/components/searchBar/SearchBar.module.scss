@@ -1,0 +1,42 @@
+@import '../../shared/colors.scss';
+
+.searchBar {
+    border: 0;
+    margin-left: 12px;
+    font-size: 16px;
+    width: 100%;
+    background: transparent;
+}
+
+.searchBarContainer {
+    display: flex;
+    background: $white;
+    padding: 0 12px;
+    height: 44px;
+    border-radius: 4px;
+
+    .searchBar::placeholder {
+        color: $light-grey;
+    }
+}
+
+.searchBarContainerDisabled {
+    background: $grey;
+
+    .searchBar::placeholder {
+        color: $mid-grey;
+    }
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+svg path {
+    fill: red;
+    stroke: red
+}
+
+.ciao {
+    filter: invert(.5);
+}
