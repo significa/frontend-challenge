@@ -3,6 +3,7 @@ import styles from './Search.module.scss';
 
 import searchIllustration from '../../img/searchIllustration.png';
 import leftArrow from '../../img/leftArrow.svg';
+import leftArrowWhite from '../../img/leftArrowWhite.svg';
 
 import Header from '../../components/header/Header';
 import SearchBar from '../../components/searchBar/SearchBar';
@@ -148,11 +149,14 @@ class Search extends React.Component {
       <div className={styles.movieDetailsContainer}>
         <img
           src={leftArrow}
-          alt="Go back"
           onClick={() => { this.setState({ indexSelected: -1 }); }}
           onKeyPress={() => { this.setState({ indexSelected: -1 }); }}
+          onMouseOver={(e) => { e.currentTarget.src = leftArrowWhite; }}
+          onMouseOut={(e) => { e.currentTarget.src = leftArrow; }}
+          onFocus={() => 0}
+          onBlur={() => 0}
           role="presentation"
-          style={{ cursor: 'pointer' }}
+          alt="Go back"
         />
         <MovieDetails movie={movie} />
       </div>

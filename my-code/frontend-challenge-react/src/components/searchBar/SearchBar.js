@@ -15,10 +15,25 @@ class SearchBar extends React.Component {
     const { query, action } = this.props;
     const { queryString } = this.state;
 
+    /* Disabled input
+      <div className={[styles.searchBarContainer, styles.searchBarContainerDisabled].join(' ')}>
+          <img src={searchIcon} alt="search" />
+          <input
+            type="text"
+            placeholder="Search movies..."
+            className={styles.searchBar}
+            onChange={(e) => {
+              action(e.target.value);
+            }}
+            disabled
+          />
+        </div>
+    */
+
     if (query === null) {
       return (
         <div className={styles.searchBarContainer}>
-          <img src={searchIcon} alt="search" className={styles.ciao} />
+          <img src={searchIcon} alt="search" />
           <input
             type="text"
             placeholder="Search movies..."
