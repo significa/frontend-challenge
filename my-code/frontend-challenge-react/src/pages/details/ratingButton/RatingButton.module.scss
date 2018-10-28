@@ -1,0 +1,16 @@
+@import '../../../shared/colors.scss';
+
+.movieDetailsRating {
+    display: flex;
+    align-items: center;
+    border: 1px solid $mid-grey;
+    height: 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    color: $white;
+    margin-right: 16px;
+
+    span {
+        padding: 8px;
+    }
+}

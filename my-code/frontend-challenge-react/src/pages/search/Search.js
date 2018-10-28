@@ -106,31 +106,38 @@ class Search extends React.Component {
     return (
       <div>
         <div className={styles.movieList}>
-          {this.renderMovies(movies)}
+          <div className="row" style={{ width: '100%' }}>
+            {this.renderMovies(movies)}
+          </div>
         </div>
       </div>
     );
   }
 
   renderMovies = movies => (
+
     movies.map((movie, index) => (
-      <div
-        className={styles.movieContainer}
-        key={movie.imdbID}
-        onClick={() => { this.setState({ indexSelected: index }); }}
-        onKeyPress={() => { this.setState({ indexSelected: index }); }}
-        role="presentation"
-      >
-        <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieImage}>
-          <div className={styles.movieImageInfo}>
-            <span className={styles.movieTitle}>{movie.Title}</span>
-            <span className={styles.movieYear}>{movie.Year}</span>
-            <img src={like} alt="Like" className={styles.likeButton} onMouseOver={(e) => { e.currentTarget.src = likeFilled; }} onMouseOut={(e) => { e.currentTarget.src = like; }} onFocus={() => 0} onBlur={() => 0} />
+      <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2" key={movie.imdbID}>
+        <div
+          className={styles.movieContainer}
+          key={movie.imdbID}
+          onClick={() => {
+            this.setState({ indexSelected: index });
+          }}
+          onKeyPress={() => { this.setState({ indexSelected: index }); }}
+          role="presentation"
+        >
+          <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieImage}>
+            <div className={styles.movieImageInfo}>
+              <span className={styles.movieTitle}>{movie.Title}</span>
+              <span className={styles.movieYear}>{movie.Year}</span>
+              <img src={like} alt="Like" className={styles.likeButton} onMouseOver={(e) => { e.currentTarget.src = likeFilled; }} onMouseOut={(e) => { e.currentTarget.src = like; }} onFocus={() => 0} onBlur={() => 0} />
+            </div>
           </div>
         </div>
+
       </div>
     ))
-
   )
 
   renderEmptyState = (error, errorDesc) => (
@@ -181,9 +188,9 @@ class Search extends React.Component {
         </React.Fragment>
       );
     }
+
     const { movies } = this.state;
     const movie = movies[indexSelected];
-
     return (
       this.renderMovieDetails(movie)
     );

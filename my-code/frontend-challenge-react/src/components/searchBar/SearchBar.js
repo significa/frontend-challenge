@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './SearchBar.module.scss';
 import searchIcon from '../../img/searchIcon.svg';
 
-const SearchBar = props => (
-
-  /* Disabled input
-    <div className={[styles.searchBarContainer, styles.searchBarContainerDisabled].join(' ')}>
-      <img src={searchIcon} alt="search" className={styles.ciao} />
-      <input type="text" placeholder="Search movies..." className={styles.searchBar} disabled />
-    </div>
-  */
-
+const SearchBar = ({ action }) => (
   <div className={styles.searchBarContainer}>
     <img src={searchIcon} alt="search" className={styles.ciao} />
     <input
@@ -19,7 +11,7 @@ const SearchBar = props => (
       placeholder="Search movies..."
       className={styles.searchBar}
       onChange={(e) => {
-        props.action(e.target.value);
+        action(e.target.value);
       }}
     />
   </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../pages/search/Search.module.scss';
+import styles from './MovieDetailsList.module.scss';
 
 const MovieDetailsList = ({ title, list }) => (
   <div className={styles.movieDetailsList}>

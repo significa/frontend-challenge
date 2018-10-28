@@ -13,7 +13,9 @@
     padding-bottom: 17%;
 
     .searchIllustration {
-        margin-top: 20%
+        margin-top: 20%;
+        max-width: 100%;
+        height: auto;
     }
 
     .searchIllustrationDesc {
@@ -38,11 +40,13 @@
     flex-wrap: wrap;
     margin-left: -20px;
     margin-top: 32px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 
     .movieContainer {
-        width: 180px;
+        width: 100%;
         height: 240px;
-        margin-left: 20px;
         margin-bottom: 20px;
         border-radius: 3px;
         overflow: hidden;
@@ -51,6 +55,7 @@
 
     .movieImage {
         background-size: cover;
+        background-position: center;
         height: 100%;
         width: 100%;
         position: relative;
@@ -97,87 +102,23 @@
 
 .movieDetailsContainer {
     margin-top: 5px;
+    padding-bottom: 50px;
+}
 
-    .movieDetails {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 30px;
-        font-size: 20px;
-        letter-spacing: 0.2px;
-        color: $light-grey;
+@media (max-width: 1199px) {
+    .container {
+        padding: 0 50px;
     }
 
-    .movieDetailsImageContainer {
-        display: flex;
-        height: 100%;
-        width: 100%;
-        justify-content: flex-end;
-        margin-top: 12px;
-
-        .movieDetailsImage {
-            background-size: cover;
-            width: 480px;
-            height: 640px;
-            border-radius: 8px;
+    .movieList {
+        .movieContainer {
+            height: 350px;
         }
     }
+}
 
-    .movieDetailsBadge {
-        background: $light-grey;
-        color: $dark;
-        border-radius: 4px;
-        padding: 2px 5px;
-        margin-left: 5px;
-    }
-
-    .movieDetailsTitle {
-        color: $white;
-        font-size: 80px;
-        line-height: 88px;
-        letter-spacing: 0.9px;
-        font-weight: 400;
-        margin-top: 20px;
-    }
-
-    .movieSectionTitle {
-        color: $light-grey;
-        font-size: 16px;
-        letter-spacing: 0.2px;
-    }
-
-    .movieDetailsPlot {
-        .moviePlot {
-            font-size: 16px;
-            line-height: 24px;
-            letter-spacing: 0.2px;
-            color: $white;
-        }
-    }
-
-    .movieDetailsList {
-        margin-left: 55px;
-    }
-
-    .movieDetailsList:first-of-type {
-        margin-left: 0;
-    }
-
-    .movieSectionList {
-        padding: 0;
-        margin-top: 10px;
-        
-        li {
-            color: $white;
-            display: block;
-            font-size: 16px;
-            line-height: 24px;
-        }
-    }
-
-    .movieDetailsFooter {
-        display: flex;
-        flex-direction: row;
-        margin-top: 40px;
+@media (max-width: 768px) {
+    .container {
+        padding: 0 25px;
     }
 }

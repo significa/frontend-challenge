@@ -1,0 +1,104 @@
+@import '../../shared/colors.scss';
+
+.movieDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 30px;
+    font-size: 20px;
+    letter-spacing: 0.2px;
+    color: $light-grey;
+}
+
+.movieDetailsBadge {
+    background: $light-grey;
+    color: $dark;
+    border-radius: 4px;
+    padding: 4px 6px;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.movieDetailsTitle {
+    color: $white;
+    font-size: 80px;
+    line-height: 88px;
+    letter-spacing: 0.8px;
+    font-weight: 400;
+    margin-top: 20px;
+    margin-bottom: 35px;
+}
+
+.movieSectionTitle {
+    color: $light-grey;
+    font-size: 16px;
+    letter-spacing: 0.2px;
+}
+
+.movieDetailsPlot {
+    margin-top: 45px;
+    
+    .moviePlot {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: $white;
+        margin: 10px 0;
+    }
+}
+
+.movieDetailsFooter {
+    display: flex;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.movieDetailsImageContainer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 12px;
+
+    .movieDetailsImage {
+        background-size: cover;
+        background-position: center;
+        width: 480px;
+        height: 640px;
+        border-radius: 8px;
+    }
+}
+
+.movieDetailsRatingContainer {
+    display: flex;
+}
+
+.ratingButtonsContainer {
+    display: flex;
+}
+
+@media (max-width: 1199px) {
+    .movieDetailsImageContainer {
+        .movieDetailsImage {
+            height: 540px;
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .movieDetailsImageContainer {
+        justify-content: flex-start;
+        .movieDetailsImage {
+            max-width: 100%;
+        }
+    }
+}
+
+@media (max-width: 468px) {
+    .movieDetailsRatingContainer {
+        flex-direction: column;
+    }
+    .favouriteButtonContainer {
+        margin-top: 16px;
+    }
+}
