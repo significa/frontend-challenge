@@ -8,6 +8,7 @@ import likeFilled from '../../img/likeFilled.svg';
 import leftArrow from '../../img/leftArrow.svg';
 
 import MovieDetails from '../details/MovieDetails';
+import MovieCard from './movieCard/MovieCard';
 
 const Error = {
   TOO_MANY_RESULTS: 'Too many results.',
@@ -114,29 +115,41 @@ class Search extends React.Component {
     );
   }
 
+  getLikeIconVisibility = (movie) => {
+    if (localStorage.getItem(movie.imdbID) === 'false' || localStorage.getItem(movie.imdbID) == null) {
+      return 0;
+    }
+    return 1;
+  }
+
+  getLikeIcon = (movie) => {
+    if (localStorage.getItem(movie.imdbID) === 'true') {
+      return likeFilled;
+    }
+    return like;
+  }
+
+  addFavourite = (movie) => {
+    if (localStorage.getItem(movie.imdbID) === 'false' || localStorage.getItem(movie.imdbID) == null) {
+      localStorage.setItem(movie.imdbID, 'true');
+      this.setState({ indexSelected: null });
+    } else {
+      localStorage.setItem(movie.imdbID, 'false');
+      this.setState({ indexSelected: null });
+    }
+  }
+
+  ciao = (e, movie, index) => {
+    if (e.target.tagName === 'IMG') {
+      this.addFavourite(movie);
+    } else {
+      this.setState({ indexSelected: index });
+    }
+  }
+
   renderMovies = movies => (
-
     movies.map((movie, index) => (
-      <div className="col-xs-12 col-sm-4 col-md-3 col-lg-2" key={movie.imdbID}>
-        <div
-          className={styles.movieContainer}
-          key={movie.imdbID}
-          onClick={() => {
-            this.setState({ indexSelected: index });
-          }}
-          onKeyPress={() => { this.setState({ indexSelected: index }); }}
-          role="presentation"
-        >
-          <div style={{ backgroundImage: `url(${movie.Poster === 'N/A' ? 'http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png' : movie.Poster})` }} className={styles.movieImage}>
-            <div className={styles.movieImageInfo}>
-              <span className={styles.movieTitle}>{movie.Title}</span>
-              <span className={styles.movieYear}>{movie.Year}</span>
-              <img src={like} alt="Like" className={styles.likeButton} onMouseOver={(e) => { e.currentTarget.src = likeFilled; }} onMouseOut={(e) => { e.currentTarget.src = like; }} onFocus={() => 0} onBlur={() => 0} />
-            </div>
-          </div>
-        </div>
-
-      </div>
+      <MovieCard movie={movie} index={index} ciao={this.ciao} />
     ))
   )
 

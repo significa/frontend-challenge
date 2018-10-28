@@ -11,53 +11,56 @@ class FavouriteButton extends React.Component {
 
     this.state = {
       likeSrc: likeGrey,
-      isFavourite: false,
+      isFavourite: localStorage.getItem(props.movie.imdbID),
     };
-    // this.queryHandler = this.queryHandler.bind(this);
+    this.addFavourite = this.addFavourite.bind(this);
   }
 
   addFavourite = (movie) => {
-    this.setState(prevState => ({
-      isFavourite: !prevState.isFavourite,
-    }));
-    // localStorage.setItem(movie.imdbID, true);
-    // console.log(localStorage.getItem(movie.imdbID));
+    const { isFavourite } = this.state;
+    if (isFavourite === 'false' || isFavourite === null) {
+      this.setState({ isFavourite: 'true' });
+      localStorage.setItem(movie.imdbID, 'true');
+    } else {
+      this.setState({ isFavourite: 'false' });
+      localStorage.setItem(movie.imdbID, 'false');
+    }
   }
 
   handleRender = () => {
     const { likeSrc, isFavourite } = this.state;
     const { title, movie } = this.props;
 
-    if (isFavourite) {
+    if (isFavourite === 'false' || isFavourite === null) {
       return (
         <button
-          className={[styles.favouriteButton, styles.added].join(' ')}
+          className={styles.favouriteButton}
           type="submit"
           onMouseOver={() => { this.setState({ likeSrc: likeWhite }); }}
           onMouseOut={() => { this.setState({ likeSrc: likeGrey }); }}
           onFocus={() => 0}
           onBlur={() => 0}
-          onClick={this.addFavourite(movie)}
-          onKeyPress={this.addFavourite(movie)}
+          onClick={() => this.addFavourite(movie)}
+          onKeyPress={() => this.addFavourite(movie)}
         >
-          <img src={likeFilled} alt="Favourite" className={styles.favouriteIcon} />
-          Added
+          <img src={likeSrc} alt="Favourite" className={styles.favouriteIcon} />
+          {title}
         </button>
       );
     }
     return (
       <button
-        className={styles.favouriteButton}
+        className={[styles.favouriteButton, styles.added].join(' ')}
         type="submit"
         onMouseOver={() => { this.setState({ likeSrc: likeWhite }); }}
         onMouseOut={() => { this.setState({ likeSrc: likeGrey }); }}
         onFocus={() => 0}
         onBlur={() => 0}
-        onClick={this.addFavourite}
-        onKeyPress={this.addFavourite}
+        onClick={() => this.addFavourite(movie)}
+        onKeyPress={() => this.addFavourite(movie)}
       >
-        <img src={likeSrc} alt="Favourite" className={styles.favouriteIcon} />
-        {title}
+        <img src={likeFilled} alt="Favourite" className={styles.favouriteIcon} />
+        Added
       </button>
     );
   }
