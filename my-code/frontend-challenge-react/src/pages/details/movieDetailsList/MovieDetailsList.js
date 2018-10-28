@@ -4,8 +4,9 @@ import styles from './MovieDetailsList.module.scss';
 
 function splitString(list) {
   if (list.includes(', ')) {
-    list.split(', ').map(actor => <li key={actor}>{actor}</li>);
+    return (list.split(', ').map(actor => <li key={actor}>{actor}</li>));
   }
+  return <li>{list}</li>;
 }
 
 const MovieDetailsList = ({ title, list }) => (
