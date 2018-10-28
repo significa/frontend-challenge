@@ -134,7 +134,12 @@ class Search extends React.Component {
 
   renderMovies = movies => (
     movies.map((movie, index) => (
-      <MovieCard movie={movie} index={index} handleMovieFavourite={this.handleMovieFavourite} />
+      <MovieCard
+        movie={movie}
+        index={index}
+        handleMovieFavourite={this.handleMovieFavourite}
+        key={movie.imdbID}
+      />
     ))
   )
 
@@ -144,8 +149,8 @@ class Search extends React.Component {
         <img
           src={leftArrow}
           alt="Go back"
-          onClick={() => { this.setState({ indexSelected: null }); }}
-          onKeyPress={() => { this.setState({ indexSelected: null }); }}
+          onClick={() => { this.setState({ indexSelected: -1 }); }}
+          onKeyPress={() => { this.setState({ indexSelected: -1 }); }}
           role="presentation"
           style={{ cursor: 'pointer' }}
         />
@@ -171,11 +176,18 @@ class Search extends React.Component {
   )
 
   handleRender = () => {
-    const { indexSelected, movies } = this.state;
+    const { query, indexSelected, movies } = this.state;
     if (indexSelected == null) {
       return (
         <React.Fragment>
           <SearchBar action={this.queryHandler} />
+          {this.renderSearchPage()}
+        </React.Fragment>
+      );
+    } if (indexSelected === -1) {
+      return (
+        <React.Fragment>
+          <SearchBar action={this.queryHandler} query={query} />
           {this.renderSearchPage()}
         </React.Fragment>
       );
