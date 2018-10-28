@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dotenv": "^6.1.0",
     "node-sass": "^4.9.4",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",

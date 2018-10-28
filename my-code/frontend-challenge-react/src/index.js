@@ -4,6 +4,8 @@ import './index.scss';
 import Search from './pages/search/Search';
 import * as serviceWorker from './serviceWorker';
 
+require('dotenv').config();
+
 ReactDOM.render(<Search />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

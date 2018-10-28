@@ -10,6 +10,8 @@ import SearchBar from '../../components/searchBar/SearchBar';
 import MovieDetails from '../details/MovieDetails';
 import MovieCard from './movieCard/MovieCard';
 
+require('dotenv').config();
+
 const Error = {
   TOO_MANY_RESULTS: 'Too many results.',
   MOVIE_NOT_FOUND: 'Movie not found!',
@@ -30,7 +32,9 @@ class Search extends React.Component {
   }
 
   fetchMovie = async (id) => {
-    const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=4391171d&plot=full`);
+    console.log(process.env);
+
+    const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_API_KEY}&plot=full`);
     const json = await response.json();
     this.setState(prevState => ({
       movies: [...prevState.movies, json],
