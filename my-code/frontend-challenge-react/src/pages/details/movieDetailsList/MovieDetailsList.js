@@ -2,11 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieDetailsList.module.scss';
 
+function splitString(list) {
+  if (list.includes(', ')) {
+    list.split(', ').map(actor => <li key={actor}>{actor}</li>);
+  }
+}
+
 const MovieDetailsList = ({ title, list }) => (
   <div className={styles.movieDetailsList}>
     <span className={styles.movieSectionTitle}>{title}</span>
     <ul className={styles.movieSectionList}>
-      {list.split(', ').map(actor => <li key={actor}>{actor}</li>)}
+      {splitString(list)}
     </ul>
   </div>
 );
@@ -18,7 +24,7 @@ MovieDetailsList.propTypes = {
 
 MovieDetailsList.defaultProps = {
   title: null,
-  list: null,
+  list: '',
 };
 
 export default MovieDetailsList;

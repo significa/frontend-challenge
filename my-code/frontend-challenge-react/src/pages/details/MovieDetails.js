@@ -66,7 +66,9 @@ MovieDetails.propTypes = {
 };
 
 MovieDetails.defaultProps = {
-  movie: null,
+  movie: {
+    Ratings: [],
+  },
 };
 
 export default MovieDetails;

@@ -77,7 +77,9 @@ FavouriteButton.propTypes = {
 
 FavouriteButton.defaultProps = {
   title: null,
-  movie: null,
+  movie: {
+    imdbID: '',
+  },
 };
 
 export default FavouriteButton;

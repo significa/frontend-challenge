@@ -69,7 +69,7 @@ MovieCard.propTypes = {
 
 MovieCard.defaultProps = {
   handleMovieFavourite: null,
-  movie: null,
+  movie: { imdbID: 0 },
   index: 0,
 };
 
