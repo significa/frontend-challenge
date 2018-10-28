@@ -1,12 +1,11 @@
 import React from 'react';
 import styles from './Search.module.scss';
-import Header from '../../components/header/Header';
-import SearchBar from '../../components/searchBar/SearchBar';
+
 import searchIllustration from '../../img/searchIllustration.png';
-import like from '../../img/like.svg';
-import likeFilled from '../../img/likeFilled.svg';
 import leftArrow from '../../img/leftArrow.svg';
 
+import Header from '../../components/header/Header';
+import SearchBar from '../../components/searchBar/SearchBar';
 import MovieDetails from '../details/MovieDetails';
 import MovieCard from './movieCard/MovieCard';
 
@@ -115,20 +114,6 @@ class Search extends React.Component {
     );
   }
 
-  getLikeIconVisibility = (movie) => {
-    if (localStorage.getItem(movie.imdbID) === 'false' || localStorage.getItem(movie.imdbID) == null) {
-      return 0;
-    }
-    return 1;
-  }
-
-  getLikeIcon = (movie) => {
-    if (localStorage.getItem(movie.imdbID) === 'true') {
-      return likeFilled;
-    }
-    return like;
-  }
-
   addFavourite = (movie) => {
     if (localStorage.getItem(movie.imdbID) === 'false' || localStorage.getItem(movie.imdbID) == null) {
       localStorage.setItem(movie.imdbID, 'true');
@@ -139,7 +124,7 @@ class Search extends React.Component {
     }
   }
 
-  ciao = (e, movie, index) => {
+  handleMovieFavourite = (e, movie, index) => {
     if (e.target.tagName === 'IMG') {
       this.addFavourite(movie);
     } else {
@@ -149,8 +134,24 @@ class Search extends React.Component {
 
   renderMovies = movies => (
     movies.map((movie, index) => (
-      <MovieCard movie={movie} index={index} ciao={this.ciao} />
+      <MovieCard movie={movie} index={index} handleMovieFavourite={this.handleMovieFavourite} />
     ))
+  )
+
+  renderMovieDetails = movie => (
+    <React.Fragment>
+      <div className={styles.movieDetailsContainer}>
+        <img
+          src={leftArrow}
+          alt="Go back"
+          onClick={() => { this.setState({ indexSelected: null }); }}
+          onKeyPress={() => { this.setState({ indexSelected: null }); }}
+          role="presentation"
+          style={{ cursor: 'pointer' }}
+        />
+        <MovieDetails movie={movie} />
+      </div>
+    </React.Fragment>
   )
 
   renderEmptyState = (error, errorDesc) => (
@@ -169,30 +170,8 @@ class Search extends React.Component {
     </React.Fragment>
   )
 
-  goBack = () => {
-    this.setState({
-      indexSelected: null,
-    });
-  }
-
-  renderMovieDetails = movie => (
-    <React.Fragment>
-      <div className={styles.movieDetailsContainer}>
-        <img
-          src={leftArrow}
-          alt="Go back"
-          onClick={this.goBack}
-          onKeyPress={this.goBack}
-          role="presentation"
-          style={{ cursor: 'pointer' }}
-        />
-        <MovieDetails movie={movie} />
-      </div>
-    </React.Fragment>
-  )
-
   handleRender = () => {
-    const { indexSelected } = this.state;
+    const { indexSelected, movies } = this.state;
     if (indexSelected == null) {
       return (
         <React.Fragment>
@@ -201,23 +180,16 @@ class Search extends React.Component {
         </React.Fragment>
       );
     }
-
-    const { movies } = this.state;
-    const movie = movies[indexSelected];
     return (
-      this.renderMovieDetails(movie)
+      this.renderMovieDetails(movies[indexSelected])
     );
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <Header />
-            {this.handleRender()}
-          </div>
-        </div>
+        <Header />
+        {this.handleRender()}
       </div>
     );
   }
