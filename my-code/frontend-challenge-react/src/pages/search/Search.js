@@ -200,12 +200,14 @@ class Search extends React.Component {
         </React.Fragment>
       );
     }
+    document.title = movies[indexSelected].Title;
     return (
       this.renderMovieDetails(movies[indexSelected])
     );
   }
 
   render() {
+    document.title = 'Significa Challenge';
     return (
       <div className={styles.container}>
         <Header />
