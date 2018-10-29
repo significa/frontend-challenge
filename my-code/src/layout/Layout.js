@@ -6,20 +6,19 @@ const Flex = styled.div`
   ${width};
   ${space};
 
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 `
 
 const FlexLeft = styled.div`
   ${width};
   ${space};
 
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
 `
 
 const FlexRight = styled.div`
@@ -33,9 +32,9 @@ const FlexRight = styled.div`
 `
 
 const Grid = styled.div`
+  align-content: space-between;
   display: flex;
   flex-flow: row wrap;
-  align-content: space-between;
   width: 100%;
 `
 
@@ -43,9 +42,9 @@ const Wrapper = styled.div`
   ${width};
   ${space};
 
+  align-items: flex-start;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
 `
 
 export { Flex, FlexLeft, FlexRight, Grid, Wrapper }

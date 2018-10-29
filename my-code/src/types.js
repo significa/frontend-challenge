@@ -32,12 +32,27 @@ export type ThemeType = {
 export type PropType = {
   theme: ThemeType,
   active: boolean,
-  grey: string
+  grey: string,
+  image: string
 }
 
 // Favourites button
 export type ButtonPropsType = {
   text: string
+}
+
+// Link component
+export type LinkPropType = {
+  href: string,
+  text: string
+}
+
+export type ThumbnailPropType = {
+  href: string,
+  key: string,
+  poster: string,
+  title: string,
+  year: string
 }
 
 // IMDB and Rotten Tomatoes

@@ -11,6 +11,33 @@ const base = css`
     (p && p.theme.color.grey.white)};
 `
 
+const TextLink = styled.a`
+  color: ${({ theme }: PropType) => theme.color.grey.white};
+  font-size: ${({ theme }: PropType) => theme.font.smaller};
+  line-height: 24px;
+  text-decoration: none;
+
+  &:link {
+    color: ${({ theme }: PropType) => theme.color.grey.white};
+    text-decoration: none;
+  }
+
+  &:visited {
+    color: ${({ theme }: PropType) => theme.color.grey.white};
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: ${({ theme }: PropType) => theme.color.grey.midgrey};
+    text-decoration: none;
+  }
+
+  &:active {
+    color: ${({ theme }: PropType) => theme.color.grey.midgrey};
+    text-decoration: none;
+  }
+`
+
 const Text100 = styled.p`
   ${base};
   font-size: ${({ theme }: PropType) => theme.font.smaller};
@@ -36,4 +63,4 @@ const Text400 = styled.p`
   font-weight: bold;
 `
 
-export { Text100, Text200, Text300, Text400 }
+export { Text100, Text200, Text300, Text400, TextLink }

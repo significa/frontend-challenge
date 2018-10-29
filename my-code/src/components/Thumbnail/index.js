@@ -1,13 +1,28 @@
+// @flow
+import React from "react"
+import { Text100, Text200 } from "../Typography/index"
 import {
+  ThumbnailHolder,
   SmallThumbnail,
   SmallEmptyThumbnail,
   LargeThumbnail,
-  LargeEmptyThumbnail
+  LargeEmptyThumbnail,
+  ThumbnailText
 } from "./styled"
+import type { ThumbnailPropType } from "../../types.js"
 
-export {
-  SmallThumbnail,
-  SmallEmptyThumbnail,
-  LargeThumbnail,
-  LargeEmptyThumbnail
-}
+const Thumbnail = ({ href, key, poster, title, year }: ThumbnailPropType) => (
+  <ThumbnailHolder href={href} key={key}>
+    {poster === "N/A" ? (
+      <SmallEmptyThumbnail />
+    ) : (
+      <SmallThumbnail image={poster} />
+    )}
+    <ThumbnailText>
+      <Text200>{title}</Text200>
+      <Text100>{year}</Text100>
+    </ThumbnailText>
+  </ThumbnailHolder>
+)
+
+export { LargeThumbnail, LargeEmptyThumbnail, Thumbnail }
