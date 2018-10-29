@@ -2,7 +2,7 @@
 import styled from "styled-components"
 import type { PropType } from "../../types.js"
 
-const RegularButton = styled.button`
+const HeartButton = styled.button`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -35,4 +35,4 @@ const RegularButton = styled.button`
     outline: none;
   }
 `
-export default RegularButton
+export default HeartButton

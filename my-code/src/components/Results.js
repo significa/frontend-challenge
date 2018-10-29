@@ -1,6 +1,6 @@
 // @flow
 import React from "react"
-import { Grid } from "../layout/Layout"
+import { Grid } from "./Layout"
 import { Thumbnail } from "./Thumbnail/index"
 
 type PropsType = {

@@ -32,10 +32,10 @@ const FlexRight = styled.div`
 `
 
 const Grid = styled.div`
-  align-content: space-between;
   display: flex;
   flex-flow: row wrap;
-  width: 100%;
+  justify-content: space-between;
+  align-content: flex-start;
 `
 
 const Wrapper = styled.div`

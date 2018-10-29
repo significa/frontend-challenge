@@ -1,11 +1,8 @@
 // @flow
 import React from "react"
 import ReactDOM from "react-dom"
-import { ThemeProvider } from "styled-components"
-import App from "./containers/App"
-
-import theme from "./styles/theme"
-import GlobalStyle from "./styles/styles"
+import Routes from "./containers/Routes"
+import Provider from "./components/Provider/index"
 
 // Error handling on root Element
 const root = document.getElementById("root")
@@ -14,11 +11,10 @@ if (root == null) {
 }
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
-    <React.Fragment>
-      <App />
-      <GlobalStyle />
-    </React.Fragment>
-  </ThemeProvider>,
+  <React.Fragment>
+    <Provider>
+      <Routes />
+    </Provider>
+  </React.Fragment>,
   root
 )

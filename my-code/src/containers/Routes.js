@@ -1,15 +1,13 @@
-// @flow
 import React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-
 import Main from "./Main"
 import Detail from "./Detail"
 import NotFound from "../components/NotFound"
-import TopBar from "../layout/topbar"
+import TopBar from "../components/Topbar"
 
-import { Flex } from "../layout/Layout"
+import { Flex } from "../components/Layout"
 
-const App = () => (
+const Routes = ({ children }) => (
   <BrowserRouter>
     <Flex>
       <Route path="/" component={TopBar} />
@@ -22,4 +20,4 @@ const App = () => (
   </BrowserRouter>
 )
 
-export default App
+export default Routes

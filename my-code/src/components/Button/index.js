@@ -1,14 +1,14 @@
 // @flow
 import React from "react"
 import Heart from "../Icons/Heart"
-import RegularButton from "./styled"
+import HeartButton from "./styled"
 import type { ButtonPropsType } from "../../types"
 
 const Button = ({ text, ...props }: ButtonPropsType) => (
-  <RegularButton {...props}>
+  <HeartButton {...props}>
     <Heart />
     {text}
-  </RegularButton>
+  </HeartButton>
 )
 
 export default Button

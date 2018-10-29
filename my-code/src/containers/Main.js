@@ -4,8 +4,9 @@ import Input from "../components/Input/styled"
 
 import empty from "../assets/illustration-empty-state@2x.png"
 
-import { Flex } from "../layout/Layout"
+import { Flex } from "../components/Layout"
 import { Text100, Text300 } from "../components/Typography/index"
+import Loader from "../components/Loader/index"
 import Results from "../components/Results"
 import omdbApi from "../constants/omdbApi"
 
@@ -16,7 +17,8 @@ type StateType = {
     Title: string,
     Year: string,
     imdbID: string
-  }>
+  }>,
+  loading: boolean
 }
 
 class App extends React.Component<{}, StateType> {
@@ -24,7 +26,8 @@ class App extends React.Component<{}, StateType> {
     super()
     this.state = {
       term: "",
-      results: []
+      results: [],
+      loading: false
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -37,17 +40,19 @@ class App extends React.Component<{}, StateType> {
 
   loadMovies = async () => {
     const { term } = this.state
+    this.setState({ loading: true })
 
     const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&s=${term}`
     const res = await fetch(url)
     const data = await res.json()
 
-    this.setState({ results: data.Search || [] })
+    this.setState({ loading: false, results: data.Search || [] })
   }
 
   render() {
     const { term } = this.state
     const { results } = this.state
+    const { loading } = this.state
 
     return (
       <Flex>
@@ -63,6 +68,8 @@ class App extends React.Component<{}, StateType> {
               placeholder="Search for movies"
             />
           </form>
+
+          {loading && <Loader />}
 
           {results.length === 0 ? (
             <Flex mt={6}>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex } from "../layout/Layout"
+import { Flex } from "./Layout"
 import { Text300, Link } from "./Typography/index"
 
 import empty from "../assets/illustration-empty-state@2x.png"
