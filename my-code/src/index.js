@@ -1,8 +1,8 @@
 // @flow
 import React from "react"
 import ReactDOM from "react-dom"
-import Routes from "./containers/Routes"
-import Provider from "./components/Provider/index"
+import Routes from "./routes"
+import Provider from "./components/Provider"
 
 // Error handling on root Element
 const root = document.getElementById("root")

@@ -1,7 +1,7 @@
 // @flow
 import styled from "styled-components"
 import { width } from "styled-system"
-import type { PropType } from "../../types.js"
+import type { PropType } from "../../../types.js"
 
 const Input = styled.input`
   ${width};

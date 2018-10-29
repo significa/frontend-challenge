@@ -1,8 +1,8 @@
 // @flow
 import styled from "styled-components"
-import imdb from "../../assets/logo-imdb.svg"
-import rotten from "../../assets/logo-rotten-tomatoes.svg"
-import type { PropType } from "../../types.js"
+import imdb from "../../../assets/logo-imdb.svg"
+import rotten from "../../../assets/logo-rotten-tomatoes.svg"
+import type { PropType } from "../../../types.js"
 
 const Label = styled.div`
   border: 1px solid ${({ theme: { color } }: PropType) => color.grey.grey};

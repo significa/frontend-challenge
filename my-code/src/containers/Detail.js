@@ -78,7 +78,9 @@ class Detail extends React.Component<PropsType, StateType> {
   }
 
   render() {
-    return <DetailsView data={this.state} />
+    return (
+      <DetailsView saveToFavourites={this.saveToFavourites} data={this.state} />
+    )
   }
 }
 

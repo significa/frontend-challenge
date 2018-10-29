@@ -1,12 +1,12 @@
 // @flow
 import React from "react"
-import Input from "../components/Input/styled"
+import Input from "../components/common/Input"
 
 import empty from "../assets/illustration-empty-state@2x.png"
 
 import { Flex } from "../components/Layout"
-import { Text100, Text300 } from "../components/Typography/index"
-import Loader from "../components/Loader/index"
+import { Text100, Text300 } from "../components/common/Typography"
+import Loader from "../components/common/Loader"
 import Results from "../components/Results"
 import omdbApi from "../constants/omdbApi"
 

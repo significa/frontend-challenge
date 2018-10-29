@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { Grid } from "./Layout"
-import { Thumbnail } from "./Thumbnail/index"
+import { Thumbnail } from "./common/Thumbnail"
 
 type PropsType = {
   data: Array<{ Poster: string, Title: string, Year: string, imdbID: string }>

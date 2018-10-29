@@ -1,6 +1,6 @@
 // @flow
 import styled from "styled-components"
-import type { PropType } from "../../types.js"
+import type { PropType } from "../../../types.js"
 
 const HeartButton = styled.button`
   align-items: center;

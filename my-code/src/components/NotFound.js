@@ -1,6 +1,6 @@
 import React from "react"
 import { Flex } from "./Layout"
-import { Text300, Link } from "./Typography/index"
+import { Text300, Link } from "./common/Typography"
 
 import empty from "../assets/illustration-empty-state@2x.png"
 

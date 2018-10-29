@@ -9,7 +9,7 @@ import {
   LargeEmptyThumbnail,
   ThumbnailText
 } from "./styled"
-import type { ThumbnailPropType } from "../../types.js"
+import type { ThumbnailPropType } from "../../../types.js"
 
 const Thumbnail = ({ href, key, poster, title, year }: ThumbnailPropType) => (
   <ThumbnailHolder href={href} key={key}>

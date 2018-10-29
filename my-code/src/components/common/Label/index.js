@@ -2,8 +2,8 @@
 import React from "react"
 import { Text100 } from "../Typography/styled"
 import { IMDB, Rotten, Label } from "./styled"
-import { Wrapper } from "../Layout"
-import type { LabelPropsType } from "../../types.js"
+import { Wrapper } from "../../Layout"
+import type { LabelPropsType } from "../../../types.js"
 
 export const IMDBLabel = ({ value }: LabelPropsType) => (
   <Label>

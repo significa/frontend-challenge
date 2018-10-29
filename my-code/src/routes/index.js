@@ -1,13 +1,13 @@
 import React from "react"
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import Main from "./Main"
-import Detail from "./Detail"
+import Main from "../containers/Main"
+import Detail from "../containers/Detail"
 import NotFound from "../components/NotFound"
 import TopBar from "../components/Topbar"
 
 import { Flex } from "../components/Layout"
 
-const Routes = ({ children }) => (
+const Routes = () => (
   <BrowserRouter>
     <Flex>
       <Route path="/" component={TopBar} />

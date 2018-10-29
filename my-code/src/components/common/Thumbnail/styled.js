@@ -1,6 +1,6 @@
 // @flow
 import styled from "styled-components"
-import type { PropType } from "../../types.js"
+import type { PropType } from "../../../types.js"
 
 export const SmallEmptyThumbnail = styled.div`
   width: 180px;

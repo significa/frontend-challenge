@@ -1,7 +1,7 @@
 // @flow
 import styled, { css } from "styled-components"
 import { space } from "styled-system"
-import type { PropType } from "../../types.js"
+import type { PropType } from "../../../types.js"
 
 const base = css`
   ${space};
