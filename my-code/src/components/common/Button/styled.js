@@ -10,7 +10,7 @@ const HeartButton = styled.button`
 
   background: none;
   background-color: ${(p: PropType) =>
-    p.active ? p.theme.color.main.red : ""};
+    p.active ? p.theme.color.main.red : "none"};
   border: 1px solid ${({ theme: { color } }: PropType) => color.grey.grey};
   border-radius: 4px;
   color: ${(p: PropType) => (p.active ? "white" : p.theme.color.grey.grey)};

@@ -17,10 +17,9 @@ import type {
 } from "../types.js"
 
 const DetailsView = ({
-  data: { info },
+  data: { info, fav },
   loading,
-  active,
-  saveToFavourites
+  toggleFavourite
 }: PropTypes) => (
   <div>
     {loading ? (
@@ -61,8 +60,8 @@ const DetailsView = ({
               ))}
               <Button
                 text="Add to favourites"
-                onClick={saveToFavourites}
-                active={active}
+                onClick={toggleFavourite}
+                active={fav}
               />
             </Wrapper>
           ) : null}
@@ -129,5 +128,4 @@ const DetailsView = ({
     )}
   </div>
 )
-
 export default DetailsView

@@ -30,21 +30,8 @@ type StateType = {
   active: boolean
 }
 
-type PrevStateType = {
-  favourite: boolean,
-  active: boolean
-}
-
 class Detail extends React.Component<PropsType, StateType> {
-  constructor() {
-    super()
-    this.state = {
-      info: {},
-      favourite: false,
-      active: false,
-      loading: false
-    }
-  }
+  state = { info: {}, fav: false, favourites: [], loading: false }
 
   componentDidMount() {
     const {
@@ -53,7 +40,19 @@ class Detail extends React.Component<PropsType, StateType> {
       }
     } = this.props
 
+    this.setState({
+      favourites: this.getFavourites()
+    })
+
     this.loadMovies(id)
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    localStorage.setItem("favourites", JSON.stringify(this.state.favourites))
+
+    if (prevState.favourites !== this.state.favourites) {
+      this.setState({ fav: this.getIsFavourite() })
+    }
   }
 
   loadMovies = async (id: IdType) => {
@@ -66,20 +65,45 @@ class Detail extends React.Component<PropsType, StateType> {
     this.setState({ loading: false, info: data || {} })
   }
 
-  saveToFavourites = () => {
-    const { favourite } = this.state
+  getFavourites = () => {
+    const storage = localStorage.getItem("favourites")
+    return storage ? JSON.parse(storage) : []
+  }
 
-    this.setState(
-      (prevState: PrevStateType) => ({
-        favourite: !prevState.favourite
-      }),
-      () => localStorage.setItem("favourite", JSON.stringify(!favourite))
-    )
+  getIsFavourite = () => {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props
+
+    return this.state.favourites.filter(fav => fav === id).length > 0
+  }
+
+  toggleFavourite = () => {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props
+
+    const { favourites } = this.state
+    const isFavourite = this.getIsFavourite()
+
+    const newFavs = isFavourite
+      ? favourites.filter(fav => fav !== id)
+      : [...favourites, id]
+
+    this.setState({ favourites: newFavs })
   }
 
   render() {
     return (
-      <DetailsView saveToFavourites={this.saveToFavourites} data={this.state} />
+      <DetailsView
+        getIsFavourite={this.getIsFavourite}
+        toggleFavourite={this.toggleFavourite}
+        data={this.state}
+      />
     )
   }
 }
