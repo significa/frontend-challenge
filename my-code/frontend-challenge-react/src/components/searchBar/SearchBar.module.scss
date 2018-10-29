@@ -10,6 +10,7 @@
 
 .searchBarContainer {
     display: flex;
+    align-items: center;
     background: $white;
     padding: 0 12px;
     height: 44px;
@@ -26,6 +27,10 @@
     .searchBar::placeholder {
         color: $mid-grey;
     }
+}
+
+.searchIcon {
+    height: 17px;
 }
 
 textarea:focus, input:focus{

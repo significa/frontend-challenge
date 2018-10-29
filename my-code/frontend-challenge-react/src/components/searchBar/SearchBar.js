@@ -33,7 +33,7 @@ class SearchBar extends React.Component {
     if (query === null) {
       return (
         <div className={styles.searchBarContainer}>
-          <img src={searchIcon} alt="search" />
+          <img src={searchIcon} alt="search" className={styles.searchIcon} />
           <input
             type="text"
             placeholder="Search movies..."
@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
     if (queryString === null) {
       return (
         <div className={styles.searchBarContainer}>
-          <img src={searchIcon} alt="search" className={styles.ciao} />
+          <img src={searchIcon} alt="search" className={styles.searchIcon} />
           <input
             type="text"
             placeholder="Search movies..."
@@ -62,7 +62,7 @@ class SearchBar extends React.Component {
     }
     return (
       <div className={styles.searchBarContainer}>
-        <img src={searchIcon} alt="search" className={styles.ciao} />
+        <img src={searchIcon} alt="search" className={styles.searchIcon} />
         <input
           type="text"
           placeholder="Search movies..."
