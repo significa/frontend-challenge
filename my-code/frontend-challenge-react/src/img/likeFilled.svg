@@ -1,18 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
-    <title>likeFilled</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="🍿-Movie-search" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="2.Search-results" transform="translate(-875.000000, -170.000000)">
-            <rect x="0" y="0" width="1440" height="940"></rect>
-            <g id="result" transform="translate(730.000000, 156.000000)">
-                <g id="likeFilled" transform="translate(144.000000, 12.000000)">
-                    <rect id="Rectangle-13" x="0" y="0" width="24" height="24"></rect>
-                    <path d="M12,6.28384428 C24.3324939,-3.604485 26.3324939,15.2832147 12,20.9494617 C-2.33249393,16.3942559 -0.332493933,-3.604485 12,6.28384428 Z" id="Rectangle-12" stroke="#FFFFFF" stroke-width="2" fill="#FFFFFF"></path>
-                </g>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="20"><path d="M11 4.284c12.332-9.888 14.332 9 0 14.666C-3.332 14.394-1.332-5.604 11 4.284z" stroke="#fff" stroke-width="2" fill="#fff" fill-rule="evenodd"/></svg>
