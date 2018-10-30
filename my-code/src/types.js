@@ -49,7 +49,6 @@ export type LinkPropType = {
 
 export type ThumbnailPropType = {
   href: string,
-  key: string,
   poster: string,
   title: string,
   year: string

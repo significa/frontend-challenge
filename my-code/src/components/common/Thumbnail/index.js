@@ -11,8 +11,8 @@ import {
 } from "./styled"
 import type { ThumbnailPropType } from "../../../types.js"
 
-const Thumbnail = ({ href, key, poster, title, year }: ThumbnailPropType) => (
-  <ThumbnailHolder href={href} key={key}>
+const Thumbnail = ({ href, poster, title, year }: ThumbnailPropType) => (
+  <ThumbnailHolder href={href}>
     {poster === "N/A" ? (
       <SmallEmptyThumbnail />
     ) : (

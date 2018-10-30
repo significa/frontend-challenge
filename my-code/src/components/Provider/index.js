@@ -5,7 +5,11 @@ import { ThemeProvider } from "styled-components"
 import theme from "./theme"
 import GlobalStyle from "./styles"
 
-const Provider = ({ children }: React.Node) => (
+type PropsType = {
+  children: React.Node
+}
+
+const Provider = ({ children }: PropsType) => (
   <React.Fragment>
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
     <GlobalStyle />

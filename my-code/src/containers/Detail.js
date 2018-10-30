@@ -26,12 +26,34 @@ type StateType = {
     Year?: string,
     Ratings?: Array<{ Source: string, Value: string }>
   },
-  favourite: boolean,
-  active: boolean
+  fav: boolean,
+  favourites: Array<string>,
+  loading: boolean
 }
 
+type PrevPropsType = {
+  match: {
+    params: {
+      id: string
+    }
+  }
+}
+
+type PrevStateType = {
+  fav: boolean,
+  favourites: Array<string>,
+  loading: boolean
+}
+
+type FavType = string
+
 class Detail extends React.Component<PropsType, StateType> {
-  state = { info: {}, fav: false, favourites: [], loading: false }
+  state = {
+    info: {},
+    fav: false,
+    favourites: [],
+    loading: false
+  }
 
   componentDidMount() {
     const {
@@ -47,10 +69,11 @@ class Detail extends React.Component<PropsType, StateType> {
     this.loadMovies(id)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    localStorage.setItem("favourites", JSON.stringify(this.state.favourites))
+  componentDidUpdate(prevProps: PrevPropsType, prevState: PrevStateType) {
+    const { favourites } = this.state
+    localStorage.setItem("favourites", JSON.stringify(favourites))
 
-    if (prevState.favourites !== this.state.favourites) {
+    if (prevState.favourites !== favourites) {
       this.setState({ fav: this.getIsFavourite() })
     }
   }
@@ -77,7 +100,9 @@ class Detail extends React.Component<PropsType, StateType> {
       }
     } = this.props
 
-    return this.state.favourites.filter(fav => fav === id).length > 0
+    const { favourites } = this.state
+
+    return favourites.filter((fav: FavType) => fav === id).length > 0
   }
 
   toggleFavourite = () => {
@@ -91,18 +116,24 @@ class Detail extends React.Component<PropsType, StateType> {
     const isFavourite = this.getIsFavourite()
 
     const newFavs = isFavourite
-      ? favourites.filter(fav => fav !== id)
+      ? favourites.filter((fav: FavType) => fav !== id)
       : [...favourites, id]
 
     this.setState({ favourites: newFavs })
   }
 
   render() {
+    const { info } = this.state
+    const { fav } = this.state
+    const { loading } = this.state
+
     return (
       <DetailsView
         getIsFavourite={this.getIsFavourite}
         toggleFavourite={this.toggleFavourite}
-        data={this.state}
+        info={info}
+        favourite={fav}
+        loading={loading}
       />
     )
   }

@@ -16,11 +16,30 @@ import type {
   DirectorType
 } from "../types.js"
 
+type DetailType = {
+  info: {
+    Title?: string,
+    Runtime?: string,
+    Genre?: string,
+    Plot?: string,
+    Rated?: string,
+    Poster?: string,
+    Director?: string,
+    Actors?: string,
+    Year?: string,
+    Ratings?: Array<{ Source: string, Value: string }>
+  },
+  favourite: boolean,
+  loading: boolean,
+  toggleFavourite: () => mixed
+}
+
 const DetailsView = ({
-  data: { info, fav },
+  info,
+  favourite,
   loading,
   toggleFavourite
-}: PropTypes) => (
+}: DetailType) => (
   <div>
     {loading ? (
       <Loader />
@@ -61,7 +80,7 @@ const DetailsView = ({
               <Button
                 text="Add to favourites"
                 onClick={toggleFavourite}
-                active={fav}
+                active={favourite}
               />
             </Wrapper>
           ) : null}

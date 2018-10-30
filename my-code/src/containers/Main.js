@@ -71,7 +71,7 @@ class App extends React.Component<{}, StateType> {
 
           {loading && <Loader />}
 
-          {results.length === 0 ? (
+          {results.length === 0 && !loading ? (
             <Flex mt={6}>
               <img width={396} src={empty} alt="Empty state" />
               <Text300 mb={2}>Don’t know what to search?</Text300>

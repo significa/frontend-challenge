@@ -19,7 +19,6 @@ const Results = ({ data }: PropsType) => (
     {data.map((movie: MovieType) => (
       <Thumbnail
         href={`/movie/${movie.imdbID}`}
-        key={movie.imdbID}
         poster={movie.Poster}
         title={movie.Title}
         year={movie.Year}
