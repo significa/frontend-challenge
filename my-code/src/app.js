@@ -37,7 +37,7 @@ class App extends Component {
         })
         return
       }
-      fetch(`http://www.omdbapi.com/?type=movie&s=${value}&apikey=296eb63f`)
+      fetch(`http://www.omdbapi.com/?type=movie&s=${value}${process.env.API_IMDB}`)
         .then(response => response.json())
         .then((data) => {
           const status = data.Response
@@ -60,9 +60,12 @@ class App extends Component {
     }
     this.handleGetMovie = (id) => () => {
       const imdbID = id
+      let isFavourites = ''
       const favourites = JSON.parse(localStorage.getItem('favourites'))
-      const isFavourites = favourites.filter((item) => item.imdb === imdbID)
-      fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
+      if (favourites !== null) {
+        isFavourites = favourites.filter((item) => item.imdb === imdbID)
+      }
+      fetch(`http://www.omdbapi.com/?i=${imdbID}${process.env.API_IMDB}`)
         .then(response => response.json())
         .then((data) => {
           if (data.Response === 'False') {
@@ -108,8 +111,11 @@ class App extends Component {
     if (url.indexOf('movie') > 0) {
       const imdbID = url.split('-')[1]
       const favourites = JSON.parse(localStorage.getItem('favourites'))
-      const isFavourites = favourites.filter((item) => item.imdb === imdbID)
-      fetch(`http://www.omdbapi.com/?i=${imdbID}&apikey=296eb63f`)
+      let isFavourites = ''
+      if (favourites !== null) {
+        isFavourites = favourites.filter((item) => item.imdb === imdbID)
+      }
+      fetch(`http://www.omdbapi.com/?i=${imdbID}${process.env.API_IMDB}`)
         .then(response => response.json())
         .then((data) => {
           if (data.Response === 'False') {

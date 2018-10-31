@@ -7,6 +7,7 @@ const HtmlPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanPlugin = require('clean-webpack-plugin')
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const Dotenv = require('dotenv-webpack')
 
 module.exports = {
   entry: common.entry,
@@ -14,6 +15,8 @@ module.exports = {
   output: common.output,
 
   plugins: [
+    new Dotenv(),
+    
     new CleanPlugin(['dist'], {
       root: common.paths.root
     }),

@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "dotenv-webpack": "^1.5.7",
     "preact": "^8.2.5",
     "preact-compat": "^3.17.0",
     "prop-types": "^15.5.10",
