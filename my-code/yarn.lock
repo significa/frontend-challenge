@@ -5423,6 +5423,10 @@ minipass@^2.2.1, minipass@^2.3.3:
     safe-buffer "^5.1.2"
     yallist "^3.0.0"
 
+minireset.css@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/minireset.css/-/minireset.css-0.0.4.tgz#50bbebb8e9466bb2c0323973da8aa96e2241615d"
+
 minizlib@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-1.1.1.tgz#6734acc045a46e61d596a43bb9d9cd326e19cc42"
