@@ -4,13 +4,15 @@ import { useInputState } from 'utils/hooks'
 import Navbar from 'components/Navbar'
 import Searchbar from 'components/Searchbar'
 import EmptyState from 'components/EmptyState'
+import ErrorState from 'components/ErrorState'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
+import { Dead } from 'components/Icon'
 
 const App = () => {
 	const [search, setSearch] = useInputState('hey')
-	const { loading, data } = useFetch([
+	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&query=${search}`,
@@ -41,6 +43,7 @@ const App = () => {
 			</Container>
 			{/* {!!search && <pre>{JSON.stringify({error, loading, data}, null , 2)}</pre>} */}
 			{!search && <EmptyState/>}
+			{search && error && <ErrorState/>}
 		</Fragment>
 	)
 }
