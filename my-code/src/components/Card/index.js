@@ -62,7 +62,12 @@ const HeartWrapper = styled.button`
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
-	&:focus{${p => p.theme.focusShadow}}
+`
+
+const StyledHeart = styled(Heart)`
+	${HeartWrapper}:focus & {
+		color: ${p => p.theme.colors.red};
+	}
 `
 
 const Info = styled.button`
@@ -109,7 +114,7 @@ const Card = ({id, title, year, image, loading}) => {
 					)}
 					{id && (
 						<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
-							<Heart filled={isFavorite}/>
+							<StyledHeart filled={isFavorite}/>
 						</HeartWrapper>
 					)}
 				</Overlay>
