@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
-import Logo from 'components/Logo'
+import { Logo } from 'components/Icon'
 
 const Wrapper = styled.div`
 	padding: 1.5rem 0;

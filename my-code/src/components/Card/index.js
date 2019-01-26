@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
-import Heart from 'components/Heart'
-import Movie from 'components/Movie'
-import {useFavoriteState} from 'utils/favorites'
+import { Heart, Movie } from 'components/Icon'
+import { useFavoriteState } from 'utils/favorites'
 
 const Wrapper = styled.div`
 	flex: 1;
