@@ -6,7 +6,7 @@ export const colors = {
 	// main colors
 	yellow:    '#FF9F1C',
 	red:       '#FF4040',
-	green:     '#2EC4B',
+	green:     '#2EC4B6',
 	// grey colors
 	dark:      '#0A1014',
 	grey:      '#1B2329',
