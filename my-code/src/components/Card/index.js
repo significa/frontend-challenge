@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import Heart from 'components/Heart'
+import {useFavoriteState} from 'utils/favorites'
 
 const Wrapper = styled.div`
 	flex: 1;
@@ -75,21 +76,25 @@ const Info = styled.button`
 	}
 `
 
-const Card = ({id, title, year, image, isFavorite, toggle}) => (
-	<AspectRatio ratio={0.75}>
-		<Wrapper>
-			<Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>
-			<Overlay>
-				<Info>
-					<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
-					<Text>{year}</Text>
-				</Info>
-				<HeartWrapper isFavorite={isFavorite} onClick={() => toggle(id)}>
-					<Heart filled={isFavorite}/>
-				</HeartWrapper>
-			</Overlay>
-		</Wrapper>
-	</AspectRatio>
-)
+const Card = ({id, title, year, image}) => {
+	const [isFavorite, {toggle}] = useFavoriteState(id)
+	return (
+		<AspectRatio ratio={0.75}>
+			<Wrapper>
+				<Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>
+				<Overlay>
+					<Info>
+						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+						<Text>{year}</Text>
+					</Info>
+					<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
+						<Heart filled={isFavorite}/>
+					</HeartWrapper>
+				</Overlay>
+			</Wrapper>
+		</AspectRatio>
+	)
+}
+
 
 export default Card
