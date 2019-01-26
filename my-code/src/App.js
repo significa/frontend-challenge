@@ -3,7 +3,7 @@ import { useFetch } from 'react-hooks-fetch'
 import { useInputState } from 'utils/hooks'
 import Navbar from 'components/Navbar'
 import Searchbar from 'components/Searchbar'
-import EmptyState from 'components/EmptyState'
+import InitState from 'components/InitState'
 import ErrorState from 'components/ErrorState'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
@@ -42,7 +42,7 @@ const App = () => {
 				</Row>
 			</Container>
 			{/* {!!search && <pre>{JSON.stringify({error, loading, data}, null , 2)}</pre>} */}
-			{!search && <EmptyState/>}
+			{!search && <InitState/>}
 			{search && error && <ErrorState/>}
 		</Fragment>
 	)
