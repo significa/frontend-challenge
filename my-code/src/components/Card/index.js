@@ -62,6 +62,7 @@ const HeartWrapper = styled.button`
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const Info = styled.button`
@@ -76,6 +77,7 @@ const Info = styled.button`
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const NoImage = styled.div`

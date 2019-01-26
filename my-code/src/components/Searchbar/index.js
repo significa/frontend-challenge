@@ -9,10 +9,9 @@ const Wrapper = styled.label`
 	align-items: center;
 	padding: 0.75rem;
 	border-radius: 0.25rem;
-	&:focus-within{
-		box-shadow: 0 0 0 2px ${p => p.theme.colors.yellow};
-	}
+	&:focus-within{${p => p.theme.focusShadow}}
 `
+
 
 const Loupe = () => (
 	<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
