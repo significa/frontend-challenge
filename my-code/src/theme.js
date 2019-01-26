@@ -17,6 +17,15 @@ const theme = {
 	fonts: {
 		default: `"Roboto", ${fontStack}`,
 	},
+	columns: 16,
+	breakpoints: {
+		xs: { width:  '0rem', gutter: 1.00 },
+		sm: { width: '30rem', gutter: 1.25 },
+		md: { width: '48rem', gutter: 1.25 },
+		lg: { width: '62rem', gutter: 1.25 },
+		xg: { width: '80rem', gutter: 1.25 }
+	}
+
 }
 
 export default theme
