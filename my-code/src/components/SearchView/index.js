@@ -2,12 +2,12 @@ import React, { Fragment } from 'react'
 import { useFetch } from 'react-hooks-fetch'
 import { useInputState } from 'utils/hooks'
 import Searchbar from 'components/Searchbar'
-import InitState from 'components/InitState'
-import EmptyState from 'components/EmptyState'
-import ErrorState from 'components/ErrorState'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
+import Intro from './Intro'
+import Empty from './Empty'
+import ErrorState from './ErrorState'
 
 const SearchView = () => {
 	const [search, setSearch] = useInputState('hey')
@@ -39,9 +39,9 @@ const SearchView = () => {
 					))}
 				</Row>
 			</Container>
-			{!search && <InitState/>}
+			{!search && <Intro/>}
 			{search && error && <ErrorState/>}
-			{data && !data.results.length && <EmptyState/>}
+			{data && !data.results.length && <Empty/>}
 		</Fragment>
 	)
 }
