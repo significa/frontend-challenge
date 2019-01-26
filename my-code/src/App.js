@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Navbar from 'components/Navbar'
 import SearchView from 'components/SearchView'
+import DetailView from 'components/DetailView'
 
 const App = () => {
 
@@ -8,6 +9,7 @@ const App = () => {
 		<Fragment>
 			<Navbar/>
 			<SearchView/>
+			<DetailView/>
 		</Fragment>
 	)
 }

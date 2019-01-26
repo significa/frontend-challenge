@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
+import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
+import { useUrlState } from 'with-url-state'
 import { useInputState } from 'utils/hooks'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
@@ -9,6 +11,19 @@ import Intro from './Intro'
 import Empty from './Empty'
 import ErrorState from './ErrorState'
 
+const Wrapper = styled.div`
+	flex: 1
+	display: flex;
+	flex-direction: column;
+	transition: 0.3s all;
+	${p => p.hidden && `
+		opacity: 0;
+		height: 0;
+		flex: 0;
+		pointer-events: none;
+	`}
+`
+
 const SearchView = () => {
 	const [search, setSearch] = useInputState('hey')
 	const { error, loading, data } = useFetch([
@@ -17,8 +32,10 @@ const SearchView = () => {
 		`&query=${search}`,
 	].join(''))
 
+	const [urlState] = useUrlState()
+
 	return(
-		<Fragment>
+		<Wrapper hidden={!!urlState.id}>
 			<Searchbar value={search} onChange={setSearch}/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
@@ -42,7 +59,7 @@ const SearchView = () => {
 			{!search && <Intro/>}
 			{search && error && <ErrorState/>}
 			{data && !data.results.length && <Empty/>}
-		</Fragment>
+		</Wrapper>
 	)
 }
 
