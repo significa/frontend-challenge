@@ -8,9 +8,9 @@ const Heart = ({
 	...props
 }) => (
 	<svg
-		viewBox="0 0 24 24"
-		strokeLinecap="round"
-		strokeLinejoin="round"
+		viewBox='0 0 24 24'
+		strokeLinecap='round'
+		strokeLinejoin='round'
 		width={size}
 		height={size}
 		style={{display: 'block', ...style}}
