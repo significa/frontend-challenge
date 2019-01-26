@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import Heart from 'components/Heart'
+import Movie from 'components/Movie'
 import {useFavoriteState} from 'utils/favorites'
 
 const Wrapper = styled.div`
@@ -78,8 +79,17 @@ const Info = styled.button`
 	}
 `
 
+const NoImage = styled.div`
+	${fill}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	color: ${p => p.theme.colors.midGrey};
+`
 
-const Card = ({id, title, year, image}) => {
+
+const Card = ({id, title, year, image, loading}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(id)
 	return (
 		<Wrapper>
@@ -88,6 +98,7 @@ const Card = ({id, title, year, image}) => {
 				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
 			</OverflowHidden>
 			<AbsoluteFill>
+				{!image && !loading && <NoImage><Movie/></NoImage>}
 				<Overlay>
 					{title && (
 						<Info>

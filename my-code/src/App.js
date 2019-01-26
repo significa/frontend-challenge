@@ -21,16 +21,21 @@ const App = () => {
 			<Navbar/>
 			<Searchbar value={search} onChange={setSearch}/>
 			<Container>
-				<Row vertical-gutter style={{margin: '2rem 0'}}>
-					{!!search && !loading && data && data.results.map(({id, title, poster_path, release_date}) => (
-						<Cell key={id} xs={6} sm={4} md={3} xg={2}>
-							<Card
-								id={id}
-								title={title}
-								image={poster_path}
-								year={release_date.split('-')[0]}
-							/>
-						</Cell>
+				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
+					{(search && !loading && data) && (
+						data.results.map(({id, title, poster_path, release_date}) => (
+							<Cell key={id} xs={6} sm={4} md={3} xg={2}>
+								<Card
+									id={id}
+									title={title}
+									image={poster_path}
+									year={release_date.split('-')[0]}
+								/>
+							</Cell>
+						)
+					))}
+					{search && loading && new Array(12).fill(0).map((x, i) => (
+						<Cell key={i} xs={6} sm={4} md={3} xg={2}><Card loading/></Cell>
 					))}
 				</Row>
 			</Container>
