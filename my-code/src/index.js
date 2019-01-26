@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
+import 'typeface-roboto'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './components/GlobalStyle'
 import theme from './theme'

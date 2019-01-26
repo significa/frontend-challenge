@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
 	${reset}
 	${({theme}) => `
 		html, body {
+			font-family: ${theme.fonts.default};
 			background: ${theme.colors.dark};
 			color: ${theme.colors.white};
 			text-rendering: optimizeLegibility;
@@ -17,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
 		}
 		::selection{
 			color: ${theme.colors.dark};
-			background: ${theme.colors.grey};
+			background: ${theme.colors.white};
 		}
 		#root{
 			min-height: 100%;

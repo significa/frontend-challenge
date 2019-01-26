@@ -1,3 +1,5 @@
+const fontStack = "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'"
+
 const theme = {
 	colors: {
 		// main colors
@@ -10,6 +12,9 @@ const theme = {
 		midGrey:   '#353F4C',
 		lightGrey: '#7A8C99',
 		white:     '#FFFFFF',
+	},
+	fonts: {
+		default: `"Roboto", ${fontStack}`,
 	},
 }
 
