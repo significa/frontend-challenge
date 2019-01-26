@@ -27,11 +27,12 @@ const GlobalStyle = createGlobalStyle`
 			flex-direction: column;
 		}
 		button{
+			text-align: left;
 			outline: none;
-			border-radius: 0.125rem
+			border-radius: 0.125rem;
 		}
 		button:focus{
-			box-shadow: 0 0 0 0.125rem dodgerblue;
+			box-shadow: 0 0 0 0.125rem ${theme.colors.yellow};
 		}
 	`}
 `
