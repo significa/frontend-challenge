@@ -25,13 +25,13 @@ const theme = {
 		4: {fontSize: '3.00rem', lineHeight: '3.750rem', letterSpacing: '0.0100em'},
 		5: {fontSize: '5.00rem', lineHeight: '5.500rem', letterSpacing: '0.0100em'},
 	},
-	columns: 16,
+	columns: 12,
 	breakpoints: {
-		xs: { width:  '0rem', gutter: 1.00 },
-		sm: { width: '30rem', gutter: 1.25 },
-		md: { width: '48rem', gutter: 1.25 },
-		lg: { width: '62rem', gutter: 1.25 },
-		xg: { width: '80rem', gutter: 1.25 },
+		xs: { width:  '0rem', gutter: 16 },
+		sm: { width: '30rem', gutter: 20 },
+		md: { width: '48rem', gutter: 20 },
+		lg: { width: '62rem', gutter: 20 },
+		xg: { width: '80rem', gutter: 20 },
 	},
 }
 
