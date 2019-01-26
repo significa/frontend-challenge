@@ -7039,6 +7039,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-use-form-state@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-use-form-state/-/react-use-form-state-0.4.0.tgz#e62eead81749d0685060000601b1bb6c3b6846fc"
+
 react@^16.8.0-alpha.1:
   version "16.8.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.0-alpha.1.tgz#c2b32689f3b466d3ce85a634dd9035f789d2cd97"
