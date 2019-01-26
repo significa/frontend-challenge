@@ -42,7 +42,7 @@ const Overlay = styled.div`
 		${fill}
 		overflow: hidden;
 		border-radius: 0.1875rem;
-		background: ${p => p.isActive ? p.theme.colors.yellow : p.theme.colors.grey};
+		background: ${p => (p.isActive && !p.loading) ? p.theme.colors.yellow : p.theme.colors.grey};
 		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
 		transition: 0.2s all;
 		${Wrapper}:hover &, ${Wrapper}:focus-within &{
@@ -115,7 +115,7 @@ const Card = ({id, title, year, image, loading, ...props}) => {
 			</OverflowHidden>
 			<AbsoluteFill>
 				{!image && !loading && <NoImage><Movie/></NoImage>}
-				<Overlay isActive={isActive}>
+				<Overlay loading={loading} isActive={isActive}>
 					{title && (
 						<Info isActive={isActive} onClick={() => setUrlState({id})}>
 							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
