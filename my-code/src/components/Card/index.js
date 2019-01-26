@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useUrlState } from 'with-url-state'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie } from 'components/Icon'
@@ -97,6 +98,7 @@ const NoImage = styled.div`
 
 const Card = ({id, title, year, image, loading}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(id)
+	const [urlState, setUrlState] = useUrlState()
 	return (
 		<Wrapper>
 			<AspectRatio ratio={0.75}/>
@@ -107,7 +109,7 @@ const Card = ({id, title, year, image, loading}) => {
 				{!image && !loading && <NoImage><Movie/></NoImage>}
 				<Overlay>
 					{title && (
-						<Info>
+						<Info onClick={() => setUrlState({id})}>
 							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
 							<Text>{year}</Text>
 						</Info>
