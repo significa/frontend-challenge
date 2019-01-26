@@ -9,24 +9,28 @@ const Wrapper = styled.div`
 	flex: 1;
 	display: flex;
 	position: relative;
-	border-radius: 0.1875rem;
 	background: ${p => p.theme.colors.grey};
 	border-radius: 0.1875rem;
+`
+
+const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
+
+const AbsoluteFill = styled.div`${fill}`
+
+const OverflowHidden = styled(AbsoluteFill)`
 	overflow: hidden;
+	border-radius: 0.1875rem;
 `
 
 const Image = styled.img`
 	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
 	object-fit: cover;
 `
 
 const Overlay = styled.div`
-	flex: 1;
+	position: relative;
+	width: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: space-between;
@@ -34,11 +38,9 @@ const Overlay = styled.div`
 	&:before{
 		content: '';
 		opacity: 0;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
+		${fill}
+		overflow: hidden;
+		border-radius: 0.1875rem;
 		background: ${p => p.theme.colors.grey};
 		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
 		${Wrapper}:hover &, ${Wrapper}:focus-within &{
@@ -76,12 +78,16 @@ const Info = styled.button`
 	}
 `
 
+
 const Card = ({id, title, year, image}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(id)
 	return (
-		<AspectRatio ratio={0.75}>
-			<Wrapper>
+		<Wrapper>
+			<AspectRatio ratio={0.75}/>
+			<OverflowHidden>
 				<Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>
+			</OverflowHidden>
+			<AbsoluteFill>
 				<Overlay>
 					<Info>
 						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
@@ -91,8 +97,8 @@ const Card = ({id, title, year, image}) => {
 						<Heart filled={isFavorite}/>
 					</HeartWrapper>
 				</Overlay>
-			</Wrapper>
-		</AspectRatio>
+			</AbsoluteFill>
+		</Wrapper>
 	)
 }
 

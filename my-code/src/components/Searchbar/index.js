@@ -9,6 +9,9 @@ const Wrapper = styled.label`
 	align-items: center;
 	padding: 0.75rem;
 	border-radius: 0.25rem;
+	&:focus-within{
+		box-shadow: 0 0 0 2px ${p => p.theme.colors.yellow};
+	}
 `
 
 const Loupe = () => (
