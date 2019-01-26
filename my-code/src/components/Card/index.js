@@ -85,17 +85,21 @@ const Card = ({id, title, year, image}) => {
 		<Wrapper>
 			<AspectRatio ratio={0.75}/>
 			<OverflowHidden>
-				<Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>
+				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
 			</OverflowHidden>
 			<AbsoluteFill>
 				<Overlay>
-					<Info>
-						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
-						<Text>{year}</Text>
-					</Info>
-					<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
-						<Heart filled={isFavorite}/>
-					</HeartWrapper>
+					{title && (
+						<Info>
+							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+							<Text>{year}</Text>
+						</Info>
+					)}
+					{id && (
+						<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
+							<Heart filled={isFavorite}/>
+						</HeartWrapper>
+					)}
 				</Overlay>
 			</AbsoluteFill>
 		</Wrapper>
