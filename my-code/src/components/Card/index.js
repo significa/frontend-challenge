@@ -66,7 +66,7 @@ const HeartWrapper = styled.button`
 `
 
 const StyledHeart = styled(Heart)`
-	${HeartWrapper}:focus & {
+	${HeartWrapper}:focus &, ${HeartWrapper}:hover & {
 		color: ${p => p.theme.colors.red};
 	}
 `
@@ -76,6 +76,10 @@ const Info = styled.button`
 	border: none;
 	margin: 0;
 	color: currentColor;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
 	position: relative;
 	padding: 0.75rem;
 	opacity: 0;
