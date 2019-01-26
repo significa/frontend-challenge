@@ -15,6 +15,7 @@ const GlobalStyle = createGlobalStyle`
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1, 'pnum' 0, 'tnum' 1, 'onum' 0, 'lnum' 1, 'dlig' 1, 'zero' 1, 'case' 1;
 			height: 100%;
+			min-height: 100vh;
 		}
 		::selection{
 			color: ${theme.colors.dark};
