@@ -1,13 +1,17 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'styled-components'
+import GlobalStyle from './components/GlobalStyle'
 import theme from './theme'
 import App from './App'
 import { register } from './serviceWorker'
 
 const Wrapper = () => (
 	<ThemeProvider theme={theme}>
-		<App/>
+		<Fragment>
+			<GlobalStyle/>
+			<App/>
+		</Fragment>
 	</ThemeProvider>
 )
 
