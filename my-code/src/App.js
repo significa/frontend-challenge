@@ -4,6 +4,7 @@ import { useInputState } from 'utils/hooks'
 import Navbar from 'components/Navbar'
 import Searchbar from 'components/Searchbar'
 import InitState from 'components/InitState'
+import EmptyState from 'components/EmptyState'
 import ErrorState from 'components/ErrorState'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
@@ -44,6 +45,7 @@ const App = () => {
 			{/* {!!search && <pre>{JSON.stringify({error, loading, data}, null , 2)}</pre>} */}
 			{!search && <InitState/>}
 			{search && error && <ErrorState/>}
+			{data && !data.results.length && <EmptyState/>}
 		</Fragment>
 	)
 }
