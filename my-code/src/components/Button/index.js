@@ -28,7 +28,7 @@ const Right = styled.div`
 const Button = ({logo, background, children, id}) => (
 	<Wrapper href={`https://imdb.com/title/${id}/`}>
 		{logo && <Left background={background}>{logo}</Left>}
-		<Right><Text>{children}</Text></Right>
+		<Right><Text weight={500}>{children}</Text></Right>
 	</Wrapper>
 )
 
