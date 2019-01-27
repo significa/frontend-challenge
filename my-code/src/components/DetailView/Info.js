@@ -1,12 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useFetch } from 'react-hooks-fetch'
-import { useUrlState } from 'with-url-state'
-import Container from 'components/Container'
-import { Arrow } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
-import Text from 'components/Text'
-import Meta from './Meta'
 import Section from './Section'
 
 const Info = data => {
