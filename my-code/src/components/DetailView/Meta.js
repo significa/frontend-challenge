@@ -3,9 +3,12 @@ import styled from 'styled-components'
 import above from 'utils/above'
 import Text from 'components/Text'
 
-// const getRating = data => (
-// 	data?.release_dates?.results.find(x => x.iso_3166_1 === 'US')?.release_dates[0]?.certification || null
-// )
+const getRating = release_dates => (
+	release_dates &&
+	release_dates.results &&
+	release_dates.results.find(x => x.iso_3166_1 === 'US').release_dates[0].certification
+	|| null
+)
 
 const Wrapper = styled.div`
 	display: flex;
@@ -30,13 +33,13 @@ const Rating = styled(Text)`
 	`}
 `
 
-const Meta = ({runtime, release_date, rating}) => (
+const Meta = ({runtime, release_date, release_dates}) => (
 	<Wrapper style={{margin: '1.5rem 0'}}>
 		<Text sm={1} color={p => p.theme.colors.lightGrey || ''}>
 			{runtime && `${runtime} min • `}
 			{release_date && `${release_date.split('-')[0]} • `}
 		</Text>
-		<Rating>{rating || 'X'}</Rating>
+		{getRating(release_dates) && <Rating>{getRating(release_dates)}</Rating>}
 	</Wrapper>
 )
 
