@@ -18,7 +18,7 @@ const Inner = styled.div`
 	flex-direction: column;
 `
 
-const AspectRatio = ({ratio = 1, children, props}) => (
+const AspectRatio = ({ratio = 1, children, ...props}) => (
 	<Outer ratio={ratio} {...props}>
 		<Inner>{children}</Inner>
 	</Outer>

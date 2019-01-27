@@ -9,6 +9,7 @@ import Text from 'components/Text'
 import Button from 'components/Button'
 import Meta from './Meta'
 import Info from './Info'
+import Image from './Image'
 
 
 const Wrapper = styled.div`
@@ -28,13 +29,6 @@ const ArrowWrapper = styled.div`
 	}
 `
 
-const Image = styled.img`
-	display: block;
-	border-radius: 0.25rem;
-	overflow: hidden;
-	width: 100%;
-	height: auto;
-`
 
 const DetailView = () => {
 	const [urlState, setUrlState] = useUrlState()
@@ -70,7 +64,7 @@ const DetailView = () => {
 							<Info {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
-							{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
+							<Image alt={`poster for the movie: ${data.title}`} image={image}/>
 						</Cell>
 					</Row>
 				)}
