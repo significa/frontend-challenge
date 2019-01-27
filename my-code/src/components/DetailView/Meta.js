@@ -5,9 +5,11 @@ import Text from 'components/Text'
 
 /* eslint-disable no-mixed-operators */
 // i really need optional chaining
-const getRating = release_dates => (
+const getRating = (release_dates = {}) => (
 	release_dates &&
 	release_dates.results &&
+	release_dates.results.find(x => x.iso_3166_1 === 'US') &&
+	release_dates.results.find(x => x.iso_3166_1 === 'US').release_dates[0] &&
 	release_dates.results.find(x => x.iso_3166_1 === 'US').release_dates[0].certification
 	|| null
 )

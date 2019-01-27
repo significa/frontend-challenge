@@ -61,7 +61,7 @@ const DetailView = () => {
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
 							<div style={{display: 'flex', margin: '1rem -1rem'}}>
-								{data.vote_average && (
+								{!!data.vote_average && (
 									<Button id={data.imdb_id} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
 										{data.vote_average}/10
 									</Button>
