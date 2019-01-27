@@ -41,7 +41,7 @@ const DetailView = () => {
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/movie/${urlState.id}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
-		`&append_to_response=release_dates,external_ids`
+		`&append_to_response=release_dates,external_ids,credits`
 	].join(''))
 
 	/* eslint-disable no-mixed-operators */
@@ -72,8 +72,6 @@ const DetailView = () => {
 						</Cell>
 					</Row>
 				)}
-				{/* <pre>{JSON.stringify({data}, null, 2)}</pre>
-				<pre>{JSON.stringify({omdb}, null, 2)}</pre> */}
 			</Container>
 			{error && <div>error</div>}
 		</Wrapper>

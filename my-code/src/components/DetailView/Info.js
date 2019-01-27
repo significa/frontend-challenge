@@ -14,19 +14,12 @@ const Wrapper = styled.div``
 
 
 const Info = data => {
-	// is not advised to pass conditionals before a hook, but it just works :shrug:
-	const omdb = useFetch([
-		`http://omdbapi.com/`,
-		`?apikey=${process.env.REACT_APP_OMDB_KEY}`,
-		`&i=${data.imdb_id}`,
-	].join(''))
-
 	/* eslint-disable no-mixed-operators */
 	// i really need optional chaining
-	const plot = (omdb && omdb.data && omdb.data.Plot) || (data && data.overview) || ''
+	const plot = data && data.overview || ''
 	const genres = data && data.genres.map(x => x.name) || []
-	const actors = omdb && omdb.data && omdb.data.Actors.split(', ') || []
-	const directors = omdb && omdb.data && omdb.data.Director.split(', ') || []
+	const actors = data && data.credits.cast.map(x => x.name).slice(0, 4) || []
+	const directors = data && data.credits.crew.filter(x => x.department === 'Directing').map(x => x.name) || []
 	/* eslint-enable */
 
 	return(
