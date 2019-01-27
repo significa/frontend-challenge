@@ -58,14 +58,8 @@ const DetailView = () => {
 					<Row style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6}>
 							<Meta {...data}/>
-							<Text weight={600} xs={2} sm={3} md={4} xg={5}>
-								{data.title}
-							</Text>
-							<Row>
-								<Cell lg={10}>
-									<Info {...data}/>
-								</Cell>
-							</Row>
+							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
+							<Info {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
 							{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}

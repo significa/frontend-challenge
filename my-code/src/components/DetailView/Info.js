@@ -9,10 +9,6 @@ import Text from 'components/Text'
 import Meta from './Meta'
 import Section from './Section'
 
-
-const Wrapper = styled.div``
-
-
 const Info = data => {
 	/* eslint-disable no-mixed-operators */
 	// i really need optional chaining
@@ -23,32 +19,34 @@ const Info = data => {
 	/* eslint-enable */
 
 	return(
-		<Wrapper>
-			{plot && <Section title='Plot'>{plot}</Section>}
-			<Row style={{justifyContent: 'space-between'}}>
-				{!!genres.length && (
-					<Cell>
-						<Section title='Genres'>
-							{genres.map(genre => <div key={genre}>{genre}</div>)}
-						</Section>
-					</Cell>
-				)}
-				{!!actors.length && (
-					<Cell>
-						<Section title='Actors'>
-							{actors.map(actor => <div key={actor}>{actor}</div>)}
-						</Section>
-					</Cell>
-				)}
-				{!!directors.length && (
-					<Cell>
-						<Section title='Directors'>
-							{directors.map(director => <div key={director}>{director}</div>)}
-						</Section>
-					</Cell>
-				)}
-			</Row>
-		</Wrapper>
+		<Row>
+			<Cell lg={10}>
+				{plot && <Section title='Plot'>{plot}</Section>}
+				<Row style={{justifyContent: 'space-between'}}>
+					{!!genres.length && (
+						<Cell>
+							<Section title='Genres'>
+								{genres.map(genre => <div key={genre}>{genre}</div>)}
+							</Section>
+						</Cell>
+					)}
+					{!!actors.length && (
+						<Cell>
+							<Section title='Actors'>
+								{actors.map(actor => <div key={actor}>{actor}</div>)}
+							</Section>
+						</Cell>
+					)}
+					{!!directors.length && (
+						<Cell>
+							<Section title='Directors'>
+								{directors.map(director => <div key={director}>{director}</div>)}
+							</Section>
+						</Cell>
+					)}
+				</Row>
+			</Cell>
+		</Row>
 	)
 }
 
