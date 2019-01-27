@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
-import { useUrlState } from 'with-url-state'
 import { useInputState } from 'utils/hooks'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
@@ -25,8 +24,6 @@ const SearchView = () => {
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&query=${search}`,
 	].join(''))
-
-	const [urlState] = useUrlState()
 
 	return(
 		<Wrapper>

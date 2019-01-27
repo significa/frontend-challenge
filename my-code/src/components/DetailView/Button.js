@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { useUrlState } from 'with-url-state'
+import posed from 'react-pose'
+import above from 'utils/above'
+import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Arrow } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Meta from './Meta'
-import Section from './Section'
 
 
 const Wrapper = styled.div`
@@ -26,6 +28,10 @@ const ArrowWrapper = styled.div`
 	}
 `
 
+const Flex = styled.div`
+	display: flex;
+	align-items: center;
+`
 
 const DetailView = () => {
 	const [urlState, setUrlState] = useUrlState()
@@ -49,19 +55,9 @@ const DetailView = () => {
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>
 								{data.title}
 							</Text>
-							<Row>
-								<Cell lg={10}>
-									<Section title='Plot'>{data.overview}</Section>
-								</Cell>
-							</Row>
-							<Row>
-								<Cell>
-									<Section title='Genres'>
-										{data.genres.map(x => <div>{x.name}</div>)}
-									</Section>
-								</Cell>
-							</Row>
-							{/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+							<pre>
+								{JSON.stringify(data, null, 2)}
+							</pre>
 						</Cell>
 					</Row>
 				)}

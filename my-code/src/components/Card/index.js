@@ -104,7 +104,7 @@ const NoImage = styled.div`
 
 const Card = ({id, title, year, image, loading, ...props}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(id)
-	const [urlState, setUrlState] = useUrlState()
+	const [, setUrlState] = useUrlState()
 
 	return (
 		<Wrapper {...props}>
