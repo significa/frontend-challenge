@@ -3,12 +3,15 @@ import styled from 'styled-components'
 import above from 'utils/above'
 import Text from 'components/Text'
 
+/* eslint-disable no-mixed-operators */
+// i really need optional chaining
 const getRating = release_dates => (
 	release_dates &&
 	release_dates.results &&
 	release_dates.results.find(x => x.iso_3166_1 === 'US').release_dates[0].certification
 	|| null
 )
+/* eslint-enable no-mixed-operators */
 
 const Wrapper = styled.div`
 	display: flex;
