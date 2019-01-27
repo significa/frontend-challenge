@@ -9,7 +9,7 @@ const Wrapper = styled.a`
 	border-radius: 0.25rem;
 	box-shadow: inset 0 0 0 1px ${p => p.theme.colors.midGrey};
 	overflow: hidden;
-	margin: 1rem;
+	margin: 1rem 0.5rem;
 `
 
 const Left = styled.div`
@@ -22,6 +22,9 @@ const Left = styled.div`
 `
 
 const Right = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 0.5rem;
 `
 

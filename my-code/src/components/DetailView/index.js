@@ -7,6 +7,7 @@ import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Button from 'components/Button'
+import ToggleButton from 'components/ToggleButton'
 import Meta from './Meta'
 import Info from './Info'
 import Image from './Image'
@@ -54,12 +55,13 @@ const DetailView = () => {
 						<Cell xs={12} md={6}>
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
-							<div style={{display: 'flex', margin: '1rem -1rem'}}>
+							<div style={{display: 'flex', margin: '1rem -0.5rem'}}>
 								{!!data.vote_average && (
 									<Button id={data.imdb_id} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
 										{data.vote_average}/10
 									</Button>
 								)}
+								<ToggleButton id={data.id}/>
 							</div>
 							<Info {...data}/>
 						</Cell>

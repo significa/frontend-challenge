@@ -4,6 +4,7 @@ const Heart = ({
 	size = 24,
 	filled = false,
 	color = 'currentColor',
+	strokeWidth = '2',
 	style,
 	...props
 }) => (
@@ -18,7 +19,7 @@ const Heart = ({
 		{...props}
 	>
 		<path
-			strokeWidth='2'
+			strokeWidth={strokeWidth}
 			stroke={color}
 			fill={filled ? color : 'none'}
 			d='M12 5.74C24.32-3.88 26.31 14.49 12 20-2.31 15.57-.32-3.88 12 5.74z'
