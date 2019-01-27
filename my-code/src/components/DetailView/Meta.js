@@ -32,7 +32,7 @@ const Rating = styled(Text)`
 
 const Meta = ({runtime, release_date, rating}) => (
 	<Wrapper style={{margin: '1.5rem 0'}}>
-		<Text sm={1} color={p => p.theme.colors.lightGrey}>
+		<Text sm={1} color={p => p.theme.colors.lightGrey || ''}>
 			{runtime && `${runtime} min • `}
 			{release_date && `${release_date.split('-')[0]} • `}
 		</Text>

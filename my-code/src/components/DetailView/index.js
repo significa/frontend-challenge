@@ -79,21 +79,21 @@ const DetailView = () => {
 										{!!genres.length && (
 											<Cell>
 												<Section title='Genres'>
-													{genres.map(genre => <div>{genre}</div>)}
+													{genres.map(genre => <div key={genre}>{genre}</div>)}
 												</Section>
 											</Cell>
 										)}
 										{!!actors.length && (
 											<Cell>
 												<Section title='Actors'>
-													{actors.map(actor => <div>{actor}</div>)}
+													{actors.map(actor => <div key={actor}>{actor}</div>)}
 												</Section>
 											</Cell>
 										)}
 										{!!directors.length && (
 											<Cell>
 												<Section title='Directors'>
-													{directors.map(director => <div>{director}</div>)}
+													{directors.map(director => <div key={director}>{director}</div>)}
 												</Section>
 											</Cell>
 										)}

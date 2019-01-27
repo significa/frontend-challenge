@@ -17,7 +17,7 @@ const Heart = ({
 		xmlns='http://www.w3.org/2000/svg'
 		{...props}
 	>
-		<g stroke={color} stroke-width='2' fill='none'>
+		<g stroke={color} strokeWidth='2' fill='none'>
 			<path d='M9 19.07L1.93 12 9 4.93'/>
 			<path d='M3 12h20'/>
 		</g>
