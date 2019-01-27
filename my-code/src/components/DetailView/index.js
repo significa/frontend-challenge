@@ -8,6 +8,7 @@ import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Button from 'components/Button'
 import ToggleButton from 'components/ToggleButton'
+import ErrorState from 'components/ErrorState'
 import Meta from './Meta'
 import Info from './Info'
 import Image from './Image'
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	transition: 0.2s all;
-	margin-bottom: 6rem;
+	margin-bottom: ${p => p.error ? 0 : '6rem'};
 `
 
 const ArrowWrapper = styled.div`
@@ -45,7 +46,7 @@ const DetailView = () => {
 	/* eslint-enable */
 
 	return(
-		<Wrapper>
+		<Wrapper error={error}>
 			<Container>
 				<ArrowWrapper onClick={() => setUrlState({index: 1})}>
 					<Arrow/>
@@ -71,7 +72,11 @@ const DetailView = () => {
 					</Row>
 				)}
 			</Container>
-			{error && <div>error</div>}
+			{error && (
+				<Container style={{flex: 1}}>
+					<ErrorState/>
+				</Container>
+			)}
 		</Wrapper>
 	)
 }

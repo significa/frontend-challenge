@@ -6,9 +6,9 @@ import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
+import ErrorState from 'components/ErrorState'
 import Intro from './Intro'
 import Empty from './Empty'
-import ErrorState from './ErrorState'
 
 const Wrapper = styled.div`
 	flex: 1
