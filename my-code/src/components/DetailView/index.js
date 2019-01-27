@@ -8,17 +8,12 @@ import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
 
-const Transition = posed.div({
-	visible: { height: 'auto', overflow: 'hidden' },
-	hidden: { height: 0, overflow: 'hidden' },
-})
 
 const Wrapper = styled.div`
 	flex: 1
 	display: flex;
 	flex-direction: column;
 	transition: 0.2s all;
-	${p => p.hidden && `opacity: 0;`}
 `
 
 const SearchView = () => {
@@ -30,18 +25,15 @@ const SearchView = () => {
 		`&query=${urlState.id}`,
 	].join(''))
 
-
 	return(
-		<Transition pose={urlState.id ? 'visible' : 'hidden'}>
-			<Wrapper hidden={!urlState.id}>
-				<Container>
-					<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
-						<Cell>id:{JSON.stringify(urlState.id)}</Cell>
-					</Row>
-				</Container>
-				{error && <div>error</div>}
-			</Wrapper>
-		</Transition>
+		<Wrapper>
+			<Container>
+				<Row>
+					<Cell>id:{JSON.stringify(urlState.id)}</Cell>
+				</Row>
+			</Container>
+			{error && <div>error</div>}
+		</Wrapper>
 	)
 }
 
