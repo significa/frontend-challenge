@@ -8,7 +8,7 @@ const IMDB = ({
 	...props
 }) => (
 	<svg
-		viewBox='0 0 16 16'
+		viewBox='0 0 40 16'
 		strokeLinecap='round'
 		strokeLinejoin='round'
 		width={size*2.5}
