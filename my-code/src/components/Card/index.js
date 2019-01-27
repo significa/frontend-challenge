@@ -38,11 +38,11 @@ const Overlay = styled.div`
 	position: relative;
 	&:before{
 		content: '';
-		opacity: ${p => p.isActive ? 0.9 : 0};
+		opacity: 0;
 		${fill}
 		overflow: hidden;
 		border-radius: 0.1875rem;
-		background: ${p => (p.isActive && !p.loading) ? p.theme.colors.yellow : p.theme.colors.grey};
+		background: ${p => p.theme.colors.grey};
 		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
 		transition: 0.2s all;
 		${Wrapper}:hover &, ${Wrapper}:focus-within &{
@@ -60,7 +60,7 @@ const HeartWrapper = styled.button`
 	margin-left: auto;
 	padding: 0.75rem;
 	cursor: pointer;
-	opacity: ${p => (p.isFavorite || p.isActive) ? 1 : 0};
+	opacity: ${p => (p.isFavorite) ? 1 : 0};
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
@@ -84,12 +84,12 @@ const Info = styled.button`
 	justify-content: flex-end;
 	position: relative;
 	padding: 0.75rem;
-	opacity: ${p => p.isActive ? 1 : 0};
+	opacity: 0;
 	cursor: pointer;
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
-	&:focus{${p => !p.isActive && p.theme.focusShadow}}
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const NoImage = styled.div`
@@ -105,25 +105,24 @@ const NoImage = styled.div`
 const Card = ({id, title, year, image, loading, ...props}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(id)
 	const [urlState, setUrlState] = useUrlState()
-	const isActive = ''+id === ''+urlState.id
 
 	return (
-		<Wrapper isActive={isActive} {...props}>
+		<Wrapper {...props}>
 			<AspectRatio ratio={0.75}/>
 			<OverflowHidden>
 				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
 			</OverflowHidden>
 			<AbsoluteFill>
 				{!image && !loading && <NoImage><Movie/></NoImage>}
-				<Overlay loading={loading} isActive={isActive}>
+				<Overlay loading={loading}>
 					{title && (
-						<Info isActive={isActive} onClick={() => setUrlState({id})}>
+						<Info onClick={() => setUrlState({id})}>
 							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
 							<Text>{year}</Text>
 						</Info>
 					)}
 					{id && (
-						<HeartWrapper isActive={isActive} isFavorite={isFavorite} onClick={toggle}>
+						<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
 							<StyledHeart filled={isFavorite}/>
 						</HeartWrapper>
 					)}
