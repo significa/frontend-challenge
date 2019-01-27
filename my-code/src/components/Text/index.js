@@ -7,4 +7,6 @@ const Text = styled.div`
 	${p => mapPropsBreakpoints(p.theme.breakpoints, x => p.theme.typography[x])}
 `
 
+Text.defaultProps = {xs: 0}
+
 export default Text
