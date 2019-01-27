@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { useUrlState } from 'with-url-state'
 import Container from 'components/Container'
-import { Arrow } from 'components/Icon'
+import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
+import Button from 'components/Button'
 import Meta from './Meta'
 import Info from './Info'
 
@@ -59,6 +60,13 @@ const DetailView = () => {
 						<Cell xs={12} md={6}>
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
+							<div style={{display: 'flex', margin: '1rem -1rem'}}>
+								{data.vote_average && (
+									<Button id={data.imdb_id} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
+										{data.vote_average}/10
+									</Button>
+								)}
+							</div>
 							<Info {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
