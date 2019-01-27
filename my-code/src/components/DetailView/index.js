@@ -7,7 +7,7 @@ import { Arrow } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Meta from './Meta'
-import Section from './Section'
+import Info from './Info'
 
 
 const Wrapper = styled.div`
@@ -44,18 +44,7 @@ const DetailView = () => {
 		`&append_to_response=release_dates,external_ids`
 	].join(''))
 
-	// is not advised to pass conditionals before a hook, but it just works :shrug:
-	const omdb = !loading && data && data.imdb_id && useFetch([
-		`http://omdbapi.com/`,
-		`?apikey=${process.env.REACT_APP_OMDB_KEY}`,
-		`&i=${data.imdb_id}`,
-	].join(''))
-
 	/* eslint-disable no-mixed-operators */
-	const plot = (omdb && omdb.data && omdb.data.Plot) || (data && data.overview) || ''
-	const genres = data && data.genres.map(x => x.name) || []
-	const actors = omdb && omdb.data && omdb.data.Actors.split(', ') || []
-	const directors = omdb && omdb.data && omdb.data.Director.split(', ') || []
 	const image = data && data.poster_path || ''
 	/* eslint-enable */
 
@@ -74,30 +63,7 @@ const DetailView = () => {
 							</Text>
 							<Row>
 								<Cell lg={10}>
-									{plot && <Section title='Plot'>{plot}</Section>}
-									<Row style={{justifyContent: 'space-between'}}>
-										{!!genres.length && (
-											<Cell>
-												<Section title='Genres'>
-													{genres.map(genre => <div key={genre}>{genre}</div>)}
-												</Section>
-											</Cell>
-										)}
-										{!!actors.length && (
-											<Cell>
-												<Section title='Actors'>
-													{actors.map(actor => <div key={actor}>{actor}</div>)}
-												</Section>
-											</Cell>
-										)}
-										{!!directors.length && (
-											<Cell>
-												<Section title='Directors'>
-													{directors.map(director => <div key={director}>{director}</div>)}
-												</Section>
-											</Cell>
-										)}
-									</Row>
+									<Info {...data}/>
 								</Cell>
 							</Row>
 						</Cell>
