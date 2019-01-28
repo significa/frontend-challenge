@@ -11,13 +11,25 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 `
 
-const StyledLink = styled(Link)`
+const linkStyle = `
 	display: block;
 	text-decoration: none;
 	color: currentColor;
 	margin: -0.5rem;
 	padding: 0.5rem;
 	border-radius: 2rem;
+`
+
+const StyledLink = styled(Link)`
+	${linkStyle}
+	&:focus{${p => p.theme.focusShadow}}
+`
+
+const Button = styled.button`
+	background: none;
+	border: none;
+	appearance: none;
+	${linkStyle}
 	&:focus{${p => p.theme.focusShadow}}
 `
 
@@ -27,9 +39,16 @@ const Navbar = () => (
 			<StyledLink tabIndex={0} to='/'><Logo/></StyledLink>
 			<Location>
 				{({location}) => (
-					<StyledLink style={{padding:'0.75rem', margin: '-0.75rem'}} tabIndex={0} to={location.pathname === '/favorites' ? '/' : '/favorites'}>
-						<Heart filled={location.pathname === '/favorites'} style={{transform: 'translateY(1px)'}}/>
-					</StyledLink>
+					location.pathname !== '/favorites'
+					? (
+						<StyledLink to={'/favorites'} style={{padding:'0.75rem', margin: '-0.75rem'}} tabIndex={0}>
+							<Heart style={{transform: 'translateY(1px)'}}/>
+						</StyledLink>
+					) : (
+						<Button onClick={() => window.history.back()} style={{padding:'0.75rem', margin: '-0.75rem'}}>
+							<Heart filled style={{transform: 'translateY(1px)'}}/>
+						</Button>
+					)
 				)}
 			</Location>
 		</Wrapper>

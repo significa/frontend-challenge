@@ -22,17 +22,20 @@ const Wrapper = styled.div`
 	margin-bottom: ${p => p.error ? 0 : '6rem'};
 `
 
-const BackLink = styled(Link)`
-	text-decoration: none;
+const BackLink = styled.button`
+	background: ${p => p.theme.colors.dark};
+	border: none;
+	display: block;
+	appearance: none;
+	${'' /* min-width: 100%; */}
+	width: calc(100% + 0.5rem);
 	color: ${p => p.theme.colors.lightGrey};
 	cursor: pointer;
-	display: block;
 	border-radius: 0.25rem;
-	margin-left: -0.5rem;
+	margin: 0 -0.5rem;
 	padding: 0.75rem 0 0.75rem 0.5rem;
 	position: sticky;
 	top: 0;
-	background: ${p => p.theme.colors.dark};
 	box-shadow: 0 0 4rem ${p => p.theme.colors.dark};
 	z-index: 1;
 	&:hover{
@@ -58,7 +61,7 @@ const DetailView = ({movieId}) => {
 	return(
 		<Wrapper error={error}>
 			<Container>
-				<BackLink tabIndex={0} to='/'><Arrow/></BackLink>
+				<BackLink onClick={() => window.history.back()}><Arrow/></BackLink>
 				{!loading && data && (
 					<Row vertical-gutter style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6} style={{marginBottom: '1.5rem'}}>
