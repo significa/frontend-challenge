@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 	position: relative;
 	background: ${p => p.error ? p.theme.colors.red : p.theme.colors.grey};
 	border-radius: 0.1875rem;
+	cursor: pointer;
 `
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
@@ -49,15 +50,17 @@ const Overlay = styled.div`
 	flex-direction: column-reverse;
 	justify-content: space-between;
 	position: relative;
-	&:before{
-		content: '';
-		opacity: 0;
-		${fill}
-		overflow: hidden;
-		border-radius: 0.1875rem;
-		background: ${p => p.theme.colors.grey};
-		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
-		transition: 0.2s all;
+	&:before
+	{}
+			content: '';
+			opacity: 0;
+			${fill}
+			overflow: hidden;
+			border-radius: 0.1875rem;
+			background: ${p => p.theme.colors.grey};
+			box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
+			transition: 0.2s al
+			l;
 		${Wrapper}:hover &, ${Wrapper}:focus-within &{
 			opacity: 0.9;
 		}
@@ -121,26 +124,40 @@ const FavoriteButton = ({movieId}) => {
 	)
 }
 
+const LoadMore = styled(Text)`
+	text-align: center;
+	height: 100%;
+	margin: auto;
+	${Wrapper}:hover & {
+		color: ${p => p.theme.colors.lightGrey};
+	}
+`
 
-const Card = ({movieId, title, year, image, loading, error, ...props}) => (
+
+const Card = ({movieId, title, year, image, loading, error, loadMore, ...props}) => (
 	<Wrapper error={error} {...props}>
 		<AspectRatio ratio={0.75}/>
 		<OverflowHidden>
 			{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
 		</OverflowHidden>
+		{loadMore && (
+			<LoadMore xs={1} weight={500} color={p => p.theme.colors.midGrey}>Load<br/>More</LoadMore>
+		)}
 		<AbsoluteFill>
-			{!image && !loading && <NoImage><Movie/></NoImage>}
-			<Overlay>
-				{title && (
-					<Info>
-						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
-						<Text>{year}</Text>
-					</Info>
-				)}
-				{movieId && <FavoriteButton movieId={movieId} />}
-			</Overlay>
+			{!image && !loading && !loadMore && <NoImage><Movie/></NoImage>}
+			{!loadMore && (
+				<Overlay>
+					{title && (
+						<Info>
+							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+							<Text>{year}</Text>
+						</Info>
+					)}
+					{movieId && <FavoriteButton movieId={movieId} />}
+				</Overlay>
+			)}
 		</AbsoluteFill>
-		<Anchor to={`/${movieId}`} tabIndex={0}/>
+		{!(loading || error || loadMore) && <Anchor to={`/${movieId}`} tabIndex={0}/>}
 	</Wrapper>
 )
 

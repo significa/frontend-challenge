@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { useInputState } from 'utils/hooks'
@@ -8,6 +8,7 @@ import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
 import { FightClub, Dead } from 'components/Icon'
+import CardsByPage from './CardsByPage'
 
 const Wrapper = styled.div`
 	flex: 1
@@ -31,24 +32,26 @@ const SearchView = () => {
 		`&query=${search}`,
 	].join(''))
 
+	const [count, setCount] = useState(1)
+
 	return(
 		<Wrapper>
 			<Searchbar value={search} onChange={setSearch} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
+					<CardsByPage search={search} page={1}/>
 					{(search && !loading && data?.results) && (
-						data.results.map(({id: movieId, title, poster_path, release_date}) => (
-							<Cell key={movieId} xs={6} sm={4} md={3} xg={2}>
-								<Card
-									movieId={movieId}
-									title={title}
-									image={poster_path}
-									year={release_date.split('-')[0]}
-								/>
+						<Fragment>
+							{count > 1 && Array(count).fill(0).map((x, i) => i+2).map(page => (
+								<CardsByPage search={search} page={page}/>
+							))}
+							<Cell xs={6} sm={4} md={3} xg={2}>
+								<Card onClick={() => setCount(count + 1)} loadMore/>
 							</Cell>
-						)
-					))}
-					{search && loading && new Array(12).fill(0).map((x, i) => (
+						</Fragment>
+					)}
+
+					{search && loading && new Array(20).fill(0).map((x, i) => (
 						<Cell key={i} xs={6} sm={4} md={3} xg={2}><Card loading/></Cell>
 					))}
 				</Row>
