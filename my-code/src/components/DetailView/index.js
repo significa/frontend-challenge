@@ -35,12 +35,19 @@ const BackLink = styled.button`
 	padding: 0.75rem 0 0.75rem 0.5rem;
 	position: sticky;
 	top: 0;
-	box-shadow: 0 0 4rem ${p => p.theme.colors.dark};
-	z-index: 1;
 	&:hover{
 		color: ${p => p.theme.colors.white};
 	}
-	&:focus{${p => p.theme.focusShadow}}
+	&:focus{box-shadow: inset 0 0 0 0.125rem ${p => p.theme.colors.yellow}}
+	&:before{
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		box-shadow: 0 0 4rem ${p => p.theme.colors.dark};
+	}
 `
 
 
