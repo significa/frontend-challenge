@@ -6,12 +6,20 @@ import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie } from 'components/Icon'
 
-const Wrapper = styled.div`
+const Wrapper = styled.a`
+	appearance: none;
+	width: 100%;
+	color: currentColor;
+	display: block;
+	background: none;
+	border: none;
+	margin: 0;
 	flex: 1;
 	display: flex;
 	position: relative;
 	background: ${p => p.theme.colors.grey};
 	border-radius: 0.1875rem;
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
@@ -73,10 +81,7 @@ const StyledHeart = styled(Heart)`
 	}
 `
 
-const Info = styled.button`
-	background: none;
-	border: none;
-	margin: 0;
+const Info = styled.div`
 	color: currentColor;
 	flex: 1;
 	display: flex;
@@ -89,7 +94,6 @@ const Info = styled.button`
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
-	&:focus{${p => p.theme.focusShadow}}
 `
 
 const NoImage = styled.div`
@@ -101,13 +105,21 @@ const NoImage = styled.div`
 	color: ${p => p.theme.colors.midGrey};
 `
 
+const FavoriteButton = ({movieId}) => {
+	const [isFavorite, {toggle}] = useFavoriteState(movieId)
+	return (
+		// eslint-disable-next-line no-sequences
+		<HeartWrapper onClick={e => (e.stopPropagation(), toggle())}>
+			<StyledHeart filled={isFavorite}/>
+		</HeartWrapper>
+	)
+}
 
 const Card = ({id, title, year, image, loading, ...props}) => {
-	const [isFavorite, {toggle}] = useFavoriteState(id)
 	const [, setUrlState] = useUrlState()
 
 	return (
-		<Wrapper {...props}>
+		<Wrapper tabIndex={0} onClick={() => setUrlState({id})} {...props}>
 			<AspectRatio ratio={0.75}/>
 			<OverflowHidden>
 				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
@@ -116,16 +128,12 @@ const Card = ({id, title, year, image, loading, ...props}) => {
 				{!image && !loading && <NoImage><Movie/></NoImage>}
 				<Overlay loading={loading}>
 					{title && (
-						<Info onClick={() => setUrlState({id})}>
+						<Info>
 							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
 							<Text>{year}</Text>
 						</Info>
 					)}
-					{id && (
-						<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
-							<StyledHeart filled={isFavorite}/>
-						</HeartWrapper>
-					)}
+					{id && <FavoriteButton movieId={id} />}
 				</Overlay>
 			</AbsoluteFill>
 		</Wrapper>
