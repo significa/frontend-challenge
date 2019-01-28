@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react'
-import Navbar from 'components/Navbar'
+import React, { Fragment, lazy, Suspense } from 'react'
 import { Router, Location } from '@reach/router'
 import posed, {PoseGroup} from 'react-pose'
-import SearchView from 'components/SearchView'
-import FavoritesView from 'components/FavoritesView'
-import DetailView from 'components/DetailView'
+import Navbar from 'components/Navbar'
+import Loader from 'components/Loader'
+const SearchView = lazy(() => import('components/SearchView'))
+const FavoritesView = lazy(() => import('components/FavoritesView'))
+const DetailView = lazy(() => import('components/DetailView'))
 
 const RouteContainer = posed.div({
 	enter: {opacity: 1},
@@ -16,15 +17,17 @@ const App = () => (
 		<Navbar/>
 		<Location>
 			{({location}) => (
-				<PoseGroup>
-					<RouteContainer key={location.key}>
-						<Router location={location}>
-							<SearchView path='/'/>
-							<FavoritesView path='/favorites'/>
-							<DetailView path='/:movieId'/>
-						</Router>
-					</RouteContainer>
-				</PoseGroup>
+				<Suspense fallback={<Loader/>}>
+					<PoseGroup>
+						<RouteContainer key={location.key}>
+							<Router location={location}>
+									<SearchView path='/'/>
+									<FavoritesView path='/favorites'/>
+									<DetailView path='/:movieId'/>
+							</Router>
+						</RouteContainer>
+					</PoseGroup>
+				</Suspense>
 			)}
 		</Location>
 	</Fragment>

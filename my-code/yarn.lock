@@ -336,6 +336,12 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
+"@babel/plugin-syntax-dynamic-import@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-dynamic-import/-/plugin-syntax-dynamic-import-7.2.0.tgz#69c159ffaf4998122161ad8ebc5e6d1f55df8612"
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+
 "@babel/plugin-syntax-export-default-from@^7.2.0":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-export-default-from/-/plugin-syntax-export-default-from-7.2.0.tgz#edd83b7adc2e0d059e2467ca96c650ab6d2f3820"
@@ -584,6 +590,15 @@
 "@babel/plugin-transform-runtime@7.1.0":
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.1.0.tgz#9f76920d42551bb577e2dc594df229b5f7624b63"
+  dependencies:
+    "@babel/helper-module-imports" "^7.0.0"
+    "@babel/helper-plugin-utils" "^7.0.0"
+    resolve "^1.8.1"
+    semver "^5.5.1"
+
+"@babel/plugin-transform-runtime@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-runtime/-/plugin-transform-runtime-7.2.0.tgz#566bc43f7d0aedc880eaddbd29168d0f248966ea"
   dependencies:
     "@babel/helper-module-imports" "^7.0.0"
     "@babel/helper-plugin-utils" "^7.0.0"
@@ -1517,9 +1532,23 @@ babel-plugin-macros@2.4.2:
     cosmiconfig "^5.0.5"
     resolve "^1.8.1"
 
+babel-plugin-macros@^2.2.2:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/babel-plugin-macros/-/babel-plugin-macros-2.4.5.tgz#7000a9b1f72d19ceee19a5804f1d23d6daf38c13"
+  dependencies:
+    cosmiconfig "^5.0.5"
+    resolve "^1.8.1"
+
 babel-plugin-named-asset-import@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.3.0.tgz#3289ec622d19cd1cc84df8d784b41f1b048bd524"
+
+babel-plugin-preval@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-preval/-/babel-plugin-preval-3.0.1.tgz#a26f9690114a864a54a5cbdf865496ebf541a9c3"
+  dependencies:
+    babel-plugin-macros "^2.2.2"
+    require-from-string "^2.0.2"
 
 "babel-plugin-styled-components@>= 1":
   version "1.10.0"
@@ -7458,7 +7487,7 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
 
-require-from-string@^2.0.1:
+require-from-string@^2.0.1, require-from-string@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/require-from-string/-/require-from-string-2.0.2.tgz#89a7fdd938261267318eafe14f9c32e598c36909"
 
