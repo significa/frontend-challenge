@@ -19,7 +19,6 @@
     "start": "rescripts start",
     "build": "rescripts build",
     "postbuild": "react-snap && cp build/index.html build/404.html && cp build/index.html build/200.html ",
-    "test": "rescripts test",
     "eject": "rescripts eject"
   },
   "eslintConfig": {
