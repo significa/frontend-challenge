@@ -7,9 +7,9 @@ import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import FetchCard from 'components/Card/FetchCard'
-import ErrorState from 'components/ErrorState'
+import InfoScreen from 'components/InfoScreen'
 import Text from 'components/Text'
-import Empty from './Empty'
+import { HeartBreak } from 'components/Icon'
 
 const Wrapper = styled.div`
 	flex: 1
@@ -28,7 +28,13 @@ const SearchView = () => {
 	return(
 		<Wrapper>
 			<Container>
-				{!favorites.length ? <Empty/> : (
+				{!favorites.length ? (
+					<InfoScreen
+						icon={<HeartBreak size={96} style={{margin: '1rem'}}/>}
+						title='You still have no favorites'
+						description='you can add movies to your favorites clicking on the ♥ icon'
+					/>
+				) : (
 					<Fragment>
 						<Text weight={600} xs={2} sm={3} md={4} xg={5}>{getTitle(favorites.length)}</Text>
 						<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>

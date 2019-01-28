@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
 import Text from 'components/Text'
-import { HeartBreak } from 'components/Icon'
 
 const Wrapper = styled(Container)`
 	flex: 1;
@@ -17,16 +16,12 @@ const Wrapper = styled(Container)`
 	}
 `
 
-const EmptyState = props => (
+const InfoScreen = ({icon, title, description, noMargin, ...props}) => (
 	<Wrapper {...props}>
-		<HeartBreak size={96} style={{margin: '1rem'}}/>
-		<Text xs={1} md={2} weight={600} style={{margin: '1rem 0 0.5rem'}}>
-			You still have no favorites
-		</Text>
-		<Text color={p => p.theme.colors.lightGrey}>
-			you can add movies to your favorites clicking on the ♥ icon
-		</Text>
+		{icon && <div style={{margin: !noMargin && '2rem'}}>{icon}</div>}
+		{title && <Text xs={1} md={2} weight={600} style={{margin: '1rem 0 0.5rem'}}>{title}</Text>}
+		{description && <Text color={p => p.theme.colors.lightGrey}>{description}</Text>}
 	</Wrapper>
 )
 
-export default EmptyState
+export default InfoScreen

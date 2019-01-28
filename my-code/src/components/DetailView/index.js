@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { useFetch } from 'react-hooks-fetch'
 import Container from 'components/Container'
-import { Arrow, IMDB } from 'components/Icon'
+import { Arrow, IMDB, Dead } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Button from 'components/Button'
 import ToggleButton from 'components/ToggleButton'
-import ErrorState from 'components/ErrorState'
+import InfoScreen from 'components/InfoScreen'
 import Meta from './Meta'
 import Info from './Info'
 import Image from './Image'
@@ -85,7 +85,7 @@ const DetailView = ({movieId}) => {
 			</Container>
 			{error && (
 				<Container style={{flex: 1}}>
-					<ErrorState/>
+					<InfoScreen icon={<Dead size={96} style={{margin: '2rem'}}/>} title='I’m sorry Dave' description='I’m afraid i can’t do that'/>
 				</Container>
 			)}
 		</Wrapper>
