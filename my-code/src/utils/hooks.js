@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useUrlState as useUrl } from 'with-url-state'
 
 export const useInputState = initialState => {
 	const [state, setState] = useState(initialState)
@@ -17,3 +18,7 @@ export const useUniqueArray = (initialValue = []) => {
 	const [value, actions] = useSet(initialValue)
 	return [[...value], actions]
 }
+
+export const useUrlState = (initialState = {}) => (
+	useUrl(initialState, {shouldPushState: () => true})
+)

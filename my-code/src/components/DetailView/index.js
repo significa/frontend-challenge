@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
-import { useUrlState } from 'with-url-state'
+import { useUrlState } from 'utils/hooks'
 import Container from 'components/Container'
 import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useUrlState } from 'with-url-state'
+import { useUrlState } from 'utils/hooks'
 import Container from 'components/Container'
 import { Logo } from 'components/Icon'
 

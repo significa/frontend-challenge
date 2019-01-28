@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useUrlState } from 'with-url-state'
+import { useUrlState } from 'utils/hooks'
+import { useFavoriteState } from 'utils/favorites'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie } from 'components/Icon'
-import { useFavoriteState } from 'utils/favorites'
 
 const Wrapper = styled.div`
 	flex: 1;

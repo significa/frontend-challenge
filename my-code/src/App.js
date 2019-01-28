@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Navbar from 'components/Navbar'
-import { useUrlState } from 'with-url-state'
+import { useUrlState } from 'utils/hooks'
 import posed, {PoseGroup} from 'react-pose'
 import SearchView from 'components/SearchView'
 import DetailView from 'components/DetailView'
