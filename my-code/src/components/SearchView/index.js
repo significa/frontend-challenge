@@ -40,7 +40,7 @@ const SearchView = () => {
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
 					<CardsByPage search={search} page={1}/>
-					{(search && !loading && data?.results) && (
+					{(search && !loading && !!data?.results?.length) && (
 						<Fragment>
 							{count > 1 && Array(count).fill(0).map((x, i) => i+2).map(page => (
 								<CardsByPage search={search} page={page}/>
