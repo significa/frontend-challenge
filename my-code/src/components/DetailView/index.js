@@ -49,9 +49,7 @@ const DetailView = ({movieId}) => {
 		`&append_to_response=release_dates,external_ids,credits`
 	].join(''))
 
-	/* eslint-disable no-mixed-operators */
-	const image = data && data.poster_path || ''
-	/* eslint-enable */
+	const image = data?.poster_path || ''
 
 	return(
 		<Wrapper error={error}>
