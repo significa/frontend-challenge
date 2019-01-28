@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Link } from '@reach/router'
 import { useFetch } from 'react-hooks-fetch'
 import Container from 'components/Container'
 import { Arrow, IMDB, Dead } from 'components/Icon'

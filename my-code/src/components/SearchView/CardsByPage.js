@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { useFetch } from 'react-hooks-fetch'
 import { Cell } from 'components/Grid'
 import Card from 'components/Card'
 
 const CardsByPage = ({search, page}) => {
-	const { error, loading, data } = useFetch([
+	const { loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&query=${search}`,
