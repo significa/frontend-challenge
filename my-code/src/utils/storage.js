@@ -1,31 +1,27 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
-const useStorageContext = Context => {
-	const {value, setValue} = useContext(Context)
-	return [value, setValue]
-}
-
-export const createStorage = (key, parse, stringify) => {
+export const createStorage = (key, parse = null, stringify = null) => {
 	const initialValue = JSON.parse(localStorage.getItem(key), parse)
-	const Context = createContext({ value: initialValue, setValue: () => {} })
 
-	class StorageProvider extends React.Component {
-		static displayName = `StorageProvider(${key})`
-		setValue = value => this.setState({ value })
-		state = { value: initialValue, setValue: this.setValue }
+	const ValueContext = createContext(initialValue)
+	const SetterContext = createContext(() => {})
+	const useStorage = () => [ValueContext, SetterContext].map(c => useContext(c))
 
-		componentDidUpdate(){
-			localStorage.setItem(key, JSON.stringify(this.state.value, stringify))
-		}
+	const Provider = ({children}) => {
+		const [value, setValue] = useState(initialValue)
 
-		render() {
-			return (
-				<Context.Provider value={this.state}>
-					{this.props.children}
-				</Context.Provider>
-			)
-		}
+		useEffect(() => {
+			localStorage.setItem(key, JSON.stringify(value, stringify))
+		}, [value])
+
+		return (
+			<ValueContext.Provider value={value}>
+				<SetterContext.Provider value={setValue}>
+					{children}
+				</SetterContext.Provider>
+			</ValueContext.Provider>
+		)
 	}
 
-	return [StorageProvider, () => useStorageContext(Context)]
+	return [Provider, useStorage]
 }
