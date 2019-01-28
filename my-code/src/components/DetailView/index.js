@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { Link } from '@reach/router'
 import { useFetch } from 'react-hooks-fetch'
@@ -48,6 +48,10 @@ const DetailView = ({movieId}) => {
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&append_to_response=release_dates,external_ids,credits`
 	].join(''))
+
+	useEffect(() => {
+		document.title = `What’s in ${data?.title && ` ⠿ ${data.title}`}`
+	}, [data])
 
 	const image = data?.poster_path || ''
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { useInputState } from 'utils/hooks'
@@ -18,6 +18,7 @@ const Wrapper = styled.div`
 `
 
 const SearchView = () => {
+	useEffect(() => {document.title = `What’s in`}, [])
 	const [search, setSearch] = useInputState('hey')
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,
