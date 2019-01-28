@@ -30,6 +30,11 @@ const BackLink = styled(Link)`
 	border-radius: 0.25rem;
 	margin-left: -0.5rem;
 	padding: 0.75rem 0 0.75rem 0.5rem;
+	position: sticky;
+	top: 0;
+	background: ${p => p.theme.colors.dark};
+	box-shadow: 0 0 4rem ${p => p.theme.colors.dark};
+	z-index: 1;
 	&:hover{
 		color: ${p => p.theme.colors.white};
 	}
