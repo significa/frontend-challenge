@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "minireset.css": "^0.0.4",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",

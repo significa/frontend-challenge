@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useUrlState } from 'utils/hooks'
+import { Link } from '@reach/router'
 import { useFavoriteState } from 'utils/favorites'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie } from 'components/Icon'
 
-const Wrapper = styled.a`
+const Wrapper = styled(Link)`
 	appearance: none;
 	width: 100%;
 	color: currentColor;
@@ -115,30 +115,26 @@ const FavoriteButton = ({movieId}) => {
 	)
 }
 
-const Card = ({id, title, year, image, loading, ...props}) => {
-	const [, setUrlState] = useUrlState()
 
-	return (
-		<Wrapper tabIndex={0} onClick={() => setUrlState({id})} {...props}>
-			<AspectRatio ratio={0.75}/>
-			<OverflowHidden>
-				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
-			</OverflowHidden>
-			<AbsoluteFill>
-				{!image && !loading && <NoImage><Movie/></NoImage>}
-				<Overlay loading={loading}>
-					{title && (
-						<Info>
-							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
-							<Text>{year}</Text>
-						</Info>
-					)}
-					{id && <FavoriteButton movieId={id} />}
-				</Overlay>
-			</AbsoluteFill>
-		</Wrapper>
-	)
-}
-
+const Card = ({id, title, year, image, loading, ...props}) => (
+	<Wrapper to={`/${id}`} tabIndex={0} {...props}>
+		<AspectRatio ratio={0.75}/>
+		<OverflowHidden>
+			{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
+		</OverflowHidden>
+		<AbsoluteFill>
+			{!image && !loading && <NoImage><Movie/></NoImage>}
+			<Overlay loading={loading}>
+				{title && (
+					<Info>
+						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+						<Text>{year}</Text>
+					</Info>
+				)}
+				{id && <FavoriteButton movieId={id} />}
+			</Overlay>
+		</AbsoluteFill>
+	</Wrapper>
+)
 
 export default Card

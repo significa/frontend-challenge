@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from '@reach/router'
 import { useFetch } from 'react-hooks-fetch'
-import { useUrlState } from 'utils/hooks'
 import Container from 'components/Container'
 import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
@@ -22,7 +22,8 @@ const Wrapper = styled.div`
 	margin-bottom: ${p => p.error ? 0 : '6rem'};
 `
 
-const ArrowWrapper = styled.div`
+const BackLink = styled(Link)`
+	text-decoration: none;
 	color: ${p => p.theme.colors.lightGrey};
 	cursor: pointer;
 	display: block;
@@ -32,11 +33,9 @@ const ArrowWrapper = styled.div`
 `
 
 
-const DetailView = () => {
-	const [urlState, setUrlState] = useUrlState()
-
+const DetailView = ({movieId}) => {
 	const { error, loading, data } = useFetch([
-		`https://api.themoviedb.org/3/movie/${urlState.id}`,
+		`https://api.themoviedb.org/3/movie/${movieId}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&append_to_response=release_dates,external_ids,credits`
 	].join(''))
@@ -48,9 +47,7 @@ const DetailView = () => {
 	return(
 		<Wrapper error={error}>
 			<Container>
-				<ArrowWrapper onClick={() => setUrlState({index: 1})}>
-					<Arrow/>
-				</ArrowWrapper>
+				<BackLink to='/'><Arrow/></BackLink>
 				{!loading && data && (
 					<Row style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6}>
