@@ -1,5 +1,6 @@
 {
-  "name": "my-code",
+  "name": "whats-in",
+  "description": "react-app for movies",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +18,7 @@
   "scripts": {
     "start": "rescripts start",
     "build": "rescripts build",
+    "postbuild": "react-snap && cp build/index.html build/404.html && cp build/index.html build/200.html ",
     "test": "rescripts test",
     "eject": "rescripts eject"
   },
@@ -39,6 +41,7 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@rescripts/cli": "^0.0.10",
     "@rescripts/rescript-env": "^0.0.5",
-    "babel-plugin-preval": "^3.0.1"
+    "babel-plugin-preval": "^3.0.1",
+    "react-snap": "^1.23.0"
   }
 }
