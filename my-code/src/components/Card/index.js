@@ -130,7 +130,7 @@ const Card = ({movieId, title, year, image, loading, ...props}) => (
 		</OverflowHidden>
 		<AbsoluteFill>
 			{!image && !loading && <NoImage><Movie/></NoImage>}
-			<Overlay loading={loading}>
+			<Overlay>
 				{title && (
 					<Info>
 						<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
