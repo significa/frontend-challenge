@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
-import { useInputState } from 'utils/hooks'
+import { useStorageString } from 'utils/storage'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
@@ -25,11 +25,7 @@ const Image = styled.img`
 
 const SearchView = () => {
 	useEffect(() => {document.title = `What’s in`}, [])
-
-	const initialSearch = () => window.localStorage.getItem('search') || ''
-	const [search, setSearch] = useInputState(initialSearch)
-	useEffect(() => window.localStorage.setItem('search', search), [search])
-
+	const [search, setSearch] = useStorageString('')
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
@@ -40,7 +36,7 @@ const SearchView = () => {
 
 	return(
 		<Wrapper>
-			<Searchbar value={search} onChange={setSearch} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
+			<Searchbar value={search} onChange={e => setSearch(e.target.value)} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
 					<CardsByPage search={search} page={1}/>

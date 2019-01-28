@@ -21,9 +21,9 @@ const App = () => (
 					<PoseGroup>
 						<RouteContainer key={location.key}>
 							<Router location={location}>
-									<SearchView path='/'/>
-									<FavoritesView path='/favorites'/>
-									<DetailView path='/:movieId'/>
+								<SearchView path='/'/>
+								<FavoritesView path='/favorites'/>
+								<DetailView path='/:movieId'/>
 							</Router>
 						</RouteContainer>
 					</PoseGroup>
