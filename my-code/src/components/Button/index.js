@@ -10,7 +10,8 @@ const Wrapper = styled.a`
 	box-shadow: inset 0 0 0 1px ${p => p.theme.colors.midGrey};
 	overflow: hidden;
 	margin: 1rem 0.5rem;
-	&:focus{${p => p.theme.focusShadow}}
+	outline: none;
+	&:focus{box-shadow: inset 0 0 0 0.125rem ${p => p.theme.colors.yellow}}
 `
 
 const Left = styled.div`

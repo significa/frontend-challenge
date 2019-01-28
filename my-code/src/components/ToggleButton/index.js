@@ -26,7 +26,7 @@ const Wrapper = styled.button`
 		background: ${p => p.theme.colors.red};
 		box-shadow: inset 0 0 0 1px ${p => p.theme.colors.red};
 	`}
-	&:focus{${p => p.theme.focusShadow}}
+	&:focus{box-shadow: inset 0 0 0 0.125rem ${p => p.theme.colors.red}}
 `
 
 const Left = styled.div`
