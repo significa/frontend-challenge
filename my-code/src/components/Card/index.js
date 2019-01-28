@@ -6,11 +6,7 @@ import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie } from 'components/Icon'
 
-const Wrapper = styled(Link)`
-	appearance: none;
-	width: 100%;
-	color: currentColor;
-	display: block;
+const Wrapper = styled.div`
 	background: none;
 	border: none;
 	margin: 0;
@@ -19,10 +15,19 @@ const Wrapper = styled(Link)`
 	position: relative;
 	background: ${p => p.theme.colors.grey};
 	border-radius: 0.1875rem;
-	&:focus{${p => p.theme.focusShadow}}
 `
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
+
+const Anchor = styled(Link)`
+	appearance: none;
+	width: 100%;
+	color: currentColor;
+	display: block;
+	border-radius: 0.1875rem;
+	${fill}
+	&:focus{${p => p.theme.focusShadow}}
+`
 
 const AbsoluteFill = styled.div`${fill}`
 
@@ -68,6 +73,7 @@ const HeartWrapper = styled.button`
 	margin-left: auto;
 	padding: 0.75rem;
 	cursor: pointer;
+	z-index: 1;
 	opacity: ${p => (p.isFavorite) ? 1 : 0};
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
@@ -109,7 +115,7 @@ const FavoriteButton = ({movieId}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(movieId)
 	return (
 		// eslint-disable-next-line no-sequences
-		<HeartWrapper onClick={e => (e.stopPropagation(), toggle())}>
+		<HeartWrapper onClick={toggle}>
 			<StyledHeart filled={isFavorite}/>
 		</HeartWrapper>
 	)
@@ -117,7 +123,7 @@ const FavoriteButton = ({movieId}) => {
 
 
 const Card = ({id, title, year, image, loading, ...props}) => (
-	<Wrapper to={`/${id}`} tabIndex={0} {...props}>
+	<Wrapper {...props}>
 		<AspectRatio ratio={0.75}/>
 		<OverflowHidden>
 			{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
@@ -134,6 +140,7 @@ const Card = ({id, title, year, image, loading, ...props}) => (
 				{id && <FavoriteButton movieId={id} />}
 			</Overlay>
 		</AbsoluteFill>
+		<Anchor to={`/${id}`} tabIndex={0}/>
 	</Wrapper>
 )
 
