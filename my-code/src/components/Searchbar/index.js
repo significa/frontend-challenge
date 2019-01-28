@@ -9,7 +9,20 @@ const Wrapper = styled.label`
 	align-items: center;
 	padding: 0.75rem;
 	border-radius: 0.25rem;
-	&:focus-within{${p => p.theme.focusShadow}}
+	position: relative;
+	box-shadow: 0 0 4rem 0.125rem ${p => p.theme.colors.dark};
+	&:focus-within{
+		&:before{
+		content: '';
+		border-radius: 0.25rem;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		${p => p.theme.focusShadow}}
+		}
+	}
 `
 
 
@@ -39,9 +52,9 @@ const Input = styled.input`
 	}
 `
 
-const Searchbar = ({className, style, ...props}) => (
-	<Container>
-		<Wrapper className={className} style={style}>
+const Searchbar = ({...props}) => (
+	<Container {...props}>
+		<Wrapper>
 			<Loupe/>
 			<Input placeholder='Search movies...' {...props}/>
 		</Wrapper>

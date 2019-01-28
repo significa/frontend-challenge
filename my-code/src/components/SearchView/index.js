@@ -27,7 +27,7 @@ const SearchView = () => {
 
 	return(
 		<Wrapper>
-			<Searchbar value={search} onChange={setSearch}/>
+			<Searchbar value={search} onChange={setSearch} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
 					{(search && !loading && data) && (
