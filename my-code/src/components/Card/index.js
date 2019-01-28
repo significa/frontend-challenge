@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 	flex: 1;
 	display: flex;
 	position: relative;
-	background: ${p => p.theme.colors.grey};
+	background: ${p => p.error ? p.theme.colors.red : p.theme.colors.grey};
 	border-radius: 0.1875rem;
 `
 
@@ -122,8 +122,8 @@ const FavoriteButton = ({movieId}) => {
 }
 
 
-const Card = ({movieId, title, year, image, loading, ...props}) => (
-	<Wrapper {...props}>
+const Card = ({movieId, title, year, image, loading, error, ...props}) => (
+	<Wrapper error={error} {...props}>
 		<AspectRatio ratio={0.75}/>
 		<OverflowHidden>
 			{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
