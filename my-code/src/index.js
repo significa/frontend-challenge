@@ -1,5 +1,5 @@
 import React from 'react'
-import { hydrate, render } from "react-dom";
+import { hydrate, render } from 'react-dom'
 import 'typeface-roboto'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'components/GlobalStyle'
@@ -17,12 +17,12 @@ const Wrapper = () => (
 	</ThemeProvider>
 )
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root')
 
 if (rootElement.hasChildNodes()) {
-	hydrate(<Wrapper/>, rootElement);
+	hydrate(<Wrapper/>, rootElement)
 } else {
-	render(<Wrapper/>, rootElement);
+	render(<Wrapper/>, rootElement)
 }
 
 register()
