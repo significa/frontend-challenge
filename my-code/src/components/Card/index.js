@@ -122,7 +122,7 @@ const FavoriteButton = ({movieId}) => {
 }
 
 
-const Card = ({id, title, year, image, loading, ...props}) => (
+const Card = ({movieId, title, year, image, loading, ...props}) => (
 	<Wrapper {...props}>
 		<AspectRatio ratio={0.75}/>
 		<OverflowHidden>
@@ -137,10 +137,10 @@ const Card = ({id, title, year, image, loading, ...props}) => (
 						<Text>{year}</Text>
 					</Info>
 				)}
-				{id && <FavoriteButton movieId={id} />}
+				{movieId && <FavoriteButton movieId={movieId} />}
 			</Overlay>
 		</AbsoluteFill>
-		<Anchor to={`/${id}`} tabIndex={0}/>
+		<Anchor to={`/${movieId}`} tabIndex={0}/>
 	</Wrapper>
 )
 

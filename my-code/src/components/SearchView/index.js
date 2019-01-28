@@ -31,10 +31,10 @@ const SearchView = () => {
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
 					{(search && !loading && data?.results) && (
-						data.results.map(({id, title, poster_path, release_date}) => (
-							<Cell key={id} xs={6} sm={4} md={3} xg={2}>
+						data.results.map(({id: movieId, title, poster_path, release_date}) => (
+							<Cell key={movieId} xs={6} sm={4} md={3} xg={2}>
 								<Card
-									id={id}
+									movieId={movieId}
 									title={title}
 									image={poster_path}
 									year={release_date.split('-')[0]}

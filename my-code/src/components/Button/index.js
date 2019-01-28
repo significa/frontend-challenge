@@ -29,8 +29,8 @@ const Right = styled.div`
 	padding: 0.5rem;
 `
 
-const Button = ({logo, background, children, id}) => (
-	<Wrapper tabIndex={0} href={`https://imdb.com/title/${id}/`}>
+const Button = ({logo, background, children, movieId}) => (
+	<Wrapper tabIndex={0} href={`https://imdb.com/title/${movieId}/`}>
 		{logo && <Left background={background}>{logo}</Left>}
 		<Right><Text weight={500}>{children}</Text></Right>
 	</Wrapper>

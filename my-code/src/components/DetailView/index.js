@@ -68,7 +68,7 @@ const DetailView = ({movieId}) => {
 										{data.vote_average}/10
 									</Button>
 								)}
-								<ToggleButton id={data.id}/>
+								<ToggleButton movieId={movieId}/>
 							</div>
 							<Info {...data}/>
 						</Cell>
