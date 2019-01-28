@@ -3,6 +3,7 @@ import Navbar from 'components/Navbar'
 import { Router, Location } from '@reach/router'
 import posed, {PoseGroup} from 'react-pose'
 import SearchView from 'components/SearchView'
+import FavoritesView from 'components/FavoritesView'
 import DetailView from 'components/DetailView'
 
 const RouteContainer = posed.div({
@@ -19,6 +20,7 @@ const App = () => (
 					<RouteContainer key={location.key}>
 						<Router location={location}>
 							<SearchView path='/'/>
+							<FavoritesView path='/favorites'/>
 							<DetailView path='/:movieId'/>
 						</Router>
 					</RouteContainer>
