@@ -58,8 +58,8 @@ const DetailView = ({movieId}) => {
 			<Container>
 				<BackLink tabIndex={0} to='/'><Arrow/></BackLink>
 				{!loading && data && (
-					<Row style={{justifyContent: 'space-between'}}>
-						<Cell xs={12} md={6}>
+					<Row vertical-gutter style={{justifyContent: 'space-between'}}>
+						<Cell xs={12} md={6} style={{marginBottom: '1.5rem'}}>
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
 							<div style={{display: 'flex', margin: '1rem -0.5rem'}}>
