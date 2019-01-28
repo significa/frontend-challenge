@@ -36,6 +36,8 @@
   ],
   "devDependencies": {
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0"
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@rescripts/cli": "^0.0.10",
+    "@rescripts/rescript-env": "^0.0.5"
   }
 }
