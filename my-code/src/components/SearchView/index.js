@@ -25,7 +25,7 @@ const Image = styled.img`
 
 const SearchView = () => {
 	useEffect(() => {document.title = `What’s in`}, [])
-	const [search, setSearch] = useInputState('hey')
+	const [search, setSearch] = useInputState('')
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
