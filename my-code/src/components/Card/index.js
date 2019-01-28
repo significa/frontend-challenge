@@ -50,17 +50,15 @@ const Overlay = styled.div`
 	flex-direction: column-reverse;
 	justify-content: space-between;
 	position: relative;
-	&:before
-	{}
-			content: '';
-			opacity: 0;
-			${fill}
-			overflow: hidden;
-			border-radius: 0.1875rem;
-			background: ${p => p.theme.colors.grey};
-			box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
-			transition: 0.2s al
-			l;
+	&:before{
+		content: '';
+		opacity: 0;
+		${fill}
+		overflow: hidden;
+		border-radius: 0.1875rem;
+		background: ${p => p.theme.colors.grey};
+		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
+		transition: 0.2s all;
 		${Wrapper}:hover &, ${Wrapper}:focus-within &{
 			opacity: 0.9;
 		}
@@ -118,7 +116,7 @@ const FavoriteButton = ({movieId}) => {
 	const [isFavorite, {toggle}] = useFavoriteState(movieId)
 	return (
 		// eslint-disable-next-line no-sequences
-		<HeartWrapper onClick={toggle}>
+		<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
 			<StyledHeart filled={isFavorite}/>
 		</HeartWrapper>
 	)
