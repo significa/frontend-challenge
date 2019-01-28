@@ -9,15 +9,19 @@ const Wrapper = styled.div`
 `
 
 const StyledLink = styled(Link)`
-	display: block;
+	display: inline-block;
 	text-decoration: none;
 	color: currentColor;
+	margin: -0.5rem;
+	padding: 0.5rem;
+	border-radius: 2rem;
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const Navbar = () => (
 	<Wrapper>
 		<Container>
-			<StyledLink to='/'><Logo/></StyledLink>
+			<StyledLink tabIndex={0} to='/'><Logo/></StyledLink>
 		</Container>
 	</Wrapper>
 )

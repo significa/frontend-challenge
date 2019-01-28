@@ -27,9 +27,13 @@ const BackLink = styled(Link)`
 	color: ${p => p.theme.colors.lightGrey};
 	cursor: pointer;
 	display: block;
+	border-radius: 0.25rem;
+	margin-left: -0.5rem;
+	padding: 0.75rem 0 0.75rem 0.5rem;
 	&:hover{
 		color: ${p => p.theme.colors.white};
 	}
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 
@@ -47,7 +51,7 @@ const DetailView = ({movieId}) => {
 	return(
 		<Wrapper error={error}>
 			<Container>
-				<BackLink to='/'><Arrow/></BackLink>
+				<BackLink tabIndex={0} to='/'><Arrow/></BackLink>
 				{!loading && data && (
 					<Row style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6}>

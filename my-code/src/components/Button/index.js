@@ -10,6 +10,7 @@ const Wrapper = styled.a`
 	box-shadow: inset 0 0 0 1px ${p => p.theme.colors.midGrey};
 	overflow: hidden;
 	margin: 1rem 0.5rem;
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const Left = styled.div`
@@ -29,7 +30,7 @@ const Right = styled.div`
 `
 
 const Button = ({logo, background, children, id}) => (
-	<Wrapper href={`https://imdb.com/title/${id}/`}>
+	<Wrapper tabIndex={0} href={`https://imdb.com/title/${id}/`}>
 		{logo && <Left background={background}>{logo}</Left>}
 		<Right><Text weight={500}>{children}</Text></Right>
 	</Wrapper>

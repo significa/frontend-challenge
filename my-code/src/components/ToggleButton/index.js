@@ -26,6 +26,7 @@ const Wrapper = styled.button`
 		background: ${p => p.theme.colors.red};
 		box-shadow: inset 0 0 0 1px ${p => p.theme.colors.red};
 	`}
+	&:focus{${p => p.theme.focusShadow}}
 `
 
 const Left = styled.div`
@@ -47,11 +48,7 @@ const Button = ({id}) => {
 	return (
 		<Wrapper isFavorite={isFavorite} onClick={toggle}>
 			<Left>
-				<Heart
-					filled={isFavorite}
-					size={16}
-					strokeWidth={2.5}
-				/>
+				<Heart filled={isFavorite} size={16} strokeWidth={2.5}/>
 			</Left>
 			<Right>
 				<Text weight={500}>
