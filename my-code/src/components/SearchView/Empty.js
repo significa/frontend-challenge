@@ -11,6 +11,7 @@ const Wrapper = styled(Container)`
 	align-items: center;
 	justify-content: center;
 	margin: 4rem auto;
+	text-align: center;
 	svg{
 		color: ${p => p.theme.colors.grey}
 	}
