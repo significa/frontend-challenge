@@ -3,13 +3,10 @@ import { Row, Cell } from 'components/Grid'
 import Section from './Section'
 
 const Info = data => {
-	/* eslint-disable no-mixed-operators */
-	// i really need optional chaining
-	const plot = data && data.overview || ''
-	const genres = data && data.genres.map(x => x.name) || []
-	const actors = data && data.credits.cast.map(x => x.name).slice(0, 4) || []
-	const directors = data && data.credits.crew.filter(x => x.department === 'Directing').map(x => x.name) || []
-	/* eslint-enable */
+	const plot = data?.overview || ''
+	const genres = data?.genres?.map(x => x.name) || []
+	const actors = data?.credits?.cast?.map(x => x.name).slice(0, 4) || []
+	const directors = data?.credits?.crew?.filter(x => x.department === 'Directing')?.map(x => x.name) || []
 
 	return(
 		<Row>

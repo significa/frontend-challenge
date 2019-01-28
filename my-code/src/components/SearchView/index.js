@@ -30,7 +30,7 @@ const SearchView = () => {
 			<Searchbar value={search} onChange={setSearch} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
-					{(search && !loading && data) && (
+					{(search && !loading && data?.results) && (
 						data.results.map(({id, title, poster_path, release_date}) => (
 							<Cell key={id} xs={6} sm={4} md={3} xg={2}>
 								<Card
@@ -49,7 +49,7 @@ const SearchView = () => {
 			</Container>
 			{!search && <Intro/>}
 			{search && error && <ErrorState/>}
-			{data && !data.results.length && <Empty/>}
+			{data && !data?.results?.length && <Empty/>}
 		</Wrapper>
 	)
 }
