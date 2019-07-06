@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+before_install:
+  - cd movie-search
+install:
+  - yarn install
+script:
+  - yarn test
+  - yarn run build
+deploy:
+  provider: surge
+  skip_cleanup: true
+  domain: fernando-aguilar.surge.sh
+  project: ./movie-search/build/
+on:
+  branch: fernando-aguilar
