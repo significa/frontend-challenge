@@ -1,3 +1,4 @@
+// @flow
 // Types for UI Theming
 export type ThemeType = {
   color: {
