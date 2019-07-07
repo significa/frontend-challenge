@@ -1,0 +1,6 @@
+{
+    "extends": "@significa/significa",
+    "env": {
+        "browser": true
+      }
+}
