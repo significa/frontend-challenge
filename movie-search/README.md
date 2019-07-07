@@ -1,3 +1,16 @@
+To-Do List:
+- [ ] Fix Continuous Deploy
+- [ ] Create Automated Tests with Selenium
+- [ ] Refactor Css To make the website responsible
+- [ ] Refactor HomePage for components modularization
+- [ ] Write a good README with basic information (e.g.: how to start the project and how to build it with docker;)
+- [X] Plan app development
+- [X] Research css methodology, such as BEM, ITCSS, etc;
+- [X] Take a look at the /layout folder, there you will find everything you need.
+- [x] Break a leg!
+
+*** 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -39,10 +52,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-To-Do List:
-
-- [ ] Write a good README with basic information (e.g.: how to start the project and how to build it;
-- [ ] Plan app development
-- [ ] Research css methodology, such as BEM, ITCSS, etc;
-- [ ] Take a look at the /layout folder, there you will find everything you need.
-- [x] Break a leg!
