@@ -11,15 +11,13 @@ type MovieType = {
   imdbID: string,
   Title: string,
   Year: string,
-  Poster: string,
-  Key: string
+  Poster: string
 }
 
 const Results = ({ data }: PropsType) => (
   <Grid>
     {data.map((movie: MovieType) => (
       <Thumbnail
-        key={movie.imdbID}
         href={`/movie/${movie.imdbID}`}
         poster={movie.Poster}
         title={movie.Title}
