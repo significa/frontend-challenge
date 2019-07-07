@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import MovieView from "../components/Movie"
-import omdbApi from "../constants/API"
+import omdbApi from "../API"
 
 type IdType = string
 
@@ -74,6 +74,7 @@ class MoviePage extends React.Component<PropsType, StateType> {
     localStorage.setItem("favourites", JSON.stringify(favourites))
 
     if (prevState.favourites !== favourites) {
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ fav: this.getIsFavourite() })
     }
   }

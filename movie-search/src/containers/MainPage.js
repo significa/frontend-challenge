@@ -8,7 +8,7 @@ import { Flex } from "../components/Layout"
 import { Text100, Text300 } from "../components/common/Typography"
 import Loader from "../components/common/Loader"
 import Results from "../components/Results"
-import omdbApi from "../constants/API"
+import omdbApi from "../API"
 
 type StateType = {
   term: string,

@@ -1,0 +1,112 @@
+{
+  "id": "4cd2bd29-d8f6-492b-9130-0809f72ce56e",
+  "version": "2.0",
+  "name": "Movie Search",
+  "url": "http://localhost:3000",
+  "tests": [{
+    "id": "fdfcb805-f45d-48c9-b521-7600e1af8276",
+    "name": "Test Movies",
+    "commands": [{
+      "id": "249a35c1-df14-44a4-bd68-7a7806075a80",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "31358395-edae-4caa-9b7e-72bd61e223b9",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1600x900",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "dc7cccf0-92dc-4949-9858-6730e756bfa0",
+      "comment": "",
+      "command": "click",
+      "target": "css=svg",
+      "targets": [
+        ["css=svg", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6e0e758-87fa-4932-a341-469efa7154ae",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-EHOje",
+      "targets": [
+        ["css=.sc-EHOje", "css:finder"],
+        ["xpath=//input[@value='']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a553b44b-0678-408f-8b2a-50925cbde8fd",
+      "comment": "",
+      "command": "type",
+      "target": "css=.sc-EHOje",
+      "targets": [
+        ["css=.sc-EHOje", "css:finder"],
+        ["xpath=//input[@value='test']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "test"
+    }, {
+      "id": "cd143bba-7f9f-44b5-8310-fa6db49e51fa",
+      "comment": "",
+      "command": "sendKeys",
+      "target": "css=.sc-EHOje",
+      "targets": [
+        ["css=.sc-EHOje", "css:finder"],
+        ["xpath=//input[@value='test']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div/form/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "${KEY_ENTER}"
+    }, {
+      "id": "654ca639-a84d-440f-9785-cc72dca9a3c9",
+      "comment": "",
+      "command": "click",
+      "target": "css=.kCPfGN",
+      "targets": [
+        ["css=.kCPfGN", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/a[2]/div", "xpath:idRelative"],
+        ["xpath=//a[2]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d64a3695-0117-4994-9d1d-4287698848f0",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-kAzzGY",
+      "targets": [
+        ["css=.sc-kAzzGY", "css:finder"],
+        ["xpath=//div[@id='root']/div/div[2]/div/div/div[2]/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Add to favourites')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3104be2e-0463-4942-b735-36ac5ab19bef",
+      "comment": "",
+      "command": "click",
+      "target": "css=.sc-bwzfXH > a > svg",
+      "targets": [
+        ["css=.sc-bwzfXH > a > svg", "css:finder"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "17248a30-1228-421a-b08f-fdac1908a4a7",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["fdfcb805-f45d-48c9-b521-7600e1af8276"]
+  }],
+  "urls": ["http://localhost:3000/"],
+  "plugins": []
+}
