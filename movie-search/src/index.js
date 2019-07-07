@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Routes from "./routes"
+import Routes  from "./routes/Routes"
 import Provider from "./components/Provider"
 
 

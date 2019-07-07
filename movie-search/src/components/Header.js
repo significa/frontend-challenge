@@ -1,10 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { Wrapper } from './Layout';
+import Logo from '../assets/Logo';
 
 const Header = () => (
-    <header>
-        <h1><Link to="/">What's In</Link></h1>
-    </header>
+    <Wrapper py={16} width={1180}>
+        <Link to="/">
+            <Logo />
+        </Link>
+    </Wrapper>
 );
 
 export default Header;
