@@ -1,19 +1,24 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-import Routes from "./routes/Routes"
-import Provider from "./components/Provider"
+import { createStore, applyMiddleware } from "redux"
+import { Provider } from "react-redux"
+import { createLogger } from "redux-logger"
 
-const root = document.getElementById("root")
-if (root === null) {
-  throw new Error("Error! No root Element")
-}
+import promise from "redux-promise-middleware"
+import registerServiceWorker from "./registerServiceWorker"
+
+import App from "./App.js"
+import { reducer } from "./store"
+
+const logger = createLogger()
+
+const store = createStore(reducer, applyMiddleware(promise, logger))
 
 ReactDOM.render(
-  <React.Fragment>
-    <Provider>
-      <Routes />
-    </Provider>
-  </React.Fragment>,
-  root
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 )
+registerServiceWorker()

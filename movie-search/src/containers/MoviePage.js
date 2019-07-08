@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import MovieView from "../components/Movie"
-import omdbApi from "../API"
+import { omdbApi } from "../API"
 
 type IdType = string
 
@@ -74,7 +74,6 @@ class MoviePage extends React.Component<PropsType, StateType> {
     localStorage.setItem("favourites", JSON.stringify(favourites))
 
     if (prevState.favourites !== favourites) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ fav: this.getIsFavourite() })
     }
   }
@@ -85,7 +84,6 @@ class MoviePage extends React.Component<PropsType, StateType> {
     const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&i=${id}`
     const res = await fetch(url)
     const data = await res.json()
-
     this.setState({ loading: false, info: data || {} })
   }
 

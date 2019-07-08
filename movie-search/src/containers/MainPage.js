@@ -1,17 +1,17 @@
 // @flow
-import React from "react"
-import Input from "../components/common/Input"
+import React, { Component } from "react"
 
+import Input from "../components/common/Input"
 import empty from "../assets/illustration-empty-state@2x.png"
 
 import { Flex } from "../components/Layout"
 import { Text100, Text300 } from "../components/common/Typography"
 import Loader from "../components/common/Loader"
 import Results from "../components/Results"
-import omdbApi from "../API"
+import { omdbApi } from "../API"
 
 type StateType = {
-  term: string,
+  searchTerm: string,
   results: Array<{
     Poster: string,
     Title: string,
@@ -21,11 +21,11 @@ type StateType = {
   loading: boolean
 }
 
-class App extends React.Component<{}, StateType> {
+class App extends Component<{}, StateType> {
   constructor() {
     super()
     this.state = {
-      term: "",
+      searchTerm: "",
       results: [],
       loading: false
     }
@@ -38,10 +38,10 @@ class App extends React.Component<{}, StateType> {
   }
 
   loadMovies = async () => {
-    const { term } = this.state
+    const { searchTerm } = this.state
     this.setState({ loading: true })
 
-    const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&s=${term}`
+    const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&s=${searchTerm}`
     const res = await fetch(url)
     const data = await res.json()
 
@@ -49,7 +49,7 @@ class App extends React.Component<{}, StateType> {
   }
 
   render() {
-    const { term } = this.state
+    const { searchTerm } = this.state
     const { results } = this.state
     const { loading } = this.state
 
@@ -60,9 +60,9 @@ class App extends React.Component<{}, StateType> {
             <Input
               width={1}
               type="text"
-              value={term}
+              value={searchTerm}
               onChange={(e: SyntheticEvent<HTMLInputElement>) =>
-                this.setState({ term: e.currentTarget.value })
+                this.setState({ searchTerm: e.currentTarget.value })
               }
               placeholder="Search for movies"
             />
