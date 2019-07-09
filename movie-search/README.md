@@ -2,8 +2,8 @@ To-Do List:
 - [ ] Fix Continuous Deploy
 - [ ] Refactor Css To make the website responsible
 - [ ] Refactor HomePage for components modularization
-- [ ] Write a good README with basic information (e.g.: how to start the project and how to build it with docker;)
 - [ ] Manage States With Redux
+- [X] Write a good README with basic information (e.g.: how to start the project and how to build it with docker;)
 - [X] Create Automated Tests with Selenium
 - [X] Plan app development
 - [X] Research css methodology, such as BEM, ITCSS, etc;

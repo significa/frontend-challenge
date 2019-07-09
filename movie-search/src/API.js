@@ -1,18 +1,17 @@
-const omdbApi = {
+export const omdbApi = {
   API_KEY: "a08065ae",
   BASE_URL: "http://www.omdbapi.com/?apikey="
 }
 
-function search(searchTerm) {
+export async function searchMovies(searchTerm) {
   const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&s=${searchTerm}`
-
-  return fetch(url)
-    .then(response => {
-      response.json()
-    })
-    .then(result => {
-      return result || []
-    })
+  const res = await fetch(url)
+  const data = await res.json()
+  return data.Search || []
 }
 
-export { omdbApi, search }
+export async function searchSingleMovie(id) {
+  const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&i=${id}`
+  const response = await fetch(url)
+  return response.json()
+}

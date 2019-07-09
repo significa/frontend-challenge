@@ -1,9 +1,9 @@
 import React from "react"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-import Header from "../components/Header"
-import { Flex } from "../components/Layout"
-import NotFound from "../components/NotFound"
+import Header from "./Header"
+import { Flex } from "./Layout"
+import NotFound from "./NotFound"
 
 import MainPage from "../containers/MainPage"
 import MoviePage from "../containers/MoviePage"

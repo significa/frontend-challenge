@@ -1,4 +1,4 @@
-import { search } from "./API"
+import { searchMovies } from "./API"
 
 const SEARCH_TERM_CHANGED = "SEARCH_TERM_CHANGED"
 
@@ -17,8 +17,8 @@ export const actions = {
   },
   getMovies(searchTerm) {
     return {
-      type: "Movies",
-      payload: search(searchTerm)
+      type: "MOVIES",
+      payload: searchMovies(searchTerm)
     }
   }
 }
