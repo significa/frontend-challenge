@@ -1,22 +1,12 @@
-// @flow
 import React from "react"
+import PropTypes from "prop-types"
+
 import { Grid } from "./Layout"
 import { Thumbnail } from "./common/Thumbnail"
 
-type PropsType = {
-  data: Array<{ Poster: string, Title: string, Year: string, imdbID: string }>
-}
-
-type MovieType = {
-  imdbID: string,
-  Title: string,
-  Year: string,
-  Poster: string
-}
-
-const Results = ({ data }: PropsType) => (
+const Results = ({ data }) => (
   <Grid>
-    {data.map((movie: MovieType) => (
+    {data.map(movie => (
       <Thumbnail
         key={movie.imdbID}
         href={`/movie/${movie.imdbID}`}
@@ -27,5 +17,10 @@ const Results = ({ data }: PropsType) => (
     ))}
   </Grid>
 )
+
+Results.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.array.isRequired
+}
 
 export default Results

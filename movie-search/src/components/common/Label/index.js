@@ -1,11 +1,11 @@
-// @flow
 import React from "react"
+import PropTypes from "prop-types"
+
 import { Text100 } from "../Typography/styled"
 import { IMDB, Rotten, Label } from "./styled"
 import { Wrapper } from "../../Layout"
-import type { LabelPropsType } from "../../../types.js"
 
-export const IMDBLabel = ({ value }: LabelPropsType) => (
+export const IMDBLabel = ({ value }) => (
   <Label>
     <Wrapper>
       <IMDB />
@@ -14,7 +14,7 @@ export const IMDBLabel = ({ value }: LabelPropsType) => (
   </Label>
 )
 
-export const RottenLabel = ({ value }: LabelPropsType) => (
+export const RottenLabel = ({ value }) => (
   <Label>
     <Wrapper>
       <Rotten />
@@ -22,3 +22,11 @@ export const RottenLabel = ({ value }: LabelPropsType) => (
     </Wrapper>
   </Label>
 )
+
+IMDBLabel.propTypes = {
+  value: PropTypes.number.isRequired
+}
+
+RottenLabel.propTypes = {
+  value: PropTypes.number.isRequired
+}

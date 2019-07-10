@@ -1,9 +1,13 @@
-// @flow
 import React from "react"
-import { Text100, Text200, Text300, Text400, TextLink } from "./styled"
-import type { LinkPropType } from "../../../types.js"
+import PropTypes from "prop-types"
 
-const Link = ({ href, text }: LinkPropType) => (
-  <TextLink href={href}>{text}</TextLink>
-)
+import { Text100, Text200, Text300, Text400, TextLink } from "./styled"
+
+const Link = ({ href, text }) => <TextLink href={href}>{text}</TextLink>
+
+Link.propTypes = {
+  href: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+}
+
 export { Text100, Text200, Text300, Text400, Link }

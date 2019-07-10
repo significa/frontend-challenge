@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 import Input from "../components/common/Input"
@@ -69,6 +70,15 @@ function mapDispatchToProps(dispatch) {
       dispatch(actions.getMovies(searchTerm))
     }
   }
+}
+
+MainPage.propTypes = {
+  onGetMovies: PropTypes.func.isRequired,
+  searchTerm: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  results: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired,
+  onSearchTermChanged: PropTypes.func.isRequired
 }
 
 export default connect(

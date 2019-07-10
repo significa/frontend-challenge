@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { Link } from "react-router-dom"
 import Loader from "./common/Loader"
@@ -9,37 +8,7 @@ import Arrow from "./common/Icons/Arrow"
 import { Wrapper, FlexLeft, FlexRight } from "./Layout"
 import { LargeThumbnail, LargeEmptyThumbnail } from "./common/Thumbnail"
 
-import type {
-  RatingsType,
-  ActorType,
-  GenreType,
-  DirectorType
-} from "../types.js"
-
-type DetailType = {
-  info: {
-    Title?: string,
-    Runtime?: string,
-    Genre?: string,
-    Plot?: string,
-    Rated?: string,
-    Poster?: string,
-    Director?: string,
-    Actors?: string,
-    Year?: string,
-    Ratings?: Array<{ Source: string, Value: string }>
-  },
-  favourite: boolean,
-  loading: boolean,
-  toggleFavourite: () => mixed
-}
-
-const MovieView = ({
-  info,
-  favourite,
-  loading,
-  toggleFavourite
-}: DetailType) => (
+const MovieView = (info, favourite, loading, toggleFavourite) => (
   <div>
     {loading ? (
       <Loader />
@@ -63,7 +32,7 @@ const MovieView = ({
           <Text400 mb={5}>{info.Title}</Text400>
           {info.Ratings ? (
             <Wrapper mb={5}>
-              {info.Ratings.map((ratings: RatingsType) => (
+              {info.Ratings.map(ratings => (
                 <div key={info.Title}>
                   <div>
                     {ratings.Source === "Internet Movie Database" && (
@@ -101,7 +70,7 @@ const MovieView = ({
               </Text100>
               <div>
                 {info.Actors
-                  ? info.Actors.split(",").map((actor: ActorType) => (
+                  ? info.Actors.split(",").map(actor => (
                       <Text100 key={actor}>{actor}</Text100>
                     ))
                   : "There's no information available"}
@@ -114,7 +83,7 @@ const MovieView = ({
               </Text100>
               <div>
                 {info.Genre
-                  ? info.Genre.split(",").map((genre: GenreType) => (
+                  ? info.Genre.split(",").map(genre => (
                       <Text100 key={genre}>{genre}</Text100>
                     ))
                   : "Unknow genre"}
@@ -127,7 +96,7 @@ const MovieView = ({
               </Text100>
               <div>
                 {info.Director
-                  ? info.Director.split(",").map((director: DirectorType) => (
+                  ? info.Director.split(",").map(director => (
                       <Text100 key={director}>{director}</Text100>
                     ))
                   : "Unknow director"}

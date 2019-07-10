@@ -1,18 +1,19 @@
-// @flow
 import React from "react"
+import PropTypes from "prop-types"
+
 import { ThemeProvider } from "styled-components"
 import theme from "./theme"
 import GlobalStyle from "./styles"
 
-type PropsType = {
-  children: React.Node
-}
-
-const Theme = ({ children }: PropsType) => (
+const Theme = ({ children }) => (
   <React.Fragment>
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
     <GlobalStyle />
   </React.Fragment>
 )
+
+Theme.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 export default Theme

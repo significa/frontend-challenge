@@ -1,5 +1,6 @@
-// @flow
 import React from "react"
+import PropTypes from "prop-types"
+
 import { Text100, Text200 } from "../Typography/index"
 import {
   ThumbnailHolder,
@@ -9,9 +10,8 @@ import {
   LargeEmptyThumbnail,
   ThumbnailText
 } from "./styled"
-import type { ThumbnailPropType } from "../../../types.js"
 
-const Thumbnail = ({ href, poster, title, year }: ThumbnailPropType) => (
+const Thumbnail = ({ href, poster, title, year }) => (
   <ThumbnailHolder href={href}>
     {poster === "N/A" ? (
       <SmallEmptyThumbnail />
@@ -24,5 +24,12 @@ const Thumbnail = ({ href, poster, title, year }: ThumbnailPropType) => (
     </ThumbnailText>
   </ThumbnailHolder>
 )
+
+Thumbnail.propTypes = {
+  href: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired
+}
 
 export { LargeThumbnail, LargeEmptyThumbnail, Thumbnail }

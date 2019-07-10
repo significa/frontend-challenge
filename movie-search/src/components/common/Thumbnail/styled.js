@@ -1,12 +1,10 @@
-// @flow
 import styled from "styled-components"
-import type { PropType } from "../../../types.js"
 
 export const SmallEmptyThumbnail = styled.div`
   width: 180px;
   height: 240px;
   border-radius: 2px;
-  background-color: ${({ theme }: PropType) => theme.color.grey.grey};
+  background-color: ${({ theme }) => theme.color.grey.grey};
 `
 
 export const ThumbnailHolder = styled.a`
@@ -28,7 +26,7 @@ export const ThumbnailText = styled.div`
 export const SmallThumbnail = styled.div`
   width: 180px;
   height: 240px;
-  background-image: url(${({ image }: PropType) => image});
+  background-image: url(${({ image }) => image});
   background-size: cover;
   background-position: center;
   border-radius: 2px;
@@ -36,7 +34,7 @@ export const SmallThumbnail = styled.div`
 
   ${ThumbnailHolder}:hover & {
     opacity: 0.4;
-    transition: ${({ theme }: PropType) => theme.transition};
+    transition: ${({ theme }) => theme.transition};
   }
 `
 
@@ -50,5 +48,5 @@ export const LargeEmptyThumbnail = styled.div`
   width: 480px;
   height: 640px;
   border-radius: 8px;
-  background-color: ${({ theme }: PropType) => theme.color.grey.grey};
+  background-color: ${({ theme }) => theme.color.grey.grey};
 `
