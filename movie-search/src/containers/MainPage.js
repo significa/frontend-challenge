@@ -20,8 +20,11 @@ class MainPage extends Component {
     const { searchTerm, results, loading } = this.props
     return (
       <Flex>
-        <Flex width={1180}>
-          <form onSubmit={event => this.formSubmitted(event)}>
+        <Flex width={1}>
+          <form
+            style={{ width: "100%" }}
+            onSubmit={event => this.formSubmitted(event)}
+          >
             <Input
               width={1}
               type="text"
@@ -31,14 +34,12 @@ class MainPage extends Component {
               }
               placeholder="Search for movies"
             />
-            <button type="submit">Search</button>
           </form>
 
           {loading && <Loader />}
-
           {results.length === 0 && !loading ? (
             <Flex mt={6}>
-              <img width={396} src={empty} alt="Empty state" />
+              <img width="66%" src={empty} alt="Empty state" />
               <Text300 mb={2}>Don’t know what to search?</Text300>
               <Text100 grey>Here’s an offer you can’t refuse</Text100>
             </Flex>
