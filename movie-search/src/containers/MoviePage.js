@@ -1,60 +1,12 @@
-// @flow
-import React from "react"
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { connect } from "react-redux"
+
 import MovieView from "../components/Movie"
-import { omdbApi } from "../API"
 
-type IdType = string
+import { actions } from "../store"
 
-type PropsType = {
-  match: {
-    params: {
-      id: string
-    }
-  }
-}
-
-type StateType = {
-  info: {
-    Title?: string,
-    Runtime?: string,
-    Genre?: string,
-    Plot?: string,
-    Rated?: string,
-    Poster?: string,
-    Director?: string,
-    Actors?: string,
-    Year?: string,
-    Ratings?: Array<{ Source: string, Value: string }>
-  },
-  fav: boolean,
-  favourites: Array<string>,
-  loading: boolean
-}
-
-type PrevPropsType = {
-  match: {
-    params: {
-      id: string
-    }
-  }
-}
-
-type PrevStateType = {
-  fav: boolean,
-  favourites: Array<string>,
-  loading: boolean
-}
-
-type FavType = string
-
-class MoviePage extends React.Component<PropsType, StateType> {
-  state = {
-    info: {},
-    fav: false,
-    favourites: [],
-    loading: false
-  }
-
+class MoviePage extends Component {
   componentDidMount() {
     const {
       match: {
@@ -63,32 +15,27 @@ class MoviePage extends React.Component<PropsType, StateType> {
     } = this.props
 
     this.setState({
-      favourites: this.getFavourites()
+      favorites: this.getFavorites()
     })
 
-    this.loadMovies(id)
+    this.getSingleMovie(id)
   }
 
-  componentDidUpdate(prevProps: PrevPropsType, prevState: PrevStateType) {
-    const { favourites } = this.state
-    localStorage.setItem("favourites", JSON.stringify(favourites))
+  componentDidUpdate() {
+    const { favorites } = this.props
+    localStorage.setItem("favorites", JSON.stringify(favorites))
 
-    if (prevState.favourites !== favourites) {
+    if (this.props.favorites !== favorites) {
       this.setState({ fav: this.getIsFavourite() })
     }
   }
 
-  loadMovies = async (id: IdType) => {
-    this.setState({ loading: true })
-
-    const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&i=${id}`
-    const res = await fetch(url)
-    const data = await res.json()
-    this.setState({ loading: false, info: data || {} })
+  getSingleMovie = async id => {
+    this.props.onGetSingleMovie(id)
   }
 
-  getFavourites = () => {
-    const storage = localStorage.getItem("favourites")
+  getFavorites = () => {
+    const storage = localStorage.getItem("favorites")
     return storage ? JSON.parse(storage) : []
   }
 
@@ -99,9 +46,9 @@ class MoviePage extends React.Component<PropsType, StateType> {
       }
     } = this.props
 
-    const { favourites } = this.state
+    const { favorites } = this.state
 
-    return favourites.filter((fav: FavType) => fav === id).length > 0
+    return favorites.filter(fav => fav === id).length > 0
   }
 
   toggleFavourite = () => {
@@ -111,20 +58,18 @@ class MoviePage extends React.Component<PropsType, StateType> {
       }
     } = this.props
 
-    const { favourites } = this.state
+    const { favorites } = this.state
     const isFavourite = this.getIsFavourite()
 
     const newFavs = isFavourite
-      ? favourites.filter((fav: FavType) => fav !== id)
-      : [...favourites, id]
+      ? favorites.filter(fav => fav !== id)
+      : [...favorites, id]
 
-    this.setState({ favourites: newFavs })
+    this.setState({ favorites: newFavs })
   }
 
   render() {
-    const { info } = this.state
-    const { fav } = this.state
-    const { loading } = this.state
+    const { info, fav, loading } = this.props
 
     return (
       <MovieView
@@ -138,4 +83,30 @@ class MoviePage extends React.Component<PropsType, StateType> {
   }
 }
 
-export default MoviePage
+function mapStateToProps(state) {
+  return {
+    info: state.info,
+    fav: state.fav,
+    favorites: state.favorites,
+    loading: state.loading
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onSearchTermChanged(searchTerm) {
+      dispatch(actions.searchTermChanged(searchTerm))
+    },
+    onGetSingleMovie(id) {
+      dispatch(actions.getSingleMovie(id))
+    }
+  }
+}
+
+MoviePage.propTypes = {
+  match: PropTypes.object.isRequired
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MoviePage)

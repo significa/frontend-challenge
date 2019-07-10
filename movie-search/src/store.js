@@ -5,7 +5,10 @@ const SEARCH_TERM_CHANGED = "SEARCH_TERM_CHANGED"
 const initialState = {
   searchTerm: "",
   results: [],
-  loading: false
+  loading: false,
+  info: {},
+  fav: false,
+  favorites: []
 }
 
 export const actions = {
@@ -43,6 +46,22 @@ export function reducer(state = initialState, action) {
         ...state,
         results: action.payload,
         loading: false
+      }
+    }
+    case "SINGLE_MOVIE_PENDING": {
+      return {
+        ...state,
+        loading: true,
+        info: {},
+        favorites: []
+      }
+    }
+    case "SINGLE_MOVIE_FULFILLED": {
+      return {
+        ...state,
+        loading: false,
+        info: action.payload,
+        favorites: action.payload
       }
     }
     default:

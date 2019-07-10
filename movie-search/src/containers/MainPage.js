@@ -75,7 +75,6 @@ function mapDispatchToProps(dispatch) {
 MainPage.propTypes = {
   onGetMovies: PropTypes.func.isRequired,
   searchTerm: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
   results: PropTypes.array.isRequired,
   loading: PropTypes.bool.isRequired,
   onSearchTermChanged: PropTypes.func.isRequired
