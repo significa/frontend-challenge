@@ -24,9 +24,9 @@ export const RottenLabel = ({ value }) => (
 )
 
 IMDBLabel.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.string.isRequired
 }
 
 RottenLabel.propTypes = {
-  value: PropTypes.number.isRequired
+  value: PropTypes.string.isRequired
 }

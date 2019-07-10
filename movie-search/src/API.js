@@ -15,3 +15,8 @@ export async function searchSingleMovie(id) {
   const response = await fetch(url)
   return response.json()
 }
+
+export async function getFavorites() {
+  const storage = localStorage.getItem("favorites")
+  return storage ? JSON.parse(storage) : []
+}

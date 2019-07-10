@@ -9,7 +9,7 @@ import { Flex } from "../components/Layout"
 import { Text100, Text300 } from "../components/common/Typography"
 import Loader from "../components/common/Loader"
 import Results from "../components/Results"
-import { actions } from "../store"
+import { actionsMainPage } from "../store"
 
 class MainPage extends Component {
   formSubmitted(event) {
@@ -55,19 +55,19 @@ class MainPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    searchTerm: state.searchTerm,
-    results: state.results,
-    loading: state.loading
+    searchTerm: state.mainPage.searchTerm,
+    results: state.mainPage.results,
+    loading: state.mainPage.loading
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     onSearchTermChanged(searchTerm) {
-      dispatch(actions.searchTermChanged(searchTerm))
+      dispatch(actionsMainPage.searchTermChanged(searchTerm))
     },
     onGetMovies(searchTerm) {
-      dispatch(actions.getMovies(searchTerm))
+      dispatch(actionsMainPage.getMovies(searchTerm))
     }
   }
 }

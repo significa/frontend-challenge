@@ -6,14 +6,12 @@ import { Provider } from "react-redux"
 import { createLogger } from "redux-logger"
 
 import promise from "redux-promise-middleware"
-import registerServiceWorker from "./registerServiceWorker"
-
 import App from "./App.js"
-import { reducer } from "./store"
+import rootReducer from "./reducers/index"
 
 const logger = createLogger()
 
-const store = createStore(reducer, applyMiddleware(promise, logger))
+const store = createStore(rootReducer, applyMiddleware(promise, logger))
 
 ReactDOM.render(
   <Provider store={store}>
@@ -21,4 +19,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 )
-registerServiceWorker()

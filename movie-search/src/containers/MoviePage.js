@@ -1,24 +1,24 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import { connect } from "react-redux"
 
 import MovieView from "../components/Movie"
+import Loader from "../components/common/Loader"
+import { Flex } from "../components/Layout"
 
-import { actions } from "../store"
+import { actionsSingleMoviePage } from "../store"
 
 class MoviePage extends Component {
-  componentDidMount() {
+  async componentDidMount() {
     const {
       match: {
         params: { id }
       }
     } = this.props
 
-    this.setState({
-      favorites: this.getFavorites()
-    })
-
-    this.getSingleMovie(id)
+    await this.props.onGetFavorites()
+    await this.props.onGetSingleMovie(id)
   }
 
   componentDidUpdate() {
@@ -26,86 +26,93 @@ class MoviePage extends Component {
     localStorage.setItem("favorites", JSON.stringify(favorites))
 
     if (this.props.favorites !== favorites) {
-      this.setState({ fav: this.getIsFavourite() })
+      this.setState({ fav: this.getIsFavorite() })
     }
   }
 
-  getSingleMovie = async id => {
-    this.props.onGetSingleMovie(id)
-  }
-
-  getFavorites = () => {
-    const storage = localStorage.getItem("favorites")
-    return storage ? JSON.parse(storage) : []
-  }
-
-  getIsFavourite = () => {
+  getIsFavorite = () => {
     const {
       match: {
         params: { id }
-      }
+      },
+      favorites
     } = this.props
-
-    const { favorites } = this.state
-
     return favorites.filter(fav => fav === id).length > 0
   }
 
-  toggleFavourite = () => {
+  toggleFavorite = () => {
+    console.log("BUTTON PRESSED");
     const {
       match: {
         params: { id }
-      }
+      },
+      favorites
     } = this.props
 
-    const { favorites } = this.state
-    const isFavourite = this.getIsFavourite()
+    const isFavorite = this.getIsFavorite()
 
-    const newFavs = isFavourite
+    const newFavs = isFavorite
       ? favorites.filter(fav => fav !== id)
       : [...favorites, id]
 
-    this.setState({ favorites: newFavs })
+    this.props.onToggleFavorite(newFavs)
   }
 
   render() {
     const { info, fav, loading } = this.props
-
     return (
-      <MovieView
-        getIsFavourite={this.getIsFavourite}
-        toggleFavourite={this.toggleFavourite}
-        info={info}
-        favourite={fav}
-        loading={loading}
-      />
+      <Flex>
+        {loading ? (
+          <Loader />
+        ) : (
+          <MovieView
+            getIsFavorite={this.getIsFavorite}
+            toggleFavorite={this.toggleFavorite}
+            info={info}
+            favorite={fav}
+            loading={loading}
+          />
+        )}
+      </Flex>
     )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    info: state.info,
-    fav: state.fav,
-    favorites: state.favorites,
-    loading: state.loading
+    id: state.moviePage.id,
+    info: state.moviePage.info,
+    fav: state.moviePage.fav,
+    favorites: state.moviePage.favorites,
+    loading: state.moviePage.loading
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSearchTermChanged(searchTerm) {
-      dispatch(actions.searchTermChanged(searchTerm))
-    },
     onGetSingleMovie(id) {
-      dispatch(actions.getSingleMovie(id))
+      dispatch(actionsSingleMoviePage.getSingleMovie(id))
+    },
+    onGetFavorites() {
+      dispatch(actionsSingleMoviePage.getFavorites())
+    },
+    onToggleFavorite() {
+      dispatch(actionsSingleMoviePage.toggleFavorite())
     }
   }
 }
 
 MoviePage.propTypes = {
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  info: PropTypes.object.isRequired,
+  fav: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  onGetSingleMovie: PropTypes.func.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  onGetFavorites: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps
