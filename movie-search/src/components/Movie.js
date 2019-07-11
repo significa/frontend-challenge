@@ -46,11 +46,19 @@ const MovieView = prop => (
                 </div>
               </div>
             ))}
-            <Button
-              text="Add to favorites"
-              onClick={prop.toggleFavorite}
-              active={prop.favorite}
-            />
+            {prop.active ? (
+              <Button
+                text="Favorited"
+                onClick={prop.toggleFavorite}
+                active={prop.favorite}
+              />
+            ) : (
+              <Button
+                text="Add to favorites"
+                onClick={prop.removeFavorite}
+                active={prop.favorite}
+              />
+            )}
           </Wrapper>
         ) : null}
 

@@ -1,8 +1,8 @@
 const moviePageInitialState = {
+  loading: false,
+  favorite: false,
   info: {},
-  fav: false,
-  favorites: [],
-  loading: false
+  favorites: []
 }
 
 export default function moviePage(state = moviePageInitialState, action) {
@@ -30,6 +30,13 @@ export default function moviePage(state = moviePageInitialState, action) {
       return {
         ...state,
         loading: false,
+        favorites: action.payload
+      }
+    }
+    case "TOGGLE_FAVORITE_FULFILLED": {
+      return {
+        ...state,
+        favorite: true,
         favorites: action.payload
       }
     }

@@ -1,14 +1,21 @@
 import React from "react"
+import { BrowserRouter } from "react-router-dom"
 
-import Theme from "./components/Provider"
+import Theme from "./components/Theme"
 import Routes from "./components/Routes"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 
 const App = () => (
-  <React.Fragment>
+  <BrowserRouter>
     <Theme>
-      <Routes />
+      <React.Fragment>
+        <Header />
+        <Routes />
+        <Footer />
+      </React.Fragment>
     </Theme>
-  </React.Fragment>
+  </BrowserRouter>
 )
 
 export default App

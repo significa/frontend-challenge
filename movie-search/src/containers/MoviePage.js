@@ -24,10 +24,6 @@ class MoviePage extends Component {
   componentDidUpdate() {
     const { favorites } = this.props
     localStorage.setItem("favorites", JSON.stringify(favorites))
-
-    if (this.props.favorites !== favorites) {
-      this.setState({ fav: this.getIsFavorite() })
-    }
   }
 
   getIsFavorite = () => {
@@ -37,11 +33,11 @@ class MoviePage extends Component {
       },
       favorites
     } = this.props
+
     return favorites.filter(fav => fav === id).length > 0
   }
 
   toggleFavorite = () => {
-    console.log("BUTTON PRESSED");
     const {
       match: {
         params: { id }
@@ -59,7 +55,7 @@ class MoviePage extends Component {
   }
 
   render() {
-    const { info, fav, loading } = this.props
+    const { info, favorite, loading } = this.props
     return (
       <Flex>
         {loading ? (
@@ -69,7 +65,7 @@ class MoviePage extends Component {
             getIsFavorite={this.getIsFavorite}
             toggleFavorite={this.toggleFavorite}
             info={info}
-            favorite={fav}
+            favorite={favorite}
             loading={loading}
           />
         )}
@@ -82,7 +78,7 @@ function mapStateToProps(state) {
   return {
     id: state.moviePage.id,
     info: state.moviePage.info,
-    fav: state.moviePage.fav,
+    favorite: state.moviePage.favorite,
     favorites: state.moviePage.favorites,
     loading: state.moviePage.loading
   }
@@ -104,13 +100,13 @@ function mapDispatchToProps(dispatch) {
 
 MoviePage.propTypes = {
   match: PropTypes.object.isRequired,
-  info: PropTypes.object.isRequired,
-  fav: PropTypes.bool.isRequired,
   loading: PropTypes.bool.isRequired,
+  favorite: PropTypes.bool.isRequired,
+  info: PropTypes.object.isRequired,
+  favorites: PropTypes.array.isRequired,
   onGetSingleMovie: PropTypes.func.isRequired,
   onToggleFavorite: PropTypes.func.isRequired,
-  onGetFavorites: PropTypes.func.isRequired,
-  favorites: PropTypes.array.isRequired
+  onGetFavorites: PropTypes.func.isRequired
 }
 
 export default connect(
