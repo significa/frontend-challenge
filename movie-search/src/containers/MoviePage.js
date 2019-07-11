@@ -94,6 +94,9 @@ function mapDispatchToProps(dispatch) {
     },
     onToggleFavorite() {
       dispatch(actionsSingleMoviePage.toggleFavorite())
+    },
+    onAddFavorite(id) {
+      dispatch(actionsSingleMoviePage.addFavorite(id))
     }
   }
 }

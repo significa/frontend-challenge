@@ -5,6 +5,7 @@ const MOVIES = "MOVIES"
 const SINGLE_MOVIE = "SINGLE_MOVIE"
 const FAVORITES = "FAVORITES"
 const TOGGLE_FAVORITE = "TOGGLE_FAVORITE"
+const ADD_FAVORITE = "ADD_FAVORITE"
 
 export const actionsMainPage = {
   searchTermChanged(searchTerm) {
@@ -20,6 +21,7 @@ export const actionsMainPage = {
     }
   }
 }
+
 export const actionsSingleMoviePage = {
   getSingleMovie(id) {
     return {
@@ -38,6 +40,12 @@ export const actionsSingleMoviePage = {
       type: TOGGLE_FAVORITE,
       favorite: true,
       payload: getFavorites()
+    }
+  },
+  addFavorite(id) {
+    return {
+      type: ADD_FAVORITE,
+      id
     }
   }
 }

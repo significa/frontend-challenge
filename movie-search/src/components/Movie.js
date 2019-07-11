@@ -46,7 +46,7 @@ const MovieView = prop => (
                 </div>
               </div>
             ))}
-            {prop.active ? (
+            {prop.favorite ? (
               <Button
                 text="Favorited"
                 onClick={prop.toggleFavorite}
@@ -55,7 +55,7 @@ const MovieView = prop => (
             ) : (
               <Button
                 text="Add to favorites"
-                onClick={prop.removeFavorite}
+                onClick={prop.toggleFavorite}
                 active={prop.favorite}
               />
             )}

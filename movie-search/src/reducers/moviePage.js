@@ -40,6 +40,12 @@ export default function moviePage(state = moviePageInitialState, action) {
         favorites: action.payload
       }
     }
+    case "ADD_FAVORITE": {
+      return {
+        ...state,
+        favorites: [...state.favorites, action.id]
+      }
+    }
     default:
       return state
   }

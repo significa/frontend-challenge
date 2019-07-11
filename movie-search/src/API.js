@@ -1,5 +1,5 @@
 export const omdbApi = {
-  API_KEY: "a08065ae",
+  API_KEY: process.env.REACT_APP_API_KEY,
   BASE_URL: "http://www.omdbapi.com/?apikey="
 }
 
