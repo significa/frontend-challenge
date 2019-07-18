@@ -9,7 +9,7 @@ import { Flex } from "../components/Layout"
 import { Text100, Text300 } from "../components/common/Typography"
 import Loader from "../components/common/Loader"
 import Results from "../components/Results"
-import { actionsMainPage } from "../store"
+import { actionsMainPage } from "../actions/store"
 
 class MainPage extends Component {
   formSubmitted(event) {

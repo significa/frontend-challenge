@@ -7,7 +7,7 @@ import MovieView from "../components/Movie"
 import Loader from "../components/common/Loader"
 import { Flex } from "../components/Layout"
 
-import { actionsSingleMoviePage } from "../store"
+import { actionsSingleMoviePage } from "../actions/store"
 
 class MoviePage extends Component {
   async componentDidMount() {

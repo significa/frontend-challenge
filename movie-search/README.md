@@ -3,6 +3,7 @@
 
 ***
 ## About this project:
+[Deployed link](https://fernando-aguilar.surge.sh/)
 
 This is a tech recruiting challenge, forked from [this repo](https://github.com/Significa/frontend-challenge). 
 All the design credits go to them. 
@@ -43,7 +44,6 @@ access localhost:3000 to use the app
 |CodeClimate| continuously measure and monitor code quality |[link](https://codeclimate.com/)|
 |Docker|  create, deploy, and run applications by using containers |[link](https://www.docker.com/)|
 |Eslint| The pluggable linting utility |[link](https://github.com/Significa/eslint-config-significa)|
-|Flow| A static type checker |[link](https://flow.org/)|
 |Node| A JavaScript runtime server|[link](https://nodejs.org/en/)|
 |React| library for building user interfaces |[link](https://reactjs.org/)||
 |Selenium| framework for testing web applications. |[link](https://www.seleniumhq.org/)|
@@ -53,6 +53,8 @@ access localhost:3000 to use the app
 |...| ... | ... |
 
 To-Do List:
+- [ ] Resolve conversations
+- [ ] Refactor movie.js
 - [X] Manage States With Redux
 - [X] Fix Continuous Deploy
 - [X] Refactor Css To make the website responsible

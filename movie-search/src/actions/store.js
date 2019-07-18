@@ -1,22 +1,19 @@
-import { searchMovies, searchSingleMovie, getFavorites } from "./API"
+import { searchMovies, searchSingleMovie, getFavorites } from "../API"
+import Actions from "./actions"
 
-const SEARCH_TERM_CHANGED = "SEARCH_TERM_CHANGED"
-const MOVIES = "MOVIES"
-const SINGLE_MOVIE = "SINGLE_MOVIE"
-const FAVORITES = "FAVORITES"
-const TOGGLE_FAVORITE = "TOGGLE_FAVORITE"
-const ADD_FAVORITE = "ADD_FAVORITE"
-
+/**
+  Action creators
+ */
 export const actionsMainPage = {
   searchTermChanged(searchTerm) {
     return {
-      type: SEARCH_TERM_CHANGED,
+      type: Actions.SEARCH_TERM_CHANGED,
       searchTerm
     }
   },
   getMovies(searchTerm) {
     return {
-      type: MOVIES,
+      type: Actions.MOVIES,
       payload: searchMovies(searchTerm)
     }
   }
@@ -25,26 +22,26 @@ export const actionsMainPage = {
 export const actionsSingleMoviePage = {
   getSingleMovie(id) {
     return {
-      type: SINGLE_MOVIE,
+      type: Actions.SINGLE_MOVIE,
       payload: searchSingleMovie(id)
     }
   },
   getFavorites() {
     return {
-      type: FAVORITES,
+      type: Actions.FAVORITES,
       payload: getFavorites()
     }
   },
   toggleFavorite() {
     return {
-      type: TOGGLE_FAVORITE,
+      type: Actions.TOGGLE_FAVORITE,
       favorite: true,
       payload: getFavorites()
     }
   },
   addFavorite(id) {
     return {
-      type: ADD_FAVORITE,
+      type: Actions.ADD_FAVORITE,
       id
     }
   }

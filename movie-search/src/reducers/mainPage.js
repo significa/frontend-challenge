@@ -4,8 +4,8 @@ const initialState = {
   loading: false
 }
 
-export default function mainPage(state = initialState, action) {
-  switch (action.type) {
+const mainPage = (state = initialState, action) => {
+    switch (action.type) {
     case "SEARCH_TERM_CHANGED": {
       return {
         ...state,
@@ -30,3 +30,5 @@ export default function mainPage(state = initialState, action) {
       return state
   }
 }
+export default mainPage
+

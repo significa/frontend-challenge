@@ -5,15 +5,16 @@ export const omdbApi = {
 
 export async function searchMovies(searchTerm) {
   const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&s=${searchTerm}`
-  const res = await fetch(url)
-  const data = await res.json()
+  const data = await fetch(url).then(res => res.json())
+  
   return data.Search || []
 }
 
 export async function searchSingleMovie(id) {
   const url = `${omdbApi.BASE_URL}${omdbApi.API_KEY}&i=${id}`
-  const response = await fetch(url)
-  return response.json()
+  const data = await fetch(url).then(res => res.json())
+  
+  return data || []
 }
 
 export async function getFavorites() {
