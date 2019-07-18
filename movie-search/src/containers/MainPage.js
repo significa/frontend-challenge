@@ -6,7 +6,7 @@ import Input from "../components/common/Input"
 import empty from "../assets/illustration-empty-state@2x.png"
 
 import { Flex } from "../components/Layout"
-import { Text100, Text300 } from "../components/common/Typography"
+import { SmallerText, MediumText } from "../components/common/Typography"
 import Loader from "../components/common/Loader"
 import Results from "../components/Results"
 import { actionsMainPage } from "../actions/store"
@@ -41,8 +41,8 @@ class MainPage extends Component {
           {results.length === 0 && !loading ? (
             <Flex mt={6}>
               <img width="66%" src={empty} alt="Empty state" />
-              <Text300 mb={2}>Don’t know what to search?</Text300>
-              <Text100 grey>Here’s an offer you can’t refuse</Text100>
+              <MediumText mb={2}>Don’t know what to search?</MediumText>
+              <SmallerText grey>Here’s an offer you can’t refuse</SmallerText>
             </Flex>
           ) : (
             <Results data={results} />

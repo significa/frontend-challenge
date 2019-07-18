@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import { Text100 } from "../Typography/styled"
+import { SmallerText } from "../Typography/styled"
 import { IMDB, Rotten, Label } from "./styled"
 import { Wrapper } from "../../Layout"
 
@@ -9,7 +9,7 @@ export const IMDBLabel = ({ value }) => (
   <Label>
     <Wrapper>
       <IMDB />
-      <Text100 p={3}>{value}</Text100>
+      <SmallerText p={3}>{value}</SmallerText>
     </Wrapper>
   </Label>
 )
@@ -18,7 +18,7 @@ export const RottenLabel = ({ value }) => (
   <Label>
     <Wrapper>
       <Rotten />
-      <Text100 p={3}>{value}</Text100>
+      <SmallerText p={3}>{value}</SmallerText>
     </Wrapper>
   </Label>
 )

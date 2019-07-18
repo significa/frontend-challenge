@@ -12,7 +12,7 @@ export const ThumbnailHolder = styled.a`
   margin-bottom: 20px;
 `
 
-export const ThumbnailText = styled.div`
+export const ThumbnailText = styled.p`
   position: absolute;
   bottom: 12px;
   left: 12px;

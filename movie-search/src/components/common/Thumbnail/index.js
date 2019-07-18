@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import { Text100, Text200 } from "../Typography/index"
+import { SmallerText, SmallText } from "../Typography/index"
 import {
   ThumbnailHolder,
   SmallThumbnail,
@@ -19,8 +19,8 @@ const Thumbnail = ({ href, poster, title, year }) => (
       <SmallThumbnail image={poster} />
     )}
     <ThumbnailText>
-      <Text200>{title}</Text200>
-      <Text100>{year}</Text100>
+      <SmallText>{title}</SmallText>
+      <SmallerText>{year}</SmallerText>
     </ThumbnailText>
   </ThumbnailHolder>
 )

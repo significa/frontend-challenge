@@ -36,29 +36,29 @@ const TextLink = styled.a`
   }
 `
 
-const Text100 = styled.p`
+const SmallerText = styled.p`
   ${base};
   font-size: ${({ theme }) => theme.font.smaller};
   line-height: 24px;
 `
 
-const Text200 = styled.p`
+const SmallText = styled.p`
   ${base};
   font-size: ${({ theme }) => theme.font.small};
   font-weight: bold;
   line-height: 24px;
 `
 
-const Text300 = styled.p`
+const MediumText = styled.p`
   ${base};
   font-size: ${({ theme }) => theme.font.large};
   font-weight: bold;
 `
 
-const Text400 = styled.p`
+const BigText = styled.p`
   ${base};
   font-size: ${({ theme }) => theme.font.display};
   font-weight: bold;
 `
 
-export { Text100, Text200, Text300, Text400, TextLink }
+export { SmallerText, SmallText, MediumText, BigText, TextLink }
