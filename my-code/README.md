@@ -1,3 +1,14 @@
+*** This project was built for studying purposes. ***
+
+## Tools and packages used:
+
+* [Visual Studio Code](https://code.visualstudio.com)
+* [ESLint](https://eslint.org)
+* [Prettier](https://prettier.io)
+* [React Router DOM](https://www.npmjs.com/package/react-router-dom)
+* [Styled Components](https://www.styled-components.com)
+* [Axios](https://github.com/axios/axios)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

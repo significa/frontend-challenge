@@ -1,31 +1,31 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import variables from '../../styles/variables';
 import magnifierGrey from '../../assets/icon-magnifier-grey.svg';
+import magnifierDisabled from '../../assets/icon-magnifier-disabled.svg';
 
-export const Container = styled.div`
-  input {
-    background: url(${magnifierGrey}) ${variables.COLOR_DEFAULT} no-repeat
-      scroll 12px 16px;
-    border-radius: ${variables.BORDER_RADIUS};
-    border: 0;
-    padding: 12px 12px 12px 40px;
-    width: 100%;
+export const Input = styled.input`
+  background-image: url(${magnifierGrey});
+  background-color: ${variables.COLOR_DEFAULT};
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 12px 20px;
+  border-radius: ${variables.BORDER_RADIUS};
+  border: 0;
+  color: ${variables.COLOR_DARK};
+  padding: 12px 12px 12px 40px;
+  width: 100%;
+
+  ::placeholder {
+    color: ${variables.COLOR_SECONDARY};
+  }
+
+  ${props => props.isDisabled && css`
+    background-image: url(${magnifierDisabled});
+    background-color: ${variables.COLOR_DISABLED};
+    color: ${variables.COLOR_MIDGREY};
 
     ::placeholder {
-      color: ${variables.COLOR_LIGHTGREY};
-    }
-
-    &:active {
-      color: ${variables.COLOR_DARK};
-    }
-
-    &.disabled {
-      background: ${variables.COLOR_GREY};
       color: ${variables.COLOR_MIDGREY};
-
-      ::placeholder {
-        color: ${variables.COLOR_MIDGREY};
-      }
     }
-  }
+  `}
 `;

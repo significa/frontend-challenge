@@ -1,10 +1,8 @@
 import React from 'react';
-import { Container } from './styles';
+import { Input } from './styles';
 
-export default function Search() {
+export default function Search(props) {
   return (
-    <Container>
-      <input type="text" placeholder="Search movies..." />
-    </Container>
+      <Input type="text" placeholder="Search movies..." isDisabled={props.isDisabled} />
   );
 }

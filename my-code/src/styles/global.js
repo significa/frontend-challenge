@@ -17,9 +17,12 @@ export default createGlobalStyle`
   }
 
   body, input, button {
+    color: ${variables.COLOR_DEFAULT};
     font-family: 'Roboto', sans-serif;
     font-size: ${variables.FONT_SIZE_REGULAR};
     font-weight: ${variables.FONT_WEIGHT_REGULAR};
+    letter-spacing: 0.16pt;
+    line-height: 24pt;
   }
 
   #root {
@@ -46,5 +49,26 @@ export default createGlobalStyle`
       border-color: ${variables.COLOR_RED};
       color: ${variables.COLOR_DEFAULT};
     }
+  }
+
+  // TYPOGRAPHY
+
+  .text-big {
+    font-size: ${variables.FONT_SIZE_BIG};
+    font-weight: ${variables.FONT_WEIGHT_MEDIUM};
+    letter-spacing: 0.2pt;
+    line-height: 28pt;
+  }
+  .text-bigger {
+    font-size: ${variables.FONT_SIZE_BIGGER};
+    font-weight: ${variables.FONT_WEIGHT_MEDIUM};
+    letter-spacing: 0.2pt;
+    line-height: 30pt;
+  }
+  .text-giant {
+    font-size: ${variables.FONT_SIZE_GIANT};
+    font-weight: ${variables.FONT_WEIGHT_BOLD};
+    letter-spacing: 0.8pt;
+    line-height: 88pt;
   }
 `;
