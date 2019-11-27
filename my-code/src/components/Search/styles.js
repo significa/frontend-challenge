@@ -12,6 +12,7 @@ export const Input = styled.input`
   border-radius: ${variables.BORDER_RADIUS};
   border: 0;
   color: ${variables.COLOR_DARK};
+  margin-bottom: 20px;
   padding: 12px 12px 12px 40px;
   width: 100%;
 
@@ -19,13 +20,15 @@ export const Input = styled.input`
     color: ${variables.COLOR_SECONDARY};
   }
 
-  ${props => props.isDisabled && css`
-    background-image: url(${magnifierDisabled});
-    background-color: ${variables.COLOR_DISABLED};
-    color: ${variables.COLOR_MIDGREY};
-
-    ::placeholder {
+  ${props =>
+    props.isDisabled &&
+    css`
+      background-image: url(${magnifierDisabled});
+      background-color: ${variables.COLOR_DISABLED};
       color: ${variables.COLOR_MIDGREY};
-    }
-  `}
+
+      ::placeholder {
+        color: ${variables.COLOR_MIDGREY};
+      }
+    `}
 `;

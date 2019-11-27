@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 import variables from './variables';
+// import 'primereact/resources/themes/nova-light/theme.css';
+// import 'primereact/resources/primereact.min.css';
+import './primeflex.css';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
@@ -26,7 +29,7 @@ export default createGlobalStyle`
   }
 
   #root {
-    max-width: 1020px;
+    /* max-width: 1020px; */
     margin: 0 auto;
     padding: 0 20px 50px;
   }
