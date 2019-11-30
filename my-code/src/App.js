@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"
+import logo from "./logo.svg"
+import "./App.css"
 
 function App() {
   const [value, setValue] = useState("")
@@ -16,7 +16,7 @@ function App() {
         <button onClick={() => console.log(value)}>Click!</button>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
