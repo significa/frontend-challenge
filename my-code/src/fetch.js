@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 
-const apiKey = "1d66d490"
+// This key would be fetch'd on App load
+export const apiKey = "1d66d490"
 
 export function useFetch(url, method) {
   const [response, setResponse] = useState(null)

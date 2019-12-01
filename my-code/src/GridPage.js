@@ -1,8 +1,6 @@
 import React, { useState } from "react"
-import { useMovieList } from "./fetch"
-import "./ListPage.css"
-
-const apiKey = "1d66d490"
+import { apiKey, useMovieList } from "./fetch"
+import "./GridPage.css"
 
 export default function GridPage(props) {
   const [queryText, setQueryText] = useState("")
@@ -13,7 +11,7 @@ export default function GridPage(props) {
       {queryText === "" ? (
         <div>Search something first!</div>
       ) : (
-        <GridList queryText={queryText} />
+        <GridList queryText={queryText} setPickedMovie={props.setPickedMovie} />
       )}
     </div>
   )
@@ -45,12 +43,20 @@ function GridList(props) {
     return <div>{error}</div>
   }
 
+  if (list.length === 0) {
+    return <div>Not a single movie in sight!</div>
+  }
+
   return (
     <div>
       <div>{list.length}</div>
       <div className="grid">
         {list.map(movie => (
-          <Preview movie={movie}></Preview>
+          <Preview
+            key={movie.imdbID}
+            movie={movie}
+            pick={() => props.setPickedMovie(movie.imdbID)}
+          ></Preview>
         ))}
       </div>
     </div>
@@ -61,8 +67,8 @@ function Preview(props) {
   const { imdbID, Poster, Title, Year } = props.movie
 
   return (
-    <div className="preview-wrapper" key={imdbID}>
-      <img className="preview-image" src={Poster} />
+    <div className="preview-wrapper">
+      <img className="preview-image" src={Poster} onClick={props.pick} />
       <div className="preview-title">{Title}</div>
     </div>
   )
