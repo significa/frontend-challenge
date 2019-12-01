@@ -1,5 +1,10 @@
+* {
+  font-family: Roboto, sans-serif;
+}
+
 .App {
+
   background-color: #282c34;
   text-align: center;
-  height: 96vh
+  height: 96vh;
 }
