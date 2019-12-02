@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { apiKey, useFetch } from "./fetch"
+import React from "react"
 import "./MoviePage.css"
+import { apiKey, useFetch } from "./fetch"
 
 export default function GridPage({ id, onClose }) {
   const movie = useFetch(

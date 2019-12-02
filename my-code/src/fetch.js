@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 
 // This key would be fetch'd on App load
 export const apiKey = "1d66d490"
