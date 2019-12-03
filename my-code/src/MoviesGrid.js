@@ -7,6 +7,12 @@ import {
 } from "@material-ui/core"
 import { useMovieList } from "./fetch"
 import MovieCard from "./MovieCard.js"
+import {
+  getFavorites,
+  isFavorite,
+  addFavorite,
+  removeFavorite
+} from "./favorites.js"
 
 const useStyles = makeStyles(theme => ({
   loading: {},

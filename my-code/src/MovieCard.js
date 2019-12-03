@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { makeStyles, IconButton, Paper, Typography } from "@material-ui/core"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
+import { getFavorites, addFavorite, removeFavorite } from "./favorites.js"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
   },
   overlayTitle: {
     color: "white",
-    fontSize: "20pt",
+    fontSize: "16pt",
     fontWeight: "bold"
   },
   overlayYear: {
@@ -58,7 +59,7 @@ export default function MovieCard({ movie, onPick }) {
   const classes = useStyles()
   const { imdbID, Poster, Title, Year } = movie
   const [isHovered, setIsHovered] = useState(false)
-  const [isFavorite, setFavorite] = useState(false)
+  const [isFavorite, setFavorite] = useState(getFavorites().includes(imdbID))
 
   let favIcon = null
   if (isFavorite) {
@@ -90,16 +91,17 @@ export default function MovieCard({ movie, onPick }) {
       )}
       <IconButton
         className={classes.overlayFavoriteIconButton}
-        onClick={() => setFavorite(!isFavorite)}
+        onClick={() => {
+          if (isFavorite) {
+            removeFavorite(imdbID)
+          } else {
+            addFavorite(imdbID)
+          }
+          setFavorite(!isFavorite)
+        }}
       >
         {favIcon}
       </IconButton>
     </Paper>
   )
 }
-
-// Poster: "https://m.media-amazon.com/images/M/MV5BMTUwNDU0NzcwMl5BMl5BanBnXkFtZTcwNzk1NjAzNA@@._V1_SX300.jpg"
-// Title: "Canadian Bacon"
-// Type: "movie"
-// Year: "1995"
-// imdbID: "tt0109370"
