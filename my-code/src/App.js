@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import { CssBaseline } from "@material-ui/core"
+import blueGrey from "@material-ui/core/colors/blueGrey"
+import lightGreen from "@material-ui/core/colors/lightGreen"
 import SearchBar from "./SearchBar.js"
 import MoviesGrid from "./MoviesGrid.js"
 import MoviePage from "./MoviePage.js"
@@ -12,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden auto",
     height: "100vh",
     width: "100vw",
-    backgroundColor: "lightblue"
+    backgroundColor: "rgb(10, 16, 20)"
   },
   container: {
     display: "flex",
@@ -20,6 +22,9 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     width: "100%",
     maxWidth: 1200
+  },
+  gridContainer: {
+    marginTop: theme.spacing(3)
   }
 }))
 
@@ -37,10 +42,12 @@ export default function App() {
           {pickedMovie === null ? (
             <>
               <SearchBar onSearch={setQueryText} />
-              <MoviesGrid
-                queryText={queryText}
-                setPickedMovie={setPickedMovie}
-              />
+              <div className={classes.gridContainer}>
+                <MoviesGrid
+                  queryText={queryText}
+                  setPickedMovie={setPickedMovie}
+                />
+              </div>
             </>
           ) : (
             <MoviePage id={pickedMovie} onClose={() => setPickedMovie(null)} />

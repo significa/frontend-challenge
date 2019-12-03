@@ -1,38 +1,25 @@
 import React from "react"
 import {
   makeStyles,
-  Card,
-  CardActionArea,
-  CardMedia,
   CircularProgress,
   Grid,
   Typography
 } from "@material-ui/core"
 import { useMovieList } from "./fetch"
+import MovieCard from "./MovieCard.js"
 
 const useStyles = makeStyles(theme => ({
+  loading: {},
   error: {
-    marginTop: theme.spacing(2),
     color: "red"
   },
-  noQuery: {
-    marginTop: theme.spacing(2)
-  },
-  notFound: {
-    marginTop: theme.spacing(2)
-  },
+  noQuery: {},
+  notFound: {},
   gridContainer: {
     margin: 0,
-    marginTop: theme.spacing(2),
     height: "100%",
     width: "100%",
     maxWidth: 1200
-  },
-  card: {
-    height: "100%"
-  },
-  posterWrapper: {
-    height: "100%"
   }
 }))
 
@@ -41,7 +28,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const { list, isLoading, error } = useMovieList(queryText)
 
   if (isLoading) {
-    return <CircularProgress />
+    return <CircularProgress className={classes.error} />
   }
 
   if (error !== null) {
@@ -69,7 +56,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const filteredList = list.filter(m => m.Poster !== "N/A")
 
   return (
-    <Grid className={classes.gridContainer} container spacing={2}>
+    <Grid className={classes.gridContainer} container spacing={3}>
       {filteredList.map(movie => (
         <Grid item key={movie.imdbID} xs={3} md={2}>
           <MovieCard
@@ -81,22 +68,3 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
     </Grid>
   )
 }
-
-function MovieCard({ movie, onPick }) {
-  const classes = useStyles()
-  const { imdbID, Poster, Title, Year } = movie
-
-  return (
-    <Card className={classes.card}>
-      <CardActionArea className={classes.posterWrapper} onClick={onPick}>
-        <CardMedia component="img" alt="Poster" image={Poster} title={Title} />
-      </CardActionArea>
-    </Card>
-  )
-}
-
-// Poster: "https://m.media-amazon.com/images/M/MV5BMTUwNDU0NzcwMl5BMl5BanBnXkFtZTcwNzk1NjAzNA@@._V1_SX300.jpg"
-// Title: "Canadian Bacon"
-// Type: "movie"
-// Year: "1995"
-// imdbID: "tt0109370"
