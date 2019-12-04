@@ -21,6 +21,13 @@ export function useFetch(url, method) {
   return response
 }
 
+// omdbapi only provides a maximum of 10 search results, on a given request
+// to overcome this we first find out the number of search results, for the searched text
+// and then request however many pages we need. Even so, we don't need to abuse
+// this open source api, so we applied a maxPages limit, to avoid overflooding with requests
+
+const maxPages = 10
+
 export function useMovieList(queryText) {
   const response = useFetch(
     `http://www.omdbapi.com/?s=${queryText}&type=movie&apikey=${apiKey}`,
@@ -43,7 +50,11 @@ export function useMovieList(queryText) {
       let ls = []
       let error = null
 
-      for (let i = 1; i <= Math.floor(response.totalResults / 10); i++) {
+      for (
+        let i = 1;
+        i <= Math.min(Math.floor(response.totalResults / 10), maxPages);
+        i++
+      ) {
         const resp = await fetch(
           `http://www.omdbapi.com/?s=${queryText}&type=movie&page=${i}&apikey=${apiKey}`,
           { method: "GET" }
