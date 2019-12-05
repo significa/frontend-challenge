@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { makeStyles, CssBaseline } from "@material-ui/core"
 import SearchBar from "./SearchBar.js"
-import {LogoMessage } from "./stateDescribers.js"
+import { LogoMessage } from "./stateDescribers.js"
 import MoviesGrid from "./MoviesGrid.js"
 import MoviePage from "./MoviePage.js"
 
@@ -44,13 +44,12 @@ export default function App() {
               <div className={classes.gridContainer}>
                 {queryText === "" ? (
                   <LogoMessage message="Search some movies. It's free!" />
-                )
-                  :
-                  (<MoviesGrid
-                  queryText={queryText}
-                  setPickedMovie={setPickedMovie}
-                  />)
-                }
+                ) : (
+                  <MoviesGrid
+                    queryText={queryText}
+                    setPickedMovie={setPickedMovie}
+                  />
+                )}
               </div>
             </>
           ) : (
