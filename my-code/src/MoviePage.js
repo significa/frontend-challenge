@@ -1,28 +1,224 @@
-import React from "react"
-import "./MoviePage.css"
+import React, { useState } from "react"
+import {
+  makeStyles,
+  Button,
+  CircularProgress,
+  Icon,
+  Tooltip,
+  Typography
+} from "@material-ui/core"
+import ArrowBackIcon from "@material-ui/icons/ArrowBack"
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
+import FavoriteIcon from "@material-ui/icons/Favorite"
+import imdblogo from "./assets/imdb.png"
+import rottenlogo from "./assets/rotten.png"
 import { apiKey, useFetch } from "./fetch"
+import { getFavorites, addFavorite, removeFavorite } from "./favorites.js"
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    color: "white",
+    marginTop: theme.spacing(4),
+    maxWidth: 1200
+  },
+  loading: {},
+  error: {
+    color: "red"
+  },
+  container: {
+    display: "flex",
+    flexDirection: "row-reverse",
+    justifyContent: "center"
+  },
+  backIcon: {
+    alignSelf: "flex-start",
+    marginLeft: theme.spacing(3),
+    color: "#353f4c",
+    cursor: "pointer"
+  },
+  panel: {
+    width: "50%",
+    padding: theme.spacing(3)
+  },
+  poster: {
+    width: "100%",
+    borderRadius: 16
+  },
+  info: {
+    color: "#353f4c",
+    display: "flex",
+    alignItems: "center",
+    marginBottom: theme.spacing(2)
+  },
+  infoItem: {
+    fontSize: "16pt"
+  },
+  infoRated: {
+    fontSize: "16pt",
+    color: "rgb(10, 16, 20)",
+    backgroundColor: "#353f4c",
+    borderRadius: 8,
+    padding: `0 ${theme.spacing(1)}px 0 ${theme.spacing(1)}px`
+  },
+  infoSeparator: {
+    margin: "0 8px 0 8px",
+    fontSize: "16pt"
+  },
+  title: {
+    fontSize: "45pt",
+    fontWeight: "bold"
+  },
+  score: {
+    margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`,
+    display: "flex",
+    justifyContent: "space-apart"
+  },
+  rating: {
+    marginRight: theme.spacing(2),
+    height: 36,
+    border: "1px solid #353f4c",
+    borderRadius: 8,
+    display: "flex",
+    alignItems: "center"
+  },
+  ratingLogo: {
+    height: 34,
+    backgroundColor: "pink",
+    borderRadius: 8
+  },
+  ratingValue: {
+    color: "white",
+    fontWeight: "bold",
+    margin: theme.spacing(1)
+  },
+  section: {
+    margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`
+  },
+  sectionTitle: {
+    color: "#353f4c",
+    fontSize: "10pt"
+  },
+  sectionText: {
+    color: "white",
+    fontSize: "12pt",
+    whiteSpace: "pre-line"
+  },
+  aditionalInfo: {
+    display: "flex",
+    justifyContent: "space-apart",
+    flexWrap: "wrap"
+  }
+}))
 
 export default function GridPage({ id, onClose }) {
+  const classes = useStyles()
   const movie = useFetch(
     `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`,
     "GET"
   )
 
   if (!movie) {
-    return <div>Loading...</div>
+    return <CircularProgress className={classes.loading} />
   }
 
   if (movie.Error != null) {
-    return <div>{movie.Error}</div>
+    return <Typography className={classes.error}>{movie.Error}</Typography>
   }
 
   return (
-    <div className="root">
-      <img src={movie.Poster} />
-      <div>{movie.Title}</div>
-      <div>{movie.Plot}</div>
-      <div>{movie.Actors}</div>
-      <button onClick={onClose}>back</button>
+    <div className={classes.root}>
+      <Icon className={classes.backIcon} onClick={onClose}>
+        <ArrowBackIcon />
+      </Icon>
+      <div className={classes.container}>
+        <div className={classes.panel}>
+          <img
+            className={classes.poster}
+            src={movie.Poster}
+            alt={movie.title}
+          />
+        </div>
+        <div className={classes.panel}>
+          <div className={classes.info}>
+            <Typography className={classes.infoItem}>
+              {movie.Runtime}
+            </Typography>
+            <span className={classes.infoSeparator}>{"\u00B7"}</span>
+            <Typography className={classes.infoItem}>{movie.Year}</Typography>
+            <span className={classes.infoSeparator}>{"\u00B7"}</span>
+            <Typography className={classes.infoRated}>{movie.Rated}</Typography>
+          </div>
+          <Typography className={classes.title}>{movie.Title}</Typography>
+          <div className={classes.score}>
+            <Tooltip
+              title={movie.Ratings[0].Source}
+              children={
+                <div className={classes.rating}>
+                  <img className={classes.ratingLogo} src={imdblogo} />
+                  <Typography className={classes.ratingValue}>
+                    {movie.Ratings[0].Value}
+                  </Typography>
+                </div>
+              }
+            />
+            <Tooltip
+              title={movie.Ratings[1].Source}
+              children={
+                <div className={classes.rating}>
+                  <img className={classes.ratingLogo} src={rottenlogo} />
+                  <Typography className={classes.ratingValue}>
+                    {movie.Ratings[1].Value}
+                  </Typography>
+                </div>
+              }
+            />
+            <FavoriteButton id={movie.imdbID} />
+          </div>
+          <Section title={"Plot"} text={movie.Plot} />
+          <div className={classes.aditionalInfo}>
+            <Section title={"Cast"} text={movie.Actors.replace(/,/g, "\n")} />
+            <Section title={"Genre"} text={movie.Genre.replace(/,/g, "\n")} />
+            <Section title={"Director"} text={movie.Director} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function FavoriteButton({ id }) {
+  const classes = useStyles()
+  const [isFavorite, setFavorite] = useState(getFavorites().includes(id))
+
+  return (
+    <Button
+      variant={isFavorite ? "contained" : "outlined"}
+      color="default"
+      className={classes.button}
+      startIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      onClick={() => {
+        if (isFavorite) {
+          removeFavorite(id)
+        } else {
+          addFavorite(id)
+        }
+        setFavorite(!isFavorite)
+      }}
+    >
+      Add to favorites
+    </Button>
+  )
+}
+
+function Section({ title, text }) {
+  const classes = useStyles()
+  return (
+    <div className={classes.section}>
+      <Typography className={classes.sectionTitle}>{title}</Typography>
+      <Typography className={classes.sectionText}>{text}</Typography>
     </div>
   )
 }
