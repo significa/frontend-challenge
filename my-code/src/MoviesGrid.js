@@ -17,7 +17,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const classes = useStyles()
   const { list, isLoading, error } = useMovieList(queryText)
 
-  if (isLoading) {
+  if (isLoading || list === null) {
     return <Loading />
   }
 
@@ -25,8 +25,8 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
     return <Error message={error} />
   }
 
-  if (list === null) {
-    return <LogoMessage message="Not a single movie in sight!" />
+  if (list.length === 0) {
+    return <LogoMessage message="Not a single result in sight!" />
   }
 
   // As an alternative to using a placeholder for movies without Poster we just filter those out.
