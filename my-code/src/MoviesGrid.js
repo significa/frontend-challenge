@@ -5,17 +5,12 @@ import {
   Grid,
   Typography
 } from "@material-ui/core"
+import { Loading, Error, LogoMessage } from "./stateDescribers.js"
 import { useMovieList } from "./fetch"
 import MovieCard from "./MovieCard.js"
 
 const useStyles = makeStyles(theme => ({
-  loading: {},
-  error: {
-    color: "red"
-  },
-  noQuery: {},
-  notFound: {},
-  gridContainer: {
+  root: {
     margin: 0,
     height: "100%",
     width: "100%",
@@ -27,28 +22,20 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const classes = useStyles()
   const { list, isLoading, error } = useMovieList(queryText)
 
+  if (queryText === "") {
+    return <LogoMessage message="Search some movies. It's free!" />
+  }
+
   if (isLoading) {
-    return <CircularProgress className={classes.loading} />
+    return <Loading />
   }
 
   if (error !== null) {
-    return <Typography className={classes.error}>{error}</Typography>
-  }
-
-  if (queryText === "") {
-    return (
-      <Typography className={classes.noQuery}>
-        Search something first!
-      </Typography>
-    )
+    return <Error message={error} />
   }
 
   if (list.length === 0) {
-    return (
-      <Typography className={classes.notFound}>
-        Not a single movie in sight!
-      </Typography>
-    )
+    return <LogoMessage message="Not a single movie in sight!" />
   }
 
   // As an alternative to using a placeholder for movies without Poster we just filter those out.
@@ -56,7 +43,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const filteredList = list.filter(m => m.Poster !== "N/A")
 
   return (
-    <Grid className={classes.gridContainer} container spacing={3}>
+    <Grid className={classes.root} container spacing={3}>
       {filteredList.map(movie => (
         <Grid item key={movie.imdbID} xs={3} md={2}>
           <MovieCard

@@ -12,6 +12,7 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import imdblogo from "./assets/imdb.png"
 import rottenlogo from "./assets/rotten.png"
+import { Loading, Error } from "./stateDescribers.js"
 import { apiKey, useFetch } from "./fetch"
 import { getFavorites, addFavorite, removeFavorite } from "./favorites.js"
 
@@ -22,10 +23,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     marginTop: theme.spacing(4),
     maxWidth: 1200
-  },
-  loading: {},
-  error: {
-    color: "red"
   },
   container: {
     display: "flex",
@@ -116,11 +113,15 @@ export default function GridPage({ id, onClose }) {
   )
 
   if (!movie) {
-    return <CircularProgress className={classes.loading} />
+    return <Loading />
   }
 
-  if (movie.Error != null || error !== null) {
-    return <Typography className={classes.error}>{movie.Error}</Typography>
+  if (movie.Error != null) {
+    return <Error message={movie.Error} />
+  }
+
+  if (error !== null) {
+    return <Error message={error} />
   }
 
   return (

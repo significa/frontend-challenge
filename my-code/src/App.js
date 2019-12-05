@@ -20,7 +20,9 @@ const useStyles = makeStyles(theme => ({
     maxWidth: 1200
   },
   gridContainer: {
-    marginTop: theme.spacing(3)
+    marginTop: theme.spacing(3),
+    display: "flex",
+    flexGrow: 1
   }
 }))
 
