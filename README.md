@@ -1,6 +1,6 @@
 Forked from [Significa Frontend Challenge](https://github.com/Significa/frontend-challenge)
 
-## Welcome to the _Moobies App_
+## Welcome to the _Moobee App_
 
 An humble attempt at solving this challenge. This app mostly follows the visual footprint and usage of the demo page, with some fairly small stylistic re-interpretations.
 

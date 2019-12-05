@@ -1,7 +1,8 @@
 import React from "react"
 import { makeStyles, CircularProgress, Typography } from "@material-ui/core"
 import cow from "./assets/cow.png"
-import moobies from "./assets/moobies.png"
+import moobee from "./assets/moobee.png"
+import bee from "./assets/bee.png"
 
 const useStyles = makeStyles(theme => ({
   loading: {
@@ -13,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   },
   logoWithText: {
     alignSelf: "center",
+    textAlign: "center",
     maxWidth: 600
   },
   logoWrapper: {
@@ -23,9 +25,12 @@ const useStyles = makeStyles(theme => ({
   cow: {
     width: "25%"
   },
-  moobies: {
+  moobee: {
     height: 32,
     margin: 12
+  },
+  bee: {
+    height: 40
   }
 }))
 
@@ -53,7 +58,8 @@ export function LogoMessage({ message }) {
     <div className={classes.logoWithText}>
       <div className={classes.logoWrapper}>
         <img className={classes.cow} src={cow} alt="Meow, meow, i'm a cow" />
-        <img className={classes.moobies} src={moobies} alt="Moooooobies" />
+        <img className={classes.moobee} src={moobee} alt="Moooooobeezzzzzz" />
+        <img className={classes.bee} src={bee} alt="Maia" />
       </div>
       <Typography variant="h4" color="secondary">
         {message}
