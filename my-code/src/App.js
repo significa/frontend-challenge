@@ -1,6 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles } from "@material-ui/core/styles"
-import { CssBaseline } from "@material-ui/core"
+import { makeStyles, CssBaseline } from "@material-ui/core"
 import blueGrey from "@material-ui/core/colors/blueGrey"
 import lightGreen from "@material-ui/core/colors/lightGreen"
 import SearchBar from "./SearchBar.js"
@@ -13,8 +12,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     overflow: "hidden auto",
     height: "100vh",
-    width: "100vw",
-    backgroundColor: "rgb(10, 16, 20)"
+    width: "100vw"
+    // backgroundColor: "#0a1014"
   },
   container: {
     display: "flex",

@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    color: "white",
     marginTop: theme.spacing(4),
     maxWidth: 1200
   },
@@ -48,7 +47,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 16
   },
   info: {
-    color: "#353f4c",
     display: "flex",
     alignItems: "center",
     marginBottom: theme.spacing(2)
@@ -58,7 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
   infoRated: {
     fontSize: "16pt",
-    color: "rgb(10, 16, 20)",
+    color: "#0a1014",
     backgroundColor: "#353f4c",
     borderRadius: 8,
     padding: `0 ${theme.spacing(1)}px 0 ${theme.spacing(1)}px`
@@ -90,7 +88,6 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 8
   },
   ratingValue: {
-    color: "white",
     fontWeight: "bold",
     margin: theme.spacing(1)
   },
@@ -98,11 +95,9 @@ const useStyles = makeStyles(theme => ({
     margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`
   },
   sectionTitle: {
-    color: "#353f4c",
     fontSize: "10pt"
   },
   sectionText: {
-    color: "white",
     fontSize: "12pt",
     whiteSpace: "pre-line"
   },
@@ -143,38 +138,19 @@ export default function GridPage({ id, onClose }) {
         </div>
         <div className={classes.panel}>
           <div className={classes.info}>
-            <Typography className={classes.infoItem}>
+            <Typography className={classes.infoItem} color="textSecondary">
               {movie.Runtime}
             </Typography>
             <span className={classes.infoSeparator}>{"\u00B7"}</span>
-            <Typography className={classes.infoItem}>{movie.Year}</Typography>
+            <Typography className={classes.infoItem} color="textSecondary">
+              {movie.Year}
+            </Typography>
             <span className={classes.infoSeparator}>{"\u00B7"}</span>
             <Typography className={classes.infoRated}>{movie.Rated}</Typography>
           </div>
           <Typography className={classes.title}>{movie.Title}</Typography>
           <div className={classes.score}>
-            <Tooltip
-              title={movie.Ratings[0].Source}
-              children={
-                <div className={classes.rating}>
-                  <img className={classes.ratingLogo} src={imdblogo} />
-                  <Typography className={classes.ratingValue}>
-                    {movie.Ratings[0].Value}
-                  </Typography>
-                </div>
-              }
-            />
-            <Tooltip
-              title={movie.Ratings[1].Source}
-              children={
-                <div className={classes.rating}>
-                  <img className={classes.ratingLogo} src={rottenlogo} />
-                  <Typography className={classes.ratingValue}>
-                    {movie.Ratings[1].Value}
-                  </Typography>
-                </div>
-              }
-            />
+            <RatingsDisplay ratings={movie.Ratings} />
             <FavoriteButton id={movie.imdbID} />
           </div>
           <Section title={"Plot"} text={movie.Plot} />
@@ -189,6 +165,49 @@ export default function GridPage({ id, onClose }) {
   )
 }
 
+function RatingsDisplay({ ratings }) {
+  const classes = useStyles()
+  const ret = []
+
+  const imdbIndex = ratings.find(r => r.Source === "Internet Movie Database")
+  if (imdbIndex > -1) {
+    ret.push(
+      <Tooltip
+        key="imdb"
+        title={ratings[imdbIndex].Source}
+        children={
+          <div className={classes.rating}>
+            <img className={classes.ratingLogo} src={imdblogo} />
+            <Typography className={classes.ratingValue}>
+              {ratings[imdbIndex].Value}
+            </Typography>
+          </div>
+        }
+      />
+    )
+  }
+
+  const tomatoIndex = ratings.findIndex(r => r.Source === "Rotten Tomatoes")
+  if (tomatoIndex > -1) {
+    ret.push(
+      <Tooltip
+        key="tomato"
+        title={ratings[tomatoIndex].Source}
+        children={
+          <div className={classes.rating}>
+            <img className={classes.ratingLogo} src={rottenlogo} />
+            <Typography className={classes.ratingValue}>
+              {ratings[tomatoIndex].Value}
+            </Typography>
+          </div>
+        }
+      />
+    )
+  }
+
+  return <>{ret}</>
+}
+
 function FavoriteButton({ id }) {
   const classes = useStyles()
   const [isFavorite, setFavorite] = useState(getFavorites().includes(id))
@@ -196,7 +215,7 @@ function FavoriteButton({ id }) {
   return (
     <Button
       variant={isFavorite ? "contained" : "outlined"}
-      color="default"
+      color="primary"
       className={classes.button}
       startIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
       onClick={() => {
@@ -217,7 +236,9 @@ function Section({ title, text }) {
   const classes = useStyles()
   return (
     <div className={classes.section}>
-      <Typography className={classes.sectionTitle}>{title}</Typography>
+      <Typography className={classes.sectionTitle} color="textSecondary">
+        {title}
+      </Typography>
       <Typography className={classes.sectionText}>{text}</Typography>
     </div>
   )

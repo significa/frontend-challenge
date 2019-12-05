@@ -7,12 +7,6 @@ import {
 } from "@material-ui/core"
 import { useMovieList } from "./fetch"
 import MovieCard from "./MovieCard.js"
-import {
-  getFavorites,
-  isFavorite,
-  addFavorite,
-  removeFavorite
-} from "./favorites.js"
 
 const useStyles = makeStyles(theme => ({
   loading: {},
@@ -34,7 +28,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const { list, isLoading, error } = useMovieList(queryText)
 
   if (isLoading) {
-    return <CircularProgress className={classes.error} />
+    return <CircularProgress className={classes.loading} />
   }
 
   if (error !== null) {

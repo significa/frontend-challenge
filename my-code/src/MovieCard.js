@@ -14,7 +14,8 @@ const useStyles = makeStyles(theme => ({
     objectFit: "cover",
     width: "100%",
     height: "100%",
-    borderRadius: 12
+    borderRadius: 12,
+    cursor: "pointer"
   },
   overlay: {
     position: "absolute",
@@ -29,14 +30,11 @@ const useStyles = makeStyles(theme => ({
     opacity: 0.8
   },
   overlayTitle: {
-    color: "white",
     fontSize: "16pt",
     fontWeight: "bold"
   },
   overlayYear: {
-    color: "white",
-    fontSize: "16pt",
-    fontWeight: "medium"
+    fontSize: "16pt"
   },
   overlayFavoriteIconButton: {
     pointerEvents: "auto",
@@ -45,13 +43,12 @@ const useStyles = makeStyles(theme => ({
     right: 0
   },
   overlayFavoriteBorderIcon: {
-    color: "white",
     "&:hover": {
-      color: "#ff0066"
+      color: "#ff4040"
     }
   },
   overlayFavoriteIcon: {
-    color: "#ff0066"
+    color: "#ff4040"
   }
 }))
 
