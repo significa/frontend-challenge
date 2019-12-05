@@ -1,65 +1,35 @@
-<img width="179" alt="screen shot 2018-04-11 at 14 55 21" src="https://user-images.githubusercontent.com/4838076/38634265-6545f090-3d98-11e8-8869-c5e477648fdf.png">
+Forked from [Significa Frontend Challenge](https://github.com/Significa/frontend-challenge)
 
-[Significa](https://significa.pt/) is an Oporto based digital studio founded in late 2013. Despite being specialised in Interaction Design and Brand Development, we believe that good design thinking can answer almost any question and solve most problems. We aim to provide meaningful design solutions to achieve the best user engagement possible in any situation.
+## Welcome to the _Moobies App_
 
-## About the challenge
+An humble attempt at solving this challenge. This app mostly follows the visual footprint and usage of the demo page, with some fairly small stylistic re-interpretations.
 
-This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+### Resources
 
-You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
+Besides core HTML/JS/React app structure, MaterialUI was installed as the chosen UI framework for its simplicity, up-to-date looks, and overall vast library of components. This also led that any styling would be done by m-UI's makeStyles, instead of a more standard CSS manner.
 
-### The app should be a movie search with two pages:
+The code has been automagically formatted using prettier.
 
-* **Home page:** search field and a list with the results;
+### Get it started
 
-  _Think about empty state, loading state and movie not found_
+To get the App up and running, simply download or clone this repository and navigate to `/frontend-challenge/my-code`. From there either setup a development build and server with `yarn run start`, or build it for production with `yarn run build`.
 
-* **Movie page:** movie details page;
+### Search results
 
-  _Think about loading state and movie not found_
+As suggested, _OMDd API_ is being used for data fetching. They apply a rule to all search queries, limiting the number of results to 10. In order to overcome this, when searching for movies, we first lookup the total amount of movies that fit the search query, then use it to request all of them, page by page, 10 at a time.
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
+While this certainly bypasses the limitation, we certainly don't need to abuse this open source effort from _OMDb_, so a limit was hard-corded into the code, of 10 pages per query (which is still 100 movies max).
 
-## Getting Started
+Also, for visual reasons, any movie that does not include a Poster is not being rendered in the movie grid. Alternatively, a placeholder could have been used, but it wouldn't add much to the demonstration value of the challenge.
 
-1.  Fork this repository to your personal account;
-2.  Create a branch with your name;
-3.  Solve the challenge in the best way you can;
+### Favorites
 
-**Send us your code in one of two ways.**
+We all have them! So a persistence system was mocked for "liking" movies, using the not-so-proper-but-works-for-this browser's localStorage. This would allow, if needed be, to quickly replace the current functions with calls to a proper storage API.
 
-1.  Send us a PR;
-2.  Send us an email with your code in a zip to: hello@significa.pt
+### So...
 
-### Tips
+This was a hell'a lot of fun to build! Hopefully it'll be up to good standards.
 
-* Write a good README with basic information (e.g.: how to start the project and how to build it);
-* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
-* Feel free to work and improve on the available designs. Think of them as guidelines.
-* There's a "like" button on the details page. It would be great if this information is persistent!
-* Prefer to use a css methodology, such as BEM, ITCSS, etc;
-* Asking questions is good. We will not penalize you for asking questions;
-* The API server is sometimes slow, so think about loading and empty states throughout your application;
-* We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
-* Unit testing will be greatly valued;
-* The git history will be evaluated;
-* Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
+Feel free to contact me @: a.fortuna.dias@gmail.com
 
-### Necessary information
-
-#### API:
-
-We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
-
-#### Screens / Assets / Styleguide:
-
-Take a look at the `/layout` folder, there you will find everything you need.
-
-[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
-[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
-
-### Contact or doubts
-
-Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: hello@significa.pt
-
-_Break a leg!_
+António Dias
