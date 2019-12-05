@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 import { makeStyles, CssBaseline } from "@material-ui/core"
-import blueGrey from "@material-ui/core/colors/blueGrey"
-import lightGreen from "@material-ui/core/colors/lightGreen"
 import SearchBar from "./SearchBar.js"
 import MoviesGrid from "./MoviesGrid.js"
 import MoviePage from "./MoviePage.js"
@@ -13,7 +11,6 @@ const useStyles = makeStyles(theme => ({
     overflow: "hidden auto",
     height: "100vh",
     width: "100vw"
-    // backgroundColor: "#0a1014"
   },
   container: {
     display: "flex",

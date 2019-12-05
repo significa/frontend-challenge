@@ -110,7 +110,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function GridPage({ id, onClose }) {
   const classes = useStyles()
-  const movie = useFetch(
+  const [movie, error] = useFetch(
     `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`,
     "GET"
   )
@@ -119,7 +119,7 @@ export default function GridPage({ id, onClose }) {
     return <CircularProgress className={classes.loading} />
   }
 
-  if (movie.Error != null) {
+  if (movie.Error != null || error !== null) {
     return <Typography className={classes.error}>{movie.Error}</Typography>
   }
 
@@ -169,7 +169,9 @@ function RatingsDisplay({ ratings }) {
   const classes = useStyles()
   const ret = []
 
-  const imdbIndex = ratings.find(r => r.Source === "Internet Movie Database")
+  const imdbIndex = ratings.findIndex(
+    r => r.Source === "Internet Movie Database"
+  )
   if (imdbIndex > -1) {
     ret.push(
       <Tooltip
@@ -177,7 +179,11 @@ function RatingsDisplay({ ratings }) {
         title={ratings[imdbIndex].Source}
         children={
           <div className={classes.rating}>
-            <img className={classes.ratingLogo} src={imdblogo} />
+            <img
+              className={classes.ratingLogo}
+              src={imdblogo}
+              alt={ratings[imdbIndex].Source}
+            />
             <Typography className={classes.ratingValue}>
               {ratings[imdbIndex].Value}
             </Typography>
@@ -195,7 +201,11 @@ function RatingsDisplay({ ratings }) {
         title={ratings[tomatoIndex].Source}
         children={
           <div className={classes.rating}>
-            <img className={classes.ratingLogo} src={rottenlogo} />
+            <img
+              className={classes.ratingLogo}
+              src={rottenlogo}
+              alt={ratings[tomatoIndex].Source}
+            />
             <Typography className={classes.ratingValue}>
               {ratings[tomatoIndex].Value}
             </Typography>
@@ -243,33 +253,3 @@ function Section({ title, text }) {
     </div>
   )
 }
-//
-// Actors: "John Candy, Alan Alda, Rhea Perlman, Kevin Pollak"
-// Awards: "N/A"
-// BoxOffice: "N/A"
-// Country: "USA, Canada"
-// DVD: "22 May 2001"
-// Director: "Michael Moore"
-// Genre: "Comedy"
-// Language: "English"
-// Metascore: "N/A"
-// Plot: "The U.S. President, low in the opinion polls, gets talked into raising his popularity by trying to start a cold war against Canada."
-// Poster: "https://m.media-amazon.com/images/M/MV5BMTUwNDU0NzcwMl5BMl5BanBnXkFtZTcwNzk1NjAzNA@@._V1_SX300.jpg"
-// Production: "MGM Home Entertainment"
-// Rated: "PG"
-// Ratings: Array(2)
-// 0: {Source: "Internet Movie Database", Value: "6.0/10"}
-// 1: {Source: "Rotten Tomatoes", Value: "14%"}
-// length: 2
-// __proto__: Array(0)
-// Released: "22 Sep 1995"
-// Response: "True"
-// Runtime: "91 min"
-// Title: "Canadian Bacon"
-// Type: "movie"
-// Website: "N/A"
-// Writer: "Michael Moore"
-// Year: "1995"
-// imdbID: "tt0109370"
-// imdbRating: "6.0"
-// imdbVotes: "15,195"

@@ -17,8 +17,8 @@ export function useFetch(url, method) {
       }
     }
     fetchData()
-  }, [url])
-  return response
+  }, [url, method])
+  return [response, error]
 }
 
 // omdbapi only provides a maximum of 10 search results, on a given request
@@ -29,14 +29,14 @@ export function useFetch(url, method) {
 const maxPages = 10
 
 export function useMovieList(queryText) {
-  const response = useFetch(
+  const [response, err] = useFetch(
     `http://www.omdbapi.com/?s=${queryText}&type=movie&apikey=${apiKey}`,
     "GET"
   )
 
   const [list, setList] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(err)
 
   useEffect(() => {
     if (response && !isLoading) {
