@@ -26,9 +26,9 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
     flexDirection: "row-reverse",
     [theme.breakpoints.down("sm")]: {
+      alignItems: "center",
       flexDirection: "column"
     }
   },
@@ -75,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   },
   ratingLogo: {
     height: 34,
-    backgroundColor: "pink",
+    backgroundColor: "#ff4040",
     borderRadius: 8
   },
   ratingValue: {
@@ -88,8 +88,7 @@ const useStyles = makeStyles(theme => ({
   },
   score: {
     margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`,
-    display: "flex",
-    flexWrap: "wrap"
+    display: "flex"
   },
   section: {
     margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`
