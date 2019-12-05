@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { makeStyles, IconButton, Paper, Typography } from "@material-ui/core"
+import { makeStyles, IconButton, Typography } from "@material-ui/core"
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
 import FavoriteIcon from "@material-ui/icons/Favorite"
 import { getFavorites, addFavorite, removeFavorite } from "./favorites.js"
@@ -7,8 +7,7 @@ import { getFavorites, addFavorite, removeFavorite } from "./favorites.js"
 const useStyles = makeStyles(theme => ({
   root: {
     position: "relative",
-    height: "100%",
-    borderRadius: 12
+    height: "100%"
   },
   poster: {
     objectFit: "cover",
@@ -68,9 +67,8 @@ export default function MovieCard({ movie, onPick }) {
   }
 
   return (
-    <Paper
+    <div
       className={classes.root}
-      elevation={12}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -99,6 +97,6 @@ export default function MovieCard({ movie, onPick }) {
       >
         {favIcon}
       </IconButton>
-    </Paper>
+    </div>
   )
 }
