@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import {
   makeStyles,
   Button,
-  CircularProgress,
   Icon,
   Tooltip,
   Typography

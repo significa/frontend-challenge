@@ -1,10 +1,5 @@
 import React from "react"
-import {
-  makeStyles,
-  CircularProgress,
-  Grid,
-  Typography
-} from "@material-ui/core"
+import { makeStyles, Grid } from "@material-ui/core"
 import { Loading, Error, LogoMessage } from "./stateDescribers.js"
 import { useMovieList } from "./fetch"
 import MovieCard from "./MovieCard.js"

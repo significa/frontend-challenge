@@ -13,7 +13,7 @@ export function useFetch(url, method) {
       if (resp.ok) {
         setResponse(await resp.json())
       } else {
-        setError(error)
+        setError(resp.error)
       }
     }
     fetchData()
@@ -34,7 +34,7 @@ export function useMovieList(queryText) {
     "GET"
   )
 
-  const [list, setList] = useState([])
+  const [list, setList] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(err)
 
@@ -68,11 +68,11 @@ export function useMovieList(queryText) {
       }
 
       setError(error)
-      setList(ls)
       setIsLoading(false)
+      setList(ls)
     }
     fetchData()
-  }, [isLoading])
+  }, [isLoading, response])
 
   return { list, isLoading, error }
 }
