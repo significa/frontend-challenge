@@ -25,8 +25,12 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     flexDirection: "row-reverse",
-    justifyContent: "center"
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
+    }
   },
   backIcon: {
     alignSelf: "flex-start",
@@ -61,15 +65,6 @@ const useStyles = makeStyles(theme => ({
     margin: "0 8px 0 8px",
     fontSize: "16pt"
   },
-  title: {
-    fontSize: "45pt",
-    fontWeight: "bold"
-  },
-  score: {
-    margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`,
-    display: "flex",
-    justifyContent: "space-apart"
-  },
   rating: {
     marginRight: theme.spacing(2),
     height: 36,
@@ -86,6 +81,15 @@ const useStyles = makeStyles(theme => ({
   ratingValue: {
     fontWeight: "bold",
     margin: theme.spacing(1)
+  },
+  title: {
+    fontSize: "45pt",
+    fontWeight: "bold"
+  },
+  score: {
+    margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`,
+    display: "flex",
+    flexWrap: "wrap"
   },
   section: {
     margin: `0 ${theme.spacing(2)}px ${theme.spacing(2)}px 0`
