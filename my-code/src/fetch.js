@@ -39,40 +39,41 @@ export function useMovieList(queryText) {
   const [error, setError] = useState(err)
 
   useEffect(() => {
-    if (response && !isLoading) {
+    if (!isLoading && response) {
       setIsLoading(true)
     }
   }, [response])
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!isLoading) return
-      let ls = []
-      let error = null
+      if (isLoading) {
+        let ls = []
+        let error = null
 
-      for (
-        let i = 1;
-        i <= Math.min(Math.floor(response.totalResults / 10), maxPages);
-        i++
-      ) {
-        const resp = await fetch(
-          `http://www.omdbapi.com/?s=${queryText}&type=movie&page=${i}&apikey=${apiKey}`,
-          { method: "GET" }
-        )
-        if (resp.ok) {
-          const data = await resp.json()
-          ls.push(...data.Search)
-        } else {
-          error = resp.error
+        for (
+          let i = 1;
+          i <= Math.min(Math.floor(response.totalResults / 10), maxPages);
+          i++
+        ) {
+          const resp = await fetch(
+            `http://www.omdbapi.com/?s=${queryText}&type=movie&page=${i}&apikey=${apiKey}`,
+            { method: "GET" }
+          )
+          if (resp.ok) {
+            const data = await resp.json()
+            ls.push(...data.Search)
+          } else {
+            error = resp.error
+          }
         }
-      }
 
-      setError(error)
-      setIsLoading(false)
-      setList(ls)
+        setError(error)
+        setIsLoading(false)
+        setList(ls)
+      }
     }
     fetchData()
-  }, [isLoading, response])
+  }, [queryText, isLoading, response])
 
   return { list, isLoading, error }
 }

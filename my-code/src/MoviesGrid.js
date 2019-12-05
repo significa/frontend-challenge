@@ -17,10 +17,6 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
   const classes = useStyles()
   const { list, isLoading, error } = useMovieList(queryText)
 
-  if (queryText === "") {
-    return <LogoMessage message="Search some movies. It's free!" />
-  }
-
   if (isLoading) {
     return <Loading />
   }
@@ -29,7 +25,7 @@ export default function MoviesGrid({ queryText, setPickedMovie }) {
     return <Error message={error} />
   }
 
-  if (list.length === 0) {
+  if (list === null) {
     return <LogoMessage message="Not a single movie in sight!" />
   }
 
