@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 import { Panel } from 'primereact/panel';
 import Search from '../../components/Search';
+import LikeButton from '../../components/LikeButton';
 
 import history from '../../services/history';
 
 import { MoviesGrid } from './styles';
 
 function Home({ movies }) {
-  // console.log(movies);
+  // states
   const [movieId, setMovieId] = useState(null);
 
   function handleMovieClick(id) {
@@ -27,9 +28,13 @@ function Home({ movies }) {
             <div
               className="movie-wrapper"
               onClick={() => handleMovieClick(movie.imdbID)}>
-              <img src={movie.Poster} alt="Movie poster" />
+              <div
+                className="movie-poster"
+                style={{ backgroundImage: `url(${movie.Poster})` }}
+              />
+
               <div className="movie-info">
-                <span />
+                <LikeButton imdbID={movie.imdbID} />
                 <span>
                   {movie.Title}
                   <br />

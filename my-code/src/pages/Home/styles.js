@@ -6,11 +6,20 @@ export const MoviesGrid = styled.div`
     cursor: pointer;
     position: relative;
     text-align: center;
+    grid-area: photo;
+    /* max-width: 100%; */
+    /* max-height: 100%; */
 
-    > img {
+    > .movie-poster {
+      background-size: cover;
+      background-position: top center;
       border-radius: ${variables.BORDER_RADIUS};
-      max-width: 100%;
-      max-height: 100%;
+      width: 100%;
+      height: 400px;
+
+      > img {
+        max-width: 100%;
+      }
     }
 
     > .movie-info {

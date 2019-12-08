@@ -9,6 +9,7 @@ function Search({ isDisabled, dispatch, addToMoviesRequest }) {
   const ENTER_KEY = 'Enter';
   // const { isDisabled } = props;
 
+  // states
   const [searchStr, setSearchStr] = useState('');
 
   useEffect(() => {
