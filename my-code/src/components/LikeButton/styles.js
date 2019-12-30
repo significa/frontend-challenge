@@ -10,3 +10,11 @@ export const Container = styled.div`
     padding: 10px;
   }
 `;
+
+export const Button = styled.button`
+  .heart-button {
+    border: 0;
+    line-height: 0;
+    padding: 10px;
+  }
+`;

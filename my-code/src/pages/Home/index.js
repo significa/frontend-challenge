@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import { Panel } from 'primereact/panel';
+import 'primereact/panel';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 
@@ -9,9 +9,14 @@ import history from '../../services/history';
 
 import { MoviesGrid } from './styles';
 
-function Home({ movies }) {
+export default function Home() {
   // states
   const [movieId, setMovieId] = useState(null);
+
+  // redux state
+  const movies = useSelector(state => {
+    return state.movieReducer;
+  });
 
   function handleMovieClick(id) {
     setMovieId(id);
@@ -48,7 +53,3 @@ function Home({ movies }) {
     </>
   );
 }
-
-export default connect(state => ({
-  movies: state.movieReducer,
-}))(Home);

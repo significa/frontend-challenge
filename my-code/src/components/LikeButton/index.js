@@ -1,48 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Container } from './styles';
+import { Container, Button } from './styles';
 
 import iconHeartWhite from './assets/icon-heart-white.svg';
 import iconHeartFull from './assets/icon-heart-full.svg';
 
-function LikeButton({ likes, imdbID, dispatch }) {
-  const [like, setLike] = useState(false);
+export default function LikeButton({ imdbID }) {
+  const [liked, setLiked] = useState(false);
 
-  useEffect(() => {
-    dispatch({
-      type: 'GET_LIKES',
-    });
+  const dispatch = useDispatch();
 
-    setLike(likes.indexOf(imdbID) >= 0);
-  }, [dispatch, imdbID, likes]);
+  // Redux state
+  const likes = useSelector(state => state.likesReducer);
 
   function handleHeartClick(e) {
     e.preventDefault();
     e.stopPropagation();
 
-    setLike(!like);
+    setLiked(likes.indexOf(imdbID) >= 0);
 
     dispatch({
-      type: 'ADD_LIKE',
+      type: 'SET_LIKE',
       imdbID,
     });
   }
 
-  const imgsrc = like ? iconHeartFull : iconHeartWhite;
-
   return (
     <Container>
-      <button
+      <Button
         type="button"
         className="heart-button"
+        liked={likes.indexOf(imdbID) >= 0}
         onClick={e => handleHeartClick(e)}>
-        <img src={imgsrc} alt="Like it" />
-      </button>
+        <img
+          src={likes.indexOf(imdbID) >= 0 ? iconHeartFull : iconHeartWhite}
+          alt="Like it"
+        />
+      </Button>
     </Container>
   );
 }
-
-export default connect(state => ({
-  likes: state.likesReducer,
-}))(LikeButton);
