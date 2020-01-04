@@ -22,14 +22,21 @@ export const MoviesGrid = styled.div`
       }
     }
 
+    > .movie-btn-like {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+    }
+
     > .movie-info {
       background: ${variables.COLOR_DARK};
       color: ${variables.COLOR_DEFAULT};
       text-align: left;
 
       display: none;
-      flex-direction: column;
-      justify-content: space-between;
+      flex-direction: row;
+      align-items: flex-end;
 
       position: absolute;
       top: 0;
@@ -37,9 +44,16 @@ export const MoviesGrid = styled.div`
       width: 100%;
       height: 100%;
       opacity: 0.9;
+
+      span {
+        padding: 0 10px;
+      }
     }
 
     &:hover {
+      > .movie-btn-like {
+        display: block;
+      }
       > .movie-info {
         display: flex;
       }

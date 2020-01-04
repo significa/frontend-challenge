@@ -1,13 +1,5 @@
 export default function LikesReducer(state = [], action) {
   switch (action.type) {
-    // case 'GET_LIKES':
-    //   let lsLikes = localStorage.getItem('likes');
-    //   if (lsLikes) {
-    //     lsLikes = JSON.parse(lsLikes);
-    //   } else {
-    //     lsLikes = [];
-    //   }
-    //   return lsLikes;
     case 'SET_LIKE':
       const index = state.indexOf(action.imdbID);
       if (index === 0) {
@@ -17,7 +9,6 @@ export default function LikesReducer(state = [], action) {
       } else {
         state = [...state, action.imdbID];
       }
-
       return state;
     default:
       return state;

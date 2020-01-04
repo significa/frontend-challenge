@@ -38,8 +38,11 @@ export default function Home() {
                 style={{ backgroundImage: `url(${movie.Poster})` }}
               />
 
-              <div className="movie-info">
+              <div className="movie-btn-like">
                 <LikeButton imdbID={movie.imdbID} />
+              </div>
+
+              <div className="movie-info">
                 <span>
                   {movie.Title}
                   <br />

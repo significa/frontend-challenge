@@ -8,7 +8,6 @@ import iconHeartFull from './assets/icon-heart-full.svg';
 
 export default function LikeButton({ imdbID }) {
   const [liked, setLiked] = useState(false);
-
   const dispatch = useDispatch();
 
   // Redux state
@@ -30,7 +29,7 @@ export default function LikeButton({ imdbID }) {
     <Container>
       <Button
         type="button"
-        className="heart-button"
+        className={`heart-button ${likes.indexOf(imdbID) >= 0 ? 'liked' : ''}`}
         liked={likes.indexOf(imdbID) >= 0}
         onClick={e => handleHeartClick(e)}>
         <img
