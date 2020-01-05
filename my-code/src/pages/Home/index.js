@@ -1,26 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-
 import 'primereact/panel';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
-
 import history from '../../services/history';
-
 import { MoviesGrid } from './styles';
 
 export default function Home() {
-  // states
-  const [movieId, setMovieId] = useState(null);
-
-  // redux state
+  // Redux state: get the movies list.
   const movies = useSelector(state => {
     return state.movieReducer;
   });
 
+  /**
+   * Handles the click on a movie poster.
+   * Loads the Movie page.
+   * @param {*} id
+   */
   function handleMovieClick(id) {
-    setMovieId(id);
-    history.push('/movie');
+    history.push(`/movie?imdbID=${id}`);
   }
 
   return (
@@ -28,7 +26,7 @@ export default function Home() {
       <Search />
 
       <MoviesGrid className="p-grid">
-        {movies.map(movie => (
+        {movies.list.map(movie => (
           <div className="p-col-12 p-md-4 p-lg-3 p-xl-2" key={movie.imdbID}>
             <div
               className="movie-wrapper"

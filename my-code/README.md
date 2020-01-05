@@ -5,6 +5,7 @@
 * [Visual Studio Code](https://code.visualstudio.com)
 * [ESLint](https://eslint.org)
 * [Prettier](https://prettier.io)
+* [React Redux](https://react-redux.js.org/)
 * [React Router DOM](https://www.npmjs.com/package/react-router-dom)
 * [Styled Components](https://www.styled-components.com)
 * [Axios](https://github.com/axios/axios)

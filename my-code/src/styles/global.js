@@ -74,4 +74,26 @@ export default createGlobalStyle`
     letter-spacing: 0.8pt;
     line-height: 88pt;
   }
+
+  // PAGINATION
+
+  ul.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 15px 0;
+
+    li {
+      cursor: pointer;
+      background-color: ${variables.COLOR_MIDGREY};
+      border: 1px solid  ${variables.COLOR_GREY};
+      border-radius: ${variables.BORDER_RADIUS};
+      margin: 0 6px;
+      padding: 5px 10px;
+
+      &.active {
+        background-color: ${variables.COLOR_YELLOW};
+      }
+    }
+  }
 `;
