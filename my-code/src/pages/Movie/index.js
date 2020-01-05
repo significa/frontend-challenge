@@ -45,7 +45,7 @@ export default function Movie(props) {
         <Loading>Loading movie information...</Loading>
       ) : (
         <div className="p-grid">
-          <div className="p-col-12 p-md-7">
+          <div className="p-col-12 p-col-order-2 p-sm-order-1 p-md-7 p-lg-8">
             <div className="movie-attributes">
               <span className="movie-runtime">{movie.Runtime}</span>
               <span className="movie-attributes-separator">&middot;</span>
@@ -55,14 +55,22 @@ export default function Movie(props) {
             </div>
             <div className="movie-title">{movie.Title}</div>
             <div className="movie-ratings">
-              {movie.Ratings.map(rating => {
-                if (rating.Source !== 'Metacritic') {
-                  return <MovieRating rating={rating} key={rating.Source} />;
-                }
-                return '';
-              })}
+              <div className="p-grid p-nogutter">
+                {movie.Ratings.map(rating => {
+                  if (rating.Source !== 'Metacritic') {
+                    return (
+                      <div className="p-col">
+                        <MovieRating rating={rating} key={rating.Source} />
+                      </div>
+                    );
+                  }
+                  return '';
+                })}
 
-              <LikeButton imdbID={movie.imdbID} showText alwaysVisible />
+                <div className="p-col p-col-12 p-lg-5 p-xl-7">
+                  <LikeButton imdbID={movie.imdbID} showText alwaysVisible />
+                </div>
+              </div>
             </div>
             <div className="movie-plot">
               <span className="label">Plot</span>
@@ -91,9 +99,15 @@ export default function Movie(props) {
               </div>
             </div>
           </div>
-          <div className="p-col-12 p-md-5">
+          <div className="p-col-12 p-col-order-1 p-sm-order-2 p-md-5 p-lg-4">
             <div className="movie-poster">
-              <img src={movie.Poster} alt="Poster" />
+              {movie.Poster !== 'N/A' && (
+                <img src={movie.Poster} alt="Poster" />
+              )}
+
+              {movie.Poster === 'N/A' && (
+                <div className="movie-no-poster">(No poster)</div>
+              )}
             </div>
           </div>
         </div>

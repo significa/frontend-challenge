@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import 'primereact/panel';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 import history from '../../services/history';
@@ -26,15 +25,26 @@ export default function Home() {
       <Search />
 
       <MoviesGrid className="p-grid">
-        {movies.list.map(movie => (
+        {movies.list.map((movie, index) => (
           <div className="p-col-12 p-md-4 p-lg-3 p-xl-2" key={movie.imdbID}>
             <div
               className="movie-wrapper"
-              onClick={() => handleMovieClick(movie.imdbID)}>
-              <div
-                className="movie-poster"
-                style={{ backgroundImage: `url(${movie.Poster})` }}
-              />
+              onClick={() => handleMovieClick(movie.imdbID)}
+              onKeyDown={() => handleMovieClick(movie.imdbID)}
+              role="button"
+              tabIndex={index}>
+              {movie.Poster !== 'N/A' && (
+                <div
+                  className="movie-poster"
+                  style={{ backgroundImage: `url(${movie.Poster})` }}
+                />
+              )}
+              {movie.Poster === 'N/A' && (
+                <div className="movie-no-poster">
+                  {movie.Title} <br />
+                  <span className="poster-not-found">(No poster)</span>
+                </div>
+              )}
 
               <div className="movie-btn-like">
                 <LikeButton imdbID={movie.imdbID} />

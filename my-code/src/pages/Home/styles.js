@@ -22,6 +22,22 @@ export const MoviesGrid = styled.div`
       }
     }
 
+    > .movie-no-poster {
+      border: 1px dotted ${variables.COLOR_MIDGREY};
+      border-radius: ${variables.BORDER_RADIUS};
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 400px;
+
+      .poster-not-found {
+        color: ${variables.COLOR_SECONDARY};
+        font-size: 80%;
+      }
+    }
+
     > .movie-btn-like {
       position: absolute;
       top: 0;

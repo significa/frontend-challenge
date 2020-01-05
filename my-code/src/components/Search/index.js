@@ -114,7 +114,7 @@ export default function Search({ isDisabled }) {
           disableInitialCallback
           initialPage={page}
           pageCount={pageCount}
-          marginPagesDisplayed={2}
+          marginPagesDisplayed={0}
           pageRangeDisplayed={5}
           onPageChange={handlePageClick}
           containerClassName="pagination"

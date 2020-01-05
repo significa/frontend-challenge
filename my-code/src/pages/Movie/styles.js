@@ -16,6 +16,18 @@ export const Container = styled.div`
     }
   }
 
+  .movie-no-poster {
+    border: 1px dotted ${variables.COLOR_MIDGREY};
+    border-radius: ${variables.BORDER_RADIUS};
+    color: ${variables.COLOR_MIDGREY};
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; */
+    width: 100%;
+    height: 400px;
+  }
+
   .movie-attributes {
     color: ${variables.COLOR_LIGHTGREY};
 
@@ -24,8 +36,8 @@ export const Container = styled.div`
     }
 
     .movie-rated {
-      background-color: ${variables.COLOR_LIGHTGREY}
-      border-radius: ${variables.BORDER_RADIUS}
+      background-color: ${variables.COLOR_LIGHTGREY};
+      border-radius: ${variables.BORDER_RADIUS};
       color: ${variables.COLOR_DARK};
       padding: 4px 8px;
     }
@@ -37,7 +49,7 @@ export const Container = styled.div`
   }
 
   .movie-ratings {
-    display: flex;
+    /* display: flex; */
     margin-top: 30px;
 
     .heart-button {
@@ -60,6 +72,12 @@ export const Container = styled.div`
     color: ${variables.COLOR_LIGHTGREY};
     display: block;
     margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .heart-button {
+      margin-top: 15px;
+    }
   }
 `;
 
