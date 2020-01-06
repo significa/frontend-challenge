@@ -1,15 +1,32 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ReactPaginate from 'react-paginate';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 import history from '../../services/history';
+import { fetchData } from '../../services/api';
 import { MoviesGrid } from './styles';
 
 export default function Home() {
+  const dispatch = useDispatch();
+
   // Redux state: get the movies list.
   const movies = useSelector(state => {
     return state.movieReducer;
   });
+
+  /**
+   * Fetches data from the API.
+   * @param {integer} currentPage
+   */
+  async function getData(currentPage) {
+    const searchResult = await fetchData(movies.searchStr, currentPage, 10);
+
+    dispatch({
+      type: 'ADD_MOVIES',
+      movies: searchResult,
+    });
+  }
 
   /**
    * Handles the click on a movie poster.
@@ -18,6 +35,15 @@ export default function Home() {
    */
   function handleMovieClick(id) {
     history.push(`/movie?imdbID=${id}`);
+  }
+
+  /**
+   * Handles the click on a page number.
+   * @param {*} Object
+   */
+  function handlePageClick({ selected }) {
+    const newPage = parseInt(selected, 10) + 1;
+    getData(newPage);
   }
 
   return (
@@ -61,6 +87,24 @@ export default function Home() {
           </div>
         ))}
       </MoviesGrid>
+
+      {movies.pageCount > 0 && (
+        <ReactPaginate
+          previousLabel="previous"
+          nextLabel="next"
+          breakLabel="..."
+          breakClassName="break-me"
+          disableInitialCallback
+          initialPage={movies.page}
+          pageCount={movies.pageCount}
+          marginPagesDisplayed={0}
+          pageRangeDisplayed={5}
+          onPageChange={handlePageClick}
+          containerClassName="pagination"
+          subContainerClassName="pages pagination"
+          activeClassName="active"
+        />
+      )}
     </>
   );
 }
