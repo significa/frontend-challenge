@@ -1,28 +1,53 @@
 import styled from 'styled-components';
 import variables from '../../styles/variables';
 
+export const Container = styled.div`
+  ul.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    margin: 15px 0;
+
+    li {
+      cursor: pointer;
+      background-color: ${variables.COLOR_MIDGREY};
+      border: 1px solid  ${variables.COLOR_GREY};
+      border-radius: ${variables.BORDER_RADIUS};
+      margin: 0 6px;
+      padding: 5px 10px;
+
+      &.active {
+        background-color: ${variables.COLOR_YELLOW};
+      }
+
+      &.previous,
+      &.next {
+        display: none;
+      }
+    }
+  }
+`;
+
 export const MoviesGrid = styled.div`
   .movie-wrapper {
     cursor: pointer;
     position: relative;
     text-align: center;
     grid-area: photo;
-    /* max-width: 100%; */
-    /* max-height: 100%; */
 
-    > .movie-poster {
+    .movie-poster {
       background-size: cover;
       background-position: top center;
       border-radius: ${variables.BORDER_RADIUS};
       width: 100%;
-      height: 400px;
+      height: 468px;
 
       > img {
         max-width: 100%;
       }
     }
 
-    > .movie-no-poster {
+    .movie-no-poster {
       border: 1px dotted ${variables.COLOR_MIDGREY};
       border-radius: ${variables.BORDER_RADIUS};
       display: flex;
@@ -38,14 +63,14 @@ export const MoviesGrid = styled.div`
       }
     }
 
-    > .movie-btn-like {
+    .movie-btn-like {
       position: absolute;
       top: 0;
       right: 0;
       z-index: 10;
     }
 
-    > .movie-info {
+    .movie-info {
       background: ${variables.COLOR_DARK};
       color: ${variables.COLOR_DEFAULT};
       text-align: left;
@@ -72,6 +97,12 @@ export const MoviesGrid = styled.div`
       }
       > .movie-info {
         display: flex;
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .movie-poster {
+        height: 560px;
       }
     }
   }

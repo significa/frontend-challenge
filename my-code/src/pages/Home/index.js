@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
+import ImageFadeIn from 'react-image-fade-in';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
+import LoadingIndicator from '../../components/LoadingIndicator';
 import history from '../../services/history';
 import { fetchData } from '../../services/api';
-import { MoviesGrid } from './styles';
+import { Container, MoviesGrid } from './styles';
 
 export default function Home() {
   const dispatch = useDispatch();
+
+  // States
+  const [isLoading, setIsLoading] = useState(false);
 
   // Redux state: get the movies list.
   const movies = useSelector(state => {
@@ -20,12 +25,15 @@ export default function Home() {
    * @param {integer} currentPage
    */
   async function getData(currentPage) {
+    setIsLoading(true);
     const searchResult = await fetchData(movies.searchStr, currentPage, 10);
 
     dispatch({
       type: 'ADD_MOVIES',
       movies: searchResult,
     });
+
+    setIsLoading(false);
   }
 
   /**
@@ -47,48 +55,54 @@ export default function Home() {
   }
 
   return (
-    <>
+    <Container>
       <Search />
 
-      <MoviesGrid className="p-grid">
-        {movies.list.map((movie, index) => (
-          <div className="p-col-12 p-md-4 p-lg-3 p-xl-2" key={movie.imdbID}>
-            <div
-              className="movie-wrapper"
-              onClick={() => handleMovieClick(movie.imdbID)}
-              onKeyDown={() => handleMovieClick(movie.imdbID)}
-              role="button"
-              tabIndex={index}>
-              {movie.Poster !== 'N/A' && (
-                <div
-                  className="movie-poster"
-                  style={{ backgroundImage: `url(${movie.Poster})` }}
-                />
-              )}
-              {movie.Poster === 'N/A' && (
-                <div className="movie-no-poster">
-                  {movie.Title} <br />
-                  <span className="poster-not-found">(No poster)</span>
+      {isLoading && <LoadingIndicator text="Searching movies database..." />}
+
+      {!isLoading && (
+        <MoviesGrid className="p-grid p-justify-center">
+          {movies.list.map((movie, index) => (
+            <div className="p-col-12 p-md-5 p-lg-4 p-xl-3 " key={movie.imdbID}>
+              <div
+                className="movie-wrapper"
+                onClick={() => handleMovieClick(movie.imdbID)}
+                onKeyDown={() => handleMovieClick(movie.imdbID)}
+                role="button"
+                tabIndex={index}>
+                {movie.Poster !== 'N/A' && (
+                  <ImageFadeIn
+                    className="movie-poster"
+                    src={movie.Poster}
+                    loadAsBackgroundImage
+                    opacityTransition="1"
+                  />
+                )}
+                {movie.Poster === 'N/A' && (
+                  <div className="movie-no-poster">
+                    {movie.Title} <br />
+                    <span className="poster-not-found">(No poster)</span>
+                  </div>
+                )}
+
+                <div className="movie-btn-like">
+                  <LikeButton imdbID={movie.imdbID} />
                 </div>
-              )}
 
-              <div className="movie-btn-like">
-                <LikeButton imdbID={movie.imdbID} />
-              </div>
-
-              <div className="movie-info">
-                <span>
-                  {movie.Title}
-                  <br />
-                  <small>{movie.Year}</small>
-                </span>
+                <div className="movie-info">
+                  <span>
+                    {movie.Title}
+                    <br />
+                    <small>{movie.Year}</small>
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </MoviesGrid>
+          ))}
+        </MoviesGrid>
+      )}
 
-      {movies.pageCount > 0 && (
+      {!isLoading && movies.pageCount > 0 && (
         <ReactPaginate
           previousLabel="previous"
           nextLabel="next"
@@ -105,6 +119,6 @@ export default function Home() {
           activeClassName="active"
         />
       )}
-    </>
+    </Container>
   );
 }

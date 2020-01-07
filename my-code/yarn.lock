@@ -8415,6 +8415,11 @@ react-icons@^3.8.0:
   dependencies:
     camelcase "^5.0.0"
 
+react-image-fade-in@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-image-fade-in/-/react-image-fade-in-1.1.0.tgz#66ac984011a6d6a96ff6d1c4f7d65dc1ac751eb8"
+  integrity sha512-AJShebfMuQN1Rkahj3abDpEUtsZyc5E224JxEzKN2qlZuHivRad/4Ap9n3ckrHpA2J/5oc4xs4b4bbXMALXJXA==
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.9.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.12.0.tgz#2cc0fe0fba742d97fd527c42a13bec4eeb06241c"

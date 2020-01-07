@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 import { Container, Input } from './styles';
 import { fetchData } from '../../services/api';
+import LoadingIndicator from '../LoadingIndicator';
 
 export default function Search({ isDisabled }) {
   const ENTER_KEY = 'Enter';
@@ -12,6 +13,7 @@ export default function Search({ isDisabled }) {
   const inputRef = useRef(null);
 
   // states
+  const [isLoading, setIsLoading] = useState(false);
   const [notFound, setNotFound] = useState(false);
   const [searchStr, setSearchStr] = useState('');
 
@@ -29,6 +31,7 @@ export default function Search({ isDisabled }) {
    * @param {integer} currentPage
    */
   async function getData(currentPage) {
+    setIsLoading(true);
     const searchResult = await fetchData(searchStr, currentPage, perPage);
 
     dispatch({
@@ -41,6 +44,8 @@ export default function Search({ isDisabled }) {
     } else {
       setNotFound(false);
     }
+
+    setIsLoading(false);
   }
 
   /**
@@ -93,6 +98,8 @@ export default function Search({ isDisabled }) {
           <MdClose />
         </button>
       )}
+
+      {isLoading && <LoadingIndicator text="Searching movies database..." />}
 
       {notFound && <div className="not-found">Movie not found.</div>}
     </Container>

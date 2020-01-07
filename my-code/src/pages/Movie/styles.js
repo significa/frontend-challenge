@@ -56,7 +56,7 @@ export const Container = styled.div`
       border-style: solid;
       border-width: 1px;
       border-color: ${variables.COLOR_MIDGREY};
-      padding: 6px 8px;
+      padding: 7px 8px;
     }
   }
 

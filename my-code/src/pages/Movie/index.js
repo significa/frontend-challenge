@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
+import ImageFadeIn from 'react-image-fade-in';
 import api, { API_KEY } from '../../services/api';
 import history from '../../services/history';
 import { Container, Loading } from './styles';
@@ -102,7 +103,11 @@ export default function Movie(props) {
           <div className="p-col-12 p-col-order-1 p-sm-order-2 p-md-5 p-lg-4">
             <div className="movie-poster">
               {movie.Poster !== 'N/A' && (
-                <img src={movie.Poster} alt="Poster" />
+                <ImageFadeIn
+                  src={movie.Poster}
+                  opacityTransition="1"
+                  alt="Poster"
+                />
               )}
 
               {movie.Poster === 'N/A' && (
