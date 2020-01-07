@@ -11,6 +11,7 @@ import MovieRating from '../../components/MovieRating';
 export default function Movie(props) {
   // states
   const [isLoading, setIsLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
@@ -20,7 +21,13 @@ export default function Movie(props) {
         params: { apikey: API_KEY, i: params.imdbID },
       });
 
-      setMovie(response.data);
+      if (response.data.Response === 'False') {
+        setNotFound(true);
+      } else {
+        setNotFound(false);
+        setMovie(response.data);
+      }
+
       setIsLoading(false);
     };
 
@@ -42,9 +49,12 @@ export default function Movie(props) {
           <img src={arrowBack} alt="Back button" />
         </button>
       </div>
-      {isLoading ? (
-        <Loading>Loading movie information...</Loading>
-      ) : (
+
+      {notFound && <div className="not-found">Movie not found.</div>}
+
+      {isLoading && <Loading>Loading movie information...</Loading>}
+
+      {!isLoading && !notFound && (
         <div className="p-grid">
           <div className="p-col-12 p-col-order-2 p-sm-order-1 p-md-7 p-lg-8">
             <div className="movie-attributes">
@@ -60,8 +70,8 @@ export default function Movie(props) {
                 {movie.Ratings.map(rating => {
                   if (rating.Source !== 'Metacritic') {
                     return (
-                      <div className="p-col">
-                        <MovieRating rating={rating} key={rating.Source} />
+                      <div className="p-col" key={rating.Source}>
+                        <MovieRating rating={rating} />
                       </div>
                     );
                   }
@@ -105,7 +115,7 @@ export default function Movie(props) {
               {movie.Poster !== 'N/A' && (
                 <ImageFadeIn
                   src={movie.Poster}
-                  opacityTransition="1"
+                  opacityTransition={1}
                   alt="Poster"
                 />
               )}

@@ -75,7 +75,7 @@ export default function Home() {
                     className="movie-poster"
                     src={movie.Poster}
                     loadAsBackgroundImage
-                    opacityTransition="1"
+                    opacityTransition={1}
                   />
                 )}
                 {movie.Poster === 'N/A' && (
