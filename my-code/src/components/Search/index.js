@@ -99,6 +99,8 @@ export default function Search({ isDisabled }) {
         </button>
       )}
 
+      <small className="hint">Tip: Hit the Enter key to search.</small>
+
       {isLoading && <LoadingIndicator text="Searching movies database..." />}
 
       {notFound && <div className="not-found">Movie not found.</div>}

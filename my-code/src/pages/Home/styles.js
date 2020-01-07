@@ -55,7 +55,7 @@ export const MoviesGrid = styled.div`
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 400px;
+      height: 468px;
 
       .poster-not-found {
         color: ${variables.COLOR_SECONDARY};

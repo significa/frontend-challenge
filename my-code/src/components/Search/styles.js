@@ -17,6 +17,12 @@ export const Container = styled.div`
       color: ${variables.COLOR_MIDGREY};
     }
   }
+
+  .hint {
+    color: ${variables.COLOR_LIGHTGREY};
+    font-size: 10pt;
+    margin-bottom: 20px;
+  }
 `;
 
 export const Input = styled.input`
@@ -28,7 +34,6 @@ export const Input = styled.input`
   border-radius: ${variables.BORDER_RADIUS};
   border: 0;
   color: ${variables.COLOR_DARK};
-  margin-bottom: 20px;
   padding: 12px 12px 12px 40px;
   width: 100%;
 
