@@ -25,6 +25,10 @@
 * I tried my best to make the like buttons one single component. I think I did a good job.
 * No tests provided (lack of knowledge).
 
+## Installing dependencies
+
+This uses yarn as the package manager. Just run `yarn` in the project directory to install the dependencies.
+
 ## Running in a development environment
 
 In the project directory, you can run:
