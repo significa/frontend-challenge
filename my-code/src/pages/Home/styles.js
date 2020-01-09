@@ -11,7 +11,7 @@ export const Container = styled.div`
     li {
       cursor: pointer;
       background-color: ${variables.COLOR_MIDGREY};
-      border: 1px solid  ${variables.COLOR_GREY};
+      border: 1px solid ${variables.COLOR_GREY};
       border-radius: ${variables.BORDER_RADIUS};
       margin: 0 6px;
       padding: 5px 10px;
@@ -103,6 +103,18 @@ export const MoviesGrid = styled.div`
     @media screen and (max-width: 767px) {
       .movie-poster {
         height: 560px;
+      }
+      .movie-no-poster {
+        height: 560px;
+      }
+    }
+
+    @media screen and (min-width: 1500px) {
+      .movie-poster {
+        height: 590px;
+      }
+      .movie-no-poster {
+        height: 590px;
       }
     }
   }

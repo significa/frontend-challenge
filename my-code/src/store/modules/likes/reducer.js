@@ -14,3 +14,10 @@ export default function LikesReducer(state = [], action) {
       return state;
   }
 }
+
+/**
+ * Selector function for gettinhg the likes state.
+ *
+ * @param {*} state
+ */
+export const getLikes = state => state.likesReducer;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 
+import { getMovies } from '../../store/modules/movie/reducer';
 import { Container, Input } from './styles';
 import { fetchData } from '../../services/api';
 import LoadingIndicator from '../LoadingIndicator';
@@ -19,13 +20,11 @@ export default function Search({ isDisabled }) {
   const [searchStr, setSearchStr] = useState('');
 
   // Redux state: get the movies list.
-  const movies = useSelector(state => {
-    return state.movieReducer;
-  });
+  const movies = useSelector(getMovies);
 
   useEffect(() => {
     setSearchStr(movies.searchStr);
-  }, []);
+  }, [movies.searchStr]);
 
   /**
    * Fetches data from the API.

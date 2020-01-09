@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import ImageFadeIn from 'react-image-fade-in';
 
+import { getMovies } from '../../store/modules/movie/reducer';
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 import LoadingIndicator from '../../components/LoadingIndicator';
@@ -17,9 +18,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
   // Redux state: get the movies list.
-  const movies = useSelector(state => {
-    return state.movieReducer;
-  });
+  const movies = useSelector(getMovies);
 
   /**
    * Fetches data from the API.

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import ImageFadeIn from 'react-image-fade-in';
+import PropTypes from 'prop-types';
 
 import api, { API_KEY } from '../../services/api';
 import history from '../../services/history';
@@ -9,7 +10,7 @@ import arrowBack from '../../assets/icon-arrow-grey.svg';
 import LikeButton from '../../components/LikeButton';
 import MovieRating from '../../components/MovieRating';
 
-export default function Movie(props) {
+export default function Movie({ location }) {
   // states
   const [isLoading, setIsLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -17,7 +18,7 @@ export default function Movie(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const params = queryString.parse(props.location.search);
+      const params = queryString.parse(location.search);
       const response = await api.get('/', {
         params: { apikey: API_KEY, i: params.imdbID },
       });
@@ -33,7 +34,7 @@ export default function Movie(props) {
     };
 
     fetchData();
-  }, []);
+  }, [location.search]);
 
   /**
    * Handles the click on the back button
@@ -131,3 +132,9 @@ export default function Movie(props) {
     </Container>
   );
 }
+
+Movie.propTypes = {
+  location: PropTypes.shape({
+    search: PropTypes.string.isRequired,
+  }).isRequired,
+};

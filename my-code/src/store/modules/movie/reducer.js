@@ -16,3 +16,10 @@ export default function movieReducer(
       return state;
   }
 }
+
+/**
+ * Selector function for gettinhg the movies state.
+ *
+ * @param {*} state
+ */
+export const getMovies = state => state.movieReducer;

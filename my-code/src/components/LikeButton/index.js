@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { getLikes } from '../../store/modules/likes/reducer';
 import { Container, Button } from './styles';
 import iconHeartWhite from './assets/icon-heart-white.svg';
 import iconHeartGrey from './assets/icon-heart-grey.svg';
@@ -12,12 +13,12 @@ export default function LikeButton({ imdbID, showText, alwaysVisible }) {
   const dispatch = useDispatch();
 
   // Redux state: get the favourites list.
-  const likes = useSelector(state => state.likesReducer);
+  const likes = useSelector(getLikes);
 
   // Based on the favourites list, set the liked state.
   useEffect(() => {
     setLiked(likes.indexOf(imdbID) >= 0);
-  }, []);
+  }, [imdbID, likes]);
 
   /**
    * Handles the click event on the like button.
@@ -40,7 +41,10 @@ export default function LikeButton({ imdbID, showText, alwaysVisible }) {
     <Container>
       <Button
         type="button"
-        className={`heart-button ${liked || alwaysVisible ? 'visible' : ''} ${liked ? 'liked' : ''} ${showText && liked ? 'liked-red' : ''}`}
+        className={`heart-button
+         ${liked || alwaysVisible ? 'visible' : ''}
+         ${liked ? 'liked' : ''}
+         ${showText && liked ? 'liked-red' : ''}`}
         onClick={e => handleClick(e)}>
         <img
           src={
