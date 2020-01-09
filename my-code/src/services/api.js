@@ -12,7 +12,7 @@ const api = axios.create({
 /**
  * Fetch data from the IMDB API.
  */
-export const fetchData = async (searchStr, currentPage, perPage) => {
+export const fetchMovieData = async (searchStr, currentPage, perPage) => {
   const res = await api.get('/', {
     params: { apikey: API_KEY, s: searchStr, page: currentPage },
   });

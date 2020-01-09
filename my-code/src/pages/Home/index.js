@@ -8,7 +8,7 @@ import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 import LoadingIndicator from '../../components/LoadingIndicator';
 import history from '../../services/history';
-import { fetchData } from '../../services/api';
+import { fetchMovieData } from '../../services/api';
 import { Container, MoviesGrid } from './styles';
 
 export default function Home() {
@@ -21,12 +21,16 @@ export default function Home() {
   const movies = useSelector(getMovies);
 
   /**
-   * Fetches data from the API.
+   * Fetches movie data from the API.
    * @param {integer} currentPage
    */
-  async function getData(currentPage) {
+  async function getMovieData(currentPage = 1) {
     setIsLoading(true);
-    const searchResult = await fetchData(movies.searchStr, currentPage, 10);
+    const searchResult = await fetchMovieData(
+      movies.searchStr,
+      currentPage,
+      10
+    );
 
     dispatch({
       type: 'ADD_MOVIES',
@@ -51,7 +55,7 @@ export default function Home() {
    */
   function handlePageClick({ selected }) {
     const newPage = parseInt(selected, 10) + 1;
-    getData(newPage);
+    getMovieData(newPage);
   }
 
   return (

@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md';
 
 import { getMovies } from '../../store/modules/movie/reducer';
 import { Container, Input } from './styles';
-import { fetchData } from '../../services/api';
+import { fetchMovieData } from '../../services/api';
 import LoadingIndicator from '../LoadingIndicator';
 
 export default function Search({ isDisabled }) {
@@ -27,12 +27,12 @@ export default function Search({ isDisabled }) {
   }, [movies.searchStr]);
 
   /**
-   * Fetches data from the API.
+   * Fetches movie data from the API.
    * @param {integer} currentPage
    */
-  async function getData(currentPage) {
+  async function getMoveList(currentPage = 1) {
     setIsLoading(true);
-    const searchResult = await fetchData(searchStr, currentPage, perPage);
+    const searchResult = await fetchMovieData(searchStr, currentPage, perPage);
 
     dispatch({
       type: 'ADD_MOVIES',
@@ -56,7 +56,7 @@ export default function Search({ isDisabled }) {
     e.persist();
 
     if (e.key === ENTER_KEY) {
-      getData(1);
+      getMoveList();
     } else {
       setSearchStr(e.target.value);
     }

@@ -37,7 +37,7 @@ export const Input = styled.input`
   padding: 12px 12px 12px 40px;
   width: 100%;
 
-  ::placeholder {
+  &::placeholder {
     color: ${variables.COLOR_SECONDARY};
   }
 
