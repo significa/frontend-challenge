@@ -6,16 +6,9 @@ import logoImdb from '../../assets/logo-imdb.svg';
 import logoRotten from '../../assets/logo-rotten-tomatoes.svg';
 
 export default function MovieRating({ rating }) {
-  let logo;
-  let logoCssClass;
-
-  if (rating.Source === 'Internet Movie Database') {
-    logo = logoImdb;
-    logoCssClass = 'logo-imdb';
-  } else {
-    logo = logoRotten;
-    logoCssClass = 'logo-rotten';
-  }
+  const isImdb = rating.Source === 'Internet Movie Database';
+  const logo = isImdb ? logoImdb : logoRotten;
+  const logoCssClass = isImdb ? 'logo-imdb' : 'logo-rotten';
 
   return (
     <Container>
