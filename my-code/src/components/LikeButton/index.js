@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import { Container, Button } from './styles';
 import iconHeartWhite from './assets/icon-heart-white.svg';
 import iconHeartGrey from './assets/icon-heart-grey.svg';

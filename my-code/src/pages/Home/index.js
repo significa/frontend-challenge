@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import ImageFadeIn from 'react-image-fade-in';
+
 import Search from '../../components/Search';
 import LikeButton from '../../components/LikeButton';
 import LoadingIndicator from '../../components/LoadingIndicator';

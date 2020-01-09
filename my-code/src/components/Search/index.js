@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
+
 import { Container, Input } from './styles';
 import { fetchData } from '../../services/api';
 import LoadingIndicator from '../LoadingIndicator';

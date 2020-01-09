@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import ImageFadeIn from 'react-image-fade-in';
+
 import api, { API_KEY } from '../../services/api';
 import history from '../../services/history';
 import { Container, Loading } from './styles';
