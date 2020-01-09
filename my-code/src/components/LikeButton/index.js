@@ -8,7 +8,11 @@ import iconHeartWhite from './assets/icon-heart-white.svg';
 import iconHeartGrey from './assets/icon-heart-grey.svg';
 import iconHeartFull from './assets/icon-heart-full.svg';
 
-export default function LikeButton({ imdbID, showText, alwaysVisible }) {
+export default function LikeButton({
+  imdbID,
+  showText = false,
+  alwaysVisible = false,
+}) {
   const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
@@ -41,11 +45,11 @@ export default function LikeButton({ imdbID, showText, alwaysVisible }) {
     <Container>
       <Button
         type="button"
-        className={`heart-button
-         ${liked || alwaysVisible ? 'visible' : ''}
-         ${liked ? 'liked' : ''}
-         ${showText && liked ? 'liked-red' : ''}`}
-        onClick={e => handleClick(e)}>
+        className="heart-button"
+        alwaysVisible={alwaysVisible}
+        liked={liked}
+        showText={showText}
+        onClick={handleClick}>
         <img
           src={
             (liked && iconHeartFull) ||
@@ -53,8 +57,7 @@ export default function LikeButton({ imdbID, showText, alwaysVisible }) {
           }
           alt="Like it"
         />
-        {showText && !liked && 'Add to favourites'}
-        {showText && liked && 'Added'}
+        {showText && (liked ? 'Added' : 'Add to favourites')}
       </Button>
     </Container>
   );

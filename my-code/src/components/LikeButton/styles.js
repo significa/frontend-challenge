@@ -5,44 +5,36 @@ export const Container = styled.div``;
 
 export const Button = styled.button`
   /**
-   * Initialy the heart button is never visible.
+   * The heart button is only visible if the movie is liked
+   * or if the alwaysVisible prop is true.
    */
-  display: none;
+  display: ${props => (props.liked || props.alwaysVisible ? 'flex' : 'none')};
   align-items: center;
   background: transparent;
   border: 0;
   line-height: 18px;
   padding: 10px;
 
+  /**
+   * A red backgounr is added when the text is being shown
+   * and the movie is liked.
+   */
+  background-color: ${props =>
+    props.liked && props.showText ? `${variables.COLOR_RED}` : 'transparent'};
+  color: ${props =>
+    props.liked && props.showText
+      ? `${variables.COLOR_WHITE}`
+      : `${variables.COLOR_LIGHTGREY}`};
+
   img {
     margin: 0 8px;
-  }
 
-  &.visible {
-    display: flex;
-  }
-
-  /**
-   * When a movie is liked, the button receives this class
-   * and becomes always visible.
-   */
-  &.liked {
     /**
      * The heart icon got a small drop shadow
      * to be more visible in bright backgrounds.
      */
-    img {
-      filter: drop-shadow(0px 0px 3px #666);
-    }
-
-    /**
-     * .liked-red is added when the text is being shown
-     * and the movie is liked.
-     */
-    &-red {
-      background-color: ${variables.COLOR_RED};
-      color: ${variables.COLOR_WHITE};
-    }
+    filter: ${props =>
+      props.liked ? 'drop-shadow(0px 0px 3px #666)' : 'none'};
   }
 
   /**
