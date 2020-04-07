@@ -1,14 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { backgroundColor } from '../colors';
-
 const GlobalStyle = createGlobalStyle`
 
 	body {
-		background-color: ${backgroundColor};
+		background-color: #0A1014;
 		color: #fff;
 		margin: 0px;
+		overflow-y: scroll;
 		padding: 0px;
+		-webkit-font-smoothing: antialiased;
 	}
 
 	body, input, button {
@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
 	a {
 		color: inherit;
 		text-decoration: none;
+	}
+
+	p {
+		line-height: 1.5;
 	}
 
 	button {

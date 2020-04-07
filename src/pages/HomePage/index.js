@@ -3,7 +3,6 @@ import { MdSearch } from 'react-icons/md';
 
 import {
 	Container,
-	Logo,
 	SearchBar,
 	Empty,
 	Illustration,
@@ -11,6 +10,7 @@ import {
 	Subtitle,
 	Results,
 } from './styles';
+import Logo from '../../components/Logo';
 import MovieCard from './MovieCard';
 
 import { searchMovies } from '../../services/api';

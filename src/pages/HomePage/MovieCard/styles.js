@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Description = styled.div`
 	background-color: rgba(53, 63, 76, 0.9);
@@ -11,8 +12,8 @@ export const Description = styled.div`
 	transition: 0.2s ease;
 `;
 
-export const Container = styled.div`
-	background-image: url(${(props) => props.poster});
+export const Container = styled(Link)`
+	background-image: url(${(props) => props.source});
 	background-position: center;
 	background-size: cover;
 	border-radius: 5px;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import illustration from '../../assets/img/illustration-empty-state.png';
-import logo from '../../assets/img/logo.svg';
 
 export const Container = styled.main`
 	align-items: center;
@@ -14,15 +13,6 @@ export const Container = styled.main`
 	padding: 1rem;
 	width: 100%;
 `;
-
-export const Logo = styled.img`
-	margin-bottom: 1rem;
-	margin-right: auto;
-`;
-
-Logo.defaultProps = {
-	src: logo,
-};
 
 export const Empty = styled.section`
 	align-items: center;
@@ -56,7 +46,7 @@ export const Title = styled.h2`
 `;
 
 export const Subtitle = styled.h3`
-	color: rgba(255, 255, 255, 0.5);
+	color: #7a8c99;
 	font-size: 1rem;
 	font-weight: 400;
 	margin: 0px;
