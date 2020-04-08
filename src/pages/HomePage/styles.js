@@ -78,8 +78,11 @@ export const SearchBar = styled.section`
 export const Results = styled.section`
 	display: grid;
 	grid-gap: 1rem;
-	grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
 	margin-bottom: auto;
 	margin-top: 2rem;
 	width: 100%;
+
+	@media (min-width: 430px) {
+		grid-template-columns: repeat(auto-fit, minmax(180px, 180px));
+	}
 `;

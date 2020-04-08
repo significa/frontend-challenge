@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { MdArrowBack } from 'react-icons/md';
-import { IoIosHeartEmpty, IoIosHeart } from 'react-icons/io';
 
 import {
 	Container,
@@ -15,9 +14,9 @@ import {
 	Plot,
 	List,
 	Label,
-	AddToFavouritesButton,
 } from './styles';
 import Logo from '../../components/Logo';
+import AddToFavouritesButton from './AddToFavouriteButton';
 
 import { getMovieById } from '../../services/api';
 
@@ -27,15 +26,10 @@ export default function MoviePage() {
 	const { id } = useParams();
 	const history = useHistory();
 	const [movie, setMovie] = useState();
-	const [favourite, setFavourite] = useState(false);
 
 	const handleClick = useCallback(() => {
 		history.push('/');
 	}, [history]);
-
-	const handleAddToFavourites = useCallback(() => {
-		setFavourite(!favourite);
-	}, [favourite]);
 
 	useEffect(() => {
 		getMovieById(id)
@@ -56,6 +50,7 @@ export default function MoviePage() {
 		genres,
 		vote_average,
 	} = movie;
+	const year = String(new window.Date(release_date).getFullYear());
 
 	return (
 		<Container>
@@ -69,7 +64,7 @@ export default function MoviePage() {
 				<Details>
 					<Row>
 						<span>{runtime} min</span>
-						<span>{new window.Date(release_date).getFullYear()}</span>
+						<span>{year === 'NaN' ? 'Date unavailable' : year}</span>
 						<span>{adult ? '18+' : 'R'}</span>
 					</Row>
 
@@ -80,17 +75,8 @@ export default function MoviePage() {
 							<img src={imdb} alt="Imdb icon" />
 							<span>{vote_average}/10</span>
 						</Label>
-						<AddToFavouritesButton
-							onClick={handleAddToFavourites}
-							favourite={favourite}
-						>
-							{favourite ? (
-								<IoIosHeart size={16} />
-							) : (
-								<IoIosHeartEmpty size={16} />
-							)}
-							<span>Add to favourites</span>
-						</AddToFavouritesButton>
+
+						<AddToFavouritesButton />
 					</Row>
 
 					<article>
@@ -102,7 +88,7 @@ export default function MoviePage() {
 						<List>
 							<Subtitle>Cast</Subtitle>
 							<ul>
-								{credits.cast.slice(0, 8).map((item) => (
+								{credits.cast.slice(0, 5).map((item) => (
 									<li key={`cast-${item.id}`}>{item.name}</li>
 								))}
 							</ul>

@@ -7,17 +7,24 @@ export const Description = styled.div`
 	cursor: pointer;
 	flex-direction: column;
 	height: 100%;
-	margin-top: 280px;
+	margin-top: calc((100vw - 2rem) * 1.333);
 	padding: 0.5rem;
 	transition: 0.2s ease;
+
+	@media (min-width: 430px) {
+		margin-top: 270px;
+	}
 `;
 
-export const Container = styled(Link)`
-	background-image: url(${(props) => props.source});
+export const Container = styled(Link).attrs((props) => ({
+	style: {
+		backgroundImage: `url(${props.source})`,
+	},
+}))`
 	background-position: center;
 	background-size: cover;
 	border-radius: 5px;
-	height: 280px;
+	height: calc((100vw - 2rem) * 1.333);
 	overflow: hidden;
 
 	button {
@@ -30,6 +37,10 @@ export const Container = styled(Link)`
 
 	&:hover > ${Description} {
 		margin-top: 0px;
+	}
+
+	@media (min-width: 430px) {
+		height: 270px;
 	}
 `;
 

@@ -5,7 +5,7 @@ import { Container, Description, Title, Year } from './styles';
 
 export default function MovieCard({ id, title, release_date, poster_path }) {
 	const poster = `https://image.tmdb.org/t/p/w500/${poster_path}`;
-	const year = new window.Date(release_date).getFullYear();
+	const year = String(new window.Date(release_date).getFullYear());
 
 	return (
 		<Container to={`/movie/${id}`} source={poster}>
@@ -15,7 +15,7 @@ export default function MovieCard({ id, title, release_date, poster_path }) {
 				</button>
 
 				<Title>{title}</Title>
-				<Year>{year}</Year>
+				<Year>{year === 'NaN' ? 'Date unavailable' : year}</Year>
 			</Description>
 		</Container>
 	);

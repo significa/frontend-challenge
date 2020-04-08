@@ -24,14 +24,31 @@ export const GoBackButton = styled.button`
 
 export const Movie = styled.section`
 	display: grid;
-	grid-template-columns: 1fr 500px;
+
+	@media (min-width: 768px) {
+		grid-template-columns: 1fr 350px;
+	}
+
+	@media (min-width: 992px) {
+		grid-template-columns: 1fr 500px;
+	}
 `;
 
 export const Details = styled.div`
 	display: grid;
 	grid-gap: 1rem;
 	margin-bottom: auto;
-	margin-right: 3rem;
+	margin-right: 1.5rem;
+
+	@media (max-width: 768px) {
+		background: linear-gradient(to right, #0a1014 21%, transparent 94%);
+		min-height: 100vh;
+		padding: 1.5rem;
+	}
+
+	@media (min-width: 992px) {
+		margin-right: 3rem;
+	}
 `;
 
 export const Poster = styled.div`
@@ -39,13 +56,28 @@ export const Poster = styled.div`
 	background-position: center;
 	background-size: cover;
 	border-radius: 10px;
-	height: 750px;
+	height: 600px;
 	width: 100%;
+
+	@media (max-width: 768px) {
+		height: 100vh;
+		opacity: 0.15;
+		position: absolute;
+		right: 1rem;
+		width: calc(100% - 2rem);
+		z-index: -1;
+	}
+
+	@media (min-width: 992px) {
+		height: 750px;
+	}
 `;
 
 export const Row = styled.div`
-	align-items: center;
-	display: flex;
+	@media (min-width: 576px) {
+		align-items: center;
+		display: flex;
+	}
 
 	&:nth-child(1) span {
 		color: #7a8c99;
@@ -63,9 +95,13 @@ export const Row = styled.div`
 `;
 
 export const Title = styled.h2`
-	font-size: 5rem;
+	font-size: 3rem;
 	font-weight: 700;
 	margin: 0px;
+
+	@media (min-width: 768px) {
+		font-size: 5rem;
+	}
 `;
 
 export const Subtitle = styled.h4`
@@ -77,13 +113,29 @@ export const Subtitle = styled.h4`
 `;
 
 export const Plot = styled.p`
-	width: 80%;
 	margin-bottom: 0px;
+
+	@media (min-width: 992px) {
+		width: 80%;
+	}
 `;
 
-export const List = styled.section`
+export const List = styled.div`
+	display: none;
 	margin-bottom: auto;
-	margin-right: 3rem;
+	margin-right: 1.5rem;
+
+	@media (min-width: 576px) {
+		display: block;
+	}
+
+	@media (min-width: 768px) {
+		margin-right: 2rem;
+	}
+
+	@media (min-width: 992px) {
+		margin-right: 3rem;
+	}
 
 	ul li {
 		margin: 0.5rem 0px;
@@ -106,31 +158,5 @@ export const Label = styled.div`
 		border-left: none;
 		border-top-right-radius: 4px;
 		padding: 0.5rem;
-	}
-`;
-
-export const AddToFavouritesButton = styled.button`
-	align-items: center;
-	background: ${(props) => (props.favourite ? '#ff4040' : 'none')};
-	border: 1px solid ${(props) => (props.favourite ? '#ff4040' : '#7a8c99')};
-	border-radius: 4px;
-	color: ${(props) => (props.favourite ? '#fff' : '#7a8c99')};
-	display: flex;
-	font-size: 1rem;
-	margin-left: 1rem;
-	padding: 0.5rem;
-	transition: 0.15s ease;
-
-	&:hover {
-		color: #fff;
-		border-color: #ff4040;
-	}
-
-	span {
-		margin-left: 0.375rem;
-	}
-
-	svg {
-		display: flex;
 	}
 `;
