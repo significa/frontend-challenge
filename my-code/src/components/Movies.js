@@ -9,25 +9,38 @@ export function Movies() {
 
     let apiKey = "798e7a67";
 
-
     let min = 3;
 
     function queryMovie() {
         let q = document.getElementById("q");
+        let results = document.getElementById("results");
         setQuery(q.value);
         setSearch(true);
+        results.innerHTML = `Results for ${q.value}:`;
     }
 
-    function enableBtn(){
-        (document.getElementById("q").value.length >= min) ? setDisabled(false):setDisabled(true);
+    useEffect(() => {
+        document.getElementById("q").focus();
+    })
+
+    function enableBtn() {
+        let q = document.getElementById("q");
+        let hint = document.getElementById("hint");
+        (q.value.length >= min) ? setDisabled(false) : setDisabled(true);
+        hint.innerHTML = `${q.value.length}/${min}`;
     }
 
     let url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}`;
 
     return (
-        <>  <input id="q" onChange={enableBtn} placeholder="movie"></input>
+        <>
+            <p></p>
+            <input id="q" onChange={enableBtn} placeholder="Movie, Series, etc..."></input>
             <small id="hint"></small>
-            <button disabled={disabled} onClick={queryMovie}>search</button>
+            <p></p>
+            <button className="btn btn-primary" disabled={disabled} onClick={queryMovie}>SEARCH</button>
+            <p></p>
+            <h3 id="results"> </h3>
             {search && <FetchMovies url={url} />}
         </>
     );

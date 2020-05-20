@@ -7,10 +7,11 @@ export function Movie(props) {
         <tr>
             <td>{props.item.Title}</td>
             <td>{props.item.Year}</td>
+            <td>{props.item.Type}</td>
+            <Link to={"/title/" + props.item.imdbID}>
+                <td><img className="zoom" width="45%" src={props.item.Poster} alt={props.item.Title} title={props.item.Title}></img></td>
+            </Link>
 
-            <td>
-                <button className="btn btn-dark mr-1"><Link to={"/title/" + props.item.imdbID}>GO TO</Link></button>
-            </td>
         </tr>
 
     );

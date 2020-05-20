@@ -12,29 +12,17 @@ export function App() {
     return (
         <Router>
             <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li>
-                            <Link to="/about">About</Link>
-                        </li>
-                        <li>
-                            <Link to="/users">Users</Link>
-                        </li>
-                    </ul>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">MOVIE SEARCH!</a>
                 </nav>
-
-                {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
                 <Switch>
+                <Route exact path="/">
+                        <Movies />
+                    </Route>
                     <Route path="/title/:id">
                         <FetchMovie />
                     </Route>
-                    <Route exact path="/">
-                        <Movies />
-                    </Route>
+                    
                 </Switch>
             </div>
         </Router>

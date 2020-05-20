@@ -22,11 +22,13 @@ export function FetchMovies(props) {
 
     return (
         <>
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>TITLE</th>
                         <th>YEAR</th>
+                        <th>TYPE</th>
+                        <th>POSTER</th>
                     </tr>
                 </thead>
                 <tbody>
