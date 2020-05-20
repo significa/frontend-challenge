@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import { FetchMovie } from "./FetchMovie";
 import { Movies } from "./Movies";
@@ -16,13 +15,13 @@ export function App() {
                     <a class="navbar-brand" href="/">MOVIE SEARCH!</a>
                 </nav>
                 <Switch>
-                <Route exact path="/">
+                    <Route exact path="/">
                         <Movies />
                     </Route>
                     <Route path="/title/:id">
                         <FetchMovie />
                     </Route>
-                    
+
                 </Switch>
             </div>
         </Router>

@@ -3,7 +3,7 @@ import { FetchMovies } from "./FetchMovies";
 
 export function Movies() {
 
-    const [query, setQuery] = useState("nada");
+    const [query, setQuery] = useState("");
     const [disabled, setDisabled] = useState(true);
     const [search, setSearch] = useState(false);
 
@@ -17,6 +17,8 @@ export function Movies() {
         setQuery(q.value);
         setSearch(true);
         results.innerHTML = `Results for ${q.value}:`;
+        document.title = `${q.value} | MOVIES SEARCH`;
+
     }
 
     useEffect(() => {

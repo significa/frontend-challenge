@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, BrowserRouter, Switch, Route } from "react-router-dom";
-import { FetchMovie } from "./FetchMovie";
+import React from 'react'
+import { Link} from "react-router-dom";
 
 export function Movie(props) {
     return (

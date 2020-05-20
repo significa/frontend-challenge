@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Movie } from "./Movie";
 import { useParams } from 'react-router';
 
 export function FetchMovie() {
@@ -9,6 +8,7 @@ export function FetchMovie() {
 
     async function getData() {
         let apiKey = "798e7a67";
+        document.title = `${data.Title} | MOVIES SEARCH` ;
 
         let url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
 
