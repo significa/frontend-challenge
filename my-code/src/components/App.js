@@ -4,22 +4,22 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import { FetchMovie } from "./FetchMovie";
-import { Movies } from "./Movies";
+import { AllMoviesSearch } from "./AllMoviesSearch";
+import { SingleMovieSearch } from "./SingleMovieSearch";
 
 export function App() {
     return (
         <Router>
             <div>
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="/">MOVIE SEARCH!</a>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <a className="navbar-brand" href="/">MOVIE SEARCH!</a>
                 </nav>
                 <Switch>
                     <Route exact path="/">
-                        <Movies />
+                        <AllMoviesSearch />
                     </Route>
                     <Route path="/title/:id">
-                        <FetchMovie />
+                        <SingleMovieSearch />
                     </Route>
 
                 </Switch>
