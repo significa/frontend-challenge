@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {App} from "./components/App";
-require('dotenv').config();
+import {Users} from "./components/Users";
 
-console.log(process.env);
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Users />, document.getElementById('root'));

@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { Movie } from "./Movie";
+import {useFetch} from "../hooks";
 
 export function FetchMovies(props) {
-    const [data, setData] = useState([]);
+    const [results, setResults] = useState([]);
     const [found, setFound] = useState(false);
-
+    const [data,loading] = useFetch(props.url,props.query);
+    
     async function getData() {
         try {
             let req = await fetch(props.url);
             let json = await req.json();
             if (json.Search) {
-                setData(json.Search);
+                //setData(json.Search);
                 setFound(true);
             }
             else {
