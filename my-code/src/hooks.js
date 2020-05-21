@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Makes API requests and returns its results in json format
 export function useFetch(url, query) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState("waiting");
