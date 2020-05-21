@@ -1,3 +1,4 @@
 .DS_Store
 /my-code/node_modules
 *.zip
+*.env

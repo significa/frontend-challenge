@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router';
+import { API_KEY } from "../constants";
 
 export function FetchMovie() {
     const [data, setData] = useState({});
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
-
     async function getData() {
-        let apiKey = "798e7a67";
-        document.title = `${data.Title} | MOVIES SEARCH` ;
+        document.title = `${data.Title} | MOVIES SEARCH`;
 
-        let url = `https://www.omdbapi.com/?apikey=${apiKey}&i=${id}`;
+        let url = `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`;
 
         try {
             let req = await fetch(url);

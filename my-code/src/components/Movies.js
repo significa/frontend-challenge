@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { FetchMovies } from "./FetchMovies";
+import { API_KEY } from "../constants";
 
 export function Movies() {
 
     const [query, setQuery] = useState("");
     const [disabled, setDisabled] = useState(true);
     const [search, setSearch] = useState(false);
-
-    let apiKey = "798e7a67";
 
     let min = 3;
 
@@ -32,7 +31,7 @@ export function Movies() {
         hint.innerHTML = `${q.value.length}/${min}`;
     }
 
-    let url = `https://www.omdbapi.com/?apikey=${apiKey}&s=${query}`;
+    let url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
 
     return (
         <>
