@@ -7,70 +7,61 @@ import { AllMovies } from "./AllMovies";
 export function AllMoviesSearch() {
     const min = 3; // Min chars count to search
     const [query, setQuery] = useState(null);
-    const [enabled, setEnabled] = useState(false); // for useFetch() 
+    const [searchEnabled, setSearchEnabled] = useState(false); // for useFetch() 
 
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&s=`;
 
-    // Custom hook to make API requests (activation depends on "enabled" arg)
-    const [data, loading] = useFetch(url, query, enabled);
+    // Custom hook to make API requests (activation depends on "searchEnabled" arg)
+    const [data, loading] = useFetch(url, query, searchEnabled);
     //
-    const [disabled, setDisabled] = useState(true); // Submit button's status
-    let res;
-    let q = document.getElementById("q");
+    const [btnDisabled, setBtnDisabled] = useState(true); // Submit button's status
 
     // Enables & makes the API request
     const search = () => {
-        setEnabled(true);
-        document.title = `${q.value.toUpperCase()} | ${APP_NAME}`;
+        setSearchEnabled(true);
+        document.title = `${query.toUpperCase()} | ${APP_NAME}`;
     }
     //
 
     // Enables/disables submit button & shows chars counter
     function enableBtn(e) {
-        setEnabled(false);
+        setSearchEnabled(false);
         let qry = e.target.value;
         setQuery(qry);
         const hint = document.getElementById("hint");
-        (qry.length >= min) ? setDisabled(false) : setDisabled(true);
+        (qry.length >= min) ? setBtnDisabled(false) : setBtnDisabled(true);
         hint.innerHTML = `${qry.length}/${min}`;
     }
     //  
 
-    // Actual content to be rendered, based on API request status
-    switch (loading) {
-        case "waiting":
-            res = "";
-            break;
-        case "loading":
-            res = "Loading...";
-            break;
-        case "notFound":
-            res = "No results found...";
-            break;
-        case "error":
-            res = "There was an error with the server.";
-            break;
-        case "done":
-            res = (
-                <>
-                    <h3>Results for {query}:</h3>
-                    <AllMovies movies={data.Search} />
-                </>
-            );
-            break;
-        default:
-            break;
-    }
-    //
-
-    return (
+    const base = (
         <>
             <Search
                 clickFun={search}
                 changeFun={enableBtn}
                 placeholder="Movies, series,etc..."
-                disabled={disabled} />
-            {res}
+                disabled={btnDisabled} />
         </>
     );
+
+    // Actual content to be rendered, based on API request status
+    switch (loading) {
+        case "loading":
+            return (<> {base} <h2>Loading...</h2> </>);
+        case "notFound":
+            return (<> {base} <h2>No results found...</h2> </>);
+        case "error":
+            return (<> {base} <h2>There was an error with the server...</h2> </>);
+        case "done":
+            return (
+                <> {base}
+                    <h3>Results for {query}:</h3>
+                    <AllMovies movies={data.Search} />
+                </>
+            );
+        default:
+            return (<> {base} </>);
+    }
+    //
+
 }

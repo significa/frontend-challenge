@@ -1,6 +1,8 @@
 import React from 'react'
+import {APP_NAME } from "../constants";
 
 export function SingleMovieDetail(props) {
+    document.title = `${props.item.Title} | ${APP_NAME}`;
 
     return (
         <>

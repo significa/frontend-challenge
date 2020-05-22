@@ -8,33 +8,26 @@ export function SingleMovieSearch() {
     const { id } = useParams();
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&i=`;
     // Custom hook to make API requests (uses URL parameter "id" as query)
-    const [data, loading] = useFetch(url, id,true);
+    const [data, loading] = useFetch(url, id, true);
     //
-    let res;
 
     // Actual content to be rendered, based on API request status
     switch (loading) {
-        case "waiting":
-            res = "Waiting"
-            break;
         case "loading":
-            res = "Loading...";
-            break;
+            return (<> <h2>Loading... </h2> </>);
+        case "notFound":
+            return (<> <h2>No results found...</h2> </>);
+        case "error":
+            return (<> <h2>There was an error with the server...</h2> </>);
         case "done":
-            res = (
-                <>
+            return (
+                <>  
                     <SingleMovieDetail item={data} />
                 </>
             );
-            break;
         default:
-            break;
+            return (<> <h2> </h2> </>);
     }
     //
 
-    return (
-        <>
-            {res}
-        </>
-    );
 }
