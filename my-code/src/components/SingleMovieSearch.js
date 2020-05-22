@@ -8,7 +8,7 @@ export function SingleMovieSearch() {
     const { id } = useParams();
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&i=`;
     // Custom hook to make API requests (uses URL parameter "id" as query)
-    const [data, loading] = useFetch(url, id);
+    const [data, loading] = useFetch(url, id,true);
     //
     let res;
 
