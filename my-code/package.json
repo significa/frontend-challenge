@@ -12,7 +12,7 @@
     "sass": "node-sass src/styles/index.scss build/index.css --output-style compressed",
     "build": "npm run clean && npm run sass && npm run webpack",
     "lint": "eslint src config",
-    "dev": " webpack-dashboard -- webpack-dev-server --config config/webpack.config.dev.js",
+    "dev": "webpack-dev-server --config config/webpack.config.dev.js",
     "start": "serve -s build"
   },
   "repository": {

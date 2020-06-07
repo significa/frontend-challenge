@@ -1,0 +1,116 @@
+.arrow-back {
+    cursor: pointer;
+}
+.movie-info-container {
+    display: flex;
+    margin-top: 20px;
+    .poster-wrapper {
+        display: flex;
+        flex: 6;
+        justify-content: end;
+        .poster {
+            width: 480px;
+            border-radius: 4px;
+        }
+    }
+    .info-wrapper {
+        display: flex;
+        flex: 6;
+        flex-direction: column;
+        .info-time-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 24px;
+            .info-time-spacer {
+                margin-right: 4px;
+                margin-left: 4px;
+            }
+            .info-time-rated {
+                background-color: $light-grey;
+                border-radius: 3px;
+                padding: 4px;
+            }
+        }
+        .info-rate-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            .info-rate-button-logo {
+                display: flex;
+                align-items: center;
+                margin-right: 8px;
+                .info-rate-logo-wrapper {
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                    display: flex;
+                    align-self: stretch;
+                    padding: 6px;
+                }
+                .logo-imdb {
+                    background-color: $yellow;
+                }
+                .logo-rotten-tomatoes {
+                    background-color: $red;
+                }
+                .info-rate-text-wrapper {
+                    display: flex;
+                    align-self: stretch;
+                    border: 1px $mid-grey solid;
+                    border-left: 0px;
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    .info-rate-text {
+                        padding: 6px;
+                    }
+                }
+                &:hover {
+                    background-color: rgba(19, 28, 37, 0.9);
+                }
+            }
+            .info-rate-button-add {
+                display: flex;
+                align-items: center;
+                border: 1px $mid-grey solid;
+                border-radius: 3px;
+                padding: 4px;
+                cursor: pointer;
+                img {
+                    margin-right: 4px;
+                }
+                &:hover {
+                    background-color: rgba(19, 28, 37, 0.9);
+                }
+            }
+            .info-rate-button-added {
+                display: flex;
+                align-items: center;
+                border-radius: 3px;
+                background-color: $red;
+                padding: 8px;
+                img {
+                    margin-right: 4px;
+                }
+            }
+        }
+        .info-detail-column-wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-top: 24px;
+            justify-content: space-between;
+            .info-detail-column-container {
+                display: flex;
+                flex-direction: column;
+                flex: 4;
+                .info-detail-column-title {
+                    margin-bottom: 8px;
+                }
+                .info-detail-column {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+}
