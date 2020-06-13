@@ -3,9 +3,8 @@ body {
   background-color: #0a1014;
   color: white;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,4 +18,58 @@ code {
   margin: 0;
   padding: 0;
   background-color: #0a1014;
+
+  nav {
+    padding: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      margin-left: 5vw;
+    }
+  }
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  form {
+    input {
+      width: 87vw;
+      border-radius: 3px;
+      height: 30px;
+      border: none;
+      margin-top: 3px;
+    }
+  }
+
+  .initial-screen {
+    padding: 50px 200px;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .initial-screen--information {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      margin-top: 15px;
+      .initial-screen--p1 {
+        font-size: 20px;
+        margin: 0;
+      }
+
+      .initial-screen--p2 {
+        font-size: 15px;
+        color: #7a8c99;
+        margin: 0;
+      }
+    }
+  }
 }
