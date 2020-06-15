@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import logo from "./../assets/logo.png";
 import { REACT_APP_API_KEY } from "./../settings";
+import arrow_grey from "./../assets/icon-arrow-grey.png";
+import heart_grey from "./../assets/icon-heart-grey.png";
+import arrow_white from "./../assets/icon-arrow-white.png";
+import heart_white from "./../assets/icon-heart-full.png";
+import logo_imdb from "./../assets/logo-imdb.svg";
 
 function MoviePage(props) {
+  let id = props.match.params.id;
+
   const api_key = REACT_APP_API_KEY;
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState({
     Actors: "",
   });
-  console.log("MOVIEE", movie);
+  const [hover, setHover] = useState({
+    arrow: false,
+  });
+  const [fav, setFav] = useState({
+    toggled: false,
+  });
 
-  let id = props.match.params.id;
+  console.log("????????", localStorage.getItem(id));
 
   const searchMovie = () => {
     setLoading(true);
@@ -26,8 +37,42 @@ function MoviePage(props) {
   };
 
   useEffect(() => {
+    setFav({ toggled: localStorage.getItem(id) });
+    console.log("LOCAL from useefft", localStorage);
     searchMovie();
   }, []);
+  console.log("LOCAL", localStorage);
+
+  const handleMouseOver = () => {
+    console.log("HOVER");
+    setHover({
+      arrow: true,
+    });
+  };
+
+  const handleMouseOut = () => {
+    setHover({
+      arrow: false,
+    });
+  };
+
+  const addFav = () => {
+    setFav({
+      toggled: true,
+    });
+    localStorage.setItem(id, true);
+    console.log("ADDING", localStorage);
+  };
+
+  const removeFav = () => {
+    setFav({
+      toggled: false,
+    });
+    localStorage.removeItem(id);
+    console.log("REMOVING", localStorage);
+  };
+
+  console.log("TOGGLDDD", fav);
 
   return (
     <>
@@ -35,22 +80,77 @@ function MoviePage(props) {
         <p>Loading</p>
       ) : (
         <>
-          <button>back</button>
+          <a
+            className="arrow-back"
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+          >
+            {hover.arrow ? (
+              <>
+                <img
+                  src={arrow_white}
+                  width="30"
+                  alt="arrow-back"
+                  onMouseEnter={handleMouseOver}
+                  onMouseLeave={handleMouseOut}
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={arrow_grey}
+                  width="30"
+                  alt="arrow-back"
+                  onMouseEnter={handleMouseOver}
+                  onMouseLeave={handleMouseOut}
+                />
+              </>
+            )}
+          </a>
           <div className="movie-page">
-            <div></div>
             <div className="movie-info">
               <div className="movie-info--stats">
                 <p>
-                  {movie.Runtime} - {movie.Year} - {movie.Rated}
+                  {movie.Runtime} · {movie.Year} ·{" "}
+                  <span className="rated">{movie.Rated}</span>
                 </p>
               </div>
               <h1 className="movie-info--title">{movie.Title}</h1>
               <div className="movie-info--ratings">
-                <div className="movie-info--tomatoes"></div>
-                <div className="movie-info--imdb"></div>
-                <button className="fav">Add to favourites</button>
+                <div className="movie-info--imdb">
+                  <div className="movie-info--imdb_logo">
+                    <img src={logo_imdb} />
+                  </div>
+                  <div className="movie-info--imdb_rating">
+                    <p>{movie.imdbRating}</p>
+                  </div>
+                </div>
+                <a className="fav">
+                  {fav.toggled ? (
+                    <>
+                      <img
+                        src={heart_white}
+                        width="30"
+                        alt="arrow-back"
+                        onClick={removeFav}
+                      />
+                      <p>Added</p>
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <img
+                        src={heart_grey}
+                        width="30"
+                        alt="arrow-back"
+                        onClick={addFav}
+                      />
+                      <p>Add to favourites</p>
+                    </>
+                  )}
+                </a>
               </div>
-              <div>
+              <div className="movie-info--plot">
                 <h2>Plot</h2>
                 <p>{movie.Plot}</p>
               </div>
@@ -70,7 +170,7 @@ function MoviePage(props) {
               </div>
             </div>
             <div className="movie-poster">
-              <img src={movie.Poster} width="350" />
+              <img src={movie.Poster} width="330" />
             </div>
           </div>
         </>

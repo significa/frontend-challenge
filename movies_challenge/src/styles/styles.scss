@@ -104,28 +104,99 @@ code {
   .movie-info {
     width: 40%;
     border: 1px solid purple;
-    padding: 20px;
     margin-left: -150px;
 
     margin-right: 10px;
 
     .movie-info--stats {
+      border: 1px solid green;
+      display: flex;
+      color: #707070;
       font-family: "Roboto";
-      font-weight: 400;
+      font-weight: 500;
+      font-size: 16px;
+
+      .rated {
+        background-color: #7a8c99;
+        color: #0a1014;
+        padding: 5px;
+        border-radius: 5px;
+      }
     }
 
     .movie-info--title {
       font-size: 60px;
       font-family: "Roboto";
       font-weight: 700;
+      border: 1px solid white;
+      margin: 0;
     }
+
+    .movie-info--ratings {
+      display: flex;
+      height: 40px;
+      width: 20vw;
+      border: 2px solid white;
+      justify-content: space-between;
+
+      .movie-info--imdb {
+        border: 1px solid #353f4c;
+        display: flex;
+        justify-content: center;
+        margin-right: 20px;
+        .movie-info--imdb_logo {
+          background-color: #ff9f1c;
+          display: flex;
+        }
+
+        .movie-info--imdb_rating {
+          align-self: center;
+        }
+      }
+    }
+
+    .movie-info--plot {
+      border: 1px solid white;
+      font-family: "Roboto";
+
+      h2 {
+        font-weight: 300;
+        color: #7a8c99;
+        font-size: 20px;
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 17px;
+      }
+    }
+
     .movie-info--people {
       display: flex;
+
+      h2 {
+        font-weight: 300;
+        color: #7a8c99;
+        font-size: 20px;
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 17px;
+      }
     }
   }
 
   .movie-poster {
-    border: 1px solid orange;
+    border: 1px solid red;
     width: 30%;
+  }
+}
+
+.arrow-back {
+  margin-left: 100px;
+
+  &:hover {
+    cursor: pointer;
   }
 }
