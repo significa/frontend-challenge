@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
 body {
   margin: 0;
   background-color: #0a1014;
@@ -71,5 +73,59 @@ code {
         margin: 0;
       }
     }
+  }
+}
+
+#movies-container {
+  display: flex;
+  width: 88vw;
+  flex-wrap: wrap;
+  padding: 0;
+  margin-top: 3vh;
+  justify-content: flex-start;
+}
+
+.movie {
+  margin: 15px 9.1px;
+  width: 180px;
+  img {
+    object-fit: cover;
+    height: 270px;
+    border-radius: 3px;
+  }
+}
+
+.movie-page {
+  border: 1px solid orange;
+  display: flex;
+  padding: 0;
+  justify-content: space-evenly;
+
+  .movie-info {
+    width: 40%;
+    border: 1px solid purple;
+    padding: 20px;
+    margin-left: -150px;
+
+    margin-right: 10px;
+
+    .movie-info--stats {
+      font-family: "Roboto";
+      font-weight: 400;
+    }
+
+    .movie-info--title {
+      font-size: 60px;
+      font-family: "Roboto";
+      font-weight: 700;
+    }
+    .movie-info--people {
+      display: flex;
+    }
+  }
+
+  .movie-poster {
+    border: 1px solid orange;
+    width: 30%;
   }
 }

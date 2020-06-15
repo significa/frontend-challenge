@@ -9,7 +9,7 @@ function MoviePage(props) {
   const [movie, setMovie] = useState({
     Actors: "",
   });
-  console.log("PROPS", props);
+  console.log("MOVIEE", movie);
 
   let id = props.match.params.id;
 
@@ -30,10 +30,52 @@ function MoviePage(props) {
   }, []);
 
   return (
-    <div className="App">
-      <h1>PAge</h1>
-      {loading ? <p>Loading</p> : <p>{movie.Actors}</p>}
-    </div>
+    <>
+      {loading ? (
+        <p>Loading</p>
+      ) : (
+        <>
+          <button>back</button>
+          <div className="movie-page">
+            <div></div>
+            <div className="movie-info">
+              <div className="movie-info--stats">
+                <p>
+                  {movie.Runtime} - {movie.Year} - {movie.Rated}
+                </p>
+              </div>
+              <h1 className="movie-info--title">{movie.Title}</h1>
+              <div className="movie-info--ratings">
+                <div className="movie-info--tomatoes"></div>
+                <div className="movie-info--imdb"></div>
+                <button className="fav">Add to favourites</button>
+              </div>
+              <div>
+                <h2>Plot</h2>
+                <p>{movie.Plot}</p>
+              </div>
+              <div className="movie-info--people">
+                <div className="movie-info--people--cast">
+                  <h2>Cast</h2>
+                  <p>{movie.Actors}</p>
+                </div>
+                <div className="movie-info--people--genre">
+                  <h2>Genre</h2>
+                  <p>{movie.Genre}</p>
+                </div>
+                <div className="movie-info--people--director">
+                  <h2>Director</h2>
+                  <p>{movie.Director}</p>
+                </div>
+              </div>
+            </div>
+            <div className="movie-poster">
+              <img src={movie.Poster} width="350" />
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 }
 

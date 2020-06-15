@@ -3,8 +3,10 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { REACT_APP_API_KEY } from "./../settings";
 import illustration from "./../assets/illustration-empty-state.png";
+import Movies from "./Movies";
 
-function Home() {
+function Home(props) {
+  console.log("PROPS IN HOME", props);
   const api_key = REACT_APP_API_KEY;
   const [searchParam, setSearchParam] = useState("");
   const [moviesList, setMoviesList] = useState();
@@ -66,13 +68,11 @@ function Home() {
       ) : error ? (
         <p>Not Found</p>
       ) : moviesList && !empty ? (
-        moviesList.map((movie) => (
-          <div key={movie.imdbID}>
-            <h1>{movie.Title}</h1>
-
-            <Link to={`/${movie.imdbID}`}>HERE</Link>
-          </div>
-        ))
+        <div id="movies-container">
+          {moviesList.map((movie) => (
+            <Movies key={movie.imdbID} movie={movie} />
+          ))}
+        </div>
       ) : empty ? (
         <div class="initial-screen">
           <img src={illustration} alt="empty-state" width="350" />

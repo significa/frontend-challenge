@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "./Components/Home";
+import Movies from "./Components/Movies";
 import MoviePage from "./Components/MoviePage";
 import { Route } from "react-router-dom";
 import logo from "./assets/logo.png";
