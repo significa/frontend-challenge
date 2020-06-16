@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
+$red: #ff4040;
+$black: #0a1014;
+$blue: #7a8c99;
+$grey: #707070;
+$dark_grey: #353f4c;
+$orange: #ff9f1c;
+
 body {
   margin: 0;
-  background-color: #0a1014;
+  background-color: $black;
   color: white;
 
   font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
@@ -19,7 +26,7 @@ code {
 .App {
   margin: 0;
   padding: 0;
-  background-color: #0a1014;
+  background-color: $black;
 
   nav {
     padding: 15px;
@@ -72,7 +79,7 @@ code {
 
       .initial-screen--p2 {
         font-size: 15px;
-        color: #7a8c99;
+        color: $blue;
         margin: 0;
       }
     }
@@ -109,14 +116,14 @@ code {
 
     .movie-info--stats {
       display: flex;
-      color: #707070;
+      color: $grey;
       font-family: "Roboto";
       font-weight: 500;
       font-size: 16px;
 
       .rated {
-        background-color: #7a8c99;
-        color: #0a1014;
+        background-color: $blue;
+        color: $black;
         padding: 5px;
         border-radius: 5px;
       }
@@ -134,17 +141,17 @@ code {
       font-size: 19px;
       height: 50px;
       width: 40vw;
-      color: #7a8c99;
+      color: $blue;
       justify-content: flex-start;
 
       .movie-info--imdb {
-        border: 1px solid #353f4c;
+        border: 1px solid $dark_grey;
         border-radius: 6px;
         display: flex;
         margin-right: 20px;
         width: 12vw;
         .movie-info--imdb_logo {
-          background-color: #ff9f1c;
+          background-color: $orange;
           display: flex;
           width: 50%;
           border-radius: 5px 0 0 5px;
@@ -164,14 +171,14 @@ code {
         cursor: pointer;
         display: flex;
         width: 16vw;
-        border: 1px solid #353f4c;
+        border: 1px solid $dark_grey;
         border-radius: 6px;
         justify-content: space-around;
         align-items: center;
       }
 
       .fav-added {
-        background-color: #ff4040;
+        background-color: $red;
         display: flex;
         width: 8vw;
         border-radius: 5px;
@@ -187,7 +194,7 @@ code {
 
       h2 {
         font-weight: 300;
-        color: #7a8c99;
+        color: $blue;
         font-size: 20px;
       }
 
@@ -202,7 +209,7 @@ code {
 
       h2 {
         font-weight: 300;
-        color: #7a8c99;
+        color: $blue;
         font-size: 20px;
       }
 
@@ -270,7 +277,7 @@ code {
         color: white;
         font-weight: 500;
         width: 90%;
-        background-color: #0a1014;
+        background-color: $black;
       }
     }
   }
@@ -290,8 +297,8 @@ code {
   height: 64px;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #ff4040;
-  border-color: #ff4040 transparent #ff4040 transparent;
+  border: 6px solid $red;
+  border-color: $red transparent $red transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
