@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import { REACT_APP_API_KEY } from "./../settings";
 import illustration from "./../assets/illustration-empty-state.png";
 import Movies from "./Movies";
+import { Loading } from "./Loading";
 
 function Home(props) {
-  console.log("PROPS IN HOME", props);
   const api_key = REACT_APP_API_KEY;
   const [searchParam, setSearchParam] = useState("");
   const [moviesList, setMoviesList] = useState();
@@ -19,28 +18,18 @@ function Home(props) {
     e.preventDefault();
     if ((searchParam === "") | (searchParam === undefined)) {
       setEmpty(true);
-      console.log("EMPTY", empty);
     } else {
       setError(false);
-      console.log("searching");
-      console.log("loading is ", loading);
-      console.log("error is", error);
-      console.log("searchparma is", searchParam);
-      setLoading(true);
       setLoading(false);
 
       axios
         .get(`http://www.omdbapi.com/?s=${searchParam}&apikey=${api_key}`)
         .then((res) => {
-          console.log("HERE", res);
-
           if (res.data.Response === "True") {
             setMoviesList(res.data.Search);
             setEmpty(false);
             setLoading(false);
-            console.log("there", res);
           } else {
-            console.log("ERROR");
             setError(true);
           }
         })
@@ -49,7 +38,6 @@ function Home(props) {
   };
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSearchParam(e.target.value);
   };
 
@@ -59,14 +47,15 @@ function Home(props) {
         <input
           name="search"
           type="text"
+          placeholder="Search"
           value={searchParam}
           onChange={handleChange}
         />
       </form>
       {loading && !error ? (
-        <p>Wait</p>
+        <Loading />
       ) : error ? (
-        <p>Not Found</p>
+        <p>Not Found. Search for another title.</p>
       ) : moviesList && !empty ? (
         <div id="movies-container">
           {moviesList.map((movie) => (

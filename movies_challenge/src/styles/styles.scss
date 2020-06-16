@@ -41,11 +41,14 @@ code {
 
   form {
     input {
-      width: 87vw;
+      width: 85vw;
       border-radius: 3px;
       height: 30px;
       border: none;
       margin-top: 3px;
+    }
+    input[type="text"] {
+      padding: 5px 15px;
     }
   }
 
@@ -236,7 +239,6 @@ code {
 
 .arrow-back {
   margin-left: 85px;
-  border: 1px solid red;
 
   &:hover {
     cursor: pointer;
@@ -271,5 +273,32 @@ code {
         background-color: #0a1014;
       }
     }
+  }
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin-left: 300px;
+  margin-top: 150px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #ff4040;
+  border-color: #ff4040 transparent #ff4040 transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

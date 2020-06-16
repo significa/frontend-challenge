@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import placeholder from "./../assets/placeholder.jpg";
 
 function Movies(props) {
-  const [loading, setLoading] = useState(false);
   const [hover, setHover] = useState(false);
 
-  console.log("PROPS from MOVIES", props);
   return (
     <div
       className="movie"
@@ -21,7 +20,12 @@ function Movies(props) {
         }}
       >
         <div id="movie">
-          <img src={props.movie.Poster} alt="poster" width="180" />
+          {props.movie.Poster === "N/A" ? (
+            <img src={placeholder} alt="poster" width="180" />
+          ) : (
+            <img src={props.movie.Poster} alt="poster" width="180" />
+          )}
+
           {hover ? (
             <>
               <div className="movie-title-container">

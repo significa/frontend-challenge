@@ -7,15 +7,13 @@ import heart_grey from "./../assets/icon-heart-grey.png";
 import arrow_white from "./../assets/icon-arrow-white.png";
 import heart_white from "./../assets/icon-heart-full.svg";
 import logo_imdb from "./../assets/logo-imdb.svg";
+import { Loading } from "./Loading";
 
 function MoviePage(props) {
   let id = props.match.params.id;
-
   const api_key = REACT_APP_API_KEY;
   const [loading, setLoading] = useState(false);
-  const [movie, setMovie] = useState({
-    Actors: "",
-  });
+  const [movie, setMovie] = useState({});
   const [hover, setHover] = useState({
     arrow: false,
   });
@@ -23,14 +21,11 @@ function MoviePage(props) {
     toggled: false,
   });
 
-  console.log("????????", props);
-
   const searchMovie = () => {
     setLoading(true);
     axios
       .get(`http://www.omdbapi.com/?apikey=${api_key}&i=${id}`)
       .then((res) => {
-        console.log("this is data", res);
         setMovie(res.data);
         setLoading(false);
       })
@@ -43,7 +38,6 @@ function MoviePage(props) {
   }, []);
 
   const handleMouseOver = () => {
-    console.log("HOVER");
     setHover({
       arrow: true,
     });
@@ -60,7 +54,6 @@ function MoviePage(props) {
       toggled: true,
     });
     localStorage.setItem(id, true);
-    console.log("ADDING", localStorage);
   };
 
   const removeFav = () => {
@@ -68,15 +61,12 @@ function MoviePage(props) {
       toggled: false,
     });
     localStorage.removeItem(id);
-    console.log("REMOVING", localStorage);
   };
-
-  console.log("TOGGLDDD", fav);
 
   return (
     <>
       {loading ? (
-        <p>Loading</p>
+        <Loading />
       ) : (
         <>
           <Link
