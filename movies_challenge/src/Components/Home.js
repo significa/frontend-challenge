@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { REACT_APP_API_KEY } from "./../settings";
+import { REACT_APP_API_KEY } from "../settings/settings.js";
 import illustration from "./../assets/illustration-empty-state.png";
 import Movies from "./Movies";
 import { Loading } from "./Loading";

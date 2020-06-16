@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/src/settings
 /.pnp
 .pnp.js
 
@@ -23,4 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 
 
-settings.js

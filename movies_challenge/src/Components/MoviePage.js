@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { REACT_APP_API_KEY } from "./../settings";
+import { REACT_APP_API_KEY } from "../settings/settings.js";
 import arrow_grey from "./../assets/icon-arrow-grey.png";
 import heart_grey from "./../assets/icon-heart-grey.png";
 import arrow_white from "./../assets/icon-arrow-white.png";
