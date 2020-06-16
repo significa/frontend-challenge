@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { REACT_APP_API_KEY } from "./../settings";
 import arrow_grey from "./../assets/icon-arrow-grey.png";
 import heart_grey from "./../assets/icon-heart-grey.png";
 import arrow_white from "./../assets/icon-arrow-white.png";
-import heart_white from "./../assets/icon-heart-full.png";
+import heart_white from "./../assets/icon-heart-full.svg";
 import logo_imdb from "./../assets/logo-imdb.svg";
 
 function MoviePage(props) {
@@ -22,7 +23,7 @@ function MoviePage(props) {
     toggled: false,
   });
 
-  console.log("????????", localStorage.getItem(id));
+  console.log("????????", props);
 
   const searchMovie = () => {
     setLoading(true);
@@ -38,10 +39,8 @@ function MoviePage(props) {
 
   useEffect(() => {
     setFav({ toggled: localStorage.getItem(id) });
-    console.log("LOCAL from useefft", localStorage);
     searchMovie();
   }, []);
-  console.log("LOCAL", localStorage);
 
   const handleMouseOver = () => {
     console.log("HOVER");
@@ -80,7 +79,8 @@ function MoviePage(props) {
         <p>Loading</p>
       ) : (
         <>
-          <a
+          <Link
+            to={"/"}
             className="arrow-back"
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
@@ -106,7 +106,7 @@ function MoviePage(props) {
                 />
               </>
             )}
-          </a>
+          </Link>
           <div className="movie-page">
             <div className="movie-info">
               <div className="movie-info--stats">
@@ -122,33 +122,21 @@ function MoviePage(props) {
                     <img src={logo_imdb} />
                   </div>
                   <div className="movie-info--imdb_rating">
-                    <p>{movie.imdbRating}</p>
+                    <p>{movie.imdbRating} / 10</p>
                   </div>
                 </div>
-                <a className="fav">
-                  {fav.toggled ? (
-                    <>
-                      <img
-                        src={heart_white}
-                        width="30"
-                        alt="arrow-back"
-                        onClick={removeFav}
-                      />
-                      <p>Added</p>
-                    </>
-                  ) : (
-                    <>
-                      {" "}
-                      <img
-                        src={heart_grey}
-                        width="30"
-                        alt="arrow-back"
-                        onClick={addFav}
-                      />
-                      <p>Add to favourites</p>
-                    </>
-                  )}
-                </a>
+
+                {fav.toggled ? (
+                  <a className="fav-added" onClick={removeFav}>
+                    <img src={heart_white} width="30" alt="arrow-back" />
+                    <p>Added</p>
+                  </a>
+                ) : (
+                  <a className="fav" onClick={addFav}>
+                    <img src={heart_grey} width="30" alt="arrow-back" />
+                    <p>Add to favourites</p>
+                  </a>
+                )}
               </div>
               <div className="movie-info--plot">
                 <h2>Plot</h2>

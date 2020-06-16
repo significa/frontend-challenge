@@ -96,20 +96,15 @@ code {
 }
 
 .movie-page {
-  border: 1px solid orange;
   display: flex;
   padding: 0;
+  margin-top: 2vh;
   justify-content: space-evenly;
-
   .movie-info {
     width: 40%;
-    border: 1px solid purple;
-    margin-left: -150px;
-
-    margin-right: 10px;
+    margin-right: 150px;
 
     .movie-info--stats {
-      border: 1px solid green;
       display: flex;
       color: #707070;
       font-family: "Roboto";
@@ -128,35 +123,63 @@ code {
       font-size: 60px;
       font-family: "Roboto";
       font-weight: 700;
-      border: 1px solid white;
       margin: 0;
     }
 
     .movie-info--ratings {
       display: flex;
-      height: 40px;
-      width: 20vw;
-      border: 2px solid white;
-      justify-content: space-between;
+      font-size: 19px;
+      height: 50px;
+      width: 40vw;
+      color: #7a8c99;
+      justify-content: flex-start;
 
       .movie-info--imdb {
         border: 1px solid #353f4c;
+        border-radius: 6px;
         display: flex;
-        justify-content: center;
         margin-right: 20px;
+        width: 12vw;
         .movie-info--imdb_logo {
           background-color: #ff9f1c;
           display: flex;
+          width: 50%;
+          border-radius: 5px 0 0 5px;
+
+          justify-content: space-around;
         }
 
         .movie-info--imdb_rating {
           align-self: center;
+          width: 50%;
+          justify-self: center;
+          text-align: center;
         }
+      }
+
+      .fav {
+        cursor: pointer;
+        display: flex;
+        width: 16vw;
+        border: 1px solid #353f4c;
+        border-radius: 6px;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .fav-added {
+        background-color: #ff4040;
+        display: flex;
+        width: 8vw;
+        border-radius: 5px;
+        cursor: pointer;
+        color: white;
+        justify-content: space-around;
+        align-items: center;
       }
     }
 
     .movie-info--plot {
-      border: 1px solid white;
       font-family: "Roboto";
 
       h2 {
@@ -184,19 +207,69 @@ code {
         font-weight: 300;
         font-size: 17px;
       }
+
+      .movie-info--people--cast {
+        width: 11vw;
+        padding: 0 15px 0 0;
+      }
+
+      .movie-info--people--genre {
+        width: 5vw;
+        padding: 0 15px;
+      }
+
+      .movie-info--people--director {
+        width: 12vw;
+        padding: 0 15px;
+      }
     }
   }
 
   .movie-poster {
-    border: 1px solid red;
     width: 30%;
+
+    img {
+      border-radius: 6px;
+    }
   }
 }
 
 .arrow-back {
-  margin-left: 100px;
+  margin-left: 85px;
+  border: 1px solid red;
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+#movie {
+  position: relative;
+  font-family: "Roboto";
+  img {
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .movie-title-container {
+    .movie-title {
+      position: absolute;
+      top: 170px;
+      padding: 0 10px;
+      left: 0;
+      font-weight: 400;
+      font-size: 18px;
+      width: 100%;
+      color: white;
+      transition: ease-in;
+
+      &:hover {
+        color: white;
+        font-weight: 500;
+        width: 90%;
+        background-color: #0a1014;
+      }
+    }
   }
 }
