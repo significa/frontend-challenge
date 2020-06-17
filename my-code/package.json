@@ -16,6 +16,22 @@
       "pre-commit": "lint-staged"
     }
   },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "jest --bail --findRelatedTests",
+      "git add"
+    ],
+    "**/*.css": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "babel-preset-next": "^1.2.0",
@@ -33,6 +49,7 @@
     "@babel/preset-flow": "^7.10.1",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.2.1",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
     "eslint": "^7.2.0",
     "eslint-plugin-flowtype": "^5.1.3",
