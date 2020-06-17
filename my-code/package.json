@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-checker": "flow check"
+    "type-checker": "flow check",
+    "test": "jest",
+    "test-watch": "yarn test --watch --notify",
+    "test-coverage": "yarn test --coverage"
   },
   "dependencies": {
     "next": "9.4.4",
@@ -19,7 +22,11 @@
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@babel/preset-flow": "^7.10.1",
+    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/react": "^10.2.1",
+    "babel-jest": "^26.0.1",
     "flow-bin": "^0.127.0",
+    "jest": "^26.0.1",
     "prettier": "^2.0.5"
   }
 }
