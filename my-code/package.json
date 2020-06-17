@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "type-checker": "flow check"
   },
   "dependencies": {
     "next": "9.4.4",
@@ -13,9 +14,12 @@
     "react-dom": "16.13.1"
   },
   "description": "Front end Project to Significa Challenge",
-  "main": " ",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/preset-flow": "^7.10.1",
+    "flow-bin": "^0.127.0",
     "prettier": "^2.0.5"
   }
 }

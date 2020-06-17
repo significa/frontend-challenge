@@ -1,0 +1,16 @@
+
+[ignore]
+.*/node_modules/findup/.*
+
+[include]
+
+[libs]
+./flow-typed
+
+[lints]
+
+[options]
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
+
+[strict]
