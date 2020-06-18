@@ -1,0 +1,12 @@
+:root {
+  --spacing-1: 4px;
+  --spacing-2: 6px;
+  --spacing-3: 8px;
+  --spacing-4: 12px;
+  --spacing-5: 16px;
+
+  --color-dark: #0a1014;
+  --color-grey: #1b2329;
+  --color-mid-grey: #353f4c;
+  --color-white: #ffffff;
+}

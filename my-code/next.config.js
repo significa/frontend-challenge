@@ -1,16 +1,16 @@
 require('dotenv').config();
 
-const path = require('path');
 const withCss = require('@zeit/next-css');
+const withImages = require('next-images');
 
 const { NODE_ENV } = process.env;
 const prod = NODE_ENV === 'production';
 
 const nextConfig = {
-  dir: './src',
+  dir: './src'
 };
 
-module.exports =
+module.exports = withImages(
   withCss({
     cssModules: true,
     cssLoaderOptions: {
@@ -18,4 +18,5 @@ module.exports =
       localIdentName: prod ? 'significa-challenge-[hash:base64:5]' : '[name]__[local]--[hash:base64:5]'
     },
     ...nextConfig
-  });
+  })
+);
