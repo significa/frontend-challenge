@@ -7,7 +7,7 @@ const { NODE_ENV } = process.env;
 const prod = NODE_ENV === 'production';
 
 const nextConfig = {
-  dir: './src'
+  distDir: '../build/_next'
 };
 
 module.exports = withImages(

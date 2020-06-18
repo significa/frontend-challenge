@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "next dev src",
+    "build": "next build src",
+    "start": "next start src",
     "type-checker": "flow check",
     "test": "jest",
     "test-watch": "yarn test --watch --notify",
