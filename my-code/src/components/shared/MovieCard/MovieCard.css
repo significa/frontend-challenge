@@ -1,0 +1,64 @@
+@import '../../style-vars.css';
+
+.Wrapper {
+  position: relative;
+  display: block;
+  font-family: var(--font-family);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover .Info {
+    display: block;
+  }
+}
+
+.Poster {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.Info {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-grey-opacity);
+}
+
+.Content {
+  box-sizing: border-box;
+  padding: var(--spacing-4);
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-self: flex-end;
+  color: var(--color-white);
+  text-decoration: none;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.Title {
+  margin: 0;
+  font-weight: var(--font-weigth-medium);
+  font-size: var(--font-size-2);
+  letter-spacing: var(--letter-spacing-1);
+  margin-bottom: var(--spacing-1);
+}
+
+.LikeButton {
+  background: none;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  padding: 0;
+  position: absolute;
+  right: var(--spacing-4);
+  top: var(--spacing-4);
+}

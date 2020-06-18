@@ -1,12 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
 :root {
   --spacing-1: 4px;
   --spacing-2: 6px;
   --spacing-3: 8px;
   --spacing-4: 12px;
   --spacing-5: 16px;
+  --spacing-6: 32px;
 
-  --color-dark: #0a1014;
-  --color-grey: #1b2329;
-  --color-mid-grey: #353f4c;
-  --color-white: #ffffff;
+  --border-radius: 5px;
+
+  --color-dark: rgb(10, 16, 20);
+  --color-grey: rgb(27, 35, 41);
+  --color-grey-opacity: rgba(27, 35, 41, 0.8);
+  --color-mid-grey: rgb(53, 63, 76);
+  --color-white: rgb(255, 255, 255);
+
+  --letter-spacing-1: 0.2pt;
+  --letter-spacing-2: 0.8pt;
+  --font-family: 'Roboto', sans-serif;
+  --font-size-1: 12pt;
+  --font-size-2: 16pt;
+  --font-size-3: 20pt;
+  --font-size-4: 24pt;
+  --font-size-5: 80pt;
+  --font-weigth-regular: 400;
+  --font-weigth-medium: 500;
+  --font-weigth-bold: 700;
 }
