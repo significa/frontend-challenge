@@ -1,5 +1,7 @@
 // @flow
 import * as React from 'react';
+import { MoviesProvider } from '../components/context/MoviesContext';
+import './_app.css';
 
 type Props = {
   Component: React.ComponentType<any>,
@@ -11,7 +13,11 @@ type Props = {
 const CustomApp = (props: Props) => {
   const { Component, pageProps } = props;
 
-  return <Component pageProps={pageProps} />;
+  return (
+    <MoviesProvider>
+      <Component pageProps={pageProps} />
+    </MoviesProvider>
+  );
 };
 
 CustomApp.getInitialProps = async ({ Component, ctx }) => {

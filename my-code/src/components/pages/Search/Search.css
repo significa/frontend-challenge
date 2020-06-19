@@ -1,0 +1,54 @@
+@import '../../style-vars.css';
+
+.SearchBar {
+  margin: var(--spacing-6) 0;
+}
+
+.MoviesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-gap: 20px;
+  color: #444;
+}
+
+.MovieCard,
+.MovieCardSkeleton {
+  height: 240px;
+}
+
+.MovieCardSkeleton {
+  opacity: 0.3;
+}
+
+.InitialPage,
+.ErrorPage {
+  display: flex;
+  box-sizing: border-box;
+  margin-top: var(--spacing-6);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.Offer {
+  text-decoration: none;
+  text-align: center;
+  color: var(--color-light-grey);
+}
+
+.OfferHeading {
+  color: var(--color-white);
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weigth-medium);
+  letter-spacing: var(--letter-spacing-1);
+  margin: var(--spacing-4) 0;
+}
+
+.OfferText {
+  color: var(--color-light-grey);
+}
+
+.ErrorIllustration {
+  height: 100px;
+}

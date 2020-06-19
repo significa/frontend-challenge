@@ -1,0 +1,7 @@
+@import '../components/style-vars.css';
+
+body {
+  padding: 0;
+  background-color: var(--color-dark);
+  font-family: var(--font-family);
+}
