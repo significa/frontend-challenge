@@ -3,7 +3,6 @@ import getMovies from '../getMovies';
 global.fetch = jest.fn();
 
 const expectResponse = {
-  response: 'True',
   search: [
     {
       Title: 'The Hunt',
@@ -30,18 +29,24 @@ const expectResponse = {
   ]
 };
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve(expectResponse)
-  })
-);
-
 describe('service', () => {
-  describe('service getPosList', () => {
-    it('should return response', async () => {
+  describe('getMovies ', () => {
+    it('should return response on success', async () => {
+      global.fetch.mockImplementationOnce(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve(expectResponse) })
+      );
+
       const response = await getMovies('Hunt');
 
-      expect(response).toEqual(expectResponse);
+      expect(response).toEqual({ ok: true, ...expectResponse });
+    });
+
+    it('should return response on failed', async () => {
+      global.fetch.mockImplementationOnce(() => Promise.resolve({ ok: false, status: 404 }));
+
+      const response = await getMovies('Hunt');
+
+      expect(response).toEqual({ ok: false, status: 404 });
     });
   });
 });
