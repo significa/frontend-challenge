@@ -10,7 +10,6 @@ export default async (req, res) => {
   try {
     const data = await fetch(`${url}/?s=${query.titleToSearch}&type=movie&apikey=${process.env.OMDB_API_KEY}`);
     const response = await data.json();
-    console.log(response);
     const { Search, Response } = response;
     res.json({
       search: Search,
