@@ -18,7 +18,7 @@ const MovieCardListSkeleton = () =>
 
 const InitialPage = () => (
   <div className={styles.InitialPage}>
-    <Link shallow="true" href="/movie/[id]" as={'/movie/tt0068646'}>
+    <Link shallow href="/movie/[id]" as={'/movie/tt0068646'}>
       <a className={styles.Offer}>
         <img className={styles.Illustration} src={illustration} />
         <h3 className={styles.OfferHeading}>Don&apos;t know what to search?</h3>
