@@ -8,17 +8,22 @@ type Props = {
   onChange: () => void,
   value: string,
   disabled?: boolean,
-  placeholder?: string,
   className?: string
 };
 
 export default function SearchBar(props: Props) {
-  const { onChange, value, disabled = false, placeholder, className } = props;
+  const { onChange, value, disabled = false, className } = props;
 
   return (
     <div className={classNames(styles.Wrapper, { [styles.disabled]: disabled }, className)}>
       <img src={magnifierIcon} className={styles.Magnifier} />
-      <input disabled={disabled} value={value} onChange={onChange} placeholder={placeholder} className={styles.Input} />
+      <input
+        placeholder="Search movies..."
+        disabled={disabled}
+        value={value}
+        onChange={onChange}
+        className={styles.Input}
+      />
     </div>
   );
 }

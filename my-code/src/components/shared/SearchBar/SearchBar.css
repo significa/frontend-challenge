@@ -7,6 +7,8 @@
   background-color: var(--color-white);
   border-radius: 5px;
   position: relative;
+  min-height: 50px;
+  box-sizing: border-box;
 }
 
 .Input {
