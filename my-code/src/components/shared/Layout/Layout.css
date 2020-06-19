@@ -1,0 +1,17 @@
+@import '../../style-vars.css';
+
+body {
+  margin: 0;
+  padding: var(--spacing-6) var(--spacing-5);
+  box-sizing: border-box;
+  position: relative;
+}
+
+.Wrapper {
+  max-width: 1180px;
+  height: calc(100vh - 2 * (var(--spacing-6)));
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
