@@ -10,9 +10,9 @@ const Layout = (props: Props) => {
   const { children } = props;
   return (
     <div className={styles.Wrapper}>
-      <div>
+      <header>
         <img src={logo} />
-      </div>
+      </header>
       {children}
     </div>
   );
