@@ -2,14 +2,29 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from '@testing-library/react';
-import { MoviesProvider } from '../../../context/MoviesContext';
 import Search from '../Search';
 import MovieCard from '../../../shared/MovieCard';
-import getMovies from '../../../services/getMovies';
+import getMovies from '../../../../services/getMovies';
 
 jest.mock('../../../shared/MovieCard', () => jest.fn(() => <div />));
 
-jest.mock('../../../services/getMovies', () => jest.fn());
+jest.mock('../../../../services/getMovies', () => jest.fn());
+
+class LocalStorageMock {
+  constructor() {
+    this.store = {};
+  }
+
+  getItem(key) {
+    return this.store[key] || null;
+  }
+
+  setItem(key, value) {
+    this.store[key] = value.toString();
+  }
+}
+
+global.localStorage = new LocalStorageMock();
 
 const resultsResolveMock = {
   ok: true,
@@ -41,11 +56,7 @@ const resultsResolveMock = {
 
 describe('<SearchBar />', () => {
   it('should render with initial page', async () => {
-    render(
-      <MoviesProvider>
-        <Search />
-      </MoviesProvider>
-    );
+    render(<Search />);
 
     expect(screen.getByRole('heading', { name: /Don't know what to search\?/ })).toBeInTheDocument();
     expect(
@@ -54,11 +65,7 @@ describe('<SearchBar />', () => {
   });
 
   it('should render with list of results', async () => {
-    render(
-      <MoviesProvider>
-        <Search />
-      </MoviesProvider>
-    );
+    render(<Search />);
 
     getMovies.mockImplementationOnce(() => Promise.resolve(resultsResolveMock));
 
@@ -83,11 +90,7 @@ describe('<SearchBar />', () => {
   });
 
   it('should render when cannot find any movie', async () => {
-    render(
-      <MoviesProvider>
-        <Search />
-      </MoviesProvider>
-    );
+    render(<Search />);
 
     getMovies.mockImplementationOnce(() => Promise.resolve({ ok: true, search: [] }));
 
@@ -101,11 +104,7 @@ describe('<SearchBar />', () => {
   });
 
   it('should render when request failed', async () => {
-    render(
-      <MoviesProvider>
-        <Search />
-      </MoviesProvider>
-    );
+    render(<Search />);
 
     getMovies.mockImplementationOnce(() => Promise.resolve());
 
@@ -119,11 +118,7 @@ describe('<SearchBar />', () => {
   });
 
   it('should render skeleton when loading', async () => {
-    render(
-      <MoviesProvider>
-        <Search />
-      </MoviesProvider>
-    );
+    render(<Search />);
 
     getMovies.mockImplementationOnce(() => Promise.reject());
 

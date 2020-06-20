@@ -50,34 +50,41 @@ export default function SearchPage() {
     setSearchQuery(value);
   };
 
-  return (
-    <Layout>
-      <SearchBar className={styles.SearchBar} value={searchQuery} onChange={handleChange} />
-      {!movies && !fetching ? (
-        <InitialPage />
-      ) : movies && movies.length === 0 ? (
+  const renderContent = () => {
+    if (!movies && !fetching) {
+      return <InitialPage />;
+    }
+
+    if (movies && movies.length === 0) {
+      return (
         <div className={styles.ErrorPage}>
           <img className={styles.ErrorIllustration} src={rottenLogo} />
           <h3 className={styles.OfferHeading}>{error ? 'Ops, something went wrong :/' : 'Movie not found :/'}</h3>
         </div>
-      ) : (
+      );
+    }
+
+    if (fetching) {
+      return (
         <div className={styles.MoviesList}>
-          {fetching ? (
-            <MovieCardListSkeleton />
-          ) : (
-            movies?.map(({ imdbID, Title, Year, Poster }) => (
-              <MovieCard
-                key={imdbID}
-                className={styles.MovieCard}
-                id={imdbID}
-                title={Title}
-                year={Year}
-                poster={Poster}
-              />
-            ))
-          )}
+          <MovieCardListSkeleton />
         </div>
-      )}
+      );
+    }
+
+    return (
+      <div className={styles.MoviesList}>
+        {movies?.map(({ imdbID, Title, Year, Poster }) => (
+          <MovieCard key={imdbID} className={styles.MovieCard} id={imdbID} title={Title} year={Year} poster={Poster} />
+        ))}
+      </div>
+    );
+  };
+
+  return (
+    <Layout>
+      <SearchBar className={styles.SearchBar} value={searchQuery} onChange={handleChange} />
+      {renderContent()}
     </Layout>
   );
 }

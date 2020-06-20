@@ -3,7 +3,21 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@testing-library/react';
 import MovieCard from '../MovieCard';
-import { MoviesProvider } from '../../../context/MoviesContext';
+
+class LocalStorageMock {
+  constructor() {
+    this.store = {};
+  }
+  getItem(key) {
+    return this.store[key] || null;
+  }
+
+  setItem(key, value) {
+    this.store[key] = value.toString();
+  }
+}
+
+global.localStorage = new LocalStorageMock();
 
 const movie = {
   title: 'What We Do in the Shadows',
@@ -14,11 +28,7 @@ const movie = {
 
 describe('<SearchBar />', () => {
   it('should render', () => {
-    render(
-      <MoviesProvider>
-        <MovieCard {...movie} />
-      </MoviesProvider>
-    );
+    render(<MovieCard {...movie} />);
 
     expect(screen.getByRole('link', { name: /What We Do in the Shadows 2014/ })).toHaveAttribute(
       'href',
@@ -33,11 +43,7 @@ describe('<SearchBar />', () => {
   });
 
   it('should render liked', () => {
-    render(
-      <MoviesProvider>
-        <MovieCard {...movie} />
-      </MoviesProvider>
-    );
+    render(<MovieCard {...movie} />);
 
     const likeButton = screen.getByRole('img', { name: /Like icon/ });
     userEvent.click(likeButton);
