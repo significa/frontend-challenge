@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import styles from './Layout.css';
+import Link from 'next/link';
 import logo from '../../../icons/logo.svg';
 
 type Props = {
@@ -13,7 +14,11 @@ const Layout = (props: Props) => {
   return (
     <div className={styles.Wrapper}>
       <header className={styles.Header}>
-        <img alt="What's in logo" src={logo} />
+        <Link shallow href="/" as={'/'}>
+          <a>
+            <img alt="What's in logo" src={logo} />
+          </a>
+        </Link>
       </header>
       {children}
     </div>
