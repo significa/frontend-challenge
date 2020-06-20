@@ -1,10 +1,21 @@
+// @flow
+
 const url = 'http://localhost:3000/api/movies';
 
-export default async function getMovies(titleToSearch) {
+type ReturnTypes = {
+  search?: Array<{
+    Title: string,
+    Year: string,
+    imdbID: string,
+    Poster: string
+  }>,
+  ok: boolean,
+  error?: any
+};
+
+export default async function getMovies(titleToSearch: string): Promise<ReturnTypes> {
   try {
     const data = await fetch(`${url}?titleToSearch=${titleToSearch}`);
-
-    // console.log(data.json)
 
     if (data.ok) {
       const { search = [] } = await data.json();
@@ -18,6 +29,6 @@ export default async function getMovies(titleToSearch) {
     const response = data;
     return response;
   } catch (error) {
-    return { error };
+    return { error, ok: false };
   }
 }

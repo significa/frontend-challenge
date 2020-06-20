@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import getMovies from '../services/getMovies';
 
-export default function useFetchMovies(query: String) {
+export default function useFetchMovies(query: string) {
   const [movies, setMovies] = useState();
   const [fetching, setFetching] = useState(false);
   const [error, setError] = useState(false);

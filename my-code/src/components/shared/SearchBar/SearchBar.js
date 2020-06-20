@@ -1,11 +1,11 @@
-//@
+// @flow
 import React from 'react';
 import classNames from 'classnames';
 import styles from './SearchBar.css';
 import magnifierIcon from '../../../icons/icon-magnifier-grey.svg';
 
 type Props = {
-  onChange: () => void,
+  onChange: (SyntheticInputEvent<EventTarget>) => void,
   value: string,
   disabled?: boolean,
   className?: string

@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react';
+import * as React from 'react';
 import SearchBar from '../../shared/SearchBar';
 import MovieCard from '../../shared/MovieCard';
 import Layout from '../../shared/Layout';
@@ -10,6 +10,17 @@ import illustration from '../../../illustrations/illustration-empty-state.png';
 import rottenLogo from '../../../icons/logo-rotten-tomatoes.svg';
 import Link from 'next/link';
 import useFetchMovies from '../../hooks/useFetchMovies';
+
+type fetchTypes = {
+  movies: ?Array<{
+    Title: string,
+    Year: string,
+    imdbID: string,
+    Poster: string
+  }>,
+  fetching: boolean,
+  error: boolean
+};
 
 const MovieCardListSkeleton = () =>
   [...new Array(10).keys()].map((item) => (
@@ -30,11 +41,11 @@ const InitialPage = () => (
   </div>
 );
 
-const SearchPage = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const { fetching, error, movies } = useFetchMovies(searchQuery);
+export default function SearchPage() {
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const { fetching, error, movies }: fetchTypes = useFetchMovies(searchQuery);
 
-  const handleChange = (e) => {
+  const handleChange = (e: SyntheticInputEvent<EventTarget>) => {
     const { value } = e.target;
     setSearchQuery(value);
   };
@@ -54,7 +65,7 @@ const SearchPage = () => {
           {fetching ? (
             <MovieCardListSkeleton />
           ) : (
-            movies.map(({ imdbID, Title, Year, Poster }) => (
+            movies?.map(({ imdbID, Title, Year, Poster }) => (
               <MovieCard
                 key={imdbID}
                 className={styles.MovieCard}
@@ -69,6 +80,4 @@ const SearchPage = () => {
       )}
     </Layout>
   );
-};
-
-export default SearchPage;
+}
