@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import heartIconFull from '../../../icons/icon-heart-full.svg';
 import heartIconWhite from '../../../icons/icon-heart-white.svg';
 import styles from './MovieCard.css';
-import { useMoviesState } from '../../context/MoviesContext';
+import useLike from '../../hooks/useLike';
 import imgFallback from '../../../icons/logo-rotten-tomatoes.svg';
 
 type Props = {
@@ -21,20 +21,9 @@ type Props = {
 export default function MovieCard(props: Props) {
   const { title, year, poster, id, className } = props;
   const [image, setImage] = useState(poster);
-  const { state, dispatch } = useMoviesState();
-  const isLiked = state.includes(id);
+  const { liked, toggle } = useLike(id);
 
-  const handleLike = () => {
-    const isLiked = state.includes(id);
-    const actionType = isLiked ? 'UNLIKE' : 'LIKE';
-
-    dispatch({
-      type: actionType,
-      payload: {
-        id
-      }
-    });
-  };
+  const handleLike = () => toggle();
 
   const handleImageError = () => {
     setImage(imgFallback);
@@ -53,8 +42,8 @@ export default function MovieCard(props: Props) {
         <button className={styles.LikeButton}>
           <img
             onClick={handleLike}
-            alt={isLiked ? 'Liked icon' : 'Like icon'}
-            src={isLiked ? heartIconFull : heartIconWhite}
+            alt={liked ? 'Liked icon' : 'Like icon'}
+            src={liked ? heartIconFull : heartIconWhite}
           />
         </button>
       </div>
