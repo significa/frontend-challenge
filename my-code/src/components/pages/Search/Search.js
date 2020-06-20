@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+// @flow
+
+import React, { useState } from 'react';
 import SearchBar from '../../shared/SearchBar';
 import MovieCard from '../../shared/MovieCard';
 import Layout from '../../shared/Layout';
-import getMovies from '../../services/getMovies';
 import styles from './Search.css';
 import Skeleton from 'react-loading-skeleton';
 import illustration from '../../../illustrations/illustration-empty-state.png';
 import rottenLogo from '../../../icons/logo-rotten-tomatoes.svg';
 import Link from 'next/link';
+import useFetchMovies from '../../hooks/useFetchMovies';
 
 const MovieCardListSkeleton = () =>
   [...new Array(10).keys()].map((item) => (
@@ -30,47 +32,12 @@ const InitialPage = () => (
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [movies, setMovies] = useState();
-  const [fetching, setFetching] = useState(false);
-  const [error, setError] = useState(false);
-
-  const isSearchable = (value) => value.trim().length > 3;
+  const { fetching, error, movies } = useFetchMovies(searchQuery);
 
   const handleChange = (e) => {
     const { value } = e.target;
     setSearchQuery(value);
   };
-
-  useEffect(() => {
-    if (!isSearchable(searchQuery)) {
-      setError(false);
-      setFetching(false);
-      setMovies(null);
-      return;
-    }
-
-    setFetching(true);
-
-    const searchDebounce = setTimeout(async () => {
-      try {
-        const { ok, search } = await getMovies(searchQuery);
-        if (ok) {
-          setMovies(search);
-          setError(false);
-        } else {
-          setError(true);
-          setMovies([]);
-        }
-      } catch (error) {
-        setError(true);
-        setMovies([]);
-      }
-
-      setFetching(false);
-    }, 500);
-
-    return () => clearTimeout(searchDebounce);
-  }, [searchQuery]);
 
   return (
     <Layout>
