@@ -8,8 +8,12 @@
   --spacing-5: 16px;
   --spacing-6: 32px;
 
-  --border-radius: 5px;
+  --border-radius-1: 5px;
+  --border-radius-2: 10px;
 
+  --color-blue: rgb(51, 197, 183);
+  --color-yellow: rgb(255, 159, 28);
+  --color-red: rgb(255, 64, 64);
   --color-dark: rgb(10, 16, 20);
   --color-grey: rgb(27, 35, 41);
   --color-grey-opacity: rgba(27, 35, 41, 0.8);
@@ -24,7 +28,8 @@
   --font-size-2: 16pt;
   --font-size-3: 20pt;
   --font-size-4: 24pt;
-  --font-size-5: 80pt;
+  --font-size-5: 36pt;
+  --font-size-6: 70pt;
   --font-weigth-regular: 400;
   --font-weigth-medium: 500;
   --font-weigth-bold: 700;

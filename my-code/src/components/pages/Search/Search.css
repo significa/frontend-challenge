@@ -1,4 +1,4 @@
-@import '../../style-vars.css';
+@import '../../../style-vars.css';
 
 .SearchBar {
   margin: var(--spacing-6) 0;

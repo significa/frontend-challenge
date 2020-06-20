@@ -1,4 +1,4 @@
-@import '../../style-vars.css';
+@import '../../../style-vars.css';
 
 .Wrapper {
   padding: var(--spacing-4) 0;

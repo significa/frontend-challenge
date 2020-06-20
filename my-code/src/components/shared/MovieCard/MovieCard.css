@@ -1,10 +1,10 @@
-@import '../../style-vars.css';
+@import '../../../style-vars.css';
 
 .Wrapper {
   position: relative;
   display: block;
   font-family: var(--font-family);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius-1);
   overflow: hidden;
   cursor: pointer;
 

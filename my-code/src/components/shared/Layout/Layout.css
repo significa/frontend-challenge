@@ -1,8 +1,7 @@
-@import '../../style-vars.css';
+@import '../../../style-vars.css';
 
 body {
   margin: 0;
-  padding: var(--spacing-6) var(--spacing-5);
   box-sizing: border-box;
   position: relative;
 }
@@ -14,4 +13,9 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  padding: 0 var(--spacing-6);
+}
+
+.Header {
+  margin: var(--spacing-6) 0;
 }
