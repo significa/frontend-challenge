@@ -1,6 +1,6 @@
 // @flow
 import { useState, useEffect } from 'react';
-import getMovies from '../services/getMovies';
+import getMovies from '../../services/getMovies';
 
 export default function useFetchMovies(query: string) {
   const [movies, setMovies] = useState();
