@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import ProgressBar from '../components/shared/ProgressBar';
 import './_app.css';
 
 type Props = {
@@ -12,7 +13,12 @@ type Props = {
 const CustomApp = (props: Props) => {
   const { Component, pageProps } = props;
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <ProgressBar />
+      <Component {...pageProps} />
+    </>
+  );
 };
 
 export default CustomApp;
