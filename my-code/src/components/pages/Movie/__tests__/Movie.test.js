@@ -2,6 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Movie from '../Movie';
+import userEvent from '@testing-library/user-event';
 
 class LocalStorageMock {
   constructor() {
@@ -52,7 +53,7 @@ const resultsResolveMock = {
   }
 };
 
-describe('<MovieBar />', () => {
+describe('<Movie />', () => {
   it('should render with title', async () => {
     render(<Movie {...resultsResolveMock} />);
 
@@ -108,5 +109,25 @@ describe('<MovieBar />', () => {
     render(<Movie {...resultsResolveMock} />);
 
     expect(screen.queryByText('47/100')).not.toBeInTheDocument();
+  });
+
+  it('should add movie to favourites', async () => {
+    render(<Movie {...resultsResolveMock} />);
+
+    const likeButton = screen.getByRole('button', { name: /Add to favourites/ });
+    userEvent.click(likeButton);
+    expect(screen.getByRole('button', { name: /Added/ })).toBeInTheDocument();
+  });
+
+  it('should render error page', async () => {
+    render(<Movie error />);
+
+    expect(screen.getByText('Something went wrong :/')).toBeInTheDocument();
+  });
+
+  it('should render not found page', async () => {
+    render(<Movie movie={{}} />);
+
+    expect(screen.getByText('Movie not found :/')).toBeInTheDocument();
   });
 });
