@@ -34,7 +34,6 @@ type Props = {
 
 export default function Movie(props: Props) {
   const { movie, error } = props;
-  const { title, runtime, year, id, rated, poster, ratings, plot, actors, genre, director } = movie;
 
   if (error) {
     return (
@@ -58,6 +57,7 @@ export default function Movie(props: Props) {
     );
   }
 
+  const { title, runtime, year, id, rated, poster, ratings, plot, actors, genre, director } = movie;
   const actorsList = actors.split(', ');
   const genreList = genre.split(', ');
   const directorList = director.split(', ');
