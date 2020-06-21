@@ -20,7 +20,7 @@
   flex-direction: column;
   height: 100%;
 
-  @media (--mobile-large) {
+  @media (--min-mobile-large) {
     flex-direction: row;
   }
 }
@@ -29,7 +29,7 @@
   flex: 1;
   order: 2;
 
-  @media (--mobile-large) {
+  @media (--min-mobile-large) {
     min-width: 400px;
     max-width: 700px;
     order: 1;
@@ -45,11 +45,11 @@
   font-weight: var(--font-weigth-bold);
   color: var(--color-white);
 
-  @media (--tablet) {
+  @media (--min-tablet) {
     font-size: var(--font-size-5);
   }
 
-  @media (--desktop) {
+  @media (--min-desktop) {
     font-size: var(--font-size-6);
   }
 }
@@ -152,7 +152,7 @@
   flex: 1;
   order: 1;
 
-  @media (--mobile-large) {
+  @media (--min-mobile-large) {
     max-width: 400px;
     margin: var(--spacing-5);
   }

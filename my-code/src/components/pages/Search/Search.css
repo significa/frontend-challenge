@@ -10,7 +10,7 @@
   grid-gap: 20px;
   color: #444;
 
-  @media (--mobile-large) {
+  @media (--min-mobile-large) {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
