@@ -2,7 +2,6 @@
 
 .Wrapper {
   position: relative;
-  display: block;
   font-family: var(--font-family);
   border-radius: var(--border-radius-1);
   overflow: hidden;
@@ -27,13 +26,18 @@
 }
 
 .Info {
-  display: none;
+  display: block;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: var(--color-grey-opacity);
+  
+  
+  @media (--tablet) {
+    display: none;
+  }
 }
 
 .Content {

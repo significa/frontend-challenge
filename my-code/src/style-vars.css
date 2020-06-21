@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+@custom-media --min-mobile-large (min-width: 580px);
+@custom-media --min-tablet (min-width: 780px);
+@custom-media --min-desktop (min-width: 980px);
+
 :root {
   --spacing-1: 4px;
   --spacing-2: 6px;
