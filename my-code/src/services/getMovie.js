@@ -1,5 +1,5 @@
 // @flow
-
+import fetch from 'isomorphic-fetch';
 const url = 'http://localhost:3000/api/movie';
 
 type ReturnTypes = {
