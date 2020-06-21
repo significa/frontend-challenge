@@ -13,4 +13,4 @@ module.exports = {
   rangeStart: 0,
   rangeEnd: Infinity,
   endOfLine: 'lf'
-}
+};
