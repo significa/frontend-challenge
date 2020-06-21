@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "postinstall": "cd my-code && yarn install",
-    "build": "cd my-code && yarn build",
-    "start": "cd my-code && yarn start"
+    "postinstall": "cd my-code && ls && yarn install",
+    "build": "cd my-code && ls && yarn build",
+    "start": "cd my-code && ls &&  yarn start"
   }
 }
