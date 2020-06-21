@@ -28,7 +28,6 @@ export default async function getMovies(id: string): Promise<ReturnTypes> {
 
   try {
     const data = await fetch(`${url}?id=${id}`);
-    console.log(data);
     if (data.ok) {
       const response = await data.json();
 
