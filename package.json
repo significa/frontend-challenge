@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "postinstall": "cd my-code && yarn install",
+    "build": "cd my-code && yarn build",
+    "start": "cd my-code && yarn start"
+  }
+}
