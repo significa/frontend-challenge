@@ -1,6 +1,6 @@
 // @flow
 
-const url = 'http://localhost:3000/api/movies';
+const url = '/api/movies';
 
 type ReturnTypes = {
   search?: Array<{
