@@ -35,14 +35,14 @@ export default function Movie(props: Props) {
   return (
     <>
       <Head>
-        <title>{movie.title} | What&apos;s in</title>
-        <meta name="description" content={movie.plot} />
+        <title>{movie?.title || 'Error'} | What&apos;s in</title>
+        <meta name="description" content={movie?.plot || 'Error Page'} />
         <meta name="robots" content="index,follow" />
         <meta name="theme-color" content="#000000" />
         <link rel="canonical" href={`${baseUrl}/`} />
-        <meta property="og:title" content={`${movie.title} | What's in`} />
-        <meta property="og:description" content={movie.plot} />
-        <meta property="og:url" content={`${baseUrl}/movie/${movie.id}`} />
+        <meta property="og:title" content={`${movie?.title || 'Error'} | What's in`} />
+        <meta property="og:description" content={movie?.plot || 'Error Page'} />
+        <meta property="og:url" content={`${baseUrl}/movie/${movie?.id}`} />
         <meta property="og:locale" content="en" />
         <meta property="og:type" content="website" />
       </Head>
