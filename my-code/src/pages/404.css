@@ -1,0 +1,19 @@
+@import '../style-vars.css';
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  flex-direction: column;
+  height: 100%;
+}
+
+.NotFound {
+  font-size: var(--font-size-6);
+  color: var(--color-white);
+}
+
+.NotFoundImg {
+  height: 300px;
+}
