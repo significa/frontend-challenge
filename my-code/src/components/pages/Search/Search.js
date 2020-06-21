@@ -1,15 +1,15 @@
 // @flow
 
 import * as React from 'react';
+import Link from 'next/link';
+import Skeleton from 'react-loading-skeleton';
+import illustration from '../../../illustrations/illustration-empty-state.png';
+import rottenLogo from '../../../icons/logo-rotten-tomatoes.svg';
+import useFetchMovies from '../../hooks/useFetchMovies';
 import SearchBar from '../../shared/SearchBar';
 import MovieCard from '../../shared/MovieCard';
 import Layout from '../../shared/Layout';
 import styles from './Search.css';
-import Skeleton from 'react-loading-skeleton';
-import illustration from '../../../illustrations/illustration-empty-state.png';
-import rottenLogo from '../../../icons/logo-rotten-tomatoes.svg';
-import Link from 'next/link';
-import useFetchMovies from '../../hooks/useFetchMovies';
 
 type fetchTypes = {
   movies: ?Array<{

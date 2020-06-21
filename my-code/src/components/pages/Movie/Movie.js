@@ -1,36 +1,19 @@
 // @flow
 import React from 'react';
-import Layout from '../../shared/Layout';
-import Router from 'next/router';
 import classNames from 'classnames';
-import styles from './Movie.css';
+import type { MoviePageProps } from '../../../pages/movie/[id]';
+import Router from 'next/router';
 import arrowIconGrey from '../../../icons/icon-arrow-grey.svg';
 import arrowIconWhite from '../../../icons/icon-arrow-white.svg';
 import imdblogo from '../../../icons/logo-imdb.svg';
 import rottenTomatoesLogo from '../../../icons/logo-rotten-tomatoes.svg';
 import heartGreyIcon from '../../../icons/icon-heart-grey.svg';
 import heartFullIcon from '../../../icons/icon-heart-full.svg';
+import Layout from '../../shared/Layout';
 import useLike from '../../hooks/useLike';
+import styles from './Movie.css';
 
-type Props = {
-  movie: {
-    title: string,
-    runtime: string,
-    year: string,
-    rated: string,
-    poster: string,
-    ratings: Array<?{
-      Value: string,
-      Source: 'Internet Movie Database' | 'Rotten Tomatoes'
-    }>,
-    plot: string,
-    actors: string,
-    genre: string,
-    director: string,
-    id: string
-  },
-  error: boolean
-};
+type Props = MoviePageProps;
 
 export default function Movie(props: Props) {
   const { movie, error } = props;
