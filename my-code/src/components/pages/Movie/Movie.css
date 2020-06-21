@@ -114,7 +114,7 @@
 
   &.liked {
     background: var(--color-red);
-    color: var(--color-light-white);
+    color: var(--color-white);
   }
 }
 
