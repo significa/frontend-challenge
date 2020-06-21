@@ -54,7 +54,7 @@ const resultsResolveMock = {
   ]
 };
 
-describe('<SearchBar />', () => {
+describe('<Search />', () => {
   it('should render with initial page', async () => {
     render(<Search />);
 
