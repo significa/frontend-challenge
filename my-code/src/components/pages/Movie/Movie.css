@@ -1,0 +1,204 @@
+@import '../../../style-vars.css';
+
+.ErrorPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: var(--font-size-4);
+  color: var(--color-white);
+  height: 100%;
+}
+
+.ErrorImg {
+  margin-bottom: var(--spacing-5);
+  height: 300px;
+}
+
+.Movie {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @media (--mobile-large) {
+    flex-direction: row;
+  }
+}
+
+.MovieContent {
+  flex: 1;
+  order: 2;
+
+  @media (--mobile-large) {
+    min-width: 400px;
+    max-width: 700px;
+    order: 1;
+    margin: var(--spacing-3) 0;
+    color: var(--color-white);
+  }
+}
+
+.Title {
+  font-size: var(--font-size-4);
+  margin: 0;
+  margin-bottom: var(--spacing-4);
+  font-weight: var(--font-weigth-bold);
+  color: var(--color-white);
+
+  @media (--tablet) {
+    font-size: var(--font-size-5);
+  }
+
+  @media (--desktop) {
+    font-size: var(--font-size-6);
+  }
+}
+
+.BackButton {
+  background: none;
+  padding: 0;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  cursor: pointer;
+  margin-bottom: var(--spacing-5);
+  height: 24px;
+  width: 30px;
+}
+
+.MovieInfo {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: var(--spacing-5);
+  color: var(--color-light-grey);
+  font-size: var(--font-size-2);
+}
+
+.Rated {
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weigth-medium);
+  color: var(--color-dark);
+  background-color: var(--color-light-grey);
+  padding: var(--spacing-1) var(--spacing-2);
+  margin: 0 var(--spacing-3);
+  border-radius: var(--border-radius-1);
+}
+
+.Badges {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-6);
+}
+
+.Badge,
+.LikeButton {
+  margin: var(--spacing-2) 0;
+  margin-right: var(--spacing-5);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: var(--border-radius-1);
+  font-weight: var(--font-weigth-medium);
+  border: 1px solid var(--color-mid-grey);
+  color: var(--color-white);
+}
+
+.LikeButton {
+  font-weight: var(--font-weigth-bold);
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--color-light-grey);
+  background: none;
+  appearance: none;
+  outline: none;
+
+  &.liked {
+    background: var(--color-red);
+    color: var(--color-light-white);
+  }
+}
+
+.Ratting {
+  padding: var(--spacing-3);
+}
+
+.Imdblogo,
+.Rottenlogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.HeartIcon {
+  height: 1.2em;
+  padding-right: var(--spacing-3);
+}
+
+.Rottenlogo {
+  padding: 0 var(--spacing-4);
+  background-color: var(--color-red);
+}
+
+.Imdblogo {
+  padding: 0 var(--spacing-3);
+  background-color: var(--color-yellow);
+}
+
+.Poster {
+  box-sizing: border-box;
+  margin: var(--spacing-5) auto;
+  max-width: 200px;
+  flex: 1;
+  order: 1;
+
+  @media (--mobile-large) {
+    max-width: 400px;
+    margin: var(--spacing-5);
+  }
+}
+
+.PosterImg {
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: var(--border-radius-2);
+}
+
+.PosterImgError {
+  border-radius: 5px;
+  border: 2px solid var(--color-mid-grey);
+}
+
+.MovieDetails {
+  max-width: 500px;
+}
+
+.Lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.DetailsList {
+  color: var(--color-white);
+  list-style: none;
+  margin-right: 40px;
+  padding: 0;
+
+  & li {
+    margin: var(--spacing-2) 0;
+  }
+}
+
+.DetailsHeading,
+.PlotHeading {
+  color: var(--color-light-grey);
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weigth-medium);
+}
+
+.PlotText {
+  color: var(--color-white);
+}
