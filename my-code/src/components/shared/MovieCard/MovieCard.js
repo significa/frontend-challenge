@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import heartIconFull from '../../../icons/icon-heart-full.svg';
@@ -20,18 +20,18 @@ type Props = {
 
 export default function MovieCard(props: Props) {
   const { title, year, poster, id, className } = props;
-  const [image, setImage] = useState(poster);
   const { liked, toggle } = useLike(id);
 
   const handleLike = () => toggle();
 
-  const handleImageError = () => {
-    setImage(imgFallback);
+  const handleImageError = (e) => {
+    e.target.className = `${e.target.className} ${styles.PosterError}`;
+    e.target.src = imgFallback;
   };
 
   return (
     <div className={classNames(styles.Wrapper, className)}>
-      <img onError={handleImageError} alt={`${title} Poster`} className={styles.Poster} src={image} />
+      <img onError={handleImageError} alt={`${title} Poster`} className={styles.Poster} src={poster} />
       <div className={styles.Info}>
         <Link shallow href="/movie/[id]" as={`/movie/${id}`}>
           <a className={styles.Content}>

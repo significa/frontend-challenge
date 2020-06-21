@@ -18,6 +18,12 @@
   object-fit: cover;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+}
+
+.PosterError {
+  border-radius: 5px;
+  border: 2px solid var(--color-mid-grey);
 }
 
 .Info {
