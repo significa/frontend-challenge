@@ -1,5 +1,6 @@
 // @flow
 import fetch from 'isomorphic-fetch';
+import timeout from '../utils/timeout-promise';
 require('dotenv').config();
 
 const { SITE_API_BASE_URL } = process?.env;
@@ -27,7 +28,7 @@ export default async function getMovies(id: string): Promise<ReturnTypes> {
   const url = `${baseApiUrl}/movie`;
 
   try {
-    const data = await fetch(`${url}?id=${id}`);
+    const data = await timeout(5000, fetch(`${url}?id=${id}`));
     if (data.ok) {
       const response = await data.json();
 

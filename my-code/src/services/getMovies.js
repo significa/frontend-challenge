@@ -1,4 +1,5 @@
 // @flow
+import timeout from '../utils/timeout-promise';
 
 const url = '/api/movies';
 
@@ -15,7 +16,7 @@ type ReturnTypes = {
 
 export default async function getMovies(titleToSearch: string): Promise<ReturnTypes> {
   try {
-    const data = await fetch(`${url}?titleToSearch=${titleToSearch}`);
+    const data = await timeout(5000, fetch(`${url}?titleToSearch=${titleToSearch}`));
 
     if (data.ok) {
       const { search = [] } = await data.json();

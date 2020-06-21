@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import fetch from 'isomorphic-fetch';
+import timeout from '../../utils/timeout-promise';
 
 dotenv.config();
 
@@ -8,7 +9,7 @@ const url = 'http://www.omdbapi.com';
 export default async (req, res) => {
   const { query } = req;
   try {
-    const data = await fetch(`${url}/?i=${query.id}&apikey=${process.env.OMDB_API_KEY}`);
+    const data = await timeout(5000, fetch(`${url}/?i=${query.id}&apikey=${process.env.OMDB_API_KEY}`));
     const {
       Title: title,
       Runtime: runtime,
