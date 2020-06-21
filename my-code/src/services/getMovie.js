@@ -1,6 +1,10 @@
 // @flow
 import fetch from 'isomorphic-fetch';
-const url = '/api/movie';
+require('dotenv').config();
+
+const { SITE_API_BASE_URL } = process?.env;
+
+const baseApiUrl = (SITE_API_BASE_URL && `${SITE_API_BASE_URL}/api`) || 'http://localhost:3000';
 
 type ReturnTypes = {
   ok: boolean,
@@ -20,9 +24,11 @@ type ReturnTypes = {
 };
 
 export default async function getMovies(id: string): Promise<ReturnTypes> {
+  const url = `${baseApiUrl}/movie`;
+
   try {
     const data = await fetch(`${url}?id=${id}`);
-
+    console.log(data);
     if (data.ok) {
       const response = await data.json();
 
