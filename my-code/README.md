@@ -2,7 +2,7 @@
 
 ## Running
 
-### To run on dev mode, localy:
+### To run on dev mode, locally:
 
 - Install dependencies:
 
@@ -10,7 +10,7 @@
 yarn
 ```
 
-- Create a `.env` file and copy `.env.default` content and add necessaries envs:
+- Create a `.env` file and copy `.env.default` content, adding needed envs:
 
 ```
 NODE_ENV=
@@ -25,7 +25,7 @@ SITE_URL_API=http://localhost:3000
 yarn dev
 ```
 
-### To run on prod mode, localy:
+### To run on prod mode, locally:
 
 - Install dependencies:
 
@@ -33,7 +33,7 @@ yarn dev
 yarn
 ```
 
-- Create a `.env` file and copy `.env.default` content and add necessaries envs:
+- Create a `.env` file and copy `.env.default` content and add needed envs:
 
 ```bash
 NODE_ENV=production
