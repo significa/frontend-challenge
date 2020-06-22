@@ -76,7 +76,7 @@ describe('<Movie />', () => {
     });
   });
 
-  it('should render with director list', async () => {
+  it('should render with cast list', async () => {
     render(<Movie {...resultsResolveMock} />);
 
     const actors = resultsResolveMock.movie.actors.split(', ');
@@ -90,7 +90,7 @@ describe('<Movie />', () => {
   it('should render with director list', async () => {
     render(<Movie {...resultsResolveMock} />);
 
-    const director = resultsResolveMock.movie.actors.split(', ');
+    const director = resultsResolveMock.movie.director.split(', ');
 
     expect(screen.getByRole('heading', { name: /Director/ })).toBeInTheDocument();
     director.forEach((item) => {
