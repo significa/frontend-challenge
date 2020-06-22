@@ -40,9 +40,9 @@ export default function Movie(props: Props) {
     );
   }
 
-  const { title, runtime, year, id, rated, poster, ratings, plot, actors, genre, director } = movie;
+  const { title, runtime, year, id, rated, poster, ratings, plot, actors, genre: genres, director } = movie;
   const actorsList = actors.split(', ');
-  const genreList = genre.split(', ');
+  const genreList = genres.split(', ');
   const directorList = director.split(', ');
   const { liked, toggle } = useLike(id);
   const likeButtonText = liked ? 'Added' : 'Add to favourites';
@@ -135,7 +135,7 @@ export default function Movie(props: Props) {
                 <ul className={styles.DetailsList}>
                   <h2 className={styles.DetailsHeading}>Director</h2>
                   {directorList.map((director) => (
-                    <li key={director}>{genre.trim()}</li>
+                    <li key={director}>{director.trim()}</li>
                   ))}
                 </ul>
               </div>
