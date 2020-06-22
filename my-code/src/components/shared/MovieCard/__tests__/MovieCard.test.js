@@ -26,7 +26,7 @@ const movie = {
   poster: 'https://m.media-amazon.com/images/M/MV5BMjAwNDA5NzEwM15BMl5BanBnXkFtZTgwMTA1MDUyNDE@._V1_SX300.jpg'
 };
 
-describe('<SearchBar />', () => {
+describe('<MovieCard />', () => {
   it('should render', () => {
     render(<MovieCard {...movie} />);
 
