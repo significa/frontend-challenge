@@ -44,8 +44,8 @@ export default function Movie(props: Props) {
   const actorsList = actors.split(', ');
   const genreList = genre.split(', ');
   const directorList = director.split(', ');
-
   const { liked, toggle } = useLike(id);
+  const likeButtonText = liked ? 'Added' : 'Add to favourites';
 
   const handleLike = () => {
     toggle();
@@ -101,12 +101,12 @@ export default function Movie(props: Props) {
                 }
               })}
             <button
-              title={liked ? 'Added' : 'Add to favourites'}
+              title={likeButtonText}
               onClick={handleLike}
               className={classNames(styles.LikeButton, { [styles.liked]: liked })}
             >
               <img alt="heart icon" className={styles.HeartIcon} src={liked ? heartFullIcon : heartGreyIcon} />
-              {liked ? 'Added' : 'Add to favourites'}
+              {likeButtonText}
             </button>
           </section>
           <section className={styles.MovieDetails}>
@@ -126,16 +126,16 @@ export default function Movie(props: Props) {
               <div>
                 <ul className={styles.DetailsList}>
                   <h2 className={styles.DetailsHeading}>Genre</h2>
-                  {genreList.map((cast) => (
-                    <li key={cast}>{cast.trim()}</li>
+                  {genreList.map((genre) => (
+                    <li key={genre}>{genre.trim()}</li>
                   ))}
                 </ul>
               </div>
               <div>
                 <ul className={styles.DetailsList}>
                   <h2 className={styles.DetailsHeading}>Director</h2>
-                  {directorList.map((cast) => (
-                    <li key={cast}>{cast.trim()}</li>
+                  {directorList.map((director) => (
+                    <li key={director}>{genre.trim()}</li>
                   ))}
                 </ul>
               </div>
