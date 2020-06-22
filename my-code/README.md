@@ -35,18 +35,28 @@ yarn
 
 - Create a `.env` file and copy `.env.default` content and add necessaries envs:
 
-````bash
+```bash
 NODE_ENV=production
 OMDB_API_KEY=YOUR_KEY
 PORT=SOME_PORT_HERE
 SITE_URL_API=http://localhost:3000
+```
+
+- Build the app:
+
 ```bash
+yarn build
+```
+
 - Run the app:
+
 ```bash
-yarn dev
-````
+yarn start
+```
 
 ## Screenshots
+
+- Desktop
 
 <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
 <img width="300" style="margin: 20px;"  src='./screenshots/Desktop-Movies.png'>
@@ -54,15 +64,20 @@ yarn dev
 <img width="300" style="margin: 20px;" src='./screenshots/Desktop-initial.png'>
 <div>
 
+- Mobile
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
 <img width="300" style="margin: 20px;" src='./screenshots/Mobile-Movies.png'>
 <img width="300" style="margin: 20px;" src='./screenshots/Mobile-Movie.png'>
 <img width="300" style="margin: 20px;" src='./screenshots/Mobile-initial.png'>
 <div>
 
+- Extras
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; margin: 20px 0;">
 <img width="300" style="margin: 20px;" src='./screenshots/movie-not-found.png'>
 <img width="300" style="margin: 20px;" src='./screenshots/movies-not-found.png'>
+<img width="300" style="margin: 20px;" src='./screenshots/404.png'>
 <div>
 
 ## App structure
@@ -71,9 +86,12 @@ yarn dev
 .
 ├── components
 │   ├── hooks
+│   │   ├── __tests__
+│   │   │   ├── useFetchMovies.test.js
+│   │   │   └── useLike.test.js
 │   │   ├── useFetchMovies.js
 │   │   └── useLike.js
-│   ├── pages---------------------------------// Page Components, for test propose
+│   ├── pages---------------------------------// Page Components, separeted for test propose
 │   │   ├── Movie
 │   │   │   ├── index.js
 │   │   │   ├── Movie.css
@@ -86,17 +104,22 @@ yarn dev
 │   │       ├── Search.js
 │   │       └── __tests__
 │   │           └── Search.test.js
-│   └── shared--------------------------------// Components used on pages components
+│   └── shared--------------------------------// Components used on Page's components
 │       ├── Layout
 │       │   ├── index.js
 │       │   ├── Layout.css
-│       │   └── Layout.js
+│       │   ├── Layout.js
+│       │   └── __tests__
+│       │       └── Layout.test.js
 │       ├── MovieCard
 │       │   ├── index.js
 │       │   ├── MovieCard.css
 │       │   ├── MovieCard.js
 │       │   └── __tests__
 │       │       └── MovieCard.test.js
+│       ├── ProgressBar
+│       │   ├── index.js
+│       │   └── ProgressBar.js
 │       └── SearchBar
 │           ├── index.js
 │           ├── SearchBar.css
@@ -121,7 +144,7 @@ yarn dev
 ├── pages-------------------------------------// Endpoint routes
 │   ├── 404.css
 │   ├── 404.js
-│   ├── api
+│   ├── api-------------------------------------// bff endpoints
 │   │   ├── movie.js
 │   │   └── movies.js
 │   ├── _app.css
@@ -132,12 +155,15 @@ yarn dev
 │       └── [id].js
 ├── public
 │   └── favicon.ico
-├── services-------------------------------------// Services content
+├── services-------------------------------------// Services for bff endpoint
 │   ├── getMovie.js
 │   ├── getMovies.js
 │   └── __tests__
-│       └── getMovies.test.js
-└── style-vars.css-------------------------------// Style variables
+│       ├── getMovies.test.js
+│       └── getMovie.test.js
+├── style-vars.css-------------------------------------// styles variables
+└── utils
+    └── timeout-promise.js
 ```
 
 ## Tecnologies
@@ -162,13 +188,12 @@ To do it faster I put `lint-staged` to deal with only staged files to `test/pret
 `Next` is nice tool and simple to deal with, providing `ssr` page and a powerfull backend-for-frontend. It has a dynamic routing for `api` and `pages`, so is very quick to programming with it. Also it can be customized with a `server` file and `webpack` configs. So its a nice tool.
 
 - CSS Modules
--
 
-Avoiding side effects I've chosen `CSS modules` top work with pure `css`, not increasing the bundle size as `styled-components` do and adding a good component legibility.
+Thinking to avoid side effects I've chosen `CSS modules` to work with pure `css`, not increasing the bundle size as `styled-components` and adding a good component legibility.
 
 - Host
 
-`Vercel` is a nice option when someone do a project with `next`, its fast to deploy and don't have a delay (such as `Heroku`) after some time.
+`Vercel` is a nice option when someone do a project with `next`, its fast to deploy and it doesnt have a delay (such as `Heroku`) after some time.
 
 ## Comments
 
