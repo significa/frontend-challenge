@@ -65,6 +65,7 @@
   border: none;
   appearance: none;
   outline: none;
+  cursor: pointer;
 
   padding: 0;
   position: absolute;
