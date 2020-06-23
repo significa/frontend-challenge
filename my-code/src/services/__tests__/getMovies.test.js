@@ -1,3 +1,4 @@
+// @flow
 import getMovies from '../getMovies';
 
 global.fetch = jest.fn();

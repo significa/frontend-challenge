@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
@@ -5,6 +6,7 @@ import Movie from '../Movie';
 import userEvent from '@testing-library/user-event';
 
 class LocalStorageMock {
+  store: any;
   constructor() {
     this.store = {};
   }
@@ -21,6 +23,7 @@ class LocalStorageMock {
 global.localStorage = new LocalStorageMock();
 
 const resultsResolveMock = {
+  error: false,
   ok: true,
   movie: {
     title: 'What Women Want',
@@ -30,6 +33,7 @@ const resultsResolveMock = {
     runtime: '127 min',
     genre: 'Comedy, Fantasy, Romance',
     director: 'Nancy Meyers',
+    id: 'idas432sad',
     writer:
       'Josh Goldsmith (story), Cathy Yuspa (story), Diane Drake (story), Josh Goldsmith (screenplay), Cathy Yuspa (screenplay)',
     actors: 'Mel Gibson, Helen Hunt, Marisa Tomei, Alan Alda',
@@ -126,7 +130,7 @@ describe('<Movie />', () => {
   });
 
   it('should render not found page', async () => {
-    render(<Movie movie={{}} />);
+    render(<Movie />);
 
     expect(screen.getByText('Movie not found :/')).toBeInTheDocument();
   });

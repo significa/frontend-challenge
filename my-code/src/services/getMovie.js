@@ -9,7 +9,7 @@ const baseApiUrl = (SITE_API_BASE_URL && `${SITE_API_BASE_URL}/api`) || 'http://
 
 type ReturnTypes = {
   ok: boolean,
-  movie?: {
+  movie?: ?{
     title: string,
     runtime: string,
     year: string,

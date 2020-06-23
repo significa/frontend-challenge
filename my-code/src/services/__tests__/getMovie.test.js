@@ -1,3 +1,4 @@
+// @flow
 import getMovie from '../getMovie';
 import fetch from 'isomorphic-fetch';
 

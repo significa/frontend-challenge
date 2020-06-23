@@ -1,9 +1,11 @@
+// @flow
 import React from 'react';
 import useFetchMovies from '../useFetchMovies';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 
 global.fetch = jest.fn();
+const mock = (mockFn: any) => mockFn;
 
 const expectResponse = {
   search: [
@@ -45,7 +47,9 @@ const WrapperHook = () => {
 describe('hooks', () => {
   describe('useFetchMovies ', () => {
     it('should return response on success', async () => {
-      fetch.mockImplementationOnce(() => Promise.resolve({ ok: true, json: () => Promise.resolve(expectResponse) }));
+      mock(fetch).mockImplementationOnce(() =>
+        Promise.resolve({ ok: true, json: () => Promise.resolve(expectResponse) })
+      );
 
       render(<WrapperHook />);
 
@@ -55,7 +59,7 @@ describe('hooks', () => {
     });
 
     it('should return response on success', async () => {
-      fetch.mockImplementationOnce(() =>
+      mock(fetch).mockImplementationOnce(() =>
         setTimeout(() => Promise.resolve({ ok: false, json: () => Promise.resolve(expectResponse) }))
       );
 
@@ -67,7 +71,9 @@ describe('hooks', () => {
     });
 
     it('should return response on success', async () => {
-      fetch.mockImplementationOnce(() => Promise.resolve({ ok: false, json: () => Promise.resolve(expectResponse) }));
+      mock(fetch).mockImplementationOnce(() =>
+        Promise.resolve({ ok: false, json: () => Promise.resolve(expectResponse) })
+      );
 
       render(<WrapperHook />);
       expect(screen.getByRole('heading', { name: /fetching/ })).toBeInTheDocument();

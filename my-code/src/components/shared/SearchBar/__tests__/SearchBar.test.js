@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
@@ -14,7 +15,7 @@ describe('<SearchBar />', () => {
 
   it('should call onChange', async () => {
     const onChange = jest.fn();
-    render(<SearchBar onChange={onChange} />);
+    render(<SearchBar value="" onChange={onChange} />);
 
     const searchInput = screen.getByPlaceholderText('Search movies...');
     await userEvent.type(searchInput, 'Hunt for the wilderpeople');

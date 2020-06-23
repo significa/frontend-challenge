@@ -74,9 +74,17 @@ export default function SearchPage() {
 
     return (
       <div className={styles.MoviesList}>
-        {movies?.map(({ imdbID, Title, Year, Poster }) => (
-          <MovieCard key={imdbID} className={styles.MovieCard} id={imdbID} title={Title} year={Year} poster={Poster} />
-        ))}
+        {movies &&
+          movies.map(({ imdbID, Title, Year, Poster }) => (
+            <MovieCard
+              key={imdbID}
+              className={styles.MovieCard}
+              id={imdbID}
+              title={Title}
+              year={Year}
+              poster={Poster}
+            />
+          ))}
       </div>
     );
   };

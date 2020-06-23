@@ -29,7 +29,7 @@ export default function Movie(props: Props) {
     );
   }
 
-  if (Object.keys(movie).length === 0 && movie?.constructor === Object) {
+  if (!movie) {
     return (
       <Layout>
         <div className={styles.ErrorPage}>
@@ -80,7 +80,7 @@ export default function Movie(props: Props) {
               ratings.map((rating) => {
                 if (rating?.Source === 'Internet Movie Database') {
                   return (
-                    <div key={rating.Source} className={styles.Badge}>
+                    <div key={rating?.Source} className={styles.Badge}>
                       <div className={styles.Imdblogo}>
                         <img alt="IMDB logo" src={imdblogo} />
                       </div>

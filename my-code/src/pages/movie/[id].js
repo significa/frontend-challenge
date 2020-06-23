@@ -5,7 +5,7 @@ import getMovie from '../../services/getMovie';
 import Head from 'next/head';
 
 export type MoviePageProps = {
-  movie: {
+  movie?: ?{
     title: string,
     runtime: string,
     year: string,
@@ -13,7 +13,7 @@ export type MoviePageProps = {
     poster: string,
     ratings: Array<?{
       Value: string,
-      Source: 'Internet Movie Database' | 'Rotten Tomatoes'
+      Source: string
     }>,
     plot: string,
     actors: string,
@@ -21,7 +21,7 @@ export type MoviePageProps = {
     director: string,
     id: string
   },
-  error: boolean
+  error?: boolean
 };
 
 type Props = {
@@ -42,7 +42,7 @@ export default function Movie(props: Props) {
         <link rel="canonical" href={`${baseUrl}/`} />
         <meta property="og:title" content={`${movie?.title || 'Error'} | What's in`} />
         <meta property="og:description" content={movie?.plot || 'Error Page'} />
-        <meta property="og:url" content={`${baseUrl}/movie/${movie?.id}`} />
+        {movie?.id && <meta property="og:url" content={`${baseUrl}/movie/${movie.id}`} />}
         <meta property="og:locale" content="en" />
         <meta property="og:type" content="website" />
       </Head>
@@ -60,7 +60,7 @@ export async function getServerSideProps({ params }: { params: { id: string } })
   if (ok) {
     props = {
       ...props,
-      movie,
+      movie: movie && Object.keys(movie).length !== 0 && movie?.constructor === Object && movie,
       ok
     };
 

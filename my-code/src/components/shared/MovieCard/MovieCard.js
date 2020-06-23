@@ -10,7 +10,6 @@ import useLike from '../../hooks/useLike';
 import imgFallback from '../../../icons/logo-rotten-tomatoes.svg';
 
 type Props = {
-  liked: boolean,
   title: string,
   id: string,
   poster: string,

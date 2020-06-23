@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -5,6 +6,7 @@ import { render, screen } from '@testing-library/react';
 import MovieCard from '../MovieCard';
 
 class LocalStorageMock {
+  store: any;
   constructor() {
     this.store = {};
   }

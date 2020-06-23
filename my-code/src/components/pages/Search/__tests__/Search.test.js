@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
@@ -10,7 +11,10 @@ jest.mock('../../../shared/MovieCard', () => jest.fn(() => <div />));
 
 jest.mock('../../../../services/getMovies', () => jest.fn());
 
+const mock = (mockFn: any) => mockFn;
+
 class LocalStorageMock {
+  store: any;
   constructor() {
     this.store = {};
   }
@@ -67,7 +71,7 @@ describe('<Search />', () => {
   it('should render with list of results', async () => {
     render(<Search />);
 
-    getMovies.mockImplementationOnce(() => Promise.resolve(resultsResolveMock));
+    mock(getMovies).mockImplementationOnce(() => Promise.resolve(resultsResolveMock));
 
     const searchBar = screen.getByPlaceholderText('Search movies...');
 
@@ -92,7 +96,7 @@ describe('<Search />', () => {
   it('should render when cannot find any movie', async () => {
     render(<Search />);
 
-    getMovies.mockImplementationOnce(() => Promise.resolve({ ok: true, search: [] }));
+    mock(getMovies).mockImplementationOnce(() => Promise.resolve({ ok: true, search: [] }));
 
     const searchBar = screen.getByPlaceholderText('Search movies...');
 
@@ -106,7 +110,7 @@ describe('<Search />', () => {
   it('should render when request failed', async () => {
     render(<Search />);
 
-    getMovies.mockImplementationOnce(() => Promise.resolve());
+    mock(getMovies).mockImplementationOnce(() => Promise.resolve());
 
     const searchBar = screen.getByPlaceholderText('Search movies...');
 
@@ -120,7 +124,7 @@ describe('<Search />', () => {
   it('should render skeleton when loading', async () => {
     render(<Search />);
 
-    getMovies.mockImplementationOnce(() => Promise.reject());
+    mock(getMovies).mockImplementationOnce(() => Promise.reject());
 
     const searchBar = screen.getByPlaceholderText('Search movies...');
 
