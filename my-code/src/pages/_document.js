@@ -1,9 +1,10 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
 class AppDocument extends Document {
   static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
   }
 
   render() {
@@ -21,8 +22,8 @@ class AppDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
 
-export default AppDocument
+export default AppDocument;

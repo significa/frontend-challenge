@@ -5,7 +5,29 @@
   "author": "cleyson leal braga",
   "private": true,
   "scripts": {
-    "dev": "next dev src"
+    "dev": "next dev src",
+    "lint": "eslint . --ext js --fix",
+    "prettier": "prettier --write '**/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "prettier  --write",
+      "git add"
+    ],
+    "**/*.css": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -15,5 +37,16 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
+    "husky": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.2.0"
   }
 }
