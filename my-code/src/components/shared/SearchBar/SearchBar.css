@@ -1,0 +1,27 @@
+@import '../../../style-guide.css';
+
+.Wrapper {
+  padding: 0 var(--mobile-margin);
+  @media (--desktop) {
+    padding: 0;
+  }
+}
+
+.InputWrapper {
+  display: flex;
+  padding: var(--space-2);
+  border-radius: var(--radius-1);
+  background-color: var(--color-default);
+}
+
+.SearchInput {
+  width: 100%;
+  border: 0 none;
+  font-size: var(--font-size);
+  padding-left: var(--space-2);
+  color: var(--color-dark);
+  letter-spacing: var(--letter-spacing);
+  &:focus {
+    outline: none;
+  }
+}

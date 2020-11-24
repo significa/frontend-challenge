@@ -1,9 +1,10 @@
 import React from 'react';
 import Layout from '../../shared/Layout';
+import SearchBar from '../../shared/SearchBar';
 
 const Search = () => (
   <Layout>
-    <div>Search Page</div>
+    <SearchBar />
   </Layout>
 );
 
