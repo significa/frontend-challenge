@@ -1,0 +1,47 @@
+/* Screen Sizes */
+@custom-media --mobile (min-width: 580px);
+@custom-media --tablet (min-width: 780px);
+@custom-media --desktop (min-width: 980px);
+
+:root {
+  --main-container-width: 1180px;
+
+  /* Colors */
+  --color-highlight: #ff9f1c;
+  --color-negative: #ff4040;
+  --color-active: #2ec4b6;
+  --color-default: #fff;
+  --color-secundary: #7a8c99;
+  --color-disabled: #353f4c;
+  --color-dark: #0a1014;
+  --color-grey: #1b2329;
+
+  /* Typography */
+  --font-family: 'Roboto', sans-serif;
+  --font-size: 16px;
+  --font-size-1: 20px;
+  --font-size-2: 24px;
+  --font-size-3: 80px;
+  --font-weight-regular: '400';
+  --font-weight-medium: '500';
+  --font-weight-bold: '700';
+  --line-height: 24px;
+  --line-height-1: 28px;
+  --line-height-2: 30px;
+  --line-height-4: 88px;
+  --letter-spacing: 0.16px;
+  --letter-spacing-1: 0.2px;
+  --letter-spacing-2: 0.8px;
+
+  /* Spacing */
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 20px;
+  --space-5: 24px;
+
+  /* Radius */
+  --radius-1: 4px;
+
+  --mobile-margin: 1rem;
+}
