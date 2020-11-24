@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const CssnanoPlugin = require('cssnano-webpack-plugin');
 const withImages = require('next-images');
 const withCss = require('@zeit/next-css');
 
@@ -7,7 +8,19 @@ const { NODE_ENV } = process.env;
 const production = NODE_ENV === 'production';
 
 const nextConfig = {
-  distDir: '../build/_app'
+  distDir: '../build/_app',
+  webpack: config => {
+    const webpackConfig = { ...config };
+
+    webpackConfig.plugins = [
+      ...config.plugins,
+
+      new CssnanoPlugin({
+        sourceMap: true
+      })
+    ];
+    return config;
+  }
 };
 
 module.exports = withImages(
