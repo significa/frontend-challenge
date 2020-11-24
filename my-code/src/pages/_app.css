@@ -1,0 +1,20 @@
+@import '../style-guide.css';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-dark);
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+}
+
+a {
+  text-decoration: none;
+}

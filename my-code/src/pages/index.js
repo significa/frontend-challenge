@@ -1,9 +1,6 @@
 import React from 'react';
+import Search from '../components/pages/Search';
 
-const Main = () => (
-  <div>
-    <div>Hello World</div>
-  </div>
-);
+const SearchPage = props => <Search {...props} />;
 
-export default Main;
+export default SearchPage;
