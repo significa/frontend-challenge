@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import getMovies from '../services/getMovies';
 
 const useFetch = movieTitle => {
-  const [results, setResults] = useState(null);
+  const [movies, setMovies] = useState(null);
   const [searching, setSearching] = useState(false);
 
   const minLength = movieTitle.trim().length > 3;
@@ -10,16 +10,16 @@ const useFetch = movieTitle => {
   useEffect(() => {
     if (!minLength) {
       setSearching(false);
-      setResults(null);
+      setMovies(null);
       return;
     }
     setSearching(true);
 
     const debounceHandler = setTimeout(async () => {
       try {
-        const response = await getMovies(movieTitle);
+        const { Search } = await getMovies(movieTitle);
         setSearching(false);
-        setResults(response);
+        setMovies(Search);
       } catch (error) {
         console.log(error);
       }
@@ -30,7 +30,7 @@ const useFetch = movieTitle => {
     };
   }, [movieTitle]);
 
-  return { results, searching };
+  return { movies, searching };
 };
 
 export default useFetch;

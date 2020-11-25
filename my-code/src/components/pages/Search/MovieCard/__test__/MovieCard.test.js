@@ -8,10 +8,10 @@ describe('<MovieCard />', () => {
   it('should render MovieCard', async () => {
     render(
       <MovieCard
-        title="The Matrix"
-        year={'1999'}
-        id={'tt0133093'}
-        cover={'movie.jpg'}
+        Title="The Matrix"
+        Year={'1999'}
+        imdbID={'tt0133093'}
+        Poster={'movie.jpg'}
       />
     );
 

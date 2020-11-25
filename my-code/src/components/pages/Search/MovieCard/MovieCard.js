@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 import HeartOutline from '../../../../assets/icons/icon-heart-white.svg';
 import styles from './MovieCard.css';
 
-const MovieCard = props => {
-  const { title, year, id, cover } = props;
-
+const MovieCard = ({ Title, Year, imdbID, Poster }) => {
   return (
-    <div className={styles.Wrapper} data-id={id}>
-      <a title={title} href="">
-        <img className={styles.Cover} alt={title} src={cover} />
+    <div className={styles.Wrapper} data-id={imdbID}>
+      <a title={Title} href="">
+        <img className={styles.Cover} alt={Title} src={Poster} />
         <div className={styles.HoverContent}>
           <HeartOutline className={styles.HeartIcon} />
           <div className={styles.InfoContent}>
-            <h4 className={styles.Title}>{title}</h4>
-            <span className={styles.Year}>{year}</span>
+            <h4 className={styles.Title}>{Title}</h4>
+            <span className={styles.Year}>{Year}</span>
           </div>
         </div>
       </a>
@@ -23,10 +21,10 @@ const MovieCard = props => {
 };
 
 MovieCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  cover: PropTypes.string.isRequired
+  Title: PropTypes.string.isRequired,
+  Year: PropTypes.string.isRequired,
+  imdbID: PropTypes.string.isRequired,
+  Poster: PropTypes.string.isRequired
 };
 
 export default MovieCard;
