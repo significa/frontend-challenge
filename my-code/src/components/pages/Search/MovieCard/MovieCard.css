@@ -1,0 +1,58 @@
+@import '../../../../style-guide.css';
+
+.Wrapper {
+  max-width: 180px;
+  width: 100%;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-1);
+  cursor: pointer;
+  &:hover .HoverContent {
+    opacity: 1;
+  }
+}
+
+.Cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HoverContent {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(53, 63, 76, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.HeartIcon {
+  align-self: flex-end;
+  padding: var(--space-2);
+}
+
+.InfoContent {
+  box-sizing: border-box;
+  padding: 12px;
+  position: relative;
+  height: 100%;
+  display: flex;
+  color: var(--color-default);
+  text-decoration: none;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.Title {
+  font-size: var(--font-size-1);
+  margin-bottom: 6px;
+}
+
+.Year {
+  font-size: var(--font-size);
+}

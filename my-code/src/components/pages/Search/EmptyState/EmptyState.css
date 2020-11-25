@@ -1,0 +1,34 @@
+@import '../../../../style-guide.css';
+
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 124px;
+  padding: 0 var(--mobile-margin);
+  @media (--desktop) {
+    margin-top: 224px;
+  }
+}
+
+.Illustration {
+  width: 100%;
+  max-width: 396px;
+  height: auto;
+}
+
+.Title {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-1);
+  color: var(--color-default);
+  margin-top: var(--space-3);
+}
+
+.SubTitle {
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--letter-spacing-1);
+  color: var(--color-secundary);
+  margin-top: var(--space-1);
+}

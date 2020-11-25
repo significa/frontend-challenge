@@ -22,9 +22,9 @@
   --font-size-1: 20px;
   --font-size-2: 24px;
   --font-size-3: 80px;
-  --font-weight-regular: '400';
-  --font-weight-medium: '500';
-  --font-weight-bold: '700';
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
   --line-height: 24px;
   --line-height-1: 28px;
   --line-height-2: 30px;
