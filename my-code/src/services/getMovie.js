@@ -1,7 +1,9 @@
 import axios from 'axios';
+import getConfig from 'next/config';
 
 const getMovie = async id => {
-  const siteApiUrl = process.env.siteApiUrl;
+  const { publicRuntimeConfig } = getConfig();
+  const { siteApiUrl } = publicRuntimeConfig;
 
   try {
     const response = await axios.get(`${siteApiUrl}/api/movie?id=${id}`);

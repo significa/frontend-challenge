@@ -9,8 +9,10 @@ const production = NODE_ENV === 'production';
 
 const nextConfig = {
   distDir: '../build/_app',
-  env: {
-    siteApiUrl: process.env.SITE_API_URL
+  publicRuntimeConfig: {
+    siteApiUrl: process.env.SITE_API_URL,
+    omdbUrl: process.env.OMDB_URL,
+    omdbApiKey: process.env.OMDB_API_KEY
   },
   webpack: config => {
     const webpackConfig = { ...config };
