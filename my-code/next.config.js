@@ -9,6 +9,9 @@ const production = NODE_ENV === 'production';
 
 const nextConfig = {
   distDir: '../build/_app',
+  env: {
+    siteApiUrl: process.env.SITE_API_URL
+  },
   webpack: config => {
     const webpackConfig = { ...config };
 

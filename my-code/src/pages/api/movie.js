@@ -11,6 +11,6 @@ export default async (req, res) => {
 
     res.send(response.data);
   } catch (error) {
-    res.send({ error, response: false });
+    res.send(error.response);
   }
 };
