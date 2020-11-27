@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import EmptyState from './EmptyState';
+import NotFound from './NotFound';
 import MovieCard from './MovieCard';
 import MovieCardSkeleton from './MovieCardSkeleton';
 import Layout from '../../shared/Layout';
@@ -18,9 +19,7 @@ const Search = () => {
   return (
     <Layout>
       <SearchBar onChange={handlerChange} value={searchTitle} />
-      {searchingError && (
-        <div style={{ backgroundColor: '#FFF' }}>Deu erro na busca</div>
-      )}
+      {searchingError && <NotFound />}
       {!movies && !searching && <EmptyState />}
       <div className={styles.MovieListContent}>
         {searching &&

@@ -6,9 +6,11 @@
   align-items: center;
   margin-top: 124px;
   padding: 0 var(--mobile-margin);
-  @media (--desktop) {
-    margin-top: 224px;
-  }
+}
+
+.Illustration {
+  width: 150px;
+  height: auto;
 }
 
 .Title {
