@@ -14,7 +14,7 @@ const SearchBar = ({ searchText, setSearchText }) => {
       <input
         type="text"
         placeholder="Search movies..."
-        className="col-md-6 col-sm-9 p-0"
+        className="p-0 w-100"
         value={searchText}
         onChange={handleInputChange}
       />
