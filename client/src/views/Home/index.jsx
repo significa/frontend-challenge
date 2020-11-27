@@ -3,13 +3,20 @@ import SearchBar from "../../components/SearchBar";
 import HomeText from "../../components/HomeText";
 import Illustration from "../../images/2.Illustrations/illustration-empty-state.png";
 import "./styles.scss";
+import axios from "axios";
 
 const Home = () => {
   const [searchText, setSearchText] = useState("");
+  const [moviesList, setMoviesList] = useState([]);
 
   useEffect(() => {
     if (searchText) {
-      const httpRequest = setTimeout(() => console.log("request"), 1000);
+      const httpRequest = setTimeout(async () => {
+        const { data } = await axios.get(
+          `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
+        );
+        console.log(data);
+      }, 1000);
       const clearHttpRequestTimer = () => {
         clearTimeout(httpRequest);
       };
