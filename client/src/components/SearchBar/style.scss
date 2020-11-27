@@ -1,0 +1,17 @@
+.searchbar-container {
+  border-radius: 0.25rem;
+  padding: 0.75rem 0 0.75rem 0.75rem;
+
+  img {
+    padding: 0 0.75rem 0 0;
+  }
+
+  input {
+    border: none;
+    font-family: "Roboto";
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
