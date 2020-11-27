@@ -10,15 +10,13 @@ $leading: 0.0008em;
 .font-medium-high {
   font-size: 1.5rem;
   letter-spacing: $leading / 4em;
-  line-height: 0.03em;
+  font-weight: 500;
 }
 .font-medium-low {
   font-size: 1.25rem;
   letter-spacing: $leading / 4em;
-  line-height: 0.028em;
 }
 .font-regular {
   font-size: 1rem;
   letter-spacing: $leading / 5em;
-  line-height: 0.024em;
 }
