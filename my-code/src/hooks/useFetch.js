@@ -4,15 +4,18 @@ import getMovies from '../services/getMovies';
 const useFetch = movieTitle => {
   const [movies, setMovies] = useState(null);
   const [searching, setSearching] = useState(false);
+  const [searchingError, setSearcingError] = useState(false);
 
   const minLength = movieTitle.trim().length > 3;
 
   useEffect(() => {
     if (!minLength) {
+      setSearcingError(false);
       setSearching(false);
       setMovies(null);
       return;
     }
+    setSearcingError(false);
     setSearching(true);
 
     const debounceHandler = setTimeout(async () => {
@@ -21,7 +24,8 @@ const useFetch = movieTitle => {
         setSearching(false);
         setMovies(Search);
       } catch (error) {
-        console.log(error);
+        setMovies([]);
+        setSearcingError(true);
       }
     }, 1000);
 
@@ -30,7 +34,7 @@ const useFetch = movieTitle => {
     };
   }, [movieTitle]);
 
-  return { movies, searching };
+  return { movies, searching, searchingError };
 };
 
 export default useFetch;

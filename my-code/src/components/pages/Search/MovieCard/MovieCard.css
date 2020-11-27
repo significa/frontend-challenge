@@ -59,3 +59,31 @@
 .Year {
   font-size: var(--font-size);
 }
+
+.PosterError {
+  background-color: var(--color-disabled);
+  border: 2px solid var(--color-secundary);
+  box-sizing: border-box;
+}
+
+.PosterNotFound {
+  width: 120px;
+  height: 120px;
+  margin: 15px;
+  @media (--desktop) {
+    margin: 30px;
+  }
+}
+
+.LikeButton {
+  right: 12px;
+  top: 12px;
+  background: none;
+  border: none;
+  display: block;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+}

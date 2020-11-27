@@ -9,7 +9,7 @@ import styles from './Search.css';
 
 const Search = () => {
   const [searchTitle, setSearchTitle] = useState('');
-  const { movies, searching } = useFetch(searchTitle);
+  const { movies, searching, searchingError } = useFetch(searchTitle);
 
   const handlerChange = e => {
     setSearchTitle(e.target.value);
@@ -18,13 +18,18 @@ const Search = () => {
   return (
     <Layout>
       <SearchBar onChange={handlerChange} value={searchTitle} />
+      {searchingError && (
+        <div style={{ backgroundColor: '#FFF' }}>Deu erro na busca</div>
+      )}
       {!movies && !searching && <EmptyState />}
       <div className={styles.MovieListContent}>
         {searching &&
+          !searchingError &&
           [...new Array(10).keys()].map(item => (
             <MovieCardSkeleton key={item} />
           ))}
         {movies &&
+          !searching &&
           movies.map(item => (
             <MovieCard
               Title={item.Title}

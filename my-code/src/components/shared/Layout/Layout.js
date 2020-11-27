@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import Logo from '../../../assets/logo.svg';
+import logo from '../../../assets/logo.svg';
 import styles from './Layout.css';
 
 const Layout = ({ children }) => (
@@ -9,7 +9,7 @@ const Layout = ({ children }) => (
     <header className={styles.HeaderContent}>
       <Link shallow href="/" as={'/'}>
         <a>
-          <Logo />
+          <img title="What's in" alt="What's in" src={logo} />
         </a>
       </Link>
     </header>
@@ -18,7 +18,7 @@ const Layout = ({ children }) => (
 );
 
 Layout.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.node.isRequired
 };
 
 export default Layout;

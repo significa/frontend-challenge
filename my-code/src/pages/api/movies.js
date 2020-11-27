@@ -9,8 +9,14 @@ export default async (req, res) => {
       `${omdbUrl}/?s=${query.title}&type=movie&apikey=${omdbApiKey}`
     );
 
+    if (response.data.Response === 'False') {
+      res.status(404).send({ Search: [], response: false });
+    } else {
+      res.send(response.data);
+    }
+
     res.send(response.data);
   } catch (error) {
-    res.send({ error, response: false });
+    res.status(500).send({ error, response: false });
   }
 };

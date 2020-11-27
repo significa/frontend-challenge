@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import MagnifierIcon from '../../../assets/icons/icon-magnifier-grey.svg';
+import magnifierIcon from '../../../assets/icons/icon-magnifier-grey.svg';
 import styles from './SearchBar.css';
 
 const SearchBar = props => {
@@ -8,7 +8,7 @@ const SearchBar = props => {
   return (
     <div className={styles.Wrapper}>
       <div className={styles.InputWrapper}>
-        <MagnifierIcon />
+        <img alt="magnifier icon" src={magnifierIcon} />
         <input
           className={styles.SearchInput}
           type="text"

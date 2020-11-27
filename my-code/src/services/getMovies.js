@@ -6,7 +6,7 @@ const getMovies = async title => {
 
     return response.data;
   } catch (error) {
-    return { error, response: 'false' };
+    console.log(error);
   }
 };
 
