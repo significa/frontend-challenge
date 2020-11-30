@@ -8,6 +8,6 @@
 .HeaderContent {
   padding: var(--space-5) var(--mobile-margin);
   @media (--desktop) {
-    padding: var(--space-5) 0;
+    padding: var(--space-7) 0;
   }
 }

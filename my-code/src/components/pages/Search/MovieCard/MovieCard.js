@@ -19,7 +19,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
       }
       data-id={imdbID}
     >
-      <a title={Title} href="">
+      <a title={Title} href={`/movie/${imdbID}`}>
         <img
           className={styles.Cover}
           onError={onErrorHandler}

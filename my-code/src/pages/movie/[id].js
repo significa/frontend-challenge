@@ -6,10 +6,10 @@ const MoviePage = props => <Movie {...props} />;
 
 export async function getServerSideProps({ query }) {
   const { id } = query;
-  const response = await getMovie(id);
+  const { data } = await getMovie(id);
 
   return {
-    props: { response }
+    props: { movie: data }
   };
 }
 

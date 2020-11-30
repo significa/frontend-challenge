@@ -1,0 +1,208 @@
+@import '../../../style-guide.css';
+
+.Wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  padding: 0 var(--mobile-margin);
+  @media (--desktop) {
+    padding: 0;
+    flex-direction: row;
+  }
+}
+
+.MovieContent {
+  max-width: 580px;
+  width: 100%;
+  margin-top: var(--space-7);
+}
+
+.Details {
+  color: var(--color-secundary);
+  font-size: var(--font-size-1);
+  letter-spacing: var(--letter-spacing-1);
+}
+
+.RatedTag {
+  color: var(--color-dark);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-secundary);
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: var(--radius-1);
+}
+
+.Title {
+  color: var(--color-default);
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-2);
+  margin-top: var(--space-3);
+  @media (--desktop) {
+    font-size: var(--font-size-4);
+    margin-top: var(--space-5);
+  }
+}
+
+.RatedContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+  @media (--desktop) {
+    margin-top: var(--space-7);
+  }
+}
+
+.ImdbTag {
+  display: flex;
+  margin-right: var(--space-3);
+}
+
+.ImdbTagIcon {
+  background-color: var(--color-highlight);
+  padding: var(--space-1);
+  border-radius: var(--radius-1) 0 0 var(--radius-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Score {
+  color: var(--color-default);
+  font-weight: var(--font-weight-medium);
+  border-top: 1px solid var(--color-secundary);
+  border-right: 1px solid var(--color-secundary);
+  border-bottom: 1px solid var(--color-secundary);
+  border-radius: 0 var(--radius-1) var(--radius-1) 0;
+  padding: var(--space-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.RottenTag {
+  display: flex;
+  margin-right: var(--space-3);
+}
+
+.RottenTagIcon {
+  background-color: var(--color-negative);
+  padding: var(--space-1);
+  border-radius: var(--radius-1) 0 0 var(--radius-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.LikeTag {
+  margin-top: var(--space-3);
+  width: 100%;
+  @media (--desktop) {
+    margin-top: 0;
+    width: auto;
+  }
+}
+
+.LikeButton {
+  border: 1px solid var(--color-secundary);
+  border-radius: var(--radius-1);
+  background: none;
+  appearance: none;
+  outline: none;
+  color: var(--color-secundary);
+  font-weight: var(--font-weight-bold);
+  box-sizing: border-box;
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: var(--font-size);
+  width: 100%;
+  & img {
+    margin-right: var(--space-1);
+  }
+}
+
+.Storyline {
+  margin-top: var(--space-3);
+  @media (--desktop) {
+    margin-top: var(--space-7);
+  }
+}
+
+.SmallTitle {
+  color: var(--color-secundary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size);
+  letter-spacing: var(--letter-spacing);
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.StorylineText {
+  color: var(--color-default);
+  font-size: var(--font-size);
+  letter-spacing: var(--letter-spacing);
+  line-height: var(--line-height);
+}
+
+.MoreAbout {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
+  @media (--desktop) {
+    margin-top: var(--space-7);
+    margin-bottom: var(--space-7);
+  }
+}
+
+.List li {
+  color: var(--color-default);
+  font-size: var(--font-size);
+  letter-spacing: var(--letter-spacing);
+  list-style: none;
+  margin-bottom: var(--space-1);
+  &::last-child {
+    margin-bottom: 0px;
+  }
+}
+
+.ListContent {
+  margin-right: var(--space-8);
+}
+
+.PosterContent {
+  max-width: 480px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: var(--space-7);
+  & img {
+    box-sizing: border-box;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: var(--radius-2);
+  }
+}
+
+.NavigationContent {
+  padding: 0 var(--mobile-margin);
+  @media (--desktop) {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.BackButton {
+  background: none;
+  border: none;
+  display: block;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+}

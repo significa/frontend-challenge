@@ -21,7 +21,8 @@
   --font-size: 16px;
   --font-size-1: 20px;
   --font-size-2: 24px;
-  --font-size-3: 80px;
+  --font-size-3: 32px;
+  --font-size-4: 80px;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -41,9 +42,11 @@
   --space-5: 24px;
   --space-6: 28px;
   --space-7: 32px;
+  --space-8: 48px;
 
   /* Radius */
   --radius-1: 4px;
+  --radius-2: 8px;
 
   --mobile-margin: 1rem;
 }

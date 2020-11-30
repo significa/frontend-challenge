@@ -8,7 +8,7 @@ const getMovie = async id => {
   try {
     const response = await axios.get(`${siteApiUrl}/api/movie?id=${id}`);
 
-    return response.data;
+    return response;
   } catch (error) {
     return error.response;
   }
