@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import EmptyState from './EmptyState';
-import NotFound from './NotFound';
 import MovieCard from './MovieCard';
 import MovieCardSkeleton from './MovieCardSkeleton';
 import Layout from '../../shared/Layout';
+import NotFound from '../../shared/NotFound';
 import SearchBar from '../../shared/SearchBar';
 import useFetch from '../../../hooks/useFetch';
 import styles from './Search.css';

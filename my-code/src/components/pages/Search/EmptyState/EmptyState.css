@@ -11,6 +11,10 @@
   }
 }
 
+.Illustration {
+  width: 100%;
+}
+
 .Title {
   font-size: var(--font-size-2);
   font-weight: var(--font-weight-medium);

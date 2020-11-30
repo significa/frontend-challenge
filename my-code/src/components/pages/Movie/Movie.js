@@ -2,7 +2,7 @@ import React from 'react';
 import Router from 'next/router';
 import PropTypes from 'prop-types';
 import Layout from '../../shared/Layout';
-import NotFound from '../../pages/Search/NotFound';
+import NotFound from '../../shared/NotFound';
 import imdbIcon from '../../../assets/icons/icon-imdb.svg';
 import rottenTomatoesIcon from '../../../assets/icons/icon-rotten-tomatoes.svg';
 import arrowIconGrey from '../../../assets/icons/icon-arrow-grey.svg';

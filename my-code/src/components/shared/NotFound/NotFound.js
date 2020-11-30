@@ -1,5 +1,5 @@
 import React from 'react';
-import illustrationNotFound from '../../../../assets/illustrations/illustration-movie-not-found.svg';
+import illustrationNotFound from '../../../assets/illustrations/illustration-movie-not-found.svg';
 import styles from './NotFound.css';
 
 const NotFound = () => {

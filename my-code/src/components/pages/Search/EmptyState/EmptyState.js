@@ -5,7 +5,11 @@ import styles from './EmptyState.css';
 const EmptyState = () => {
   return (
     <div className={styles.Wrapper}>
-      <img alt="Empty State Illustration" src={emptyStateIllustration} />
+      <img
+        className={styles.Illustration}
+        alt="Empty State Illustration"
+        src={emptyStateIllustration}
+      />
       <h3 className={styles.Title}>Don’t know what to search?</h3>
       <span className={styles.SubTitle}>Here’s an offer you can’t refuse</span>
     </div>
