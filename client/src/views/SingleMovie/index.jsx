@@ -8,6 +8,7 @@ import BehindTheScenes from "./BehindTheScenes";
 import Rating from "./Rating";
 import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
 import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
+import HeartIcon from "../../images/1.Icons/icon-heart-grey.svg";
 
 import ArrowBack from "../../images/1.Icons/icon-arrow-grey.svg";
 import "./styles.scss";
@@ -24,9 +25,8 @@ const SingleMovie = ({ match }) => {
       );
 
       setMovieDisplayed(data);
-      console.log(data);
     };
-    console.log("this is the movie data", movie());
+    movie();
   }, [match.params.id]);
   return (
     <div>
@@ -55,8 +55,17 @@ const SingleMovie = ({ match }) => {
                 rateSource="Rotten Tomatoes"
                 icon={RottenTomatoesIcon}
               />
-              <div>
-                <img src="" alt="" />
+              <div
+                className="d-flex align-items-center"
+                style={{ border: "1px solid #7a8c99", borderRadius: "0.25rem" }}
+              >
+                <img src={HeartIcon} alt="heart icon" className="px-2" />
+                <p
+                  style={{ color: "#7a8c99", fontWeight: 500 }}
+                  className="m-0 px-2 "
+                >
+                  Add to favorites
+                </p>
               </div>
             </div>
             <Plot plot={movieDisplayed.Plot} />
