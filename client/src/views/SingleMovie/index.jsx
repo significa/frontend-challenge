@@ -5,6 +5,9 @@ import axios from "axios";
 //components
 import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
+import Rating from "./Rating";
+import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
+import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
 
 import ArrowBack from "../../images/1.Icons/icon-arrow-grey.svg";
 import "./styles.scss";
@@ -34,13 +37,27 @@ const SingleMovie = ({ match }) => {
       </div>
       {movieDisplayed && (
         <main className="d-flex">
-          <div className="col-md-6 p-0">
+          <div className="col-md-6 p-0 text-white">
             <div>{`${movieDisplayed.Runtime} · ${movieDisplayed.Year} · R`}</div>
             <h1 className="font-bold">{movieDisplayed.Title}</h1>
-            <div>
-              <div>IMDb</div>
-              <div>Rotten Tomatoes</div>
-              <div>Add to favorites</div>
+            <div className="d-flex">
+              <Rating
+                rate={movieDisplayed.imdbRating}
+                rateSource="imdbRating"
+                icon={IMDbIcon}
+              />
+              <Rating
+                rate={
+                  movieDisplayed.Ratings.find(
+                    (item) => item.Source === "Rotten Tomatoes",
+                  ).Value
+                }
+                rateSource="Rotten Tomatoes"
+                icon={RottenTomatoesIcon}
+              />
+              <div>
+                <img src="" alt="" />
+              </div>
             </div>
             <Plot plot={movieDisplayed.Plot} />
             <div className="d-flex">

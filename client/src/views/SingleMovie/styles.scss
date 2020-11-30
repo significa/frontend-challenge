@@ -1,1 +1,14 @@
+@import "../../styles/master";
 
+.rating-container {
+  border: 1px $shade-disabled solid;
+  margin-right: 1.5rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  .imdb-icon {
+    background-color: $color-highlight;
+  }
+  .rotten-tomatoes-icon {
+    background-color: $color-negative;
+  }
+}
