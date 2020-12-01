@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-//components
 import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
 import Rating from "./Rating";
+import Arrow from "../../components/Arrow";
 import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
 import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
 import HeartFavorites from "../../components/HeartFavorites";
@@ -36,11 +36,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
 
   return (
     <div>
-      <div className="mt-2">
-        <Link to="/">
-          <img src={ArrowBack} alt="arrow back" />
-        </Link>
-      </div>
+      <Arrow className="mt-2" to="/" type="back" alt="arrow back" />
       {movieDisplayed && (
         <main className="d-flex">
           <div className="col-md-6 p-0">
@@ -96,7 +92,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
               />
             </section>
           </div>
-          <div className="col-md-5  p-0 ml-5">
+          <div className="col-md-5 p-0 ml-5">
             <img
               src={movieDisplayed.Poster}
               alt="movie poster"
