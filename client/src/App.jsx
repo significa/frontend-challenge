@@ -24,7 +24,11 @@ function App() {
               />
             )}
           />
-          <Route path="/" exact component={Home} />
+          <Route
+            path="/"
+            render={(props) => <Home {...props} favorites={favorites} />}
+            exact
+          />
         </Switch>
       </BrowserRouter>
     </div>

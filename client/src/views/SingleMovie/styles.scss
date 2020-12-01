@@ -12,6 +12,19 @@ main {
         border: $shade-disabled solid 1px;
         border-radius: 0.25rem;
         cursor: pointer;
+
+        p {
+          color: $shade-secondary;
+          font-weight: 500;
+        }
+      }
+
+      .added {
+        border: $color-negative solid 1px;
+        background-color: $color-negative;
+        p {
+          color: $shade-default;
+        }
       }
     }
   }

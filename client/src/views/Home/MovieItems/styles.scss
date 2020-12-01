@@ -1,0 +1,23 @@
+@import "../../../styles/master";
+.list-container {
+  div {
+    position: relative;
+    img {
+      border-radius: 0.25rem;
+      height: 100%;
+      width: 100%;
+    }
+    .movie-layer {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background-color: $shade-disabled;
+      opacity: 1;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}
