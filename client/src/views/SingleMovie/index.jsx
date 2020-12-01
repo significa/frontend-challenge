@@ -8,8 +8,7 @@ import BehindTheScenes from "./BehindTheScenes";
 import Rating from "./Rating";
 import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
 import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
-import HeartIconGrey from "../../images/1.Icons/icon-heart-grey.svg";
-import HeartIconFull from "../../images/1.Icons/icon-heart-full.svg";
+import HeartFavorites from "../../components/HeartFavorites";
 
 import ArrowBack from "../../images/1.Icons/icon-arrow-grey.svg";
 import "./styles.scss";
@@ -68,15 +67,12 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 }`}
                 onClick={addToFavorites}
               >
-                <img
-                  src={
-                    favorites.includes(movieDisplayed.Title)
-                      ? HeartIconFull
-                      : HeartIconGrey
-                  }
+                <HeartFavorites
+                  type={!favorites.includes(movieDisplayed.Title) && "grey"}
                   alt="heart icon"
                   className="px-2"
                 />
+
                 <p className="m-0 px-2 pr-3 ">
                   {favorites.includes(movieDisplayed.Title)
                     ? "Added"
