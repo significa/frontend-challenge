@@ -1,4 +1,4 @@
-@import '../../../style-guide.css';
+@import '../../../../style-guide.css';
 
 .Wrapper {
   padding: 0 var(--mobile-margin);

@@ -34,7 +34,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
           <h4 className={styles.Title}>{Title}</h4>
           <span className={styles.Year}>{Year}</span>
         </a>
-        <button onClick={console.log('hey')} className={styles.LikeButton}>
+        <button className={styles.LikeButton}>
           <img src={heartOutline} />
         </button>
       </div>

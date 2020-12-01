@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import magnifierIcon from '../../../assets/icons/icon-magnifier-grey.svg';
+import magnifierIcon from '../../../../assets/icons/icon-magnifier-grey.svg';
 import styles from './SearchBar.css';
 
 const SearchBar = props => {
