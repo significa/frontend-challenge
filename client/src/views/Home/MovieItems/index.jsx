@@ -18,7 +18,12 @@ const MovieItem = ({ moviesList, favorites }) => {
       {moviesList.map((movie) => (
         <div key={movie.imdbID} className=" p-0 mt-3 poster-container col-md-2">
           <img key={movie.imdbID} src={movie.Poster} alt={movie.Title} />
-
+          {favorites.includes(movie.Title) && (
+            <HeartFavorites
+              className="heart-full align-self-end mr-3 mt-2"
+              alt="heart icon filled"
+            />
+          )}
           <Link to={`/movie/${movie.imdbID}`}>
             <div className="w-100 movie-layer d-flex flex-column justify-content-between">
               {favorites.includes(movie.Title) ? (
