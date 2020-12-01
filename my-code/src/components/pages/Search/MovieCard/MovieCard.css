@@ -46,6 +46,7 @@
   height: 100%;
   display: flex;
   color: var(--color-default);
+  width: 100%;
   text-decoration: none;
   justify-content: flex-end;
   flex-direction: column;

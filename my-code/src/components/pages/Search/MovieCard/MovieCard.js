@@ -19,23 +19,25 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
       }
       data-id={imdbID}
     >
-      <a title={Title} href={`/movie/${imdbID}`}>
-        <img
-          className={styles.Cover}
-          onError={onErrorHandler}
-          alt={Title}
-          src={Poster}
-        />
-        <div className={styles.HoverContent}>
-          <button className={styles.LikeButton}>
-            <img src={heartOutline} />
-          </button>
-          <div className={styles.InfoContent}>
-            <h4 className={styles.Title}>{Title}</h4>
-            <span className={styles.Year}>{Year}</span>
-          </div>
-        </div>
-      </a>
+      <img
+        className={styles.Cover}
+        onError={onErrorHandler}
+        alt={Title}
+        src={Poster}
+      />
+      <div className={styles.HoverContent}>
+        <a
+          title={Title}
+          className={styles.InfoContent}
+          href={`/movie/${imdbID}`}
+        >
+          <h4 className={styles.Title}>{Title}</h4>
+          <span className={styles.Year}>{Year}</span>
+        </a>
+        <button onClick={console.log('hey')} className={styles.LikeButton}>
+          <img src={heartOutline} />
+        </button>
+      </div>
     </div>
   );
 };
