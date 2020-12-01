@@ -13,7 +13,7 @@ import HeartIcon from "../../images/1.Icons/icon-heart-grey.svg";
 import ArrowBack from "../../images/1.Icons/icon-arrow-grey.svg";
 import "./styles.scss";
 
-const SingleMovie = ({ match }) => {
+const SingleMovie = ({ match, favorites, setFavorites }) => {
   const [movieDisplayed, setMovieDisplayed] = useState(null);
 
   useEffect(() => {
@@ -28,19 +28,24 @@ const SingleMovie = ({ match }) => {
     };
     movie();
   }, [match.params.id]);
+
+  const addToFavorites = () => {
+    console.log(favorites);
+  };
+
   return (
     <div>
-      <div>
+      <div className="mt-2">
         <Link to="/">
           <img src={ArrowBack} alt="arrow back" />
         </Link>
       </div>
       {movieDisplayed && (
         <main className="d-flex">
-          <div className="col-md-6 p-0 text-white">
-            <div>{`${movieDisplayed.Runtime} · ${movieDisplayed.Year} · R`}</div>
+          <div className="col-md-6 p-0">
+            <div className="movie-specifications-container">{`${movieDisplayed.Runtime} · ${movieDisplayed.Year} · R`}</div>
             <h1 className="font-bold">{movieDisplayed.Title}</h1>
-            <div className="d-flex">
+            <div className="d-flex mt-4">
               <Rating
                 rate={movieDisplayed.imdbRating}
                 rateSource="imdbRating"
@@ -56,8 +61,8 @@ const SingleMovie = ({ match }) => {
                 icon={RottenTomatoesIcon}
               />
               <div
-                className="d-flex align-items-center"
-                style={{ border: "1px solid #7a8c99", borderRadius: "0.25rem" }}
+                className="d-flex align-items-center add-favorites-btn"
+                onClick={addToFavorites}
               >
                 <img src={HeartIcon} alt="heart icon" className="px-2" />
                 <p
@@ -69,7 +74,7 @@ const SingleMovie = ({ match }) => {
               </div>
             </div>
             <Plot plot={movieDisplayed.Plot} />
-            <div className="d-flex">
+            <section className="w-75 d-flex justify-content-between mt-5">
               <BehindTheScenes
                 header="Cast"
                 headerProperites={movieDisplayed.Actors.split(",")}
@@ -82,7 +87,7 @@ const SingleMovie = ({ match }) => {
                 header="Director"
                 headerProperites={movieDisplayed.Director.split(",")}
               />
-            </div>
+            </section>
           </div>
           <div className="col-md-5  p-0 ml-5">
             <img

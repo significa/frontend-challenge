@@ -1,29 +1,17 @@
 @import "../../styles/master";
 main {
-  //
+  margin-top: 1.75rem;
+  color: #fff;
   div {
-    //
+    .movie-specifications-container {
+      color: $shade-secondary;
+      font-size: 1.25rem;
+    }
     div {
-      //
-      .rating-container {
-        margin-right: 1.5rem;
+      .add-favorites-btn {
+        border: $shade-disabled solid 1px;
         border-radius: 0.25rem;
-        overflow: hidden;
-        .imdb-icon {
-          height: 100%;
-          background-color: $color-highlight;
-          border: solid $color-highlight 1px;
-          border-top-left-radius: 0.25rem;
-          border-bottom-left-radius: 0.25rem;
-        }
-        > div {
-          border-top-right-radius: 0.25rem;
-          border-bottom-right-radius: 0.25rem;
-          height: 100%;
-          border-top: 1px $shade-disabled solid;
-          border-right: 1px $shade-disabled solid;
-          border-bottom: 1px $shade-disabled solid;
-        }
+        cursor: pointer;
       }
     }
   }

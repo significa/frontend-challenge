@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles.scss";
+
 const Rating = ({ rate, rateSource, icon }) => {
   return (
     <div className="rating-container d-flex align-items-center">

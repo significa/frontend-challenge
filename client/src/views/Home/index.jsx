@@ -53,7 +53,10 @@ const Home = () => {
       ) : (
         <section className="list-container w-100 d-flex flex-wrap mt-4">
           {moviesList.map((movie) => (
-            <div className=" p-0 mt-3 poster-container col-md-2">
+            <div
+              key={movie.imdbID}
+              className=" p-0 mt-3 poster-container col-md-2"
+            >
               <Link to={`/movie/${movie.imdbID}`}>
                 <img key={movie.imdbID} src={movie.Poster} alt={movie.Title} />
               </Link>
