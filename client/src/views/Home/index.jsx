@@ -51,7 +51,7 @@ const Home = ({ favorites }) => {
           <HomeText />
         </>
       ) : (
-        <MovieItem moviesList={moviesList} />
+        <MovieItem moviesList={moviesList} favorites={favorites} />
       )}
     </div>
   );
