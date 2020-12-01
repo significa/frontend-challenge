@@ -10,7 +10,6 @@ import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
 import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
 import HeartFavorites from "../../components/HeartFavorites";
 
-import ArrowBack from "../../images/1.Icons/icon-arrow-grey.svg";
 import "./styles.scss";
 
 const SingleMovie = ({ match, favorites, setFavorites }) => {
@@ -48,15 +47,17 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 rateSource="imdbRating"
                 icon={IMDbIcon}
               />
-              <Rating
-                rate={
-                  movieDisplayed.Ratings.find(
-                    (item) => item.Source === "Rotten Tomatoes",
-                  ).Value
-                }
-                rateSource="Rotten Tomatoes"
-                icon={RottenTomatoesIcon}
-              />
+              {movieDisplayed.Ratings && (
+                <Rating
+                  rate={
+                    movieDisplayed.Ratings.find(
+                      (item) => item.Source === "Rotten Tomatoes",
+                    ).Value || ""
+                  }
+                  rateSource="Rotten Tomatoes"
+                  icon={RottenTomatoesIcon}
+                />
+              )}
               <div
                 className={`d-flex align-items-center add-favorites-btn ${
                   favorites.includes(movieDisplayed.Title) && "added"

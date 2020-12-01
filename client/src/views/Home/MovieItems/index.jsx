@@ -16,7 +16,10 @@ const MovieItem = ({ moviesList, favorites }) => {
   return (
     <section className="list-container w-100 d-flex flex-wrap mt-4">
       {moviesList.map((movie) => (
-        <div key={movie.imdbID} className=" p-0 mt-3 poster-container col-md-2">
+        <div
+          key={movie.imdbID}
+          className=" p-0 mt-3 poster-container col-md-2 px-2"
+        >
           <img key={movie.imdbID} src={movie.Poster} alt={movie.Title} />
           {favorites.includes(movie.Title) && (
             <HeartFavorites
