@@ -10,6 +10,7 @@ import axios from "axios";
 const Home = ({ favorites }) => {
   const [searchText, setSearchText] = useState("");
   const [moviesList, setMoviesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState(false);
 
   useEffect(() => {
@@ -27,12 +28,13 @@ const Home = ({ favorites }) => {
           setSearchError(true);
         }
       }, 1000);
-      const clearHttpRequestTimer = () => {
-        clearTimeout(httpRequest);
-      };
-      document.addEventListener("keydown", clearHttpRequestTimer);
+      setIsLoading(true);
+
+      document.addEventListener("keydown", () => clearTimeout(httpRequest));
       return () => {
-        document.removeEventListener("keydown", clearHttpRequestTimer);
+        document.removeEventListener("keydown", () =>
+          clearTimeout(httpRequest),
+        );
       };
     } else {
       setMoviesList([]);

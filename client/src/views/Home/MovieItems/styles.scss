@@ -13,6 +13,7 @@
       left: 0;
       top: 0;
       height: 100%;
+      width: calc(100% - 16px);
       background-color: $shade-disabled;
       opacity: 0;
       color: $shade-default;

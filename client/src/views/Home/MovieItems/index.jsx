@@ -37,7 +37,7 @@ const MovieItem = ({ moviesList, favorites }) => {
             />
           )}
           <Link to={`/movie/${movie.imdbID}`}>
-            <div className="w-100 movie-layer d-flex flex-column justify-content-between">
+            <div className="movie-layer d-flex flex-column justify-content-between ml-2">
               {favorites.includes(movie.Title) ? (
                 <HeartFavorites
                   className="align-self-end mr-3 mt-2"
