@@ -39,6 +39,8 @@ const Home = ({ favorites }) => {
     }
   }, [searchText, searchError]);
 
+  console.log(moviesList);
+
   return (
     <div className="home-container d-flex flex-column align-items-center">
       <SearchBar searchText={searchText} setSearchText={setSearchText} />

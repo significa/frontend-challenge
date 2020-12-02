@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
 import Rating from "./Rating";
 import Arrow from "../../components/Arrow";
+import MoviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
 import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
 import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
 import HeartFavorites from "../../components/HeartFavorites";
@@ -17,12 +17,12 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
 
   useEffect(() => {
     const id = match.params.id;
-    console.log("this is the ID", id);
     const movie = async () => {
       const { data } = await axios.get(
         `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
       );
 
+      console.log(data);
       setMovieDisplayed(data);
     };
     movie();
@@ -32,6 +32,10 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
     const movie = movieDisplayed.Title;
     if (!favorites.includes(movie)) setFavorites([...favorites, movie]);
   };
+
+  const rottenTomatoesHasRating =
+    movieDisplayed !== null &&
+    movieDisplayed.Ratings.find((item) => item.Source === "Rotten Tomatoes");
 
   return (
     <div>
@@ -47,7 +51,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 rateSource="imdbRating"
                 icon={IMDbIcon}
               />
-              {movieDisplayed.Ratings && (
+              {rottenTomatoesHasRating && (
                 <Rating
                   rate={
                     movieDisplayed.Ratings.find(
@@ -81,21 +85,37 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
             <section className="w-75 d-flex justify-content-between mt-5">
               <BehindTheScenes
                 header="Cast"
-                headerProperites={movieDisplayed.Actors.split(",")}
+                headerProperites={
+                  movieDisplayed.Actors
+                    ? movieDisplayed.Actors.split(",")
+                    : ["N/A"]
+                }
               />
               <BehindTheScenes
                 header="Genre"
-                headerProperites={movieDisplayed.Genre.split(",")}
+                headerProperites={
+                  movieDisplayed.Genre
+                    ? movieDisplayed.Genre.split(",")
+                    : ["N/A"]
+                }
               />
               <BehindTheScenes
                 header="Director"
-                headerProperites={movieDisplayed.Director.split(",")}
+                headerProperites={
+                  movieDisplayed.Director
+                    ? movieDisplayed.Director.split(",")
+                    : ["N/A"]
+                }
               />
             </section>
           </div>
           <div className="col-md-5 p-0 ml-5">
             <img
-              src={movieDisplayed.Poster}
+              src={
+                movieDisplayed.Poster !== "N/A"
+                  ? movieDisplayed.Poster
+                  : MoviePlaceholder
+              }
               alt="movie poster"
               className="w-100 rounded"
             />

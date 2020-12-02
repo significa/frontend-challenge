@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HeartFavorites from "../../../components/HeartFavorites";
+import MoviePlaceholder from "../../../images/3.Pictures/movie-placeholder.jpg";
 import "./styles.scss";
 
 const MovieHeader = ({ movie }) => {
@@ -20,7 +21,15 @@ const MovieItem = ({ moviesList, favorites }) => {
           key={movie.imdbID}
           className=" p-0 mt-3 poster-container col-md-2 px-2"
         >
-          <img key={movie.imdbID} src={movie.Poster} alt={movie.Title} />
+          <img
+            key={movie.imdbID}
+            src={
+              !movie.Poster || movie.Poster !== "N/A"
+                ? movie.Poster
+                : MoviePlaceholder
+            }
+            alt={movie.Title}
+          />
           {favorites.includes(movie.Title) && (
             <HeartFavorites
               className="heart-full align-self-end mr-3 mt-2"
