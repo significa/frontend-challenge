@@ -14,6 +14,7 @@ import "./styles.scss";
 
 const SingleMovie = ({ match, favorites, setFavorites }) => {
   const [movieDisplayed, setMovieDisplayed] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const id = match.params.id;

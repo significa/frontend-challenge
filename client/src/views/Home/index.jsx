@@ -3,6 +3,7 @@ import MovieItem from "./MovieItems";
 import SearchBar from "../../components/SearchBar";
 import HomeText from "../../components/HomeText";
 import SearchError from "../../components/SearchError";
+import Loader from "../../components/Loader";
 import Illustration from "../../images/2.Illustrations/illustration-empty-state.png";
 import "./styles.scss";
 import axios from "axios";
@@ -17,6 +18,7 @@ const Home = ({ favorites }) => {
     console.log("movies list", moviesList);
     if (searchText) {
       const httpRequest = setTimeout(async () => {
+        setIsLoading(true);
         const { data } = await axios.get(
           `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
         );
@@ -24,11 +26,12 @@ const Home = ({ favorites }) => {
         if (data.Response === "True") {
           searchError && setSearchError(false); //Checks if there was a search error on the previous request
           setMoviesList(data.Search);
+          setIsLoading(false);
         } else {
           setSearchError(true);
+          setIsLoading(false);
         }
-      }, 1000);
-      setIsLoading(true);
+      }, 500);
 
       document.addEventListener("keydown", () => clearTimeout(httpRequest));
       return () => {
@@ -47,7 +50,9 @@ const Home = ({ favorites }) => {
     <div className="home-container d-flex flex-column align-items-center">
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
-      {searchError ? (
+      {isLoading ? (
+        <Loader />
+      ) : searchError ? (
         <SearchError />
       ) : !moviesList.length ? (
         <>
