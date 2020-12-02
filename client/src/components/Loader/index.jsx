@@ -2,8 +2,8 @@ import React from "react";
 
 import "./style.scss";
 
-const Loader = () => {
-  return <div class="lds-dual-ring"></div>;
+const Loader = ({ style }) => {
+  return <div className="lds-dual-ring" style={style}></div>;
 };
 
 export default Loader;

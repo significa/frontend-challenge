@@ -40,13 +40,13 @@ const MovieItem = ({ moviesList, favorites }) => {
             <div className="movie-layer d-flex flex-column justify-content-between ml-2">
               {favorites.includes(movie.Title) ? (
                 <HeartFavorites
-                  className="align-self-end mr-3 mt-2"
+                  className="align-self-end mr-2 mt-2"
                   alt="heart icon filled"
                 />
               ) : (
                 <HeartFavorites
                   type="white"
-                  className="align-self-end mr-3 mt-2"
+                  className="align-self-end mr-2 mt-2"
                   alt="heart icon unfilled"
                 />
               )}

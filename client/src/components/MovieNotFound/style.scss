@@ -1,0 +1,14 @@
+@import "../../styles/master";
+.movie-not-found {
+  p {
+    color: #fff;
+    a {
+      color: $color-negative;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-highlight;
+      }
+    }
+  }
+}
