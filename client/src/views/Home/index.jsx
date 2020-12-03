@@ -15,23 +15,22 @@ const Home = ({ favorites }) => {
   const [searchError, setSearchError] = useState(false);
 
   useEffect(() => {
-    console.log("movies list", moviesList);
     if (searchText) {
       const httpRequest = setTimeout(async () => {
         setIsLoading(true);
         const { data } = await axios.get(
           `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
         );
-        console.log(data);
+        console.log("http request");
         if (data.Response === "True") {
           searchError && setSearchError(false); //Checks if there was a search error on the previous request
-          setMoviesList(data.Search);
           setIsLoading(false);
+          setMoviesList(data.Search);
         } else {
           setSearchError(true);
           setIsLoading(false);
         }
-      }, 500);
+      }, 1000);
 
       document.addEventListener("keydown", () => clearTimeout(httpRequest));
       return () => {
@@ -40,14 +39,13 @@ const Home = ({ favorites }) => {
         );
       };
     } else {
-      setMoviesList([]);
+      searchError ? setSearchError(false) : setMoviesList([]);
     }
-  }, [searchText, searchError]);
+  }, [searchText]);
 
-  console.log(moviesList);
-
+  console.log("rendered");
   return (
-    <div className="home-container d-flex flex-column align-items-center">
+    <div className="home-container d-flex flex-column align-items-center ">
       <SearchBar searchText={searchText} setSearchText={setSearchText} />
 
       {isLoading ? (
@@ -56,7 +54,7 @@ const Home = ({ favorites }) => {
         <SearchError />
       ) : !moviesList.length ? (
         <>
-          <img src={Illustration} alt="illustration" />
+          <img src={Illustration} alt="illustration" className="col-sm-12" />
           <HomeText />
         </>
       ) : (

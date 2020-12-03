@@ -1,0 +1,7 @@
+@import "../../../styles/master";
+
+@media (max-width: $medium) {
+  .plot-container {
+    width: 100% !important;
+  }
+}

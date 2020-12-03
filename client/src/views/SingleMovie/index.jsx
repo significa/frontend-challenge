@@ -5,7 +5,7 @@ import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
 import Rating from "./Rating";
 import MovieNotFound from "../../components/MovieNotFound";
-import Arrow from "../../components/Arrow";
+import ArrowBack from "./ArrowBack";
 import Loader from "../../components/Loader";
 import HeartFavorites from "../../components/HeartFavorites";
 import MoviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
@@ -27,7 +27,6 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
       const { data } = await axios.get(
         `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
       );
-      console.log(data);
       setIsLoading(false);
       setMovieDisplayed(data);
       if (data.Response === "False") {
@@ -53,7 +52,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
 
   return (
     <div className="d-flex flex-column">
-      <Arrow className="mt-2" to="/" type="back" alt="arrow back" />
+      <ArrowBack className="mt-3" />
       {isLoading ? (
         <Loader style={{ margin: "25% auto 0 auto" }} />
       ) : movieDisplayed !== null && movieDisplayed.Response === "False" ? (
@@ -61,10 +60,10 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
       ) : (
         movieDisplayed && (
           <main className="d-flex">
-            <div className="col-md-6 p-0">
+            <div className="col-md-6 p-0 ">
               <div className="movie-specifications-container">{`${movieDisplayed.Runtime} · ${movieDisplayed.Year} · R`}</div>
               <h1 className="font-bold">{movieDisplayed.Title}</h1>
-              <div className="d-flex mt-4">
+              <div className="ratings-container d-flex mt-4">
                 <Rating
                   rate={movieDisplayed.imdbRating}
                   rateSource="imdbRating"
@@ -101,7 +100,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 </div>
               </div>
               <Plot plot={movieDisplayed.Plot} />
-              <section className="w-75 d-flex justify-content-between mt-5">
+              <section className="w-75 d-flex justify-content-between mt-5 behind-scenes-container">
                 <BehindTheScenes
                   header="Cast"
                   headerProperites={
@@ -128,7 +127,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 />
               </section>
             </div>
-            <div className="col-md-5 p-0 ml-5">
+            <div className="movie-poster col-sm-5 p-0 ml-5">
               <img
                 src={
                   movieDisplayed.Poster !== "N/A"

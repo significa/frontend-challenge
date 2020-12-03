@@ -6,7 +6,6 @@ import "./style.scss";
 const SearchBar = ({ searchText, setSearchText }) => {
   const handleInputChange = (event) => {
     const { value } = event.target;
-    console.log("this is the event value", value);
     setSearchText(value);
   };
   return (

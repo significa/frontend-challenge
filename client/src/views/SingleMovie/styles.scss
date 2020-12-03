@@ -7,6 +7,7 @@ main {
       color: $shade-secondary;
       font-size: 1.25rem;
     }
+
     div {
       .add-favorites-btn {
         border: $shade-disabled solid 1px;
@@ -26,6 +27,44 @@ main {
           color: $shade-default;
         }
       }
+    }
+  }
+}
+
+@media (max-width: $medium) {
+  main {
+    div {
+      .font-bold {
+        font-size: 2rem;
+        margin-top: 1rem;
+      }
+
+      .ratings-container {
+        display: block !important;
+      }
+
+      div {
+        .add-favorites-btn {
+          margin-top: 1rem;
+          width: 200px;
+          padding: 0.5rem;
+        }
+
+        .added {
+          margin-top: 1rem;
+          width: 125px;
+          padding: 0.5rem;
+        }
+      }
+
+      .behind-scenes-container {
+        width: 100% !important;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .movie-poster {
+      display: none;
     }
   }
 }

@@ -15,7 +15,7 @@ const Rating = ({ rate, rateSource, icon }) => {
           borderColor: rateSource !== "imdbRating" && "#ff4040",
         }}
       />
-      <div className="d-flex align-items-center m-0">
+      <div className="rate d-flex align-items-center m-0">
         <p className="my-0 px-2">
           {rateSource === "imdbRating" ? `${rate}/10` : `${rate}`}
         </p>

@@ -15,11 +15,11 @@ const MovieHeader = ({ movie }) => {
 
 const MovieItem = ({ moviesList, favorites }) => {
   return (
-    <section className="list-container w-100 d-flex flex-wrap mt-4">
+    <section className="list-container w-100 d-flex flex-wrap mt-4 pb-5">
       {moviesList.map((movie) => (
         <div
           key={movie.imdbID}
-          className=" p-0 mt-3 poster-container col-md-2 px-2"
+          className=" p-0 mt-3 poster-container col-md-4  col-lg-2 px-2"
         >
           <img
             key={movie.imdbID}

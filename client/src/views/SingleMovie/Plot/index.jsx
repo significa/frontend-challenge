@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles.scss";
+
 const styles = { color: "#7a8c99" };
 
 const Plot = ({ plot }) => {
