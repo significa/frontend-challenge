@@ -31,7 +31,40 @@ main {
   }
 }
 
+@media (max-width: $large) {
+  main {
+    width: 70%;
+    .movie-poster {
+      margin-left: 0.5rem !important;
+    }
+  }
+}
+
 @media (max-width: $medium) {
+  main {
+    width: 100%;
+    > div {
+      width: 100% !important;
+      .font-bold {
+        font-size: 4rem;
+        margin-top: 1rem;
+      }
+
+      div {
+        .add-favorites-btn {
+          margin-top: 1rem;
+          padding: 0.5rem;
+        }
+      }
+    }
+
+    .movie-poster {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: $small) {
   main {
     div {
       .font-bold {
@@ -61,10 +94,6 @@ main {
         width: 100% !important;
         padding-bottom: 1rem;
       }
-    }
-
-    .movie-poster {
-      display: none;
     }
   }
 }

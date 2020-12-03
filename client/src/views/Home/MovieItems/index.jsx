@@ -19,7 +19,7 @@ const MovieItem = ({ moviesList, favorites }) => {
       {moviesList.map((movie) => (
         <div
           key={movie.imdbID}
-          className=" p-0 mt-3 poster-container col-md-4  col-lg-2 px-2"
+          className=" p-0 mt-3 poster-container col-sm-4 col-md-3 col-lg-2 px-2"
         >
           <img
             key={movie.imdbID}

@@ -1,8 +1,24 @@
+@import "../../../styles/master";
+
 .info-container {
   ul {
     list-style-type: none;
     li {
       font-size: 1rem;
+    }
+  }
+}
+
+@media (min-width: $small) and (max-width: $medium) {
+  .info-container {
+    .font-regular {
+      font-size: 1.5rem;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        font-size: 1.25rem;
+      }
     }
   }
 }

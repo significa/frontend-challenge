@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App col-sm-11">
+    <div className="App col-sm-11 col-md-9">
       <img src={Logo} alt="logo" className="Logo"></img>
       <BrowserRouter>
         <Switch>

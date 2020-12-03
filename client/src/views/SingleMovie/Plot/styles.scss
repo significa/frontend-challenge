@@ -5,3 +5,12 @@
     width: 100% !important;
   }
 }
+
+@media (min-width: $small) and (max-width: $medium) {
+  .plot-container {
+    font-size: 1.25rem;
+    .font-regular {
+      font-size: 1.5rem;
+    }
+  }
+}
