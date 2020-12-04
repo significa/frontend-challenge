@@ -3,7 +3,7 @@ import styles from './MovieCardSkeleton.css';
 
 const MovieCardSkeleton = () => {
   return (
-    <div className={styles.Wrapper}>
+    <div className={styles.Wrapper} data-testid="skeleton">
       <div>
         <div className={styles.SkeletonImg} />
       </div>

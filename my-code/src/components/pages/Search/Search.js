@@ -16,17 +16,33 @@ const Search = () => {
     setSearchTitle(e.target.value);
   };
 
+  const renderSearchingErrorState = () => {
+    if (searchingError) {
+      return <NotFound />;
+    }
+  };
+
+  const renderEmptyState = () => {
+    if (!movies && !searching) {
+      return <EmptyState />;
+    }
+  };
+
+  const renderLoaderState = () => {
+    if (searching && !searchingError) {
+      return [...new Array(10).keys()].map(item => (
+        <MovieCardSkeleton key={item} />
+      ));
+    }
+  };
+
   return (
     <Layout>
-      <SearchBar onChange={handlerChange} value={searchTitle} />
-      {searchingError && <NotFound />}
-      {!movies && !searching && <EmptyState />}
+      <SearchBar onChange={handlerChange} searchTitle={searchTitle} />
+      {renderSearchingErrorState()}
+      {renderEmptyState()}
       <div className={styles.MovieListContent}>
-        {searching &&
-          !searchingError &&
-          [...new Array(10).keys()].map(item => (
-            <MovieCardSkeleton key={item} />
-          ))}
+        {renderLoaderState()}
         {movies &&
           !searching &&
           movies.map(item => (

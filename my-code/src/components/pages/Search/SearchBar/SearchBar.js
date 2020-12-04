@@ -22,7 +22,7 @@ const SearchBar = props => {
 };
 
 SearchBar.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   searchTitle: PropTypes.string
 };
 

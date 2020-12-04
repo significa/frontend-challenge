@@ -14,6 +14,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
     setPosterError(true);
     e.target.className = `${e.target.className} ${styles.PosterNotFound}`;
     e.target.src = posterNotFound;
+    e.target.alt = 'Poster not found';
   };
 
   return (
@@ -24,6 +25,7 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
       data-id={imdbID}
     >
       <img
+        data-testid="poster"
         className={styles.Cover}
         onError={onErrorHandler}
         alt={Title}
@@ -38,8 +40,15 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
           <h4 className={styles.Title}>{Title}</h4>
           <span className={styles.Year}>{Year}</span>
         </a>
-        <button onClick={handlerToggle} className={styles.LikeButton}>
-          <img src={handlerFavourite ? iconHeartFull : iconHeartOutline} />
+        <button
+          data-testid="favourite-button"
+          onClick={handlerToggle}
+          className={styles.LikeButton}
+        >
+          <img
+            alt={handlerFavourite ? 'favourite active' : 'favourite disabled'}
+            src={handlerFavourite ? iconHeartFull : iconHeartOutline}
+          />
         </button>
       </div>
     </div>
@@ -47,10 +56,10 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
 };
 
 MovieCard.propTypes = {
-  Title: PropTypes.string.isRequired,
-  Year: PropTypes.string.isRequired,
-  imdbID: PropTypes.string.isRequired,
-  Poster: PropTypes.string.isRequired
+  Title: PropTypes.string,
+  Year: PropTypes.string,
+  imdbID: PropTypes.string,
+  Poster: PropTypes.string
 };
 
 export default MovieCard;
