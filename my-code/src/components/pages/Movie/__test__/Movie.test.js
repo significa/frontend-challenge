@@ -59,6 +59,6 @@ describe('<Movie />', () => {
   it('should render movie with error', async () => {
     render(<Movie />);
 
-    expect(screen.getByText('Movie Not Found :(')).toBeInTheDocument();
+    expect(screen.getByText('Movie not found :(')).toBeInTheDocument();
   });
 });

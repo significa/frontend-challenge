@@ -10,7 +10,7 @@ const NotFound = () => {
         alt="Movie not found Illustration"
         src={illustrationNotFound}
       />
-      <h3 className={styles.Title}>Movie Not Found :(</h3>
+      <h3 className={styles.Title}>Movie not found :(</h3>
       <span className={styles.SubTitle}>Try to search for another movie!</span>
     </div>
   );

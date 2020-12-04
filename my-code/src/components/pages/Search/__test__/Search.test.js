@@ -148,7 +148,7 @@ describe('<Search />', () => {
     await userEvent.type(searchBar, 'star wars');
 
     await waitFor(() => {
-      expect(screen.getByText('Movie Not Found :(')).toBeInTheDocument();
+      expect(screen.getByText('Movie not found :(')).toBeInTheDocument();
       expect(
         screen.getByText('Try to search for another movie!')
       ).toBeInTheDocument();
