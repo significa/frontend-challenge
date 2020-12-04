@@ -1,70 +1,28 @@
-# Getting Started with Create React App
+# Getting started
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Dependencies
 
-## Available Scripts
+In order to install all dependencies, you can run `yarn install`.
 
-In the project directory, you can run:
+## Scripts
 
-### `yarn start`
+- Run `yarn start` to start development mode.
+- Run `yarn build` in order to build the app for production.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Challenges
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- In this project I experimented building the application from wide screen to mobile. Now I understand why people really recommend mobile-first development, it's way easier to maintain and to debug. I think it was the first and last time I tried it.
 
-### `yarn test`
+- The file structure is a challenge for me, but I feel like I have been improving since my last projects. Sometimes I am not sure whether I should turn a view into more components, or when a component is getting too lengthy and perhaps I should turn it into more components.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- At some point, near the end of the project, I felt that I should have used Redux. At the beginning, I thought it would be overkill for a not so big app, but as I started creating more components, I started to have to pass properties deeper. If I would want to scale the app and I would have to pass props deeper, I would be in trouble.
 
-### `yarn build`
+## Wins
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- I feel that I gave better usage to SCSS comparing to previous projects. Although it's a pretty small project, I got to use some of it's functionalities.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Although I still have to improve many things on the usage of the `useEffect` hook, I am starting to feel way more comfortable in using it. Usually, at first, I get effects that I don't intend to have, but I was able to fix them quickly.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- It was the first time I've made the state persistent. I had never done it and to be honest, I thought it would be way more complex. It believe it can get more complex though, everything can.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- It was the first time that I considered the http request loading time. It is not so hard to implement and I should consider it from now on in my projects.
