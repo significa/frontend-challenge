@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import heartOutline from '../../../../assets/icons/icon-heart-white.svg';
+import iconHeartOutline from '../../../../assets/icons/icon-heart-white.svg';
+import iconHeartFull from '../../../../assets/icons/icon-heart-full.svg';
 import posterNotFound from '../../../../assets/icons/icon-poster-not-found.svg';
 import styles from './MovieCard.css';
+import useFavourite from '../../../../hooks/useFavourite';
 
 const MovieCard = ({ Title, Year, imdbID, Poster }) => {
   const [posterError, setPosterError] = useState(false);
+  const { handlerFavourite, handlerToggle } = useFavourite(imdbID);
+
   const onErrorHandler = e => {
     setPosterError(true);
     e.target.className = `${e.target.className} ${styles.PosterNotFound}`;
@@ -34,8 +38,8 @@ const MovieCard = ({ Title, Year, imdbID, Poster }) => {
           <h4 className={styles.Title}>{Title}</h4>
           <span className={styles.Year}>{Year}</span>
         </a>
-        <button className={styles.LikeButton}>
-          <img src={heartOutline} />
+        <button onClick={handlerToggle} className={styles.LikeButton}>
+          <img src={handlerFavourite ? iconHeartFull : iconHeartOutline} />
         </button>
       </div>
     </div>

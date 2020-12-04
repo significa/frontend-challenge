@@ -7,13 +7,15 @@ import imdbIcon from '../../../assets/icons/icon-imdb.svg';
 import rottenTomatoesIcon from '../../../assets/icons/icon-rotten-tomatoes.svg';
 import arrowIconGrey from '../../../assets/icons/icon-arrow-grey.svg';
 import arrowIconWhite from '../../../assets/icons/icon-arrow-white.svg';
-import heart from '../../../assets/icons/icon-heart-grey.svg';
+import iconHeartOutline from '../../../assets/icons/icon-heart-grey.svg';
+import iconHeartFull from '../../../assets/icons/icon-heart-full.svg';
+import useFavourite from '../../../hooks/useFavourite';
 import styles from './Movie.css';
 
 const Movie = props => {
   const { movie } = props;
 
-  if (movie.Response === 'False' || !movie) {
+  if (!movie || movie.Response === 'False') {
     return (
       <Layout>
         <NotFound />
@@ -31,14 +33,17 @@ const Movie = props => {
     Director,
     Plot,
     Ratings,
-    Poster
+    Poster,
+    imdbID
   } = movie;
 
+  const { handlerFavourite, handlerToggle } = useFavourite(imdbID);
   const actorList = Actors?.split(', ');
   const genreList = Genre?.split(', ');
 
   const handlerBackNavigation = () => Router.back();
 
+  // Fix poster render on SSR
   const renderPoster = () => {
     const onerror = `this.parentElement.remove()`;
     return (
@@ -99,9 +104,17 @@ const Movie = props => {
                 }
               })}
             <div className={styles.LikeTag}>
-              <button className={styles.LikeButton}>
-                <img src={heart} width="16" />
-                Add to favourites
+              <button
+                onClick={handlerToggle}
+                className={
+                  handlerFavourite ? styles.ActiveLikeButtom : styles.LikeButton
+                }
+              >
+                <img
+                  src={handlerFavourite ? iconHeartFull : iconHeartOutline}
+                  width="16"
+                />
+                {handlerFavourite ? 'Added' : 'Add to favourites'}
               </button>
             </div>
           </div>
@@ -159,6 +172,7 @@ Movie.propTypes = {
       })
     ),
     Poster: PropTypes.string,
+    imdbID: PropTypes.string,
     Response: PropTypes.string
   })
 };
