@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "next dev src",
     "build": "next build src",
-    "start": "next start --port $PORT",
+    "start": "next start src --port ${PORT:-3000}",
     "test": "jest",
     "test-watch": "yarn test --watch --notify",
     "test-coverage": "yarn test --coverage",
