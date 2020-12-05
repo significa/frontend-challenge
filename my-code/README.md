@@ -21,6 +21,7 @@ $ yarn
 - Configure the envs
 
 ```
+NODE_ENV
 OMDB_API_KEY=
 SITE_API_URL=
 OMDB_URL=
@@ -40,6 +41,7 @@ $ yarn
 - Configure the envs
 
 ```
+NODE_ENV=
 OMDB_API_KEY=
 SITE_API_URL=
 OMDB_URL=
@@ -140,6 +142,8 @@ src
  ┃ ┃ ┗ movies.js
  ┃ ┣ movie
  ┃ ┃ ┗ [id].js
+ ┃ ┣ 404.css
+ ┃ ┣ 404.js
  ┃ ┣ _app.css
  ┃ ┣ _app.js
  ┃ ┣ _document.js
