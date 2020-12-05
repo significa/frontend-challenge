@@ -161,6 +161,7 @@ src
 <img width="400" style="margin: 1rem;" src='./screenshots/desktop-empty-state-screen.png'>
 <img width="400" style="margin: 1rem;" src='./screenshots/desktop-loading-state-screen.png'>
 <img width="400" style="margin: 1rem;" src='./screenshots/desktop-movie-not-found-state-screen.png'>
+<img width="400" style="margin: 1rem;" src='./screenshots/desktop-404-screen.png'>
 <img width="400" style="margin: 1rem;" src='./screenshots/desktop-movie-list-screen.png'>
 <img width="400" style="margin: 1rem;" src='./screenshots/desktop-movie-page-screen.png'>
 <div>
@@ -172,6 +173,7 @@ src
 <img style="margin: 1rem;" src='./screenshots/mobile-loading-state-screen.png'>
 <img style="margin: 1rem;" src='./screenshots/mobile-movie-not-found-state-screen.png'>
 <div>
+<img style="margin: 1rem;" src='./screenshots/mobile-404-screen.png'>
 <img style="margin: 1rem;" src='./screenshots/mobile-movie-list-screen.png'>
 </div>
 <img style="margin: 1rem;" src='./screenshots/mobile-movie-page-screen.png'>
