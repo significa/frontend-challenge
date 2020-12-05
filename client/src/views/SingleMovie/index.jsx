@@ -8,6 +8,7 @@ import MovieNotFound from "../../components/MovieNotFound";
 import ArrowBack from "./ArrowBack";
 import Loader from "../../components/Loader";
 import HeartFavorites from "../../components/HeartFavorites";
+import { LOCALSTORAGE_KEY } from "./../../constants";
 import moviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
 import imdbIcon from "../../images/2.Logos/logo-imdb.svg";
 import rottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
@@ -42,7 +43,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
     const movie = movieDisplayed.Title;
     if (!favorites.includes(movie))
       setFavorites((prevState) => [...prevState, movie]);
-    ls.set("favoriteMovies", [...favorites, movie]);
+    ls.set(LOCALSTORAGE_KEY, [...favorites, movie]);
   };
 
   const rottenTomatoesHasRating =
