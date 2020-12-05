@@ -1,7 +1,7 @@
 @import '../../../../style-guide.css';
 
 .Wrapper {
-  max-width: 154px;
+  max-width: 152px;
   width: 100%;
   height: 240px;
   position: relative;
@@ -69,7 +69,6 @@
 
 .PosterError {
   background-color: var(--color-disabled);
-  border: 2px solid var(--color-secundary);
   box-sizing: border-box;
 }
 
