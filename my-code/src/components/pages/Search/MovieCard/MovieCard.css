@@ -56,8 +56,11 @@
 }
 
 .Title {
-  font-size: var(--font-size-1);
+  font-size: var(--font-size);
   margin-bottom: 6px;
+  @media (--desktop) {
+    font-size: var(--font-size-1);
+  }
 }
 
 .Year {

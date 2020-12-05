@@ -147,9 +147,9 @@
 }
 
 .Storyline {
-  margin-top: var(--space-3);
+  margin-top: var(--space-5);
   @media (--desktop) {
-    margin-top: var(--space-7);
+    margin-top: var(--space-8);
   }
 }
 
