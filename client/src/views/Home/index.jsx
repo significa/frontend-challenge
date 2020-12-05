@@ -42,22 +42,28 @@ const Home = ({ favorites }) => {
     }
   }, [searchText]);
 
-  return (
-    <div className="home-container d-flex flex-column align-items-center ">
-      <SearchBar searchText={searchText} setSearchText={setSearchText} />
-
-      {isLoading ? (
-        <Loader />
-      ) : searchError ? (
-        <SearchError />
-      ) : !moviesList.length ? (
+  const displayComponent = () => {
+    if (isLoading) {
+      return <Loader />;
+    } else if (searchError) {
+      return <SearchError />;
+    } else if (!moviesList.length) {
+      return (
         <>
           <img src={illustration} alt="illustration" className="col-sm-12" />
           <HomeText />
         </>
-      ) : (
-        <MovieItem moviesList={moviesList} favorites={favorites} />
-      )}
+      );
+    } else {
+      return <MovieItem moviesList={moviesList} favorites={favorites} />;
+    }
+  };
+
+  return (
+    <div className="home-container d-flex flex-column align-items-center ">
+      <SearchBar searchText={searchText} setSearchText={setSearchText} />
+
+      {displayComponent()}
     </div>
   );
 };
