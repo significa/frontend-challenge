@@ -4,7 +4,7 @@ import SearchBar from "../../components/SearchBar";
 import HomeText from "../../components/HomeText";
 import SearchError from "../../components/SearchError";
 import Loader from "../../components/Loader";
-import Illustration from "../../images/2.Illustrations/illustration-empty-state.png";
+import illustration from "../../images/2.Illustrations/illustration-empty-state.png";
 import "./styles.scss";
 import axios from "axios";
 
@@ -53,7 +53,7 @@ const Home = ({ favorites }) => {
         <SearchError />
       ) : !moviesList.length ? (
         <>
-          <img src={Illustration} alt="illustration" className="col-sm-12" />
+          <img src={illustration} alt="illustration" className="col-sm-12" />
           <HomeText />
         </>
       ) : (

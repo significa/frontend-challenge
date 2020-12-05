@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HeartFavorites from "../../../components/HeartFavorites";
-import MoviePlaceholder from "../../../images/3.Pictures/movie-placeholder.jpg";
+import moviePlaceholder from "../../../images/3.Pictures/movie-placeholder.jpg";
 import "./styles.scss";
 
 const MovieHeader = ({ movie }) => {
@@ -26,7 +26,7 @@ const MovieItem = ({ moviesList, favorites }) => {
             src={
               !movie.Poster || movie.Poster !== "N/A"
                 ? movie.Poster
-                : MoviePlaceholder
+                : moviePlaceholder
             }
             alt={movie.Title}
           />

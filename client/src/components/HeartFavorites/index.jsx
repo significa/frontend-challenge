@@ -1,18 +1,23 @@
 import React from "react";
-import HeartIconGrey from "../../images/1.Icons/icon-heart-grey.svg";
-import HeartIconWhite from "../../images/1.Icons/icon-heart-white.svg";
-import HeartIconFull from "../../images/1.Icons/icon-heart-full.svg";
+import heartIconGrey from "../../images/1.Icons/icon-heart-grey.svg";
+import heartIconWhite from "../../images/1.Icons/icon-heart-white.svg";
+import heartIconFull from "../../images/1.Icons/icon-heart-full.svg";
 
 const HeartFavorites = ({ style, className, type, alt }) => {
+  const displayedHeart = () => {
+    switch (type) {
+      case "white":
+        return heartIconWhite;
+      case "grey":
+        return heartIconGrey;
+      default:
+        return heartIconFull;
+    }
+  };
+
   return (
     <img
-      src={
-        type === "white"
-          ? HeartIconWhite
-          : type === "grey"
-          ? HeartIconGrey
-          : HeartIconFull
-      }
+      src={displayedHeart()}
       alt={alt}
       style={style && { ...style }}
       className={className}

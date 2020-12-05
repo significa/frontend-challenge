@@ -5,7 +5,7 @@ import Home from "./views/Home";
 import SingleMovie from "./views/SingleMovie";
 import "./App.scss";
 
-import Logo from "./images/2.Logos/logo.svg";
+import logo from "./images/2.Logos/logo.svg";
 
 function App() {
   const [favorites, setFavorites] = useState([]);
@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App col-sm-11 col-md-9">
-      <img src={Logo} alt="logo" className="Logo"></img>
+      <img src={logo} alt="logo" className="What's in - logo" />
       <BrowserRouter>
         <Switch>
           <Route

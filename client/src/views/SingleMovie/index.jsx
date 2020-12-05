@@ -8,9 +8,9 @@ import MovieNotFound from "../../components/MovieNotFound";
 import ArrowBack from "./ArrowBack";
 import Loader from "../../components/Loader";
 import HeartFavorites from "../../components/HeartFavorites";
-import MoviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
-import IMDbIcon from "../../images/2.Logos/logo-imdb.svg";
-import RottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
+import moviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
+import imdbIcon from "../../images/2.Logos/logo-imdb.svg";
+import rottenTomatoesIcon from "../../images/2.Logos/logo-rotten-tomatoes.svg";
 
 import "./styles.scss";
 
@@ -67,7 +67,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 <Rating
                   rate={movieDisplayed.imdbRating}
                   rateSource="imdbRating"
-                  icon={IMDbIcon}
+                  icon={imdbIcon}
                 />
                 {rottenTomatoesHasRating && (
                   <Rating
@@ -77,7 +77,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                       ).Value || ""
                     }
                     rateSource="Rotten Tomatoes"
-                    icon={RottenTomatoesIcon}
+                    icon={rottenTomatoesIcon}
                   />
                 )}
                 <div
@@ -132,7 +132,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
                 src={
                   movieDisplayed.Poster !== "N/A"
                     ? movieDisplayed.Poster
-                    : MoviePlaceholder
+                    : moviePlaceholder
                 }
                 alt="movie poster"
                 className="w-100 rounded"
