@@ -10,7 +10,7 @@ const production = NODE_ENV === 'production';
 const nextConfig = {
   distDir: '../build/_app',
   publicRuntimeConfig: {
-    siteApiUrl: process.env.SITE_API_URL,
+    siteUrl: process.env.SITE_URL,
     omdbUrl: process.env.OMDB_URL,
     omdbApiKey: process.env.OMDB_API_KEY
   },

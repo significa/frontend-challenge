@@ -3,10 +3,10 @@ import getConfig from 'next/config';
 
 const getMovie = async id => {
   const { publicRuntimeConfig } = getConfig();
-  const { siteApiUrl } = publicRuntimeConfig;
+  const { siteUrl } = publicRuntimeConfig;
 
   try {
-    const response = await axios.get(`${siteApiUrl}/api/movie?id=${id}`);
+    const response = await axios.get(`${siteUrl}/api/movie?id=${id}`);
 
     return response;
   } catch (error) {

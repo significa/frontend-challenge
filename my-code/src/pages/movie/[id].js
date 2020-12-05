@@ -7,7 +7,7 @@ import Movie from '../../components/pages/Movie';
 
 const MoviePage = props => {
   const { publicRuntimeConfig } = getConfig();
-  const { siteApiUrl } = publicRuntimeConfig;
+  const { siteUrl } = publicRuntimeConfig;
   const { movie } = props;
   return (
     <>
@@ -15,7 +15,7 @@ const MoviePage = props => {
         <title>{movie?.Title || "What's in"}</title>
         <meta name="robots" content="index,follow" />
         <meta name="description" content={movie?.Plot || ''} />
-        <link rel="canonical" href={`${siteApiUrl}/`} />
+        <link rel="canonical" href={`${siteUrl}/`} />
       </Head>
       <Movie {...props} />
     </>
