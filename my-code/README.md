@@ -25,6 +25,7 @@ NODE_ENV
 OMDB_API_KEY=
 SITE_API_URL=
 OMDB_URL=
+PORT=
 ```
 
 - Run `$ yarn dev`
@@ -45,6 +46,7 @@ NODE_ENV=
 OMDB_API_KEY=
 SITE_API_URL=
 OMDB_URL=
+PORT=
 ```
 
 - Run `$ yarn build`
