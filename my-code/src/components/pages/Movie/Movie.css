@@ -194,9 +194,6 @@
 .ListContent {
   margin-right: var(--space-8);
   margin-bottom: var(--space-1);
-  @media (--desktop) {
-    margin-right: 0;
-  }
 }
 
 .PosterContent {
