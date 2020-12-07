@@ -22,7 +22,7 @@ const Home = ({ favorites }) => {
           `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
         );
         if (data.Response === "True") {
-          searchError && setSearchError(false); //Checks if there was a search error on the previous request
+          setSearchError(false); //Checks if there was a search error on the previous request
           setIsLoading(false);
           setMoviesList(data.Search);
         } else {
@@ -38,7 +38,8 @@ const Home = ({ favorites }) => {
         );
       };
     } else {
-      searchError ? setSearchError(false) : setMoviesList([]);
+      setSearchError(false);
+      setMoviesList([]);
     }
   }, [searchText]);
 
