@@ -26,7 +26,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
       setIsLoading(true);
 
       const { data } = await axios.get(
-        `http://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
+        `https://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
       );
       setIsLoading(false);
       setMovieDisplayed(data);

@@ -19,7 +19,7 @@ const Home = ({ favorites }) => {
       const httpRequest = setTimeout(async () => {
         setIsLoading(true);
         const { data } = await axios.get(
-          `http://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
+          `https://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
         );
         if (data.Response === "True") {
           setSearchError(false); //Checks if there was a search error on the previous request
