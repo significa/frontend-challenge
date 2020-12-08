@@ -30,17 +30,24 @@ const Home = ({ favorites }) => {
     setMoviesList([]);
   }, []);
 
+  const debounce = useCallback(
+    (queryResult) => {
+      if (queryResult.Response === "True") {
+        handleSuccessfulHttpReq(queryResult.Search);
+      } else {
+        handleUnsuccessfulHttpReq();
+      }
+    },
+    [handleSuccessfulHttpReq, handleUnsuccessfulHttpReq],
+  );
+
   useEffect(() => {
     if (searchText) {
       const httpRequest = setTimeout(async () => {
         setIsLoading(true);
 
         const { data } = await getMoviesList(searchText);
-        if (data.Response === "True") {
-          handleSuccessfulHttpReq(data.Search);
-        } else {
-          handleUnsuccessfulHttpReq();
-        }
+        debounce(data);
       }, 1000);
 
       document.addEventListener("keydown", () => clearTimeout(httpRequest));
@@ -52,12 +59,7 @@ const Home = ({ favorites }) => {
     } else {
       handleEmptySearch();
     }
-  }, [
-    searchText,
-    handleSuccessfulHttpReq,
-    handleUnsuccessfulHttpReq,
-    handleEmptySearch,
-  ]);
+  }, [searchText, handleEmptySearch, debounce]);
 
   const displayComponent = () => {
     if (isLoading) {
