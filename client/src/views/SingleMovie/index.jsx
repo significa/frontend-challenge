@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ls from "local-storage";
 import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
@@ -20,21 +20,25 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [movieFound, setMovieFound] = useState(false);
 
+  const handleResponse = useCallback((queryResult) => {
+    setMovieDisplayed(queryResult);
+    if (queryResult.Response === "False") {
+      setMovieFound(false);
+    } else {
+      setMovieFound(true);
+    }
+  }, []);
+
   useEffect(() => {
     const id = match.params.id;
     const movie = async () => {
       setIsLoading(true);
       const { data } = await getSingleMovie(id);
       setIsLoading(false);
-      setMovieDisplayed(data);
-      if (data.Response === "False") {
-        setMovieFound(false);
-      } else {
-        setMovieFound(true);
-      }
+      handleResponse(data);
     };
     movie();
-  }, [match.params.id]);
+  }, [match.params.id, handleResponse]);
 
   const addToFavorites = () => {
     const movie = movieDisplayed.Title;
