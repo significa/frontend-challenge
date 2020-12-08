@@ -12,7 +12,7 @@ export default {
     family:
       "Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans- serif",
     light: 300,
-    normal: 400,
+    normal: 500,
     bold: 700,
     sizes: {
       xsmall: '1.2rem',
@@ -21,7 +21,7 @@ export default {
       large: '1.8rem',
       xlarge: '2.0rem',
       xxlarge: '2.8rem',
-      huge: '5.2rem'
+      huge: '9rem'
     }
   },
 

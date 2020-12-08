@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "@styled-icons/boxicons-regular": "^10.18.0",
     "@styled-icons/material-outlined": "^10.18.0",
     "axios": "^0.21.0",
     "next": "^10.0.3",
