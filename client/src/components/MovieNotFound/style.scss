@@ -12,3 +12,9 @@
     }
   }
 }
+
+@media (hover: hover) {
+  a:hover {
+    color: $color-highlight;
+  }
+}

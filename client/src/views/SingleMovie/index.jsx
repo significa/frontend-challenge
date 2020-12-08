@@ -52,14 +52,15 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
     movieDisplayed !== null &&
     movieDisplayed.Ratings.find((item) => item.Source === "Rotten Tomatoes");
 
-  return (
-    <div className="d-flex flex-column">
-      <ArrowBack className="mt-3" />
-      {isLoading ? (
-        <Loader style={{ margin: "25% auto 0 auto" }} />
-      ) : movieDisplayed !== null && movieDisplayed.Response === "False" ? (
-        <MovieNotFound /> /*renders if the http request response is an object without any movie*/
-      ) : (
+  const displayedContent = () => {
+    if (isLoading) {
+      return <Loader style={{ margin: "25% auto 0 auto" }} />;
+    } else if (movieDisplayed !== null && movieDisplayed.Response === "False") {
+      return (
+        <MovieNotFound />
+      ); /*renders if the http request response is an object without any movie*/
+    } else {
+      return (
         movieDisplayed && (
           <main className="d-flex">
             <div className="col-md-12 col-lg-6 p-0 ">
@@ -142,7 +143,13 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
             </div>
           </main>
         )
-      )}
+      );
+    }
+  };
+  return (
+    <div className="d-flex flex-column">
+      <ArrowBack className="mt-3" />
+      {displayedContent()}
     </div>
   );
 };
