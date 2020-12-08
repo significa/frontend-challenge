@@ -5,12 +5,12 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import MovieCard from '.'
 
 const props = {
-  poster:
+  Poster:
     'https://m.media-amazon.com/images/M/MV5BMTg2NzQwMzQyMF5BMl5BanBnXkFtZTgwNzkzODk2ODE@._V1_SX300.jpg',
-  title: 'Pele: Birth of a Legend',
-  type: 'movie',
-  year: '2016',
-  id: 'tt0995868'
+  Title: 'Pele: Birth of a Legend',
+  Type: 'movie',
+  Year: '2016',
+  imdbID: 'tt0995868'
 }
 
 describe('<MovieCard />', () => {
@@ -18,14 +18,34 @@ describe('<MovieCard />', () => {
     const { container } = renderWithTheme(<MovieCard {...props} />)
 
     expect(
-      screen.getByRole('heading', { name: props.title })
+      screen.getByRole('heading', { name: props.Title })
     ).toBeInTheDocument()
 
-    expect(screen.getByText(props.year)).toBeInTheDocument()
+    expect(screen.getByText(props.Year)).toBeInTheDocument()
 
     expect(
-      screen.getByRole('img', { name: `${props.title} movie poster` })
-    ).toHaveAttribute('src', props.poster)
+      screen.getByRole('img', { name: `${props.Title} movie poster` })
+    ).toHaveAttribute('src', props.Poster)
+
+    expect(screen.getByLabelText(/add to favorites/i)).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render without poster', () => {
+    const { container } = renderWithTheme(<MovieCard {...props} Poster="N/A" />)
+
+    expect(
+      screen.getByRole('heading', { name: props.Title })
+    ).toBeInTheDocument()
+
+    expect(screen.getByText(props.Year)).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('img', {
+        name: /There is no specific poster for this film/i
+      })
+    ).toHaveAttribute('src', '/img/no-poster.jpg')
 
     expect(screen.getByLabelText(/add to favorites/i)).toBeInTheDocument()
 

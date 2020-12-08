@@ -22,7 +22,14 @@ const MovieCard = ({
 }: MovieCardProps) => (
   <S.Wrapper>
     <S.ImageBox>
-      <img src={Poster} alt={`${Title} movie poster`} />
+      {Poster === 'N/A' ? (
+        <img
+          src="/img/no-poster.jpg"
+          alt="There is no specific poster for this film."
+        />
+      ) : (
+        <img src={Poster} alt={`${Title} movie poster`} />
+      )}
     </S.ImageBox>
     <S.Info>
       <Link href={`/movie/${imdbID}`} passHref>

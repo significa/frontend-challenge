@@ -145,4 +145,151 @@ exports[`<MovieCard /> should render correctly 1`] = `
     </div>
   </div>
 </div>
-`
+`;
+
+exports[`<MovieCard /> should render without poster 1`] = `
+.c6 {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.c0 {
+  position: relative;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.c0:hover .c2 {
+  display: block;
+}
+
+.c1 {
+  height: 100%;
+  width: 100%;
+  background: #f6f7f8;
+  background-image: linear-gradient( to right,#f6f7f8 0%,#edeef1 20%,#f6f7f8 40%,#f6f7f8 100% );
+  background-size: 80rem 14rem;
+  -webkit-animation: placeholderShimmer 1s linear infinite forwards;
+  animation: placeholderShimmer 1s linear infinite forwards;
+}
+
+.c1 img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.c3 {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(27,35,41,0.8);
+}
+
+.c3 > a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1.6rem;
+  position: relative;
+  height: 100%;
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  color: #FFF;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c4 {
+  margin: 0;
+  font-size: 2.0rem;
+  margin-bottom: 0.8rem;
+}
+
+.c5 {
+  color: #FFF;
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
+  cursor: pointer;
+}
+
+.c5 svg {
+  width: 2.5rem;
+}
+
+@media (min-width:768px) {
+  .c3 {
+    display: none;
+  }
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <img
+      alt="There is no specific poster for this film."
+      src="/img/no-poster.jpg"
+    />
+  </div>
+  <div
+    class="c2 c3"
+  >
+    <a
+      href="/movie/tt0995868"
+    >
+      <h2
+        class="c4"
+      >
+        Pele: Birth of a Legend
+      </h2>
+      <span
+        class=""
+      >
+        2016
+      </span>
+    </a>
+    <div
+      class="c5"
+      role="button"
+    >
+      <svg
+        aria-hidden="true"
+        aria-label="Add to Favorites"
+        class="c6"
+        fill="currentColor"
+        focusable="false"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 0h24v24H0V0z"
+          fill="none"
+        />
+        <path
+          d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;

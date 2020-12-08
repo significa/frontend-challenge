@@ -5,12 +5,12 @@ export default {
   title: 'MovieCard',
   component: MovieCard,
   args: {
-    poster:
+    Poster:
       'https://m.media-amazon.com/images/M/MV5BMTg2NzQwMzQyMF5BMl5BanBnXkFtZTgwNzkzODk2ODE@._V1_SX300.jpg',
-    title: 'Pele: Birth of a Legend',
-    type: 'movie',
-    year: '2016',
-    id: 'tt0995868'
+    Title: 'Pele: Birth of a Legend',
+    Type: 'movie',
+    Year: '2016',
+    imdbID: 'tt0995868'
   }
 } as Meta
 
@@ -19,3 +19,13 @@ export const Default: Story<MovieCardProps> = (args) => (
     <MovieCard {...args} />
   </div>
 )
+
+export const NoPoster: Story<MovieCardProps> = (args) => (
+  <div style={{ maxWidth: '30rem', margin: 'auto' }}>
+    <MovieCard {...args} />
+  </div>
+)
+
+NoPoster.args = {
+  Poster: 'N/A'
+}
