@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import ls from "local-storage";
 import Plot from "./Plot";
 import BehindTheScenes from "./BehindTheScenes";
@@ -8,6 +7,7 @@ import MovieNotFound from "../../components/MovieNotFound";
 import ArrowBack from "./ArrowBack";
 import Loader from "../../components/Loader";
 import HeartFavorites from "../../components/HeartFavorites";
+import { getSingleMovie } from "../../services/movies";
 import { LOCALSTORAGE_KEY } from "./../../constants";
 import moviePlaceholder from "../../images/3.Pictures/movie-placeholder.jpg";
 import imdbIcon from "../../images/2.Logos/logo-imdb.svg";
@@ -24,10 +24,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
     const id = match.params.id;
     const movie = async () => {
       setIsLoading(true);
-
-      const { data } = await axios.get(
-        `https://www.omdbapi.com/?i=${id}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
-      );
+      const { data } = await getSingleMovie(id);
       setIsLoading(false);
       setMovieDisplayed(data);
       if (data.Response === "False") {

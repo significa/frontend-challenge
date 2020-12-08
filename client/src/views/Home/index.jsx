@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import MovieItem from "./MovieItems";
 import SearchBar from "../../components/SearchBar";
 import HomeText from "../../components/HomeText";
 import SearchError from "../../components/SearchError";
 import Loader from "../../components/Loader";
+import { getMoviesList } from "../../services/movies";
 import illustration from "../../images/2.Illustrations/illustration-empty-state.png";
 import "./styles.scss";
-import axios from "axios";
 
 const Home = ({ favorites }) => {
   const [searchText, setSearchText] = useState("");
@@ -14,20 +14,32 @@ const Home = ({ favorites }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState(false);
 
+  const handleSuccessfulHttpReq = useCallback((result) => {
+    setSearchError(false);
+    setIsLoading(false);
+    setMoviesList(result);
+  }, []);
+
+  const handleUnsuccessfulHttpReq = useCallback(() => {
+    setSearchError(true);
+    setIsLoading(false);
+  }, []);
+
+  const handleEmptySearch = useCallback(() => {
+    setSearchError(false);
+    setMoviesList([]);
+  }, []);
+
   useEffect(() => {
     if (searchText) {
       const httpRequest = setTimeout(async () => {
         setIsLoading(true);
-        const { data } = await axios.get(
-          `https://www.omdbapi.com/?s=${searchText}&apikey=${process.env.REACT_APP_OMDB_API_KEY}`,
-        );
+
+        const { data } = await getMoviesList(searchText);
         if (data.Response === "True") {
-          setSearchError(false); //Checks if there was a search error on the previous request
-          setIsLoading(false);
-          setMoviesList(data.Search);
+          handleSuccessfulHttpReq(data.Search);
         } else {
-          setSearchError(true);
-          setIsLoading(false);
+          handleUnsuccessfulHttpReq();
         }
       }, 1000);
 
@@ -38,10 +50,14 @@ const Home = ({ favorites }) => {
         );
       };
     } else {
-      setSearchError(false);
-      setMoviesList([]);
+      handleEmptySearch();
     }
-  }, [searchText]);
+  }, [
+    searchText,
+    handleSuccessfulHttpReq,
+    handleUnsuccessfulHttpReq,
+    handleEmptySearch,
+  ]);
 
   const displayComponent = () => {
     if (isLoading) {
