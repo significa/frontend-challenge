@@ -5,7 +5,7 @@ export const Wrapper = styled.menu`
   ${({ theme }) => css`
     display: flex;
     align-items: center;
-    padding: ${theme.spacings.small} 0;
+    padding: ${theme.spacings.medium} 0;
     position: relative;
     z-index: ${theme.layers.menu};
   `}

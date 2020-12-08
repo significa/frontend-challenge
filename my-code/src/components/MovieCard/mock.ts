@@ -8,7 +8,8 @@ export default [
     imdbID: 'tt0995868'
   },
   {
-    Poster: 'N/A',
+    Poster:
+      'https://m.media-amazon.com/images/M/MV5BMTg2NzQwMzQyMF5BMl5BanBnXkFtZTgwNzkzODk2ODE@._V1_SX300.jpg',
     Title: 'Isto É Pelé',
     Type: 'movie',
     Year: '1974',

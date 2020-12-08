@@ -34,10 +34,10 @@ export const InputWrapper = styled.div`
 
 export const Input = styled.input<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
-    color: ${theme.colors.dark};
+    color: ${theme.colors.lightGrey};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: 1.2rem 0;
     padding-${iconPosition}: ${theme.spacings.xsmall};
     background: transparent;
     border: 0;
@@ -50,7 +50,7 @@ export const Icon = styled.div<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
     display: flex;
     width: 2.2rem;
-    color: ${theme.colors.dark};
+    color: ${theme.colors.lightGrey};
     order: ${iconPosition === 'right' ? 1 : 0};
 
     & > svg {
