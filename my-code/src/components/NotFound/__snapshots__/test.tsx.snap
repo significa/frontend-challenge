@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 1.6rem;
+}
+
+.c0 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.c1 {
+  font-size: 2.0rem;
+  color: #7A8C99;
+  margin-top: 1.6rem;
+}
+
+.c2 {
+  font-size: 2.0rem;
+  color: #7A8C99;
+  margin-top: 1.6rem;
+}
+
+@media (min-width:768px) {
+  .c0 img {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c2 {
+    font-size: 1.6rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <img
+    alt="Movie not found"
+    src="/img/not-found.jpg"
+  />
+  <h3
+    class="c1"
+  >
+    Movie not found :(
+  </h3>
+  <p
+    class="c2"
+  >
+    Try to search for another movie!
+  </p>
+</div>
+`;
