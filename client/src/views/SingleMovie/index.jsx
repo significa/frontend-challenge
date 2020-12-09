@@ -63,7 +63,7 @@ const SingleMovie = ({ match, favorites, setFavorites }) => {
       return (
         movieDisplayed && (
           <main className="d-flex">
-            <div className="col-md-12 col-lg-6 p-0 ">
+            <div className="movie-info-container col-md-12 col-lg-6 p-0 ">
               <div className="movie-specifications-container">{`${movieDisplayed.Runtime} · ${movieDisplayed.Year} · R`}</div>
               <h1 className="font-bold">{movieDisplayed.Title}</h1>
               <div className="ratings-container d-flex mt-4">

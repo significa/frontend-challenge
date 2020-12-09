@@ -6,7 +6,7 @@ import "./styles.scss";
 
 const MovieHeader = ({ movie }) => {
   return (
-    <div className="ml-3">
+    <div className="movie-header ml-3">
       <h6>{movie.Title}</h6>
       <p>{movie.Year}</p>
     </div>
@@ -40,13 +40,13 @@ const MovieItem = ({ moviesList, favorites }) => {
             <div className="movie-layer d-flex flex-column justify-content-between ml-2">
               {favorites.includes(movie.Title) ? (
                 <HeartFavorites
-                  className="align-self-end mr-2 mt-2"
+                  className="heart-icon align-self-end mr-2 mt-2"
                   alt="heart icon filled"
                 />
               ) : (
                 <HeartFavorites
                   type="white"
-                  className="align-self-end mr-2 mt-2"
+                  className="heart-icon align-self-end mr-2 mt-2"
                   alt="heart icon unfilled"
                 />
               )}

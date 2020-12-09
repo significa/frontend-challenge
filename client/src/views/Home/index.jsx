@@ -70,7 +70,11 @@ const Home = ({ favorites }) => {
     } else if (!moviesList.length) {
       return (
         <>
-          <img src={illustration} alt="illustration" className="col-sm-12" />
+          <img
+            src={illustration}
+            alt="bloody horse illustration"
+            className="col-sm-12"
+          />
           <HomeText />
         </>
       );

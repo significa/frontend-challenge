@@ -2,13 +2,13 @@
 main {
   margin-top: 1.75rem;
   color: #fff;
-  div {
+  .movie-info-container {
     .movie-specifications-container {
       color: $shade-secondary;
       font-size: 1.25rem;
     }
 
-    div {
+    .ratings-container {
       .add-favorites-btn {
         border: $shade-disabled solid 1px;
         border-radius: 0.25rem;
@@ -43,7 +43,7 @@ main {
 @media (max-width: $medium) {
   main {
     width: 100%;
-    > div {
+    .movie-info-container {
       width: 100% !important;
       .font-bold {
         font-size: 4rem;
