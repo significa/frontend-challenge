@@ -40,7 +40,7 @@ export const MovieContent = styled.div`
   `}
 `
 
-export const Details = styled.div`
+export const Details = styled.section`
   ${({ theme }) => css`
     color: ${theme.colors.lightGrey};
     font-size: ${theme.font.sizes.xlarge};
@@ -72,7 +72,7 @@ export const Title = styled.h1`
   `}
 `
 
-export const RatedContent = styled.div`
+export const RatedContent = styled.section`
   ${({ theme }) => css`
     display: flex;
     flex-wrap: wrap;
@@ -141,20 +141,20 @@ export const Storyline = styled.div`
 `
 export const SmallTitle = styled.span`
   ${({ theme }) => css`
+    display: block;
     color: ${theme.colors.lightGrey};
     font-weight: ${theme.font.bold};
+    margin-top: ${theme.spacings.xsmall};
     margin-bottom: ${theme.spacings.xxsmall};
-    display: block;
   `}
 `
 export const StorylineText = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     line-height: ${theme.spacings.small};
-    font-weight: ${theme.font.bold};
   `}
 `
-export const MoreAbout = styled.div`
+export const MoreAbout = styled.section`
   ${({ theme }) => css`
     display: flex;
     flex-wrap: wrap;
@@ -186,16 +186,31 @@ export const List = styled.ul`
     }
   `}
 `
-
-/* export const ListItem = styled.li`
+export const PosterContent = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
-    list-style: none;
-    margin-bottom: ${theme.spacings.xxlarge});
+    max-width: 48rem;
+    margin: auto;
+    width: 100%;
+    padding: ${theme.spacings.medium};
 
-    &:last-child {
-      margin-bottom: 0px;
+    & img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: ${theme.border.radius};
     }
   `}
 `
- */
+export const LikeTag = styled.div`
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.xsmall};
+    width: 100%;
+
+    ${media.greaterThan('medium')`
+      margin-top: 0;
+      width: auto;
+    `}
+  `}
+`
+export const LikeButton = styled.button``
