@@ -13,7 +13,12 @@ exports[`<Empty /> should render correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 0 1.6rem;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+  padding: 5.6rem;
 }
 
 .c0 img {
@@ -25,6 +30,17 @@ exports[`<Empty /> should render correctly 1`] = `
 }
 
 .c0 a {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -57,7 +73,7 @@ exports[`<Empty /> should render correctly 1`] = `
   class="c0"
 >
   <a
-    href="/movie/xxx"
+    href="/movie/tt0068646"
   >
     <img
       alt="List of movies is empty"

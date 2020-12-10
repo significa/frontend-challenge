@@ -6,7 +6,9 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 ${theme.spacings.xsmall};
+    justify-content: center;
+    height: 100%;
+    padding: ${theme.spacings.xxlarge};
 
     & img {
       width: 100%;
@@ -21,6 +23,9 @@ export const Wrapper = styled.div`
     }
 
     a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
     }
   `}

@@ -1,21 +1,21 @@
-import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { Search } from '@styled-icons/material-outlined'
 
 import Base from 'templates/Base'
-import MovieCard, { MovieCardProps } from 'components/MovieCard'
+import MovieCard from 'components/MovieCard'
 import TextField from 'components/TextField'
 import { Grid } from 'components/Grid'
+import Empty from 'components/Empty'
 
-import moviesMock from 'components/MovieCard/mock'
-import api from 'services/api'
+import { useSearch } from 'hooks/searchHook'
+import NotFound from 'components/NotFound'
 
 export type HomePageProps = {
-  movies: MovieCardProps[]
+  initialSearch: string
 }
 
-const HomePage = ({ movies }: HomePageProps) => {
-  const [query, setQuery] = useState('')
+const HomePage = ({ initialSearch }: HomePageProps) => {
+  const { movies, error, query, setQuery } = useSearch(initialSearch)
 
   return (
     <Base>
@@ -25,17 +25,24 @@ const HomePage = ({ movies }: HomePageProps) => {
         initialValue=""
         icon={<Search />}
         value={query}
-        onInput={(value: any) => {
+        onInput={(value: string) => {
           setQuery(value)
         }}
       />
-      {!!movies && <div>oi</div>}
 
-      <Grid>
-        {movies.map((movie) => (
-          <MovieCard key={movie.imdbID} {...movie} />
-        ))}
-      </Grid>
+      {!movies && <Empty />}
+
+      {query.length > 3 && movies?.Error && <NotFound />}
+
+      {error && <NotFound />}
+
+      {movies && (
+        <Grid>
+          {movies?.Search?.map((movie) => (
+            <MovieCard key={movie.imdbID} {...movie} />
+          ))}
+        </Grid>
+      )}
     </Base>
   )
 }
@@ -43,14 +50,11 @@ const HomePage = ({ movies }: HomePageProps) => {
 export default HomePage
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
-  query
+  context
 ) => {
-  const { data } = await api.get(`?s=${query}&type=movie&apikey=3f8e8747`)
+  const initialSearch = (context.query.query as string) || ''
 
   return {
-    props: {
-      /*  movies: moviesMock */
-      movies: data.Search
-    }
+    props: { initialSearch }
   }
 }

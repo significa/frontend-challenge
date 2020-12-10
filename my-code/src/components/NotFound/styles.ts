@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 ${theme.spacings.xsmall};
+    padding: ${theme.spacings.xxlarge};
 
     & img {
       width: 100%;

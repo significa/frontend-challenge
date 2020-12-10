@@ -8,7 +8,7 @@ export type TextFieldProps = {
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
   error?: string
-} & InputHTMLAttributes<HTMLInputElement>
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'onInput'>
 
 const TextField = ({
   icon,
