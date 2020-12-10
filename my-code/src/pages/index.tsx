@@ -6,9 +6,9 @@ import MovieCard from 'components/MovieCard'
 import TextField from 'components/TextField'
 import { Grid } from 'components/Grid'
 import Empty from 'components/Empty'
+import NotFound from 'components/NotFound'
 
 import { useSearch } from 'hooks/searchHook'
-import NotFound from 'components/NotFound'
 
 export type HomePageProps = {
   initialSearch: string

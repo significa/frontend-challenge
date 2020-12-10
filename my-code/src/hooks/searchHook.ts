@@ -13,7 +13,9 @@ type SearchProps = {
 
 const fetcher = (_: unknown, query: string) =>
   api
-    .get<SearchProps>(`?s=${query}&type=movie&apikey=3f8e8747`)
+    .get<SearchProps>(
+      `/?s=${query}&type=movie&apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
+    )
     .then((response) => response.data)
 
 export const useSearch = (initialSearch: string) => {

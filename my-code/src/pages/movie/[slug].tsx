@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next'
 
-import Movie, { MovieProps } from 'templates/Movie'
+import api from 'services/api'
 
-import movieMock from 'templates/Movie/mock'
+import Movie, { MovieProps } from 'templates/Movie'
 
 export type MoviePageProps = {
   movie: MovieProps
@@ -12,15 +12,16 @@ export default function Index({ movie }: MoviePageProps) {
   return <Movie {...movie} />
 }
 
-export const getServerSideProps: GetServerSideProps<MoviePageProps> = async () => {
-  /*  const { data } = await api.get(
-    'http://www.omdbapi.com/?s=rambo&type=movie&apikey=3f8e8747'
-   )*/
+export const getServerSideProps: GetServerSideProps<MoviePageProps> = async (
+  context
+) => {
+  const { data } = await api.get(
+    `/?i=${context.params!.slug}&apikey=${process.env.NEXT_PUBLIC_OMDB_API_KEY}`
+  )
 
   return {
     props: {
-      movie: movieMock
-      /*  movies: data.Search */
+      movie: data
     }
   }
 }

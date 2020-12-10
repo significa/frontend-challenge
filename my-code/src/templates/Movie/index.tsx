@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import { ArrowBack as BackIcon } from '@styled-icons/boxicons-regular'
 import { Favorite, FavoriteBorder } from '@styled-icons/material-outlined'
 
@@ -48,113 +49,135 @@ const Movie = ({
   const directorList = Director?.split(', ')
 
   return (
-    <Base>
-      <S.IconWrapper>
-        <Link href="/">
-          <a aria-label="back">
-            <BackIcon />
-          </a>
-        </Link>
-      </S.IconWrapper>
+    <>
+      <Head>
+        <title>
+          {Title || 'Error'} | {`What's in`}
+        </title>
+        <meta name="description" content={Plot || 'Error Page'} />
+        <meta name="robots" content="index,follow" />
+        <meta name="theme-color" content="#000000" />
+        <meta property="og:title" content={`${Title || 'Error'} | What's in`} />
+        <meta property="og:description" content={Plot || 'Error Page'} />
+        <meta property="og:locale" content="en" />
+        <meta property="og:type" content="website" />
+      </Head>
 
-      <S.Wrapper>
-        <S.MovieContent>
-          <S.Details>
-            <S.RunTime>{`${Runtime} · ${Year} · `}</S.RunTime>
-            <S.RatedTag>{Rated}</S.RatedTag>
-          </S.Details>
-          <S.Title>{Title}</S.Title>
-          <S.RatedContent>
-            {Ratings.length &&
-              Ratings.map((rating) => {
-                if (rating.Source === 'Internet Movie Database') {
-                  return (
-                    <S.ImdbTag key={rating?.Source}>
-                      <S.ImdbTagIcon>
-                        <img src="/img/logo-imdb.svg" aria-label="IMDB Logo" />
-                      </S.ImdbTagIcon>
-                      <S.Score>{rating?.Value}</S.Score>
-                    </S.ImdbTag>
-                  )
-                }
+      <Base>
+        <S.IconWrapper>
+          <Link href="/">
+            <a aria-label="back">
+              <BackIcon />
+            </a>
+          </Link>
+        </S.IconWrapper>
 
-                if (rating.Source === 'Rotten Tomatoes') {
-                  return (
-                    <S.RottenTag key={rating?.Source}>
-                      <S.RottenTagIcon>
-                        <img
-                          src="/img/logo-rotten-tomatoes.svg"
-                          aria-label="Rotten Tomatoes Logo"
-                        />
-                      </S.RottenTagIcon>
-                      <S.Score>{rating?.Value}</S.Score>
-                    </S.RottenTag>
-                  )
-                }
-              })}
-            <S.LikeTag onClick={handlerToggle} aria-label="likes">
-              {handlerFavourite ? (
-                <Button icon={<Favorite />} favourite aria-label="Added Button">
-                  Added
-                </Button>
-              ) : (
-                <Button
-                  icon={<FavoriteBorder />}
-                  favourite={false}
-                  aria-label="Add to favourites Button"
-                >
-                  Add to favourites
-                </Button>
-              )}
-            </S.LikeTag>
-          </S.RatedContent>
+        <S.Wrapper>
+          <S.MovieContent>
+            <S.Details>
+              <S.RunTime>{`${Runtime} · ${Year} · `}</S.RunTime>
+              <S.RatedTag>{Rated}</S.RatedTag>
+            </S.Details>
+            <S.Title>{Title}</S.Title>
+            <S.RatedContent>
+              {Ratings.length &&
+                Ratings.map((rating) => {
+                  if (rating.Source === 'Internet Movie Database') {
+                    return (
+                      <S.ImdbTag key={rating?.Source}>
+                        <S.ImdbTagIcon>
+                          <img
+                            src="/img/logo-imdb.svg"
+                            aria-label="IMDB Logo"
+                          />
+                        </S.ImdbTagIcon>
+                        <S.Score>{rating?.Value}</S.Score>
+                      </S.ImdbTag>
+                    )
+                  }
 
-          <S.Storyline>
-            <S.SmallTitle>Plot</S.SmallTitle>
-            <S.StorylineText>{Plot}</S.StorylineText>
-          </S.Storyline>
-
-          <S.MoreAbout>
-            <S.ListContent>
-              <S.SmallTitle>Cast</S.SmallTitle>
-              <S.List>
-                {actorList.map((actor) => {
-                  return <li key={actor}>{actor.trim()}</li>
+                  if (rating.Source === 'Rotten Tomatoes') {
+                    return (
+                      <S.RottenTag key={rating?.Source}>
+                        <S.RottenTagIcon>
+                          <img
+                            src="/img/logo-rotten-tomatoes.svg"
+                            aria-label="Rotten Tomatoes Logo"
+                          />
+                        </S.RottenTagIcon>
+                        <S.Score>{rating?.Value}</S.Score>
+                      </S.RottenTag>
+                    )
+                  }
                 })}
-              </S.List>
-            </S.ListContent>
+              <S.LikeTag onClick={handlerToggle} aria-label="likes">
+                {handlerFavourite ? (
+                  <Button
+                    icon={<Favorite />}
+                    favourite
+                    aria-label="Added Button"
+                  >
+                    Added
+                  </Button>
+                ) : (
+                  <Button
+                    icon={<FavoriteBorder />}
+                    favourite={false}
+                    aria-label="Add to favourites Button"
+                  >
+                    Add to favourites
+                  </Button>
+                )}
+              </S.LikeTag>
+            </S.RatedContent>
 
-            <S.ListContent>
-              <S.SmallTitle>Gender</S.SmallTitle>
-              <S.List>
-                {genreList.map((genre) => {
-                  return <li key={genre}>{genre.trim()}</li>
-                })}
-              </S.List>
-            </S.ListContent>
+            <S.Storyline>
+              <S.SmallTitle>Plot</S.SmallTitle>
+              <S.StorylineText>{Plot}</S.StorylineText>
+            </S.Storyline>
 
-            <S.ListContent>
-              <S.SmallTitle>Director</S.SmallTitle>
-              <S.List>
-                {directorList.map((director) => {
-                  return <li key={director}>{director.trim()}</li>
-                })}
-              </S.List>
-            </S.ListContent>
-          </S.MoreAbout>
-        </S.MovieContent>
-        <S.PosterContent>
-          {Poster === 'N/A' ? (
-            <img
-              src="/img/no-poster.jpg"
-              alt="There is no specific poster for this film."
-            />
-          ) : (
-            <img src={Poster} alt={`${Title} movie poster`} />
-          )}
-        </S.PosterContent>
-      </S.Wrapper>
-    </Base>
+            <S.MoreAbout>
+              <S.ListContent>
+                <S.SmallTitle>Cast</S.SmallTitle>
+                <S.List>
+                  {actorList.map((actor) => {
+                    return <li key={actor}>{actor.trim()}</li>
+                  })}
+                </S.List>
+              </S.ListContent>
+
+              <S.ListContent>
+                <S.SmallTitle>Gender</S.SmallTitle>
+                <S.List>
+                  {genreList.map((genre) => {
+                    return <li key={genre}>{genre.trim()}</li>
+                  })}
+                </S.List>
+              </S.ListContent>
+
+              <S.ListContent>
+                <S.SmallTitle>Director</S.SmallTitle>
+                <S.List>
+                  {directorList.map((director) => {
+                    return <li key={director}>{director.trim()}</li>
+                  })}
+                </S.List>
+              </S.ListContent>
+            </S.MoreAbout>
+          </S.MovieContent>
+          <S.PosterContent>
+            {Poster === 'N/A' ? (
+              <img
+                src="/img/no-poster.jpg"
+                alt="There is no specific poster for this film."
+              />
+            ) : (
+              <img src={Poster} alt={`${Title} movie poster`} />
+            )}
+          </S.PosterContent>
+        </S.Wrapper>
+      </Base>
+    </>
   )
 }
 

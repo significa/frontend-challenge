@@ -35,6 +35,10 @@ export const Description = styled.h3`
     font-size: ${theme.font.sizes.xlarge};
     color: ${theme.colors.lightGrey};
     margin-top: ${theme.spacings.xsmall};
+
+    ${media.lessThan('medium')`
+    font-size: ${theme.font.sizes.large};
+    `}
   `}
 `
 

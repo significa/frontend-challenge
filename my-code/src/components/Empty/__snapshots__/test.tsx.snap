@@ -64,6 +64,12 @@ exports[`<Empty /> should render correctly 1`] = `
 }
 
 @media (max-width:768px) {
+  .c1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width:768px) {
   .c2 {
     font-size: 1.6rem;
   }
@@ -91,4 +97,4 @@ exports[`<Empty /> should render correctly 1`] = `
     </p>
   </a>
 </div>
-`;
+`
