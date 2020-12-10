@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { Search } from '@styled-icons/material-outlined'
 
@@ -6,15 +7,16 @@ import MovieCard, { MovieCardProps } from 'components/MovieCard'
 import TextField from 'components/TextField'
 import { Grid } from 'components/Grid'
 
-import api from 'services/api'
-
 import moviesMock from 'components/MovieCard/mock'
+import api from 'services/api'
 
 export type HomePageProps = {
   movies: MovieCardProps[]
 }
 
 const HomePage = ({ movies }: HomePageProps) => {
+  const [query, setQuery] = useState('')
+
   return (
     <Base>
       <TextField
@@ -22,7 +24,12 @@ const HomePage = ({ movies }: HomePageProps) => {
         placeholder="Search movies..."
         initialValue=""
         icon={<Search />}
+        value={query}
+        onInput={(value: any) => {
+          setQuery(value)
+        }}
       />
+      {!!movies && <div>oi</div>}
 
       <Grid>
         {movies.map((movie) => (
@@ -35,15 +42,15 @@ const HomePage = ({ movies }: HomePageProps) => {
 
 export default HomePage
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  /*  const { data } = await api.get(
-    'http://www.omdbapi.com/?s=rambo&type=movie&apikey=3f8e8747'
-   )*/
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async (
+  query
+) => {
+  const { data } = await api.get(`?s=${query}&type=movie&apikey=3f8e8747`)
 
   return {
     props: {
-      movies: moviesMock
-      /*  movies: data.Search */
+      /*  movies: moviesMock */
+      movies: data.Search
     }
   }
 }

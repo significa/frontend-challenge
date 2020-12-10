@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Empty /> should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0 1.6rem;
+}
+
+.c0 img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.c0 a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c1 {
+  font-size: 2.0rem;
+  color: #7A8C99;
+  margin-top: 1.6rem;
+}
+
+.c2 {
+  font-size: 2.0rem;
+  color: #7A8C99;
+  margin-top: 1.6rem;
+}
+
+@media (min-width:768px) {
+  .c0 img {
+    max-width: 30rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c2 {
+    font-size: 1.6rem;
+  }
+}
+
+<div
+  class="c0"
+>
+  <a
+    href="/movie/xxx"
+  >
+    <img
+      alt="List of movies is empty"
+      src="/img/empty.png"
+    />
+    <h3
+      class="c1"
+    >
+      Don’t know what to search?
+    </h3>
+    <p
+      class="c2"
+    >
+      Here’s an offer you can’t refuse
+    </p>
+  </a>
+</div>
+`;
