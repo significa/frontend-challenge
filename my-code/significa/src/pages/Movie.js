@@ -7,7 +7,11 @@ const Movie = () => {
 
   return (
     <Layout>
-      <h1>Movie {params.movieId} </h1>
+      {params.movieId === "not-found" ? (
+        <h1>not found</h1>
+      ) : (
+        <h1>Movie {params.movieId} </h1>
+      )}
     </Layout>
   );
 };

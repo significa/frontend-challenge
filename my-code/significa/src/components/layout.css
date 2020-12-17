@@ -1,0 +1,45 @@
+/* for every device */
+main {
+  color: #fff;
+}
+
+/* Extra small devices (phones, 600px and down) */
+.layout {
+  margin: 5% 10%;
+}
+.layout__header {
+  text-align: center;
+}
+.layout__main {
+  margin: 6% 0;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .layout__header {
+    text-align: left;
+  }
+  .layout__main {
+    margin: 3% 0;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .layout {
+    margin: 5% auto;
+    max-width: 60%;
+  }
+}

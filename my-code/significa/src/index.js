@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Router } from "@reach/router";
+import { Router, Redirect } from "@reach/router";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 
@@ -12,6 +12,7 @@ ReactDOM.render(
     <Router>
       <Home path="/" />
       <Movie path="/movie/:movieId" />
+      <Redirect from="/movie/" to="/movie/not-found" />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")
