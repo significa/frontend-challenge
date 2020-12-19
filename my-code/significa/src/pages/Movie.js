@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "@reach/router";
+import { useParams, Link } from "@reach/router";
+
 import Layout from "../components/layout";
+import { ButtonFavYes, ButtonFavNo, ButtonArrow } from "../components/Buttons";
+import { LabelLogo, LabelRated } from "../components/Labels";
 
 const Movie = () => {
   /* define movie Id from passed arguments */
@@ -10,6 +13,7 @@ const Movie = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState([]);
+  const [favourite, setFavourite] = useState(false);
 
   /* function that gets movie information from api */
   const getList = async (requestUrl) => {
@@ -26,6 +30,12 @@ const Movie = () => {
   };
 
   /* TODO functions that deal with favourites persistence */
+  const addFavourites = () => {
+    return setFavourite(true);
+  };
+  const removeFavourites = () => {
+    return setFavourite(false);
+  };
 
   /* fetch movie information from the api after component has mounted */
   useEffect(() => {
@@ -85,16 +95,29 @@ const Movie = () => {
     /* render movie information */
     return (
       <Layout>
+        <Link to="/">
+          <ButtonArrow />
+        </Link>
         <div className="movie-info">
           <div className="movie-info__duration-year-rated">
-            {movie.Runtime} &middot; {movie.Year} &middot; <p>{movie.Rated}</p>{" "}
+            {movie.Runtime} &middot; {movie.Year} &middot;{" "}
+            <LabelRated rated={movie.Rated} />
           </div>
           <h1 className="movie-info__title">{movie.Title}</h1>
           <div className="movie-info__labels">
-            {movie.imdbRating ? <p>{movie.imdbRating}</p> : null}
-            {rottenRating ? <p>{rottenRating}</p> : null}
-
-            <button>add fav button</button>
+            {movie.imdbRating ? (
+              <LabelLogo imdb rating={movie.imdbRating} />
+            ) : null}
+            {rottenRating ? <LabelLogo rotten rating={rottenRating} /> : null}
+            {favourite ? (
+              <div onClick={removeFavourites}>
+                <ButtonFavYes />
+              </div>
+            ) : (
+              <div onClick={addFavourites}>
+                <ButtonFavNo />
+              </div>
+            )}
           </div>
           <div className="movie-info__plot">
             <h3>Plot</h3>
