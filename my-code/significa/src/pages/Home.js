@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "@reach/router";
 
 import Layout from "../components/layout";
 import magnifier from "../assets/icons/icon-magnifier-grey.svg";
@@ -10,7 +11,7 @@ const Home = () => {
   /* set variables that use state */
   const [query, setQuery] = useState("");
   const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
 
   /* function that handles change in the search bar */
@@ -19,26 +20,28 @@ const Home = () => {
     return setQuery(e.target.value);
   };
 
-  /* fetch list of movies from the api */
+  /* function that gets list of movies from api */
+  const getList = async (requestUrl) => {
+    try {
+      let response = await fetch(requestUrl);
+      let json = await response.json();
+      setIsLoading(false);
+      setMovies(json.Search);
+      /* console.log(isLoading); */
+    } catch (error) {
+      setIsLoading(false);
+      setError(error);
+      /* console.log("Error!", error); */
+    }
+  };
+
+  /* fetch list of movies from the api when query changes */
   useEffect(() => {
     const requestUrl = encodeURI(
       `http://www.omdbapi.com/?s=${query}&apikey=7255c9dd`
     );
-    const getList = async () => {
-      try {
-        let response = await fetch(requestUrl);
-        let json = await response.json();
-        setIsLoaded(true);
-        setMovies(json.Search);
-        /* console.log(movies); */
-      } catch (error) {
-        setIsLoaded(true);
-        setError(error);
-        /* console.log("Error!", error); */
-      }
-    };
-
-    return getList();
+    setIsLoading(true);
+    getList(requestUrl);
   }, [query]);
 
   /* return different layouts depending on the current results */
@@ -54,6 +57,7 @@ const Home = () => {
             placeholder="Search movies..."
             onChange={handleChange}
             className="search-bar__input"
+            aria-label="search-input"
           />
         </div>
         <section className="error-block">
@@ -61,7 +65,7 @@ const Home = () => {
         </section>
       </Layout>
     );
-  } else if (!isLoaded) {
+  } else if (isLoading) {
     /* render if data is loading */
     return (
       <Layout>
@@ -73,6 +77,7 @@ const Home = () => {
             placeholder="Search movies..."
             onChange={handleChange}
             className="search-bar__input"
+            aria-label="search-input"
           />
         </div>
         <section className="loading-block">
@@ -92,19 +97,22 @@ const Home = () => {
             placeholder="Search movies..."
             onChange={handleChange}
             className="search-bar__input"
+            aria-label="search-input"
           />
         </div>
         <section className="movies-block">
           <ul className="movies-block__list">
             {movies.map((movie) => (
               <li className="movies-block__list__movie" key={movie.imdbID}>
-                <img
-                  id={movie.imdbID}
-                  src={movie.Poster}
-                  title={movie.Title}
-                  year={movie.Year}
-                  alt={movie.Title}
-                />
+                <Link to={`/movie/${movie.imdbID}`}>
+                  <img
+                    id={movie.imdbID}
+                    src={movie.Poster}
+                    title={movie.Title}
+                    year={movie.Year}
+                    alt={movie.Title}
+                  />
+                </Link>
               </li>
             ))}
           </ul>
@@ -123,6 +131,7 @@ const Home = () => {
             placeholder="Search movies..."
             onChange={handleChange}
             className="search-bar__input"
+            aria-label="search-input"
           />
         </div>
         <section className="initial-block">
