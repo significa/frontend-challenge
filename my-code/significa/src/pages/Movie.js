@@ -9,11 +9,10 @@ const Movie = () => {
   /* define movie Id from passed arguments */
   const params = useParams();
 
-  /* set variables that use state */
+  /* set variables that use state in the api call */
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState([]);
-  const [favourite, setFavourite] = useState(false);
 
   /* function that gets movie information from api */
   const getList = async (requestUrl) => {
@@ -29,11 +28,34 @@ const Movie = () => {
     }
   };
 
-  /* TODO functions that deal with favourites persistence */
+  /* making favourites persistent (using localStorage) */
+  let favourites = localStorage.getItem("favourites");
+
+  const [favourite, setFavourite] = useState(() => {
+    if (favourites != null) {
+      favourites = favourites.split(",");
+      return favourites.includes(params.movieId);
+    } else {
+      localStorage.setItem("favourites", []);
+      return false;
+    }
+  });
+
+  /* functions that deal with favourites persistence */
   const addFavourites = () => {
+    let newFav = localStorage.getItem("favourites");
+    newFav = newFav.split(",");
+    newFav.push(params.movieId);
+    newFav = newFav.join(",");
+    localStorage.setItem("favourites", newFav);
     return setFavourite(true);
   };
   const removeFavourites = () => {
+    let remFav = localStorage.getItem("favourites");
+    remFav = remFav.split(",");
+    remFav.splice(remFav.indexOf(params.movieId), 1);
+    remFav = remFav.join(",");
+    localStorage.setItem("favourites", remFav);
     return setFavourite(false);
   };
 
@@ -46,12 +68,14 @@ const Movie = () => {
     getList(requestUrl);
   }, [params.movieId]);
 
-  // render
+  // rendering
   if (params.movieId === "not-found") {
     /* render if movie wasn't found (or redirected from /movie/) */
-    <Layout>
-      <h1>Sorry... Movie not found!</h1>
-    </Layout>;
+    return (
+      <Layout>
+        <h1>Sorry... Movie not found!</h1>
+      </Layout>
+    );
   } else if (error || movie.Response === "False") {
     /* render if there was an error getting the data or if movieId is not correct */
     return (
