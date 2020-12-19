@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "@reach/router";
 
 import Layout from "../components/layout";
+import MovieCard from "../components/MovieCard";
 import magnifier from "../assets/icons/icon-magnifier-grey.svg";
 import illustrationSm from "../assets/illustrations/illustration-empty-state.png";
 import illustrationLg from "../assets/illustrations/illustration-empty-state@2x.png";
@@ -105,12 +106,11 @@ const Home = () => {
             {movies.map((movie) => (
               <li className="movies-block__list__movie" key={movie.imdbID}>
                 <Link to={`/movie/${movie.imdbID}`}>
-                  <img
+                  <MovieCard
                     id={movie.imdbID}
-                    src={movie.Poster}
+                    imgSrc={movie.Poster}
                     title={movie.Title}
                     year={movie.Year}
-                    alt={movie.Title}
                   />
                 </Link>
               </li>

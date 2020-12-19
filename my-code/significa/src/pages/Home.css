@@ -21,6 +21,7 @@
   box-sizing: border-box;
   transition: 0.3s;
   font-size: 16px;
+  background-color: white;
 }
 
 .initial-block,
@@ -55,10 +56,27 @@
   color: #7a8c99;
 }
 
+.movies-block__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  list-style: none inside none;
+  padding: 0;
+}
+
+.movies-block__list__movie {
+  margin: 10px;
+  max-height: 250px;
+  min-height: 250px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .movies-block__list__movie {
+    min-height: 150px;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
