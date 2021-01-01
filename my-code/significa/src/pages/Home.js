@@ -8,9 +8,12 @@ import illustrationSm from "../assets/illustrations/illustration-empty-state.png
 import illustrationLg from "../assets/illustrations/illustration-empty-state@2x.png";
 import "./Home.css";
 
+const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+
 const Home = () => {
   /* set variables that use state */
   const [query, setQuery] = useState("");
+  const [empty, setEmpty] = useState(true);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -18,6 +21,11 @@ const Home = () => {
   /* function that handles change in the search bar */
   const handleChange = (e) => {
     /* console.log(e.target.value); */
+    if (e.target.value === "") {
+      setEmpty(true);
+    } else {
+      setEmpty(false);
+    }
     return setQuery(e.target.value);
   };
 
@@ -41,7 +49,7 @@ const Home = () => {
     };
 
     const requestUrl = encodeURI(
-      `http://www.omdbapi.com/?s=${query}&apikey=7255c9dd`
+      `http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
     );
     setIsLoading(true);
     getList(requestUrl);
@@ -123,7 +131,7 @@ const Home = () => {
         </section>
       </Layout>
     );
-  } else {
+  } else if (empty) {
     /* render initial search bar + illustration if no request has been made */
     return (
       <Layout>
@@ -153,6 +161,26 @@ const Home = () => {
           <h4 className="initial-block__subtitle">
             Here's an offer you can't refuse...
           </h4>
+        </section>
+      </Layout>
+    );
+  } else {
+    /* render if data is loading */
+    return (
+      <Layout>
+        <div className="search-bar">
+          <img src={magnifier} alt="magnifier" className="search-bar__icon" />
+          <input
+            type="text"
+            id="search"
+            placeholder="Search movies..."
+            onChange={handleChange}
+            className="search-bar__input"
+            aria-label="search-input"
+          />
+        </div>
+        <section className="loading-block">
+          <h1>Movie not found...</h1>
         </section>
       </Layout>
     );

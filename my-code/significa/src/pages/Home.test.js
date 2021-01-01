@@ -67,7 +67,7 @@ test("no movies with query title", async () => {
   await waitFor(() => {
     expect(input.value).toBe("the thin red line 111");
     expect(screen.queryByText("the thin red line 111")).not.toBeInTheDocument();
-    expect(screen.getByText(/Don't know what to search/)).toBeInTheDocument();
+    expect(screen.getByText(/Movie not found/i)).toBeInTheDocument();
   });
 });
 

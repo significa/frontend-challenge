@@ -6,6 +6,8 @@ import { ButtonFavYes, ButtonFavNo, ButtonArrow } from "../components/Buttons";
 import { LabelLogo, LabelRated } from "../components/Labels";
 import "./Movie.css";
 
+const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+
 const Movie = () => {
   /* define movie Id from passed arguments */
   const params = useParams();
@@ -66,7 +68,7 @@ const Movie = () => {
     };
 
     const requestUrl = encodeURI(
-      `http://www.omdbapi.com/?i=${params.movieId}&apikey=7255c9dd`
+      `http://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
     );
     setIsLoading(true);
     getList(requestUrl);
