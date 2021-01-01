@@ -1,13 +1,147 @@
-/* for every device */
+/* mobile first */
+.movie-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "title"
+    "poster"
+    "labels"
+    "dyr"
+    "plot"
+    "cast"
+    "genre"
+    "director";
+  gap: 1rem 1rem;
+}
+
+.movie-info__duration-year-rated {
+  grid-area: dyr;
+
+  margin-top: 30px;
+}
+
+.movie-info__title {
+  grid-area: title;
+
+  margin: 0 0 10px 0;
+  font-size: 8vw;
+  line-height: 1;
+  text-align: center;
+}
+
+.movie-info__labels {
+  grid-area: labels;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: fit-content;
+}
+
+.movie-info__plot {
+  grid-area: plot;
+}
+
+.movie-info__cast {
+  grid-area: cast;
+}
+
+.movie-info__genre {
+  grid-area: genre;
+}
+
+.movie-info__director {
+  grid-area: director;
+}
+
+.movie-info__poster {
+  grid-area: poster;
+}
+
+.grey {
+  color: #7a8c99;
+}
+
+p {
+  line-height: 1.5;
+  margin: 5px 0;
+}
+
+h3 {
+  margin: 10px 0;
+}
+
+.movie-info__poster img {
+  width: 65%;
+  border-radius: 10px;
+  display: block;
+  margin: 5px auto;
+  object-fit: cover;
+}
+
+.movie-info__labels__btn {
+  height: 30px;
+}
 
 /* Extra small devices (phones, 600px and down) */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .movie-info {
+    gap: 1rem 2rem;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+      "title title"
+      "poster dyr"
+      "poster director"
+      "poster cast"
+      "labels labels"
+      "plot genre";
+  }
+  .movie-info__duration-year-rated {
+    margin-top: 0;
+  }
+  .movie-info__title {
+    text-align: left;
+  }
+  .movie-info__labels {
+    justify-content: left;
+  }
+  .movie-info__poster img {
+    width: 100%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
+  .movie-info {
+    gap: 1rem 2rem;
+    grid-template-columns: 1fr 1fr 1fr 3fr;
+    grid-template-areas:
+      "dyr dyr dyr poster"
+      "title title title poster"
+      "labels labels labels poster"
+      "plot plot plot poster"
+      "cast genre director poster";
+  }
+  .movie-info__title {
+    font-size: 5vw;
+  }
+  .movie-info__labels {
+    flex-flow: row nowrap;
+    height: 42px;
+  }
+  .movie-info__labels__btn {
+    margin-top: 0;
+    height: 42px;
+  }
+  .movie-info__poster img {
+    width: 80%;
+    margin-left: 20%;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -16,4 +150,7 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
+  .movie-info__title {
+    font-size: 4vw;
+  }
 }

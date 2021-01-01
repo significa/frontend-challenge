@@ -4,6 +4,7 @@ import { useParams, Link } from "@reach/router";
 import Layout from "../components/layout";
 import { ButtonFavYes, ButtonFavNo, ButtonArrow } from "../components/Buttons";
 import { LabelLogo, LabelRated } from "../components/Labels";
+import "./Movie.css";
 
 const Movie = () => {
   /* define movie Id from passed arguments */
@@ -14,58 +15,63 @@ const Movie = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [movie, setMovie] = useState([]);
 
-  /* function that gets movie information from api */
-  const getList = async (requestUrl) => {
-    try {
-      let response = await fetch(requestUrl);
-      let json = await response.json();
-      console.log(json);
-      setIsLoading(false);
-      setMovie(json);
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-    }
-  };
-
   /* making favourites persistent (using localStorage) */
-  let favourites = localStorage.getItem("favourites");
+  let favourites = localStorage.getItem("whatsInFavourites");
 
   const [favourite, setFavourite] = useState(() => {
     if (favourites != null) {
       favourites = favourites.split(",");
       return favourites.includes(params.movieId);
     } else {
-      localStorage.setItem("favourites", []);
+      localStorage.setItem("whatsInFavourites", []);
       return false;
     }
   });
 
   /* functions that deal with favourites persistence */
   const addFavourites = () => {
-    let newFav = localStorage.getItem("favourites");
+    let newFav = localStorage.getItem("whatsInFavourites");
     newFav = newFav.split(",");
     newFav.push(params.movieId);
     newFav = newFav.join(",");
-    localStorage.setItem("favourites", newFav);
+    localStorage.setItem("whatsInFavourites", newFav);
     return setFavourite(true);
   };
   const removeFavourites = () => {
-    let remFav = localStorage.getItem("favourites");
+    let remFav = localStorage.getItem("whatsInFavourites");
     remFav = remFav.split(",");
     remFav.splice(remFav.indexOf(params.movieId), 1);
     remFav = remFav.join(",");
-    localStorage.setItem("favourites", remFav);
+    localStorage.setItem("whatsInFavourites", remFav);
     return setFavourite(false);
   };
 
   /* fetch movie information from the api after component has mounted */
   useEffect(() => {
+    let mounted = true;
+    /* function that gets movie information from api */
+    const getList = async (requestUrl) => {
+      try {
+        let response = await fetch(requestUrl);
+        let json = await response.json();
+        /* console.log(json); */
+        if (mounted) {
+          setIsLoading(false);
+          setMovie(json);
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setError(error);
+      }
+    };
+
     const requestUrl = encodeURI(
       `http://www.omdbapi.com/?i=${params.movieId}&apikey=7255c9dd`
     );
     setIsLoading(true);
     getList(requestUrl);
+
+    return () => (mounted = false);
   }, [params.movieId]);
 
   // rendering
@@ -73,14 +79,20 @@ const Movie = () => {
     /* render if movie wasn't found (or redirected from /movie/) */
     return (
       <Layout>
-        <h1>Sorry... Movie not found!</h1>
+        <h1>
+          Sorry... Movie not found! {` `}
+          <Link to="/">Try again</Link>
+        </h1>
       </Layout>
     );
   } else if (error || movie.Response === "False") {
     /* render if there was an error getting the data or if movieId is not correct */
     return (
       <Layout>
-        <div>Error: {error ? error.message : movie.Error}</div>
+        <div>
+          Error: {error ? error.message : movie.Error}{" "}
+          <Link to="/">Try again</Link>
+        </div>
       </Layout>
     );
   } else if (isLoading) {
@@ -123,7 +135,7 @@ const Movie = () => {
           <ButtonArrow />
         </Link>
         <div className="movie-info">
-          <div className="movie-info__duration-year-rated">
+          <div className="movie-info__duration-year-rated grey">
             {movie.Runtime} &middot; {movie.Year} &middot;{" "}
             <LabelRated rated={movie.Rated} />
           </div>
@@ -134,21 +146,24 @@ const Movie = () => {
             ) : null}
             {rottenRating ? <LabelLogo rotten rating={rottenRating} /> : null}
             {favourite ? (
-              <div onClick={removeFavourites}>
+              <div
+                className="movie-info__labels__btn"
+                onClick={removeFavourites}
+              >
                 <ButtonFavYes />
               </div>
             ) : (
-              <div onClick={addFavourites}>
+              <div className="movie-info__labels__btn" onClick={addFavourites}>
                 <ButtonFavNo />
               </div>
             )}
           </div>
           <div className="movie-info__plot">
-            <h3>Plot</h3>
+            <h3 className="grey">Plot</h3>
             <p>{movie.Plot}</p>
           </div>
           <div className="movie-info__cast">
-            <h3>Cast</h3>
+            <h3 className="grey">Cast</h3>
             {Array.isArray(actors) ? (
               actors.map((actor) => <p key={actor}>{actor}</p>)
             ) : (
@@ -156,7 +171,7 @@ const Movie = () => {
             )}
           </div>
           <div className="movie-info__genre">
-            <h3>Genre</h3>
+            <h3 className="grey">Genre</h3>
             {Array.isArray(genres) ? (
               genres.map((genre) => <p key={genre}>{genre}</p>)
             ) : (
@@ -164,7 +179,7 @@ const Movie = () => {
             )}
           </div>
           <div className="movie-info__director">
-            <h3>Director</h3>
+            <h3 className="grey">Director</h3>
             {Array.isArray(directors) ? (
               directors.map((director) => <p key={director}>{director}</p>)
             ) : (
@@ -172,7 +187,9 @@ const Movie = () => {
             )}
           </div>
           <div className="movie-info__poster">
-            {movie.Poster ? <img src={movie.Poster} alt={movie.Title} /> : null}
+            {movie.Poster !== "N/A" ? (
+              <img src={movie.Poster} alt={movie.Title} />
+            ) : null}
           </div>
         </div>
       </Layout>

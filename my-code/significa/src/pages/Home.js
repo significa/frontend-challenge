@@ -21,28 +21,32 @@ const Home = () => {
     return setQuery(e.target.value);
   };
 
-  /* function that gets list of movies from api */
-  const getList = async (requestUrl) => {
-    try {
-      let response = await fetch(requestUrl);
-      let json = await response.json();
-      setIsLoading(false);
-      setMovies(json.Search);
-      /* console.log(isLoading); */
-    } catch (error) {
-      setIsLoading(false);
-      setError(error);
-      /* console.log("Error!", error); */
-    }
-  };
-
   /* fetch list of movies from the api when query changes */
   useEffect(() => {
+    let mounted = true;
+
+    /* function that gets list of movies from api */
+    const getList = async (requestUrl) => {
+      try {
+        let response = await fetch(requestUrl);
+        let json = await response.json();
+        if (mounted) {
+          setIsLoading(false);
+          setMovies(json.Search);
+        }
+      } catch (error) {
+        setIsLoading(false);
+        setError(error);
+      }
+    };
+
     const requestUrl = encodeURI(
       `http://www.omdbapi.com/?s=${query}&apikey=7255c9dd`
     );
     setIsLoading(true);
     getList(requestUrl);
+
+    return () => (mounted = false);
   }, [query]);
 
   /* return different layouts depending on the current results */

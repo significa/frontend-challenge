@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 240" version="1.1" id="placeholder"
+  preserveAspectRatio="xMidYMid slice">
+  <g id="layer1">
+    <path id="rect885" d="M.3269.3269H179.673V239.673H.327z" opacity=".997" fill="#353f4c" stroke="none"
+      stroke-width=".6538" stroke-linecap="round" stroke-linejoin="round" fill-opacity="1" />
+    <g id="g896" transform="matrix(2.11708 0 0 2.11708 -16.5064 -173.9157)" fill-rule="evenodd">
+      <circle id="Oval-2" stroke="#fff" stroke-width="3" cx="50.308" cy="124.6599" r="14.5" fill="none" />
+      <path
+        d="M48.8617 119.6929l6.79 4.5142c.4599.3058.5848.9265.279 1.3864a1 1 0 01-.2768.2776l-6.79 4.5408c-.459.307-1.0801.1838-1.3871-.2753a1 1 0 01-.1688-.556v-9.055a1.0001 1.0001 0 011.5536-.8328z"
+        id="Path" fill="#ff9f1c" stroke="none" stroke-width="1" />
+    </g>
+  </g>
+</svg>

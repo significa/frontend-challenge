@@ -21,6 +21,9 @@ main {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .layout {
+    max-width: 1440px;
+  }
   .layout__main {
     height: 50vh;
   }
@@ -29,25 +32,35 @@ main {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .layout {
-    max-width: 70%;
-    margin: 5% auto;
+    max-width: 768px;
+    margin: 3% auto;
+    padding: 0 6vw;
   }
   .layout__header {
     text-align: left;
   }
   .layout__main {
-    margin: 3% 0;
+    margin: 3% 0 0 0;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+  .layout {
+    max-width: 850px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .layout {
-    margin: 5% auto;
-    max-width: 60%;
+    max-width: 992px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1400px and up) */
+@media only screen and (min-width: 1400px) {
+  .layout {
+    max-width: 1300px;
   }
 }

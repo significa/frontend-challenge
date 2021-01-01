@@ -12,7 +12,7 @@ ReactDOM.render(
     <Router>
       <Home path="/" />
       <Movie path="/movie/:movieId" />
-      <Redirect from="/movie/" to="/movie/not-found" />
+      <Redirect from="/movie/" to="/movie/not-found" noThrow />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

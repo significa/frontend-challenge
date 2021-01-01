@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import styled from "@emotion/styled";
 
 import heartWhite from "../assets/icons/icon-heart-white.svg";
@@ -12,20 +13,29 @@ const Button = styled.button`
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  height: inherit;
   border-radius: 4px;
   font-size: 16px;
   font-weight: bold;
-  height: fit-content;
-  width: fit-content;
-  margin: 12px 16px 12px 0;
+  margin: 5px 16px 0 0;
+  padding: 0;
+  cursor: pointer;
+
+  @media only screen and (min-width: 768px) {
+    width: fit-content;
+  }
 `;
 const HeartIcon = styled.img`
-  max-height: 18px;
+  object-fit: fill;
   padding: 12px;
+  height: 16px;
+  box-sizing: revert;
 `;
 const Text = styled.div`
   font-size: 16px;
   padding: 12px 16px 12px 0;
+  white-space: nowrap;
 `;
 
 /* Button for adding favourites */
@@ -33,17 +43,17 @@ const BtnFavNo = styled(Button)`
   border: 1px #353f4c solid;
   color: #7a8c99;
   background-color: #0a1014;
-  height: fit-content;
-  width: fit-content;
   :hover {
     border: 1px #ff4040 solid;
     color: #fff;
-    transition: all 1s;
+    transition: border 1s, color 1s;
   }
 `;
 
 const ButtonFavNo = () => {
   const [heart, setHeart] = useState(heartGrey);
+  const isSmall = useMediaQuery({ minWidth: 500, maxWidth: 599 });
+  const isMediumLarge = useMediaQuery({ minWidth: 600 });
 
   return (
     <BtnFavNo
@@ -51,8 +61,17 @@ const ButtonFavNo = () => {
       onMouseEnter={() => setHeart(heartWhite)}
       onMouseLeave={() => setHeart(heartGrey)}
     >
-      <HeartIcon src={heart} alt="heart icon" className="btn__icon" />
-      <Text>Add to favourites</Text>
+      <HeartIcon
+        src={heart}
+        alt="heart icon"
+        className="btn__icon"
+        data-testid="favNo"
+      />
+      {isSmall ? (
+        <Text>Like</Text>
+      ) : isMediumLarge ? (
+        <Text>Add to favourites</Text>
+      ) : null}
     </BtnFavNo>
   );
 };
@@ -65,10 +84,17 @@ const BtnFav = styled(Button)`
 `;
 
 const ButtonFavYes = () => {
+  const isMediumLarge = useMediaQuery({ minWidth: 500 });
+
   return (
     <BtnFav className="btn">
-      <HeartIcon src={heartFull} alt="heart icon" className="btn__icon" />
-      <Text>Added</Text>
+      <HeartIcon
+        src={heartFull}
+        alt="heart icon"
+        className="btn__icon"
+        data-testid="favYes"
+      />
+      {isMediumLarge ? <Text>Added</Text> : null}
     </BtnFav>
   );
 };
@@ -80,8 +106,7 @@ const Arrow = styled.div`
   padding: 5px 10px 5px 0;
 `;
 const ArrowIcon = styled.img`
-  max-height: 18px;
-  padding: 12px;
+  padding: 10px 0 20px 0;
 `;
 
 const ButtonArrow = () => {
