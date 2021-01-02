@@ -68,7 +68,7 @@ const Movie = () => {
     };
 
     const requestUrl = encodeURI(
-      `http://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
+      `https://www.omdbapi.com/?i=${params.movieId}&apikey=${API_KEY}`
     );
     setIsLoading(true);
     getList(requestUrl);

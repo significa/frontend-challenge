@@ -49,7 +49,7 @@ const Home = () => {
     };
 
     const requestUrl = encodeURI(
-      `http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
+      `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
     );
     setIsLoading(true);
     getList(requestUrl);
