@@ -4,6 +4,7 @@ import { useParams, Link } from "@reach/router";
 import Layout from "../components/layout";
 import { ButtonFavYes, ButtonFavNo, ButtonArrow } from "../components/Buttons";
 import { LabelLogo, LabelRated } from "../components/Labels";
+import logo from "../assets/logos/logo-icon.svg";
 import "./Movie.css";
 
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
@@ -78,22 +79,30 @@ const Movie = () => {
 
   // rendering
   if (params.movieId === "not-found") {
-    /* render if movie wasn't found (or redirected from /movie/) */
+    /* render if movie was redirected from /movie/ */
     return (
       <Layout>
-        <h1>
-          Sorry... Movie not found! {` `}
-          <Link to="/">Try again</Link>
-        </h1>
+        <div className="movie-not-found message">
+          <h1 className="movie-not-found__text">
+            Sorry... there isn't a movie to be found!
+            </h1>
+            <Link to="/" className="message__link">
+              <img src={logo} alt="what's in logo" className="message__link__img"/>
+              {` `}Do you wanna try again?
+            </Link>
+        </div>
       </Layout>
     );
   } else if (error || movie.Response === "False") {
     /* render if there was an error getting the data or if movieId is not correct */
     return (
       <Layout>
-        <div>
-          Error: {error ? error.message : movie.Error}{" "}
-          <Link to="/">Try again</Link>
+        <div className="error message">
+          Sorry... {error ? error.message : movie.Error}
+          <Link to="/" className="message__link">
+              <img src={logo} alt="what's in logo" className="message__link__img"/>
+              {` `}Try again
+            </Link>
         </div>
       </Layout>
     );
@@ -101,7 +110,7 @@ const Movie = () => {
     /* render if data is loading */
     return (
       <Layout>
-        <div>Loading...</div>
+        <div className="loading message">Loading...</div>
       </Layout>
     );
   } else {

@@ -1,4 +1,37 @@
 /* mobile first */
+.message {
+  min-height: 65vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.message__link {
+  display: flex;
+  text-decoration: none;
+  color: #FF9F1C;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.message__link:hover {
+  color: #FF4040;
+  transition: color 1s;
+}
+
+
+.message__link__img {
+  max-height: 2rem;
+  margin: 10px;
+}
+
+.movie-not-found__text {
+  font-size: 2rem;
+}
+
 .movie-info {
   display: grid;
   grid-template-columns: 1fr;

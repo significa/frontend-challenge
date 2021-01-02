@@ -40,7 +40,7 @@
 }
 
 .initial-block__image {
-  max-width: 50%;
+  max-width: 85%;
 }
 
 .initial-block__title {
@@ -80,6 +80,9 @@
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .initial-block__image {
+    max-width: 65%;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -94,6 +97,9 @@
 @media only screen and (min-width: 992px) {
   .movies-block__list {
     grid-template-columns: repeat(4, 1fr);
+  }
+  .initial-block__image {
+    max-width: 50%;
   }
 }
 
