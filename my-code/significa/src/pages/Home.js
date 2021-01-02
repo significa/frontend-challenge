@@ -21,12 +21,12 @@ const Home = () => {
   /* function that handles change in the search bar */
   const handleChange = (e) => {
     /* console.log(e.target.value); */
-    if (e.target.value === "") {
+    if (e.target.value.trim() === "") {
       setEmpty(true);
     } else {
       setEmpty(false);
     }
-    return setQuery(e.target.value);
+    return setQuery(e.target.value.trim());
   };
 
   /* fetch list of movies from the api when query changes */
