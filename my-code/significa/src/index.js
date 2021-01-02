@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
+import NotFound from "./pages/NotFound";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Home path="/" />
       <Movie path="/movie/:movieId" />
       <Redirect from="/movie/" to="/movie/not-found" noThrow />
+      <NotFound default />
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

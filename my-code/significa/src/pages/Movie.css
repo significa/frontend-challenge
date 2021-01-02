@@ -5,7 +5,8 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .message__link {
@@ -22,14 +23,15 @@
   transition: color 1s;
 }
 
-
 .message__link__img {
   max-height: 2rem;
   margin: 10px;
 }
 
 .movie-not-found__text {
-  font-size: 2rem;
+  max-width: 500px;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .movie-info {

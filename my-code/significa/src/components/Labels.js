@@ -32,7 +32,7 @@ const Rating = styled.div`
   border-bottom-right-radius: 4px;
   border-top-right-radius: 4px;
   border-left: none;
-  line-height: 1;
+  line-height: 0.8;
 
   @media only screen and (min-width: 768px) {
     line-height: 1.5;
