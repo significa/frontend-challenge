@@ -10,7 +10,18 @@ export const Overlay = styled.div`
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s;
-  padding: 8px;
+  padding: 10px;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    border: 0;
+    background: transparent;
+    color: ${theme("fontColor")};
+  }
   .movie-info {
     margin-top: auto;
     display: flex;
@@ -38,7 +49,7 @@ export const Container = styled.div<IContainerProps>`
   &:hover {
     ${Overlay} {
       visibility: visible;
-      opacity: 0.85;
+      opacity: 0.95;
     }
   }
 `;
