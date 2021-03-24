@@ -4,6 +4,9 @@ import Searchbar from "../../components/Searchbar";
 import MovieList from "../../components/MovieList";
 import api from "../../services/api";
 import isCharacterKeyPress from "../../utils/isCharacterKeyPress";
+import IdleSearch from "../../components/IdleSearch";
+import LoadingSearch from "../../components/LoadingSearch";
+import SearchError from "../../components/SearchError";
 
 enum SearchStates {
   Idle,
@@ -30,6 +33,11 @@ const Home: React.FC = () => {
       try {
         const target = e.target as HTMLInputElement;
         setSearch(target.value);
+        if (!target.value) {
+          setSearchState(SearchStates.Idle);
+          return;
+        }
+
         const { data } = await api.get(`?apikey=4788f920&s=${target.value}`);
         if (data.Response === "False") {
           setSearchState(SearchStates.Error);
@@ -55,10 +63,14 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Searchbar onChange={handleSearch} onKeyDown={handleKeyUp} />
-      {searchState === SearchStates.Idle && <h1>Idling...</h1>}
-      {searchState === SearchStates.Loading && <h1>Searching...</h1>}
-      {searchState === SearchStates.Error && <h1>Error...</h1>}
+      <Searchbar
+        onChange={handleSearch}
+        onKeyDown={handleKeyUp}
+        placeholder="Search movies..."
+      />
+      {searchState === SearchStates.Idle && <IdleSearch />}
+      {searchState === SearchStates.Loading && <LoadingSearch />}
+      {searchState === SearchStates.Error && <SearchError />}
       {searchState === SearchStates.Loaded && <MovieList items={searchData} />}
     </React.Fragment>
   );

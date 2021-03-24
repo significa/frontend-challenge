@@ -14,7 +14,7 @@ export const Container = styled.header`
     justify-content: center;
     width: fit-content;
     height: fit-content;
-    border: 4px solid ${theme("fontColor")};
+    border: 3.5px solid ${theme("fontColor")};
     width: 35px;
     height: 35px;
     border-radius: 50%;
