@@ -5,16 +5,19 @@ import { BrowserRouter } from "react-router-dom";
 import dark from "./themes/dark";
 import Routes from "./routes";
 import Header from "./components/Header";
+import LimitWidth from "./components/LimitWidth";
 
 const App = () => {
   return (
     <>
       <ThemeProvider theme={dark}>
         <GlobalStyles />
-        <Header />
-        <BrowserRouter>
-          <Routes />
-        </BrowserRouter>
+        <LimitWidth>
+          <Header />
+          <BrowserRouter>
+            <Routes />
+          </BrowserRouter>
+        </LimitWidth>
       </ThemeProvider>
     </>
   );

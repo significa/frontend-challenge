@@ -13,6 +13,13 @@ export default createGlobalStyle`
     color: #FFF;
     -webkit-font-smoothing: antialiased;
   }
+
+  #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   body, input, button {
     font-family: 'Roboto', serif;
     font-size: 16px;
