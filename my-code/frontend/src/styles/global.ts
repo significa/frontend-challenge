@@ -25,6 +25,10 @@ export default createGlobalStyle`
     font-size: 16px;
   }
 
+  strong {
+    font-weight: 500;
+  }
+
   button {
     cursor: pointer;
   }

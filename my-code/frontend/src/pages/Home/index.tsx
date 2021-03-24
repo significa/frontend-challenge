@@ -1,6 +1,7 @@
 import React from "react";
 import debounce from "lodash/debounce";
 import Searchbar from "../../components/Searchbar";
+import MovieList from "../../components/MovieList";
 import api from "../../services/api";
 import isCharacterKeyPress from "../../utils/isCharacterKeyPress";
 
@@ -11,7 +12,7 @@ enum SearchStates {
   Error,
 }
 
-interface ISearchResult {
+interface IMovieItem {
   Poster: string;
   Title: string;
   Type: string;
@@ -22,7 +23,7 @@ interface ISearchResult {
 const Home: React.FC = () => {
   const [searchState, setSearchState] = React.useState(SearchStates.Idle);
   const [search, setSearch] = React.useState("");
-  const [searchData, setSearchData] = React.useState<ISearchResult[]>([]);
+  const [searchData, setSearchData] = React.useState<IMovieItem[]>([]);
 
   const handleSearch = React.useCallback(
     debounce(async (e: React.FormEvent<HTMLInputElement>): Promise<void> => {
@@ -38,7 +39,6 @@ const Home: React.FC = () => {
         setSearchState(SearchStates.Loaded);
       } catch {
         setSearchState(SearchStates.Error);
-      } finally {
       }
     }, 1000),
     [search]
@@ -59,9 +59,7 @@ const Home: React.FC = () => {
       {searchState === SearchStates.Idle && <h1>Idling...</h1>}
       {searchState === SearchStates.Loading && <h1>Searching...</h1>}
       {searchState === SearchStates.Error && <h1>Error...</h1>}
-      {searchState === SearchStates.Loaded && (
-        <h1>{JSON.stringify(searchData)}</h1>
-      )}
+      {searchState === SearchStates.Loaded && <MovieList items={searchData} />}
     </React.Fragment>
   );
 };
