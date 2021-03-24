@@ -26,6 +26,7 @@ export const Overlay = styled.div`
     margin-top: auto;
     display: flex;
     flex-direction: column;
+    color: ${theme("fontColor")};
     span.title {
       font-size: 20px;
     }
@@ -37,6 +38,7 @@ interface IContainerProps {
 }
 
 export const Container = styled.div<IContainerProps>`
+  cursor: pointer;
   position: relative;
   margin-right: auto;
   background-image: url(${prop("background")});
