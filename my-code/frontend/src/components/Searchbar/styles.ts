@@ -9,6 +9,7 @@ export const Container = styled.div`
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 20px;
+
   svg {
     font-size: 18px;
     color: ${theme("fontColorVariant")};
@@ -20,5 +21,9 @@ export const Container = styled.div`
     height: 45px;
     border: 0;
     flex: 1;
+
+    &::placeholder {
+      color: ${theme("fontColorVariant")};
+    }
   }
 `;
