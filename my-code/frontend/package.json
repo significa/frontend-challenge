@@ -6,6 +6,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.9",
+    "react-icons": "^4.2.0",
     "snowpack": "^3.0.1"
   },
   "dependencies": {
