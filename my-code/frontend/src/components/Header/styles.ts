@@ -5,7 +5,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 20px 0;
+  padding: 25px 0;
   background: ${theme("background")};
 
   .circle-shape {

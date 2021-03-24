@@ -6,12 +6,13 @@ export const Container = styled.div`
   align-items: center;
   width: 100%;
   background: ${theme("fontColor")};
-  border-radius: 8px;
+  border-radius: 5px;
   overflow: hidden;
+  margin-bottom: 20px;
   svg {
     font-size: 18px;
     color: ${theme("fontColorVariant")};
-    margin: 0 5px;
+    margin-left: 13px;
   }
   input {
     font-size: 18px;
