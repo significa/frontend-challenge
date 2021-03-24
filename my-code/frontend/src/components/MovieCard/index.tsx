@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Overlay } from "./styles";
-
+import { useHistory } from "react-router";
 interface IProps {
   Poster: string;
   Title: string;
@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const MovieCard: React.FC<IProps> = ({ Poster, Title, Year, imdbID }) => {
+  const history = useHistory();
   // Query localstorage before defining `liked` initial state
   const [liked, setLiked] = React.useState<boolean>(() => {
     const likedMovies = localStorage.getItem("@App/likedMovies");
@@ -47,12 +48,19 @@ const MovieCard: React.FC<IProps> = ({ Poster, Title, Year, imdbID }) => {
     localStorage.setItem("@App/likedMovies", JSON.stringify(newLikedMovies));
   }, [liked]);
 
-  const handleLike = () => {
+  const handleLike = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // We need to stop the event propagation from bubbling up here
+    // because we don't want the like button to trigger the route change.
+    e.stopPropagation();
     setLiked(!liked);
   };
 
+  const handleRoute = () => {
+    history.push(`/m/${imdbID}`);
+  };
+
   return (
-    <Container background={Poster}>
+    <Container onClick={handleRoute} background={Poster}>
       <Overlay>
         <button className="like-button" onClick={handleLike}>
           <img
