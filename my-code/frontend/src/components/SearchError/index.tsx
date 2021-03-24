@@ -2,7 +2,7 @@ import React from "react";
 import Lottie from "react-lottie";
 
 import { Container } from "./styles";
-import animationData from "../../assets/error-cone.json";
+import animationData from "../../lottie/error-cone.json";
 
 const defaultOptions = {
   loop: false,

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Container } from "./styles";
-import animationData from "../../assets/loading-animation.json";
+import animationData from "../../lottie/loading-animation.json";
 import Lottie from "react-lottie";
 
 const defaultOptions = {
