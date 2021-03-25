@@ -3,7 +3,13 @@ import { useParams } from "react-router";
 import { IMovieDetails } from "./types";
 import api from "../../services/api";
 import BackButton from "../../components/BackButton";
-import { Container, MovieInfoContainer, Poster } from "./styles";
+import {
+  Container,
+  MovieInfoContainer,
+  Poster,
+  PlotContainer,
+  CastGenreDirector,
+} from "./styles";
 import Rating from "../../components/Rating";
 import FavouriteButton from "../../components/FavouriteButton";
 interface IParams {
@@ -42,7 +48,7 @@ const Movie: React.FC = () => {
       <BackButton />
       <Container>
         <MovieInfoContainer>
-          <ul>
+          <ul className="runtime-rated-title">
             <li>{details?.Runtime}</li>
             <li>{details?.Year}</li>
             <li className="rated">
@@ -56,8 +62,33 @@ const Movie: React.FC = () => {
             ))}
             <FavouriteButton imdbID={details?.imdbID} />
           </div>
+
+          <PlotContainer>
+            <strong>Plot</strong>
+            <p>{details?.Plot}</p>
+          </PlotContainer>
+          <CastGenreDirector>
+            <li>
+              <strong>Cast</strong>
+              {details?.Actors.split(",").map((a) => (
+                <span key={a}>{a}</span>
+              ))}
+            </li>
+            <li>
+              <strong>Genre</strong>
+              {details?.Genre.split(",").map((g) => (
+                <span key={g}>{g}</span>
+              ))}
+            </li>
+            <li>
+              <strong>Director</strong>
+              {details?.Director.split(",").map((d) => (
+                <span key={d}>{d}</span>
+              ))}
+            </li>
+          </CastGenreDirector>
         </MovieInfoContainer>
-        <Poster url={details?.Poster} />
+        <Poster url={details?.Poster === "N/A" ? undefined : details?.Poster} />
       </Container>
     </React.Fragment>
   );

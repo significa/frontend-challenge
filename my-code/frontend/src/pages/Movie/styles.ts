@@ -4,12 +4,12 @@ import { prop, theme } from "styled-tools";
 export const Container = styled.div`
   display: flex;
   flex: 1;
-  height: 100%;
+  height: 100vh;
 `;
 
 export const MovieInfoContainer = styled.div`
   flex: 1.35;
-  ul {
+  ul.runtime-rated-title {
     list-style: none;
     display: flex;
     align-items: center;
@@ -59,9 +59,52 @@ interface IPosterProps {
   url: string;
 }
 export const Poster = styled.div<IPosterProps>`
-  flex: 1;
+  width: 40%;
+  max-height: 85%;
   background-color: cyan;
   background-size: cover;
-  background-image: url(${prop("url")});
+  background-position: center;
+  background-image: url(${prop(
+    "url",
+    "https://place-hold.it/250x400/FF9F1C&text=N/A"
+  )});
   border-radius: 8px;
+  max-height: 80;
+`;
+
+export const PlotContainer = styled.div`
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  max-width: 65%;
+  strong {
+    color: ${theme("fontColorVariant")};
+    margin-bottom: 10px;
+  }
+  p {
+    line-height: 1.6;
+  }
+`;
+
+export const CastGenreDirector = styled.ul`
+  margin-top: 40px;
+  display: flex;
+  list-style: none;
+  width: 65%;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    strong {
+      color: ${theme("fontColorVariant")};
+      margin-bottom: 15px;
+    }
+    span {
+      line-height: 1.6;
+      color: ${theme("fontColor")};
+    }
+  }
+  li + li {
+    margin-left: auto;
+  }
 `;

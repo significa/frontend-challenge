@@ -19,7 +19,10 @@ const MovieCard: React.FC<IProps> = ({ Poster, Title, Year, imdbID }) => {
   };
 
   return (
-    <Container onClick={handleRoute} background={Poster}>
+    <Container
+      onClick={handleRoute}
+      background={Poster === "N/A" ? undefined : Poster}
+    >
       <Overlay>
         <button className="like-button" onClick={handleLike}>
           <img

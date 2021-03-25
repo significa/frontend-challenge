@@ -41,7 +41,10 @@ export const Container = styled.div<IContainerProps>`
   cursor: pointer;
   position: relative;
   margin-right: auto;
-  background-image: url(${prop("background")});
+  background-image: url(${prop(
+    "background",
+    "https://place-hold.it/250x400/FF9F1C&text=N/A"
+  )});
   background-size: cover;
   background-position: center;
   width: 100%;
