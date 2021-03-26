@@ -77,7 +77,7 @@ $ npm start
 The following tools were used to build this project:
 
 - [ReactJS](https://reactjs.org/)
-- [ExpressJS](https://expressjs.com/pt-br/)
+- [ExpressJS](https://expressjs.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Snowpack](https://www.snowpack.dev/)
 - [Styled Components](https://styled-components.com/)
