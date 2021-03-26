@@ -13,8 +13,8 @@ const App = () => {
       <ThemeProvider theme={dark}>
         <GlobalStyles />
         <LimitWidth>
-          <Header />
           <BrowserRouter>
+            <Header />
             <Routes />
           </BrowserRouter>
         </LimitWidth>
