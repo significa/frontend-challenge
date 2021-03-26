@@ -2,13 +2,29 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1"
+    "test": "web-test-runner \"src/__tests__/**/*.test.tsx\" --node-resolve --coverage",
+    "test:watch": "web-test-runner src/__tests__/**/*.test.tsx --watch"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/components/**/*.tsx",
+      "src/hooks/**/*.tsx"
+    ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.9",
+    "@snowpack/plugin-dotenv": "^2.0.5",
+    "@snowpack/plugin-react-refresh": "^2.4.0",
+    "@snowpack/web-test-runner-plugin": "^0.2.0",
+    "@testing-library/react": "^11.0.0",
+    "@types/jest": "^26.0.22",
     "@types/lodash": "^4.14.168",
     "@types/react-router": "^5.1.12",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.9",
+    "@web/test-runner": "^0.12.0",
+    "jest": "^26.6.3",
+    "snowpack": "^3.0.1"
   },
   "dependencies": {
     "react-icons": "^4.2.0",
