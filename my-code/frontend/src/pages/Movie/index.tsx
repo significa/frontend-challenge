@@ -12,6 +12,7 @@ import {
 } from "./styles";
 import Rating from "../../components/Rating";
 import FavouriteButton from "../../components/FavouriteButton";
+import SearchError from "../../components/SearchError";
 interface IParams {
   id: string;
 }
@@ -43,6 +44,10 @@ const Movie: React.FC = () => {
   }, []);
 
   if (status === RequestStatus.Loading) return <div>Loading...</div>;
+  if (details?.Response === "False") {
+    return <SearchError />;
+  }
+
   return (
     <React.Fragment>
       <BackButton />
