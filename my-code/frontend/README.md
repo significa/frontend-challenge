@@ -54,7 +54,7 @@ $ npm start
 
 The following tools were used to build this project:
 
-- [ReactJS](https://svelte.dev/)
+- [ReactJS](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Snowpack](https://graphql.org/)
-- [Styled Components]()
+- [Snowpack](https://www.snowpack.dev/)
+- [Styled Components](https://styled-components.com/)
