@@ -43,7 +43,7 @@ export const Container = styled.div<IContainerProps>`
   margin-right: auto;
   background-image: url(${prop(
     "background",
-    "https://place-hold.it/250x400/FF9F1C&text=N/A"
+    "https://place-hold.it/250x400/FF9F1C&text=Poster"
   )});
   background-size: cover;
   background-position: center;

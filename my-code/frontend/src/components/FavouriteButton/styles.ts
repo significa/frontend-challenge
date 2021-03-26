@@ -1,10 +1,16 @@
 import styled, { css } from "styled-components";
-import { ifProp, prop, theme } from "styled-tools";
+import { ifProp, theme } from "styled-tools";
 
 interface IButtonProps {
   liked: boolean;
 }
 export const Container = styled.button<IButtonProps>`
+  min-height: 40px;
+  img {
+    max-width: 20%;
+    margin-right: 6px;
+  }
+
   display: flex;
   align-items: center;
   padding: 0 10px;

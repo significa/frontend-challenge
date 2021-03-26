@@ -5,20 +5,27 @@ export const Container = styled.div`
   display: flex;
   flex: 1;
   height: 100vh;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const MovieInfoContainer = styled.div`
   flex: 1.35;
   ul.runtime-rated-title {
     list-style: none;
+    max-width: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     li {
       display: flex;
       align-items: center;
       position: relative;
       font-size: 18px;
       color: ${theme("fontColorVariant")};
+      margin-top: 5px;
     }
 
     li.rated {
@@ -48,10 +55,16 @@ export const MovieInfoContainer = styled.div`
   h1 {
     font-size: 60px;
     margin-bottom: 35px;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 35px;
+    }
   }
 
   .ratings {
     display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 `;
 
@@ -70,6 +83,13 @@ export const Poster = styled.div<IPosterProps>`
   )});
   border-radius: 8px;
   max-height: 80;
+
+  @media only screen and (max-width: 768px) {
+    min-height: 300px;
+    width: 100%;
+    max-height: 100%;
+    margin: 15px 0;
+  }
 `;
 
 export const PlotContainer = styled.div`
@@ -77,6 +97,10 @@ export const PlotContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 65%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+    width: 100%;
+  }
   strong {
     color: ${theme("fontColorVariant")};
     margin-bottom: 10px;
@@ -91,6 +115,10 @@ export const CastGenreDirector = styled.ul`
   display: flex;
   list-style: none;
   width: 65%;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 
   li {
     display: flex;
