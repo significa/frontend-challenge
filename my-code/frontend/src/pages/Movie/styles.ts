@@ -70,7 +70,7 @@ export const MovieInfoContainer = styled.div`
 `;
 
 interface IPosterProps {
-  url: string;
+  url?: string;
 }
 export const Poster = styled.div<IPosterProps>`
   width: 40%;

@@ -65,7 +65,7 @@ const Movie: React.FC = () => {
             {details?.Ratings.map((rating) => (
               <Rating key={rating.Source} {...rating} />
             ))}
-            <FavouriteButton imdbID={details?.imdbID} />
+            <FavouriteButton imdbID={details?.imdbID || ""} />
           </div>
 
           <PlotContainer>
