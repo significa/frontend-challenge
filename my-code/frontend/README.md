@@ -1,24 +1,60 @@
-# New Project
+# whats-in
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+![Badge](https://img.shields.io/badge/Anime%20Library-Keep%20%20track%20of%20your%20animes-%237159c1?style=for-the-badge&logo=ghost)
 
-## Available Scripts
+# Content Table
 
-### npm start
+<!--ts-->
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+- [About](#about)
+- [Requirements](#requirements)
+- [Techstack](#-tech-stack)
+<!--te-->
 
-The page will reload if you make edits.
-You will also see any lint errors in the console.
+<h4 align="center"> 
+	▶️ What's in
+</h4>
 
-### npm run build
+### About
 
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
+▶️ What's in is an app that helps you search and read about your favourite movies. It uses the OMDb API to search and retrieve the movies.
 
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/main/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
+### Features
 
-### Q: What about Eject?
+- [x] Search a movie
+- [x] Add a movie to your favourites
+- [x] Responsive design
 
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+### Requirements
+
+Before you start, you'll need the following tools installed:
+[Git](https://git-scm.com),
+[Node.js](https://nodejs.org/en/),
+[VSCode](https://code.visualstudio.com/).
+
+### 🎲 Running this project locally
+
+```bash
+# Clone this repo
+$ git clone https://github.com/hanar3/frontend-challenge
+
+# CD into the project folder terminal/cmd
+$ cd frontend-challenge
+
+# Install the dependencies
+$ npm install
+
+# Run the application in development mode
+$ npm start
+
+# The server will start running on port 8080 - go to <http://localhost:8080/>
+```
+
+### 🛠 Tech Stack
+
+The following tools were used to build this project:
+
+- [ReactJS](https://svelte.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Snowpack](https://graphql.org/)
+- [Styled Components]()
