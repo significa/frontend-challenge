@@ -16,11 +16,11 @@
 
 ### About
 
-▶️ What's in API acts as a proxy so our API key doesn't get exposed to the world! It can be used to rate-limit so our API doesn't get abused by third-party
+▶️ What's in API acts as a proxy so our API key doesn't get exposed to the world! It can also be used to rate-limit so our API doesn't get abused by third-party
 
 Q: Why not just hide the API key on an .env file on the frontend?
 
-A: If we do this, tech-savvy users may still get our API key through the network tab, which is not ideal. There is also no way for us to know if it's getting abused, and this might potentially take down our app due to the OMDB API rate limiting. Having a proxy server also allows us to do rate limit ourselves.
+A: If we do this, tech-savvy users may still get our API key through the network tab, which is not ideal. There is also no way for us to know if it's getting abused, and this might potentially take down our app due to the OMDB API rate limiting. Having a proxy server also allows us to do rate limiting ourselves.
 
 ### Requirements
 
