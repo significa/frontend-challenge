@@ -35,10 +35,6 @@ Before you start, you'll need the following tools installed:
 # Clone this repo
 $ git clone https://github.com/hanar3/frontend-challenge
 
-# CD into the project folder terminal/cmd
-$ cd frontend-challenge
-
-$ cd backend
 
 # Install the dependencies
 $ npm install
