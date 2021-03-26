@@ -1,6 +1,6 @@
 # whats-in
 
-![Badge](https://img.shields.io/badge/What's%20In-Keep%20%20track%20of%20your%movies-%237159c1?style=for-the-badge&logo=ghost)
+![Badge](https://img.shields.io/badge/Whats%20in-Keep%20%20track%20of%20your%20movies-%237159c1?style=for-the-badge&logo=ghost)
 
 # Content Table
 
