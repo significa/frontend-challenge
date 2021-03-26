@@ -16,6 +16,7 @@ export const MovieInfoContainer = styled.div`
   ul.runtime-rated-title {
     list-style: none;
     max-width: 100%;
+
     display: flex;
     align-items: center;
     flex-wrap: wrap;
