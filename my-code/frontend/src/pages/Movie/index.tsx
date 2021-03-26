@@ -32,7 +32,7 @@ const Movie: React.FC = () => {
       try {
         setStatus(RequestStatus.Loading);
         const { data }: { data: IMovieDetails } = await api.get(
-          `?apikey=4788f920&i=${params.id}`
+          `/movie/${params.id}`
         );
         setDetails(data);
         setStatus(RequestStatus.Loaded);

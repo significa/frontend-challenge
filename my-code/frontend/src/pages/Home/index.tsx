@@ -38,7 +38,7 @@ const Home: React.FC = () => {
           return;
         }
 
-        const { data } = await api.get(`?apikey=4788f920&s=${target.value}`);
+        const { data } = await api.get(`/search?s=${target.value}`);
         if (data.Response === "False") {
           setSearchState(SearchStates.Error);
           return;
