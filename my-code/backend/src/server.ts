@@ -1,11 +1,33 @@
+require("dotenv/config");
 import express from "express";
-import qs from "qs";
+import fetch from "node-fetch";
+
 const app = express();
 
-app.get("/", (req, res) => {
-  const query = qs.stringify(req.query);
+app.get("/search", async (req, res) => {
+  try {
+    const { s } = req.query;
+    const response = await fetch(
+      `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${s}`
+    );
+    const data = await response.json();
+    return res.json(data);
+  } catch {
+    return res.status(500).json({ message: "Internal server error" });
+  }
+});
 
-  return res.json({ message: qs.stringify(query) });
+app.get("/movie/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const response = await fetch(
+      `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&i=${id}`
+    );
+    const data = await response.json();
+    return res.json(data);
+  } catch {
+    return res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 app.listen(3333, () => {
