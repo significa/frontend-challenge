@@ -17,7 +17,7 @@ const MovieList: React.FC<IProps> = ({ items }) => {
   return (
     <Container>
       {items.map((item) => (
-        <MovieCard {...item} />
+        <MovieCard key={item.imdbID} {...item} />
       ))}
     </Container>
   );

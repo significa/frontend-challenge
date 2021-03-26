@@ -58,7 +58,7 @@ const Movie: React.FC = () => {
           <h1>{details?.Title}</h1>
           <div className="ratings">
             {details?.Ratings.map((rating) => (
-              <Rating {...rating} />
+              <Rating key={rating.Source} {...rating} />
             ))}
             <FavouriteButton imdbID={details?.imdbID} />
           </div>
