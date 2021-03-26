@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function useLike(imdbID) {
+export default function useLike(imdbID: string) {
   const [liked, setLiked] = React.useState<boolean>(() => {
     const likedMovies = localStorage.getItem("@App/likedMovies");
     let parsed;
     try {
-      parsed = JSON.parse(likedMovies);
+      parsed = JSON.parse(likedMovies || "");
     } catch {
       parsed = {};
     }
@@ -22,7 +22,7 @@ export default function useLike(imdbID) {
 
     // Avoid JSON.Parse error if the stringified object is malformed for some reason
     try {
-      parsed = JSON.parse(likedMovies);
+      parsed = JSON.parse(likedMovies || "");
     } catch {
       console.log("Failed to parse JSON...");
       parsed = {};

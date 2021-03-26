@@ -14,7 +14,7 @@ const defaultOptions = {
 };
 const SearchError: React.FC = () => {
   return (
-    <Container>
+    <Container data-testid="search-error">
       <Lottie options={defaultOptions} height={200} width={200} />
       <strong>
         Oops...Looks like we couldn't find what you were looking for

@@ -14,7 +14,7 @@ const defaultOptions = {
 };
 const LoadingSearch: React.FC = () => {
   return (
-    <Container>
+    <Container id="test" data-testid="loading-search">
       <Lottie options={defaultOptions} height={200} width={200} />
       <strong>Loading your results...</strong>
     </Container>

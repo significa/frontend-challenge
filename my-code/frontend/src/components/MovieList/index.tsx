@@ -15,7 +15,7 @@ interface IProps {
 }
 const MovieList: React.FC<IProps> = ({ items }) => {
   return (
-    <Container data-test-id="movie-list">
+    <Container data-testid="movie-list">
       {items.map((item) => (
         <MovieCard key={item.imdbID} {...item} />
       ))}
