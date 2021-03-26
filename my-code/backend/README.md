@@ -43,6 +43,9 @@ $ cd backend
 # Install the dependencies
 $ npm install
 
+# Set up .env
+$ cp .env.example .env
+
 # Run the application in development mode
 $ npm run dev
 
