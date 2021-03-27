@@ -37,6 +37,10 @@ const Movie: React.FC = () => {
         );
         setDetails(data);
         setStatus(RequestStatus.Loaded);
+
+        if (data.Response === "False") {
+          setStatus(RequestStatus.Error);
+        }
       } catch {
         setStatus(RequestStatus.Error);
       }
@@ -44,14 +48,12 @@ const Movie: React.FC = () => {
   }, []);
 
   if (status === RequestStatus.Loading) return <div>Loading...</div>;
-  if (details?.Response === "False") {
-    return <SearchError />;
-  }
+  if (status === RequestStatus.Error) return <SearchError />;
 
   return (
     <React.Fragment>
       <BackButton />
-      <Container>
+      <Container data-testid="movie-details">
         <MovieInfoContainer>
           <ul className="runtime-rated-title">
             <li>{details?.Runtime}</li>
