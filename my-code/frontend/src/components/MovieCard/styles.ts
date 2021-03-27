@@ -34,7 +34,7 @@ export const Overlay = styled.div`
 `;
 
 interface IContainerProps {
-  background: string;
+  background?: string;
 }
 
 export const Container = styled.div<IContainerProps>`
