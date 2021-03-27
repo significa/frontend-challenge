@@ -2,7 +2,7 @@
   "scripts": {
     "start": "snowpack dev",
     "build": "snowpack build",
-    "test": "web-test-runner \"src/__tests__/**/*.test.tsx\" --node-resolve --coverage",
+    "test": "web-test-runner \"src/__tests__/**/*.test.tsx\" --node-resolve",
     "test:watch": "web-test-runner src/__tests__/**/*.test.tsx --watch"
   },
   "jest": {
