@@ -35,12 +35,13 @@ const Movie: React.FC = () => {
         const { data }: { data: IMovieDetails } = await api.get(
           `/movie/${params.id}`
         );
-        setDetails(data);
-        setStatus(RequestStatus.Loaded);
-
         if (data.Response === "False") {
           setStatus(RequestStatus.Error);
+          return;
         }
+
+        setDetails(data);
+        setStatus(RequestStatus.Loaded);
       } catch {
         setStatus(RequestStatus.Error);
       }
