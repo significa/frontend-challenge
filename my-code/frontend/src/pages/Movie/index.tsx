@@ -13,6 +13,7 @@ import {
 import Rating from "../../components/Rating";
 import FavouriteButton from "../../components/FavouriteButton";
 import SearchError from "../../components/SearchError";
+import LoadingSearch from "../../components/LoadingSearch";
 interface IParams {
   id: string;
 }
@@ -48,7 +49,7 @@ const Movie: React.FC = () => {
     })();
   }, []);
 
-  if (status === RequestStatus.Loading) return <div>Loading...</div>;
+  if (status === RequestStatus.Loading) return <LoadingSearch />;
   if (status === RequestStatus.Error) return <SearchError />;
 
   return (
