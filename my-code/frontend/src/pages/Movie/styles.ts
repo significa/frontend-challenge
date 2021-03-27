@@ -75,7 +75,6 @@ interface IPosterProps {
 export const Poster = styled.div<IPosterProps>`
   width: 40%;
   max-height: 85%;
-  background-color: cyan;
   background-size: cover;
   background-position: center;
   background-image: url(${prop(
