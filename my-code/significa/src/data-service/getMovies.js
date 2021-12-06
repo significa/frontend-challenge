@@ -13,7 +13,13 @@ export const getMovies = async (searchValue = '2021') => {
 };
 
 
-export const getMovie = async () => {
-    return await axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=d3e8c483');
+export const getMovie = async (movieID) => {
+    try {
+        const response = await axios.get(`http://www.omdbapi.com/?i=${movieID}&apikey=d3e8c483`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+
 };
 
