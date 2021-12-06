@@ -1,11 +1,13 @@
 import {
-    Card, CardContent, CardHeader, Container,
+    Container,
     Grid, IconButton, makeStyles, Paper, Typography
 } from "@material-ui/core";
+
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import Search from "@material-ui/icons/Search";
 import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { getMovies } from "../../data-service/getMovies";
 import MovieCard from "./MovieCard";
 
@@ -89,9 +91,11 @@ const HomePage = (props) => {
                 {(movies || {}).length ?
                     (movies || []).map((movie, index) => {
                         return <Grid item xs={12} md={12} lg={2} key={index + 1}>
-                            <MovieCard movie={movie} />
+                            <RouterLink to={`/details/${movie.imdbID}`}>
+                                <MovieCard movie={movie} />
+                            </RouterLink>
                         </Grid>
-                    }):<div>No Result found</div>
+                    }) : <div>No Result found</div>
                 }
 
             </Grid>
