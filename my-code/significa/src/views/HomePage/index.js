@@ -31,6 +31,7 @@ const HomePage = (props) => {
     const classes = useStyles();
 
     const [movies, setMovies] = useState([]);
+    const [searchValue, setSearchValue] = useState('');
 
 
     useEffect(() => {
@@ -41,15 +42,30 @@ const HomePage = (props) => {
     }, []);
 
 
+    const searchMovie = (e) => {
+        e.preventDefault();
+        const newValue = searchValue.toLowerCase().trim();
+        // setSearchStatus(true);
+        getMovies(newValue).then(response => {
+            console.log(response);
+            setMovies(response.Search);
+        });
+    };
+
+    const handleSearchValue = (val) => {
+        setSearchValue(val);
+    };
+
     return (
         <Container>
-            <Typography variant='h3'>Movies</Typography>
+            <Typography variant='h2'>Movies</Typography>
 
 
             <div className={classes.margin}>
                 <Grid item xl={12} lg={12} >
-                    <Paper component="form" className={classes.root}>
+                    <Paper component="form" onSubmit={e => searchMovie(e,)} className={classes.root}>
                         <TextField className={classes.input}
+                            onKeyPress={e => handleSearchValue(e.target.value)}
                             label=""
                             variant="outlined"
                             InputProps={{
@@ -70,12 +86,12 @@ const HomePage = (props) => {
 
 
             <Grid container className={classes.spaceGrid} spacing={1} >
-                {
-                    movies.map((movie, index) => {
+                {(movies || {}).length ?
+                    (movies || []).map((movie, index) => {
                         return <Grid item xs={12} md={12} lg={2} key={index + 1}>
                             <MovieCard movie={movie} />
                         </Grid>
-                    })
+                    }):<div>No Result found</div>
                 }
 
             </Grid>
