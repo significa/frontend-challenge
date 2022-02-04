@@ -1,5 +1,5 @@
 export interface SearchData {
-    title: string;
-    poster: string;
-    imdbID: string;
+    Title: string;
+    Poster: string;
+    imdbID?: string;
 }

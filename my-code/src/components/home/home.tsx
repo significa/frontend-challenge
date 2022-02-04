@@ -3,6 +3,8 @@ import { SearchData } from "../../interfaces/detail";
 import fetchApiData from "../../utils/fetchData";
 import Card from "../card/card";
 
+import './home.css';
+
 export default function Home() {
     const [searchVal, setSearchVal] = useState('');
     const [results, setResults] = useState<SearchData[]>([]);
@@ -20,12 +22,13 @@ export default function Home() {
         setError('');
         setResults([]);
         setLoading(true);
-        const url = `http://www.omdbapi.com/?apikey=b02d2b50&s${search}`;
-        const { data, error } = await fetchApiData<SearchData>(url);
+        const url = `http://www.omdbapi.com/?apikey=b02d2b50&s=${search}`;
+        const { data, error } = await fetchApiData<SearchData[]>(url);
         setLoading(false);
         if (error) {
             setError(error);
         } else {
+            console.log(data);
             setResults(data);
         }
     }
@@ -57,8 +60,8 @@ export default function Home() {
             <h5 style={{color: 'red'}}>There was an error with your search: {error}</h5>
             :
             <div className="results-wrapper">
-                {results.map((item: SearchData, i) => {
-                    return <Card key={i} {...item} />
+                {results?.map((item: SearchData, i) => {
+                    return <Card key={i} title={item.Title} poster={item.Poster}  />
                 })}
             </div>
             }
