@@ -1,4 +1,4 @@
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import './App.css';
 import Detail from './components/detail/detail';
 import Home from './components/home/home';
@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path='/movie/:id'><Detail /></Route>
-        <Route path='/'><Home /></Route>
+        <Routes>
+          <Route path='/movie/:id' element={<Detail />}></Route>
+          <Route path='/' element={<Home />}></Route>
+        </Routes>
       </BrowserRouter>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+// import { useParams } from "react-router";
 import { MovieData } from "../../interfaces/home";
 import fetchApiData from "../../utils/fetchData";
 
@@ -8,16 +8,18 @@ export default function Detail() {
     const [error, setError] = useState('');
     const [movie, setMovie] = useState<MovieData[]>([]);
 
-    const { id } = useParams();
+    // const { id } = useParams();
 
     useEffect(() => {
         let mounted = true;
         setError('');
         setLoading(true);
+        const id = 'tt3896198'
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&i=${id}`;
         if (mounted) {
             (async () => {
                 const { data, error } = await fetchApiData<MovieData>(url);
+                console.log(data);
                 setLoading(false);
                 if (error) {
                     setError(error);
