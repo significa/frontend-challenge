@@ -1,7 +1,67 @@
 .detail-wrapper {
     text-align: left;
+    color: white;
 }
 
 .detail-wrapper .icon-back {
+    margin: 20px 0px;
+}
+
+.detail-wrapper .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.detail-wrapper .detail-grid .text .top {
+    display: flex;
+}
+
+.detail-wrapper .detail-grid .text .top span {
+    font-size: 20px;
+    color: #7A8C99;
+    margin-right: 20px;
+}
+
+.detail-wrapper .detail-grid .text .title {
     margin-top: 20px;
+}
+
+.detail-wrapper .detail-grid .text .title h1 {
+    font-size: 80px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.detail-wrapper .detail-grid .text .plot {
+    margin-top: 20px;
+}
+
+.plot .title {
+    color: #7A8C99;
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.plot .content {
+    color: white;
+    font-size: 16px;
+    line-height: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.detail-wrapper .detail-grid .text .bottom {
+    display: grid;
+    grid-template-columns: 1fr 0.7fr 1fr;
+}
+
+.detail-wrapper .detail-grid .image {
+    text-align: center;
+}
+
+.detail-wrapper .detail-grid .image img {
+    height: 640px;
+    width: 480px;
+    border-radius: 8px;
 }

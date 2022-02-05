@@ -4,14 +4,14 @@ interface Ratings {
 }
 
 export interface MovieData {
-    title: string;
-    year: string;
-    rated: string;
-    runtime: string;
-    plot: string;
-    cast: string[];
-    genre: string[];
-    director: string[];
-    ratings: Ratings[];
-    poster: string;
+    Title: string;
+    Year: string;
+    Rated: string;
+    Runtime: string;
+    Plot: string;
+    Actors: string;
+    Genre: string;
+    Director: string;
+    Ratings: Ratings;
+    Poster: string;
 }

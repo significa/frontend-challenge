@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { useParams } from "react-router";
 import { MovieData } from "../../interfaces/home";
 import fetchApiData from "../../utils/fetchData";
@@ -18,7 +18,7 @@ export default function Detail() {
         let mounted = true;
         setError('');
         setLoading(true);
-        const id = 'tt3896198'
+        const id = 'tt0082406'
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&i=${id}`;
         if (mounted) {
             (async () => {
@@ -28,6 +28,7 @@ export default function Detail() {
                     setError(error);
                 } else {
                     setMovie(data);
+                    console.log(data);
                 }
             })();
         };
@@ -39,19 +40,58 @@ export default function Detail() {
     return (
         <div className="detail-wrapper">
             <div className="icon-back">
+                {/* <img src={back} alt="back" /> */}
                 <Back fill='#7A8C99' />
             </div>
             <div className="detail-grid">
                 <div className="text">
                     <div className="top">
-
+                        <span>{movie?.Runtime}</span>
+                        <span>{movie?.Year}</span>
+                        <span>{movie?.Rated}</span>
                     </div>
                     <div className="title">
-                        <h1></h1>
+                        <h1>
+                            {movie?.Title}
+                        </h1>
+                    </div>
+                    <div className="plot">
+                        <h4 className="title">
+                            Plot
+                        </h4>
+                        <h4 className="content">
+                            {movie?.Plot}
+                        </h4>
+                    </div>
+                    <div className="bottom">
+                        <div className="plot">
+                            <h4 className="title">
+                                Cast
+                            </h4>
+                            {movie?.Actors.split(',').map((item, i) => {
+                                return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                            })}
+                        </div>
+                        <div className="plot">
+                            <h4 className="title">
+                                Genre
+                            </h4>
+                            {movie?.Genre.split(',').map((item, i) => {
+                                return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                            })}
+                        </div>
+                        <div className="plot">
+                            <h4 className="title">
+                                Director
+                            </h4>
+                            {movie?.Director.split(',').map((item, i) => {
+                                return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                            })}
+                        </div>
                     </div>
                 </div>
                 <div className="image">
-                    <img src={movie?.poster} alt={movie?.title} />
+                    <img src={movie?.Poster} alt={movie?.Title} />
                 </div>
             </div>
         </div>
