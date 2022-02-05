@@ -1,7 +1,47 @@
 .results-wrapper {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     margin-top: 20px;
-    grid-gap: 15px;
+    row-gap: 15px;
+}
+
+.search-form {
+    margin-top: 20px;
+}
+
+.search-form .search-icon {
+    position: absolute;
+    padding: 12px;
+}
+
+.search-form .search-input {
+    height: 44px;
+    width: 1180px;
+    border: none;
+    padding-left: 40px;
+    border-radius: 3px;
+}
+
+.search-input:focus, .search-input:hover {
+    border: none;
+    outline: none;
+}
+
+.search-placeholder {
+    margin-top: 220px;
+}
+
+.search-placeholder .info h4 {
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.search-placeholder .info h5 {
+    font-size: 16px;
+    color: #7A8C99;
+    margin-top: 5px;
 }

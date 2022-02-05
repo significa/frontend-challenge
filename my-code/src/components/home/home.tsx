@@ -2,6 +2,10 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { SearchData } from "../../interfaces/detail";
 import fetchApiData from "../../utils/fetchData";
 import Card from "../card/card";
+import Spinner from "../spinner/spinner";
+
+import SearchIcon from '../../assets/1.Icons/icon-magnifier-grey.svg';
+import SearchIllustration from '../../assets/2.Illustrations/illustration-empty-state.png';
 
 import './home.css';
 
@@ -10,6 +14,7 @@ export default function Home() {
     const [results, setResults] = useState<SearchData[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
+    const [showIllustration, setShowIllustration] = useState(true);
 
     /**
      * make a request based on the search input value
@@ -19,6 +24,7 @@ export default function Home() {
             alert('Search cannot be empty!');
             return;
         }
+        setShowIllustration(false);
         setError('');
         setResults([]);
         setLoading(true);
@@ -28,7 +34,6 @@ export default function Home() {
         if (error) {
             setError(error);
         } else {
-            console.log(data);
             setResults(data);
         }
     }
@@ -46,13 +51,22 @@ export default function Home() {
         <div>
             <form className="search-form" onSubmit={e => onSearchHandler(e)}>
                 <span className="search-icon">
-                    {/* <SearchIcon height='20' color='grey' /> */}
+                    <img src={SearchIcon} alt="icon" />
                 </span>
-                <input className="search-input" type="text" placeholder="search tv series..." value={searchVal} onChange={e => onSearchChange(e)} />
+                <input className="search-input" type="text" placeholder="Search movies..." value={searchVal} onChange={e => onSearchChange(e)} />
             </form>
+            {showIllustration ?
+                <div className="search-placeholder">
+                    <img src={SearchIllustration} alt='illustration' />
+                    <div className="info">
+                        <h4>Dont know what to search?</h4>
+                        <h5>Here's an offer you can't refuse</h5>
+                    </div>
+                </div>
+                : null}
             {loading ?
             <>
-                {/* <Spinner /> */}
+                <Spinner />
                 <h5 style={{color: 'green'}}>Looking up {searchVal}</h5>
             </>
             :

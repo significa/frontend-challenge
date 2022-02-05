@@ -1,0 +1,9 @@
+.header-wrapper {
+    padding-top: 30px;
+    text-align: left;
+}
+
+.header-wrapper img {
+    height: 40px;
+    width: auto;
+}

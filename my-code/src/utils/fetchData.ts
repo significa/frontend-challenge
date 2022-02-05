@@ -10,7 +10,7 @@ export default async function fetchApiData<T>(url: string) {
     try {
         const res = await fetch(url);
         data = await res.json();
-        data = data.Search;
+        // data = data.Search;
         // console.log(data);
     } catch (err: any) {
         if (err instanceof ErrorEvent) {
