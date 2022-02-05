@@ -30,6 +30,81 @@
     font-size: 80px;
     font-weight: bold;
     margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.detail-wrapper .detail-grid .text .btn-section {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .imdb {
+    width: 118px;
+    height: 40px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #0A1014;
+    color: white;
+    margin-right: 16px;
+    border: 1px solid #353F4C;
+    overflow: hidden;
+    padding: 0px;
+    text-align: center;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .imdb .logo {
+    background-color: #FF9F1C;
+    height: 40px;
+    width: 100%;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .imdb .ratings h4 {
+    font-size: 16;
+    font-weight: 400;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .rotten {
+    width: 87px;
+    height: 40px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #0A1014;
+    color: white;
+    margin-right: 16px;
+    border: 1px solid #353F4C;
+    overflow: hidden;
+    padding: 0px;
+    text-align: center;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .rotten .logo {
+    background-color: #FF4040;
+    height: 40px;
+    width: 100%;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .rotten h4 {
+    font-size: 16;
+    font-weight: 400;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .favourite {
+    width: 182px;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    background-color: #0A1014;
+    color: #7A8C99;
+    border: 1px solid #353F4C;
+    overflow: hidden;
+    text-align: center;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .favourite .text h4 {
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .detail-wrapper .detail-grid .text .plot {

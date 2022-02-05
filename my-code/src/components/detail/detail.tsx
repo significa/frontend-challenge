@@ -28,7 +28,6 @@ export default function Detail() {
                     setError(error);
                 } else {
                     setMovie(data);
-                    console.log(data);
                 }
             })();
         };
@@ -54,6 +53,38 @@ export default function Detail() {
                         <h1>
                             {movie?.Title}
                         </h1>
+                    </div>
+                    <div className="btn-section">
+                        <button className="imdb">
+                            <div className="logo">
+
+                            </div>
+                            <div className="rating">
+                                <h4>
+                                    {movie?.Ratings[0].Value}
+                                </h4>
+                            </div>
+                        </button>
+                        <button className="rotten">
+                            <div className="logo">
+
+                            </div>
+                            <div className="rating">
+                                <h4>
+                                    {movie?.Ratings[1].Value}
+                                </h4>
+                            </div>
+                        </button>
+                        <button className="favourite">
+                            <div className="icon">
+
+                            </div>
+                            <div className="text">
+                                <h4>
+                                    Add to favourites
+                                </h4>
+                            </div>
+                        </button>
                     </div>
                     <div className="plot">
                         <h4 className="title">

@@ -1,6 +1,6 @@
 interface Ratings {
-    source: string;
-    value: string;
+    Source: string;
+    Value: string;
 }
 
 export interface MovieData {
@@ -12,6 +12,6 @@ export interface MovieData {
     Actors: string;
     Genre: string;
     Director: string;
-    Ratings: Ratings;
+    Ratings: Ratings[];
     Poster: string;
 }
