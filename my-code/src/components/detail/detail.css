@@ -3,6 +3,18 @@
     color: white;
 }
 
+.detail-wrapper .loading {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.detail-wrapper .error-message {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .detail-wrapper .icon-back {
     margin: 32px 0px;
 }
@@ -128,6 +140,11 @@
     overflow: hidden;
     text-align: center;
     padding: 10px 0px 11px 12px;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .favourite:hover {
+    border: 1px solid #FF4040;
+    color: white;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .favourite .text h4 {
