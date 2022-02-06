@@ -5,7 +5,12 @@ import fetchApiData from "../../utils/fetchData";
 import Back from '../../assets/1.Icons/back';
 
 // import back from '../../assets/1.Icons/icon-arrow-grey.png';
+// import heart from '../../assets/1.Icons/icon-heart-white.svg';
+import rotten from '../../assets/2.Logos/logo-rotten-tomatoes.svg';
+import imdb from '../../assets/2.Logos/logo-imdb.svg';
+
 import './detail.css';
+import Heart from "../../assets/1.Icons/heart";
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
@@ -45,9 +50,8 @@ export default function Detail() {
             <div className="detail-grid">
                 <div className="text">
                     <div className="top">
-                        <span>{movie?.Runtime}</span>
-                        <span>{movie?.Year}</span>
-                        <span>{movie?.Rated}</span>
+                        <span className="runtime">{movie?.Runtime} &middot; {movie?.Year} &middot;</span>
+                        <span className="rated">{movie?.Rated}</span>
                     </div>
                     <div className="title">
                         <h1>
@@ -57,7 +61,9 @@ export default function Detail() {
                     <div className="btn-section">
                         <button className="imdb">
                             <div className="logo">
-
+                                <div className="logo">
+                                    <img src={imdb} alt="imdb" />
+                                </div>
                             </div>
                             <div className="rating">
                                 <h4>
@@ -67,7 +73,7 @@ export default function Detail() {
                         </button>
                         <button className="rotten">
                             <div className="logo">
-
+                                <img src={rotten} alt="rotten" />
                             </div>
                             <div className="rating">
                                 <h4>
@@ -77,7 +83,7 @@ export default function Detail() {
                         </button>
                         <button className="favourite">
                             <div className="icon">
-
+                                <span><Heart height="16" width="16" /></span>
                             </div>
                             <div className="text">
                                 <h4>

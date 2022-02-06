@@ -4,7 +4,7 @@
 }
 
 .detail-wrapper .icon-back {
-    margin: 20px 0px;
+    margin: 32px 0px;
 }
 
 .detail-wrapper .detail-grid {
@@ -16,26 +16,39 @@
     display: flex;
 }
 
-.detail-wrapper .detail-grid .text .top span {
+.detail-wrapper .detail-grid .text .top .runtime {
     font-size: 20px;
     color: #7A8C99;
-    margin-right: 20px;
+    margin-right: 8px;
+    font-weight: 500;
+}
+
+.detail-wrapper .detail-grid .text .top .rated {
+    font-size: 20px;
+    font-weight: 500;
+    color: #0A1014;
+    width: auto;
+    height: 24px;
+    border-radius: 4px;
+    background-color: #7A8C99;
+    text-align: center;
+    padding: 2px 6px;
 }
 
 .detail-wrapper .detail-grid .text .title {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .detail-wrapper .detail-grid .text .title h1 {
     font-size: 80px;
     font-weight: bold;
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 48px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .imdb {
@@ -59,9 +72,16 @@
     width: 100%;
 }
 
-.detail-wrapper .detail-grid .text .btn-section .imdb .ratings h4 {
+.detail-wrapper .detail-grid .text .btn-section .imdb img {
+    margin: 10px;
+    height: 17px;
+    width: 37;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .imdb .rating h4 {
     font-size: 16;
-    font-weight: 400;
+    font-weight: 500;
+    margin-top: 12px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .rotten {
@@ -85,9 +105,16 @@
     width: 100%;
 }
 
-.detail-wrapper .detail-grid .text .btn-section .rotten h4 {
+.detail-wrapper .detail-grid .text .btn-section .rotten img {
+    margin: 12px;
+    height: 15px;
+    width: 16px;
+}
+
+.detail-wrapper .detail-grid .text .btn-section .rotten .rating h4 {
     font-size: 16;
-    font-weight: 400;
+    font-weight: 500;
+    margin-top: 12px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .favourite {
@@ -100,15 +127,14 @@
     border: 1px solid #353F4C;
     overflow: hidden;
     text-align: center;
+    padding: 10px 0px 11px 12px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .favourite .text h4 {
     font-size: 16px;
-    font-weight: 400;
-}
-
-.detail-wrapper .detail-grid .text .plot {
-    margin-top: 20px;
+    font-weight: 500;
+    margin: 0px;
+    padding-left: 12px;
 }
 
 .plot .title {
@@ -129,10 +155,11 @@
 .detail-wrapper .detail-grid .text .bottom {
     display: grid;
     grid-template-columns: 1fr 0.7fr 1fr;
+    margin-top: 40px;
 }
 
 .detail-wrapper .detail-grid .image {
-    text-align: center;
+    text-align: right;
 }
 
 .detail-wrapper .detail-grid .image img {
