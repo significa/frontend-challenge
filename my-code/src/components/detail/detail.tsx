@@ -1,11 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
-// import { useParams } from "react-router";
+import {Link, useParams} from "react-router-dom";
+
 import { MovieData } from "../../interfaces/home";
 import fetchApiData from "../../utils/fetchData";
 import Back from '../../assets/1.Icons/back';
 
-// import back from '../../assets/1.Icons/icon-arrow-grey.png';
-// import heart from '../../assets/1.Icons/icon-heart-white.svg';
 import rotten from '../../assets/2.Logos/logo-rotten-tomatoes.svg';
 import imdb from '../../assets/2.Logos/logo-imdb.svg';
 
@@ -21,22 +20,17 @@ export default function Detail() {
     const [heartFill, setHeartFill] = useState(false);
     const [backFill, setBackFill] = useState(false);
 
-    // const { id } = useParams();
+    const id = useParams();
 
     const addToFavourites = () => {
         setFavourite(!favourite);
         setHeartFill(!heartFill);
     }
 
-    const goBack = () => {
-
-    }
-
     useEffect(() => {
         let mounted = true;
         setError('');
         setLoading(true);
-        const id = 'tt0082406'
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&i=${id}`;
         if (mounted) {
             (async () => {
@@ -52,7 +46,7 @@ export default function Detail() {
         return () => {
             mounted = false;
         }
-    }, []);
+    }, [id]);
 
     const favoriteStyle = useMemo(() => ({
         backgroundColor: favourite ? '#FF4040' : '#0A1014',
@@ -77,9 +71,11 @@ export default function Detail() {
             :
             <>
                 <div className="icon-back">
-                    <span onClick={goBack} onMouseEnter={backFillToggle} onMouseLeave={backFillToggle}>
-                        <Back fill={backFill ? 'white' : '#7A8C99'} />
-                    </span>
+                    <Link to='/'>
+                        <span onMouseEnter={backFillToggle} onMouseLeave={backFillToggle}>
+                            <Back fill={backFill ? 'white' : '#7A8C99'} />
+                        </span>
+                    </Link>
                 </div>
                 <div className="detail-grid">
                     <div className="text">
@@ -140,7 +136,7 @@ export default function Detail() {
                                     Cast
                                 </h4>
                                 {movie?.Actors.split(',').map((item, i) => {
-                                    return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                                    return <h4 key={i} className="content">{item}</h4>;
                                 })}
                             </div>
                             <div className="plot">
@@ -148,7 +144,7 @@ export default function Detail() {
                                     Genre
                                 </h4>
                                 {movie?.Genre.split(',').map((item, i) => {
-                                    return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                                    return <h4 key={i} className="content">{item}</h4>;
                                 })}
                             </div>
                             <div className="plot">
@@ -156,7 +152,7 @@ export default function Detail() {
                                     Director
                                 </h4>
                                 {movie?.Director.split(',').map((item, i) => {
-                                    return <h4 className="content"><React.Fragment key={i}>{item}</React.Fragment></h4>;
+                                    return <h4 key={i} className="content">{item}</h4>;
                                 })}
                             </div>
                         </div>

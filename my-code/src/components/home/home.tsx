@@ -75,7 +75,7 @@ export default function Home() {
             :
             <div className="results-wrapper">
                 {results?.map((item: SearchData, i) => {
-                    return <Card key={i} title={item.Title} year={item.Year} poster={item.Poster}  />
+                    return <Card key={i} imdbID={item.imdbID} title={item.Title} year={item.Year} poster={item.Poster}  />
                 })}
             </div>
             }
