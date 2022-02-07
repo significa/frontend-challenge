@@ -2,17 +2,17 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     justify-items: center;
-    margin-top: 20px;
-    row-gap: 15px;
+    margin-top: 32px;
+    grid-gap: 20px;
 }
 
 .search-form {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .search-form .search-icon {
     position: absolute;
-    padding: 12px;
+    margin: 14px 12px;
 }
 
 .search-form .search-input {
@@ -23,25 +23,32 @@
     border-radius: 3px;
 }
 
+.search-form .search-input::placeholder {
+    font-size: 16px;
+    font-weight: 400;
+    color:#7A8C99;
+;
+}
+
 .search-input:focus, .search-input:hover {
     border: none;
     outline: none;
 }
 
-.search-placeholder {
-    margin-top: 220px;
+.search-illustration {
+    margin-top: 224px;
 }
 
-.search-placeholder .info h4 {
+.search-illustration .info h4 {
     color: white;
     font-size: 24px;
-    font-weight: 400;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    font-weight: 500;
+    margin: 16px 0px 0px 0px;
 }
 
-.search-placeholder .info h5 {
+.search-illustration .info h5 {
     font-size: 16px;
     color: #7A8C99;
-    margin-top: 5px;
+    margin-top: 8px;
+    font-weight: 400;
 }

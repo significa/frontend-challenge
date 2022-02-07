@@ -4,6 +4,7 @@
     overflow: hidden;
     border-radius: 3px;
     background-color: blue;
+    text-align: left;
 }
 
 .card-wrapper img {
@@ -12,7 +13,7 @@
     object-fit: cover;
 }
 
-.card-wrapper .card-body {
+.card-wrapper .card-hover {
     z-index: 2;
     width: 180px;
     height: 240px;
@@ -22,19 +23,24 @@
     border-radius: 3px;
 }
 
-.card-wrapper .card-body .favourite {
-    width: 20px;
-    height: 20px;
-    background-color: yellow;
-    margin-top: -20px;
-    position: absolute;
+.card-wrapper .card-hover .favourite {
+    width: 24px;
+    height: 24px;
+    margin: 12px 12px 121px 144px;
 }
 
-.card-wrapper .card-body .title {
-    padding: 10px 10px;
-    height: 30px;
-    width: 180px;
-    background-color: red;
-    margin-top: 100px;
-    position: absolute;
+.card-wrapper .card-hover .title {
+    background-color: blue;
+    color: white;
+    margin: 0px 12px;
+    font-weight: 500;
+    font-size: 20px;
+    height: 46px;
+}
+
+.card-wrapper .card-hover .year {
+    margin: 6px 12px 12px 12px;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
 }

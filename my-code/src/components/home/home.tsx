@@ -56,7 +56,7 @@ export default function Home() {
                 <input className="search-input" type="text" placeholder="Search movies..." value={searchVal} onChange={e => onSearchChange(e)} />
             </form>
             {showIllustration ?
-                <div className="search-placeholder">
+                <div className="search-illustration">
                     <img src={SearchIllustration} alt='illustration' />
                     <div className="info">
                         <h4>Dont know what to search?</h4>
@@ -75,7 +75,7 @@ export default function Home() {
             :
             <div className="results-wrapper">
                 {results?.map((item: SearchData, i) => {
-                    return <Card key={i} title={item.Title} poster={item.Poster}  />
+                    return <Card key={i} title={item.Title} year={item.Year} poster={item.Poster}  />
                 })}
             </div>
             }
