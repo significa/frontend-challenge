@@ -8,14 +8,15 @@ import { resultIsError } from "../../utils";
 import Spinner from "../spinner/spinner";
 import DetailColumns from "../detailColumns";
 import Button from "../button";
-
-import Back from '../../assets/1.Icons/back';
-import rotten from '../../assets/2.Logos/logo-rotten-tomatoes.svg';
-import imdb from '../../assets/2.Logos/logo-imdb.svg';
-
-import './detail.css';
 import ErrorMessage from "../errorMessage";
 import Label from "../label";
+import Back from '../../assets/1.Icons/back';
+
+import rotten from '../../assets/2.Logos/logo-rotten-tomatoes.svg';
+import imdb from '../../assets/2.Logos/logo-imdb.svg';
+import defaultImage from '../../assets/defaults/Default.png';
+
+import './detail.css';
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
@@ -101,7 +102,7 @@ export default function Detail() {
                             </div>
                         </div>
                         <div className="image">
-                            <img src={movie?.Poster} alt={movie?.Title} />
+                            <img src={movie?.Poster !== 'N/A' ? movie?.Poster : defaultImage} alt={movie?.Title} />
                         </div>
                     </div>
                 </>
