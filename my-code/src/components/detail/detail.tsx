@@ -70,7 +70,7 @@ export default function Detail() {
                 <div className="detail-grid">
                     <div className="text">
                         <div className="top">
-                            <span className="runtime">{movie?.Runtime} &middot; {movie?.Year} &middot;</span>
+                            <span id="runtime" className="runtime">{movie?.Runtime} &middot; {movie?.Year} &middot;</span>
                             <span className="rated">{movie?.Rated}</span>
                         </div>
                         <div className="title">

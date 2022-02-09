@@ -52,7 +52,7 @@ export default function Home() {
 
     return (
         <>
-            <form className="search-form" onSubmit={e => onSearchHandler(e)}>
+            <form id="search-form" className="search-form" onSubmit={e => onSearchHandler(e)}>
                 <span className="search-icon">
                     <img src={SearchIcon} alt="icon" />
                 </span>

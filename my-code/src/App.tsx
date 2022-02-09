@@ -9,8 +9,8 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path='/movie/:id' element={<Detail />}></Route>
           <Route path='/' element={<Home />}></Route>

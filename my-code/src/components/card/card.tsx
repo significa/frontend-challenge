@@ -39,7 +39,7 @@ export default function Card({ poster, imdbID, title, year }: CardProps) {
                         <Heart fill={favourite ? 'white' : ''} height="24" width="24" />
                     </div>
                     <h4 className="title">{ title.length > 30 ? `${title.slice(0, 30)} ...` : title }</h4>
-                    <h4 className="year">{ year }</h4>
+                    <h4 id="year" className="year">{ year }</h4>
                 </div>
             </div>
         </Link>
