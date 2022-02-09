@@ -1,11 +1,14 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { SearchData } from "../../interfaces/detail";
+import { SearchData } from "../../interfaces/home";
 import fetchApiData from "../../utils/fetchData";
+import { resultIsError } from "../../utils/checkResultAsError";
+import ErrorMessage from "../errorMessage";
+
 import Card from "../card/card";
 import Spinner from "../spinner/spinner";
+import SearchIllustration from "../searchIllustration";
 
 import SearchIcon from '../../assets/1.Icons/icon-magnifier-grey.svg';
-import SearchIllustration from '../../assets/2.Illustrations/illustration-empty-state.png';
 
 import './home.css';
 
@@ -16,9 +19,6 @@ export default function Home() {
     const [error, setError] = useState('');
     const [showIllustration, setShowIllustration] = useState(true);
 
-    /**
-     * make a request based on the search input value
-     */
     async function searchApi(search: string) {
         if (search.trim() === '') {
             alert('Search cannot be empty!');
@@ -31,8 +31,11 @@ export default function Home() {
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&s=${search}`;
         const { data, error } = await fetchApiData<SearchData[]>(url);
         setLoading(false);
+
         if (error) {
             setError(error);
+        } else if (resultIsError(data)) {
+            setError(data.Error);
         } else {
             setResults(data);
         }
@@ -55,23 +58,16 @@ export default function Home() {
                 </span>
                 <input className="search-input" type="text" placeholder="Search movies..." value={searchVal} onChange={e => onSearchChange(e)} />
             </form>
+
             {showIllustration ?
-                <div className="search-illustration">
-                    <img src={SearchIllustration} alt='illustration' />
-                    <div className="info">
-                        <h4>Dont know what to search?</h4>
-                        <h5>Here's an offer you can't refuse</h5>
-                    </div>
-                </div>
-                : null}
+            <SearchIllustration />
+            : null}
+            
             {loading ?
-            <>
                 <Spinner />
-                <h5 style={{color: 'green'}}>Looking up {searchVal}</h5>
-            </>
             :
             error ?
-            <h5 style={{color: 'red'}}>There was an error with your search: {error}</h5>
+                <ErrorMessage message={`There was an error with your search: ${error}`} />
             :
             <div className="results-wrapper">
                 {results?.map((item: SearchData, i) => {

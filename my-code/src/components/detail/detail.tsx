@@ -1,36 +1,34 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 
-import { MovieData } from "../../interfaces/home";
+import { MovieData } from "../../interfaces/detail";
 import fetchApiData from "../../utils/fetchData";
-import Back from '../../assets/1.Icons/back';
+import { resultIsError } from "../../utils/checkResultAsError";
 
+import Spinner from "../spinner/spinner";
+import DetailColumns from "../detailColumns";
+import Button from "../button";
+
+import Back from '../../assets/1.Icons/back';
 import rotten from '../../assets/2.Logos/logo-rotten-tomatoes.svg';
 import imdb from '../../assets/2.Logos/logo-imdb.svg';
 
 import './detail.css';
-import Heart from "../../assets/1.Icons/heart";
-import Spinner from "../spinner/spinner";
+import ErrorMessage from "../errorMessage";
 
 export default function Detail() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [movie, setMovie] = useState<MovieData>();
-    const [favourite, setFavourite] = useState(false);
-    const [heartFill, setHeartFill] = useState(false);
     const [backFill, setBackFill] = useState(false);
 
-    const id = useParams();
-
-    const addToFavourites = () => {
-        setFavourite(!favourite);
-        setHeartFill(!heartFill);
-    }
+    const paramsObj = useParams();
 
     useEffect(() => {
         let mounted = true;
         setError('');
         setLoading(true);
+        const id = paramsObj.id?.replace(':', '');
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&i=${id}`;
         if (mounted) {
             (async () => {
@@ -38,6 +36,8 @@ export default function Detail() {
                 setLoading(false);
                 if (error) {
                     setError(error);
+                } else if (resultIsError(data)) {
+                    setError(data.Error);
                 } else {
                     setMovie(data);
                 }
@@ -46,13 +46,7 @@ export default function Detail() {
         return () => {
             mounted = false;
         }
-    }, [id]);
-
-    const favoriteStyle = useMemo(() => ({
-        backgroundColor: favourite ? '#FF4040' : '#0A1014',
-        color: favourite ? 'white' : '#7A8C99',
-        width: favourite ? '104px' : '182px'
-    }),[favourite])
+    }, [paramsObj]);
 
     const backFillToggle = () => {
         setBackFill(!backFill);
@@ -61,13 +55,9 @@ export default function Detail() {
     return (
         <div className="detail-wrapper">
             {loading ?
-                <div className="loading">
-                    <Spinner />
-                </div>
+                <Spinner />
             : error ?
-                <div className="error-message">
-                    <h5 style={{ color: 'red' }}>There was an error loading the movie: {error}</h5>
-                </div>
+                <ErrorMessage message={`There was an error loading the movie: ${error}`} />
             :
             <>
                 <div className="icon-back">
@@ -89,38 +79,9 @@ export default function Detail() {
                             </h1>
                         </div>
                         <div className="btn-section">
-                            <button className="imdb">
-                                <div className="logo">
-                                    <div className="logo">
-                                        <img src={imdb} alt="imdb" />
-                                    </div>
-                                </div>
-                                <div className="rating">
-                                    <h4>
-                                        {movie?.Ratings[0].Value}
-                                    </h4>
-                                </div>
-                            </button>
-                            <button className="rotten">
-                                <div className="logo">
-                                    <img src={rotten} alt="rotten" />
-                                </div>
-                                <div className="rating">
-                                    <h4>
-                                        {movie?.Ratings[1].Value}
-                                    </h4>
-                                </div>
-                            </button>
-                            <button className="favourite" onClick={addToFavourites} style={favoriteStyle}>
-                                <div className="icon">
-                                    <span><Heart fill={heartFill ? 'white' : ''} height="16" width="16" /></span>
-                                </div>
-                                <div className="text">
-                                    <h4>
-                                        {favourite ? 'Added' : 'Add to favourites'}
-                                    </h4>
-                                </div>
-                            </button>
+                            <Button className="imdb" image={imdb} text={movie?.Ratings[0]?.Value || 'N/A'}/>
+                            <Button className="rotten" image={rotten} text={movie?.Ratings[1]?.Value || 'N/A'} />
+                            <Button className="favourite" favouriteBtn/>
                         </div>
                         <div className="plot">
                             <h4 className="title">
@@ -131,30 +92,9 @@ export default function Detail() {
                             </h4>
                         </div>
                         <div className="bottom">
-                            <div className="plot">
-                                <h4 className="title">
-                                    Cast
-                                </h4>
-                                {movie?.Actors.split(',').map((item, i) => {
-                                    return <h4 key={i} className="content">{item}</h4>;
-                                })}
-                            </div>
-                            <div className="plot">
-                                <h4 className="title">
-                                    Genre
-                                </h4>
-                                {movie?.Genre.split(',').map((item, i) => {
-                                    return <h4 key={i} className="content">{item}</h4>;
-                                })}
-                            </div>
-                            <div className="plot">
-                                <h4 className="title">
-                                    Director
-                                </h4>
-                                {movie?.Director.split(',').map((item, i) => {
-                                    return <h4 key={i} className="content">{item}</h4>;
-                                })}
-                            </div>
+                            <DetailColumns title='Cast' data={movie?.Actors} />
+                            <DetailColumns title='Genre' data={movie?.Genre} />
+                            <DetailColumns title='Director' data={movie?.Director} />
                         </div>
                     </div>
                     <div className="image">

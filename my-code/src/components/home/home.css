@@ -27,12 +27,12 @@
     font-size: 16px;
     font-weight: 400;
     color:#7A8C99;
-;
 }
 
 .search-input:focus, .search-input:hover {
     border: none;
     outline: none;
+    color: #000000;
 }
 
 .search-illustration {

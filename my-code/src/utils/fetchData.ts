@@ -1,8 +1,3 @@
-/**
- * function to fetch movie data based on the url
- * @param url
- * @returns
- */
 export default async function fetchApiData<T>(url: string) {
     let tempData;
     let error = '';

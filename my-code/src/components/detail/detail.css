@@ -3,18 +3,6 @@
     color: white;
 }
 
-.detail-wrapper .loading {
-    text-align: center;
-    margin-top: 150px;
-}
-
-.detail-wrapper .error-message {
-    text-align: center;
-    margin-top: 100px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
 .detail-wrapper .icon-back {
     margin: 32px 0px;
 }

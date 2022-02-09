@@ -4,7 +4,7 @@
     overflow: hidden;
     border-radius: 3px;
     text-align: left;
-    padding: 0px;
+    position: relative;
 }
 
 .card-wrapper img {
@@ -13,29 +13,29 @@
     height: 100%;
 }
 
-.card-wrapper:hover > .card-hover {
-    opacity: 1;
+.card-wrapper:hover > .card-overlay {
+    /* opacity: 1; */
+    visibility: visible;
 }
 
-.card-wrapper .card-hover {
-    width: 180px;
-    height: 240px;
-    margin-top: -240px;
-    border-radius: 3px;
+.card-wrapper .card-overlay {
+    width: 100%;
+    height: 100%;
+    margin-top: -244px;
     position: absolute;
-    opacity: 0;
-    /* margin: 0px; */
+    /* opacity: 0; */
+    visibility: hidden;
     background-color: rgba(19, 28, 37, 0.9);
 }
 
-.card-wrapper .card-hover .favourite {
+.card-wrapper .card-overlay .favourite {
     width: 24px;
     height: 24px;
     margin: 12px 12px 121px 144px;
     z-index: 2;
 }
 
-.card-wrapper .card-hover .title {
+.card-wrapper .card-overlay .title {
     color: white;
     margin: 0px 12px;
     font-weight: 500;
@@ -44,7 +44,7 @@
     overflow: hidden;
 }
 
-.card-wrapper .card-hover .year {
+.card-wrapper .card-overlay .year {
     margin: 6px 12px 12px 12px;
     font-weight: 400;
     font-size: 16px;
