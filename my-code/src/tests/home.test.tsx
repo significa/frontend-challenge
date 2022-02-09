@@ -17,10 +17,6 @@ describe('components rendering without crashing', () => {
     const additionalInfo = screen.getByText(/Dont know what to search?/i);
     expect(additionalInfo).toBeInTheDocument();
   });
-
-  test('renders home', () => {
-    render(<Home />);
-  })
 })
 
 const searchData: SearchData[] = [{
