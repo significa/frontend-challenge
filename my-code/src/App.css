@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  padding: 0px 108px;
+  margin: auto;
+  width: 1180px;
 }
 
 .loading {

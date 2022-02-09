@@ -1,13 +1,15 @@
 .results-wrapper {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
+    grid-template-columns: repeat(6, 180px);
+    justify-content: center;
     margin-top: 32px;
     grid-gap: 20px;
 }
 
 .search-form {
     margin-top: 24px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .search-form .search-icon {
@@ -17,15 +19,13 @@
 
 .search-form .search-input {
     height: 44px;
-    width: 1180px;
+    width: 1140px;
     border: none;
     padding-left: 40px;
     border-radius: 3px;
 }
 
 .search-form .search-input::placeholder {
-    font-size: 16px;
-    font-weight: 400;
     color:#7A8C99;
 }
 

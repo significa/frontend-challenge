@@ -14,7 +14,6 @@
 }
 
 .card-wrapper:hover > .card-overlay {
-    /* opacity: 1; */
     visibility: visible;
 }
 
@@ -23,7 +22,6 @@
     height: 100%;
     margin-top: -244px;
     position: absolute;
-    /* opacity: 0; */
     visibility: hidden;
     background-color: rgba(19, 28, 37, 0.9);
 }
