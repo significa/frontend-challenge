@@ -20,7 +20,7 @@ export default function Card({ poster, imdbID, title, year }: CardProps) {
     };
 
     const favouriteHandler = (event: Event) => {
-        setFavourite(!favourite);
+        setFavourite(value => !value);
         event.preventDefault();
     }
 

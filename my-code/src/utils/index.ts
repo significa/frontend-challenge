@@ -1,3 +1,5 @@
+import { ErrorResponse } from "../interfaces/resultAsError";
+
 export default async function fetchApiData<T>(url: string) {
     let tempData;
     let error = '';
@@ -19,4 +21,9 @@ export default async function fetchApiData<T>(url: string) {
     const data: T = tempData;
     
     return {data, error};
+}
+
+
+export const resultIsError = (data: any): data is ErrorResponse => {
+    return 'Error' in data;
 }

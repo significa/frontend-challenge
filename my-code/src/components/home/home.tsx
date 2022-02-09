@@ -1,13 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SearchData } from "../../interfaces/home";
-import fetchApiData from "../../utils/fetchData";
-import { resultIsError } from "../../utils/checkResultAsError";
+import fetchApiData from "../../utils";
+import { resultIsError } from "../../utils";
 import ErrorMessage from "../errorMessage";
 
 import Card from "../card/card";
 import Spinner from "../spinner/spinner";
-import SearchIllustration from "../searchIllustration";
 
+import SearchIllustration from "../searchIllustration";
 import SearchIcon from '../../assets/1.Icons/icon-magnifier-grey.svg';
 
 import './home.css';
@@ -29,11 +29,11 @@ export default function Home() {
         setResults([]);
         setLoading(true);
         const url = `http://www.omdbapi.com/?apikey=b02d2b50&s=${search}`;
-        const { data, error } = await fetchApiData<SearchData[]>(url);
+        const { data, error: fetchError } = await fetchApiData<SearchData[]>(url);
         setLoading(false);
 
-        if (error) {
-            setError(error);
+        if (fetchError) {
+            setError(fetchError);
         } else if (resultIsError(data)) {
             setError(data.Error);
         } else {
@@ -65,16 +65,19 @@ export default function Home() {
             
             {loading ?
                 <Spinner />
-            :
-            error ?
+            : null}
+            
+            {error ?
                 <ErrorMessage message={`There was an error with your search: ${error}`} />
-            :
-            <div className="results-wrapper">
-                {results?.map((item: SearchData, i) => {
-                    return <Card key={i} imdbID={item.imdbID} title={item.Title} year={item.Year} poster={item.Poster}  />
-                })}
-            </div>
-            }
+            : null}
+            
+            {!loading && !error ?
+                <div className="results-wrapper">
+                    {results?.map((item: SearchData, index) => {
+                        return <Card key={index} imdbID={item.imdbID} title={item.Title} year={item.Year} poster={item.Poster}  />
+                    })}
+                </div>
+            : null}
         </>
     )
 }

@@ -62,7 +62,6 @@
     margin-right: 16px;
     border: 1px solid #353F4C;
     overflow: hidden;
-    padding: 0px;
     text-align: center;
 }
 
@@ -75,7 +74,7 @@
 .detail-wrapper .detail-grid .text .btn-section .imdb img {
     margin: 10px;
     height: 17px;
-    width: 37;
+    width: 37px;
 }
 
 .detail-wrapper .detail-grid .text .btn-section .imdb .rating h4 {
@@ -95,7 +94,6 @@
     margin-right: 16px;
     border: 1px solid #353F4C;
     overflow: hidden;
-    padding: 0px;
     text-align: center;
 }
 
