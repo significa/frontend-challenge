@@ -85,7 +85,7 @@ export default function Detail() {
                             <div className="btn-section">
                                 <Label className="imdb" image={imdb} text={movie?.Ratings[0]?.Value || 'N/A'} />
                                 <Label className="rotten" image={rotten} text={movie?.Ratings[1]?.Value || 'N/A'} />
-                                <Button />
+                                <Button id={paramsObj?.id} />
                             </div>
                             <div className="plot">
                                 <h4 className="title">
