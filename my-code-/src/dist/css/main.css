@@ -181,7 +181,7 @@ img {
 }
 
 .movieCard .movieCard__wrap:hover {
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 .movieCard .movieCard__wrap:hover .icon {
