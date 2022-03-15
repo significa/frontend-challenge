@@ -1,0 +1,359 @@
+html {
+    font-size: 62.5%;
+  }
+
+  *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+$desktopView: 1024px;
+$tabletView: 768px;
+
+ @import './fontColors';
+ @import './mainColors';
+ @import './greyColors';
+
+
+ @mixin desktop {
+  @media (min-width: $desktopView) {
+      @content
+  }
+};
+
+@mixin tablet {
+  @media (min-width: $tabletView) {
+      @content
+  }
+};
+
+ body {
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+    background: $grey-dark;
+    color: $color-default;
+    font-size: 1.3rem;
+    // line-height: 1.4;
+  }
+
+  p {
+    margin-top: 0;
+  }
+  h2, h3, h4 {
+    margin: 1rem;
+  }
+
+ 
+h2 {
+  font-size: 7rem;
+}
+
+h3 {
+  font-size: 4rem;
+}
+
+h4 {
+  font-size: 3rem;
+}
+ 
+
+@media screen and (min-width: 1024px) {
+ 
+  h2 {
+    font-size: 8rem;
+  }
+
+  h3 {
+    font-size: 2.4rem;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+
+}
+
+img {
+   width: 100%;
+   border-radius: 10px;
+}
+
+  @mixin theTheme($font: 'regular') {
+    @if $font == 'bold' {
+        font-weight: 700;
+        font-size: 6.6rem;
+        letter-spacing: 0.8px;
+       } @else if $font == 'medium' {
+        font-weight: 500;
+        font-size: 2rem;
+        letter-spacing: 0.2px;
+      } @else if $font == 'medium-min' {
+        font-weight: 500;
+        font-size: 1.6rem;
+        letter-spacing: 0.2px;
+      } @else {
+        font-weight: 400;
+        letter-spacing: 0.16px;
+       }
+
+}
+
+
+//icons
+
+.icon {
+    width: 25px;
+    height: 25px;
+}
+
+
+// button
+ .btn {
+    padding: 12px 12px 12px 16px;
+    border-radius: 5px;
+    background: $grey-dark;
+    color: $color-secundary;
+    text-align: center;
+    border: 1px solid $color-secundary;
+    cursor: pointer;
+    white-space: nowrap;
+    outline: 0;
+    @include theTheme('medium');
+
+    &:hover {
+        color: $color-default;
+        border: 1px solid $main-red;
+
+        .icon {
+            fill: $color-default;
+        }
+    }
+
+    &:active {
+        background: $main-red;
+        .icon {
+            fill: $color-default;
+        }
+    }
+
+    .icon {
+        vertical-align: middle;
+      }
+  }
+
+
+
+
+//   input
+
+.input {
+    padding: 12px 12px 16px;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
+    @include theTheme('medium-min');
+ }
+
+ 
+  .label__input {
+    color: $grey-dark;
+    width: 100%;
+
+  }
+
+//   input grp 
+
+ .input-grp {
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    background: $grey-white;
+
+    .icon {
+        fill: $grey-white;
+        margin-left: 8px;
+    }
+  }
+
+  .input-grp--disabled {
+    background: $grey-mid-grey;
+
+    .input {
+      background: $grey-mid-grey;
+    }
+
+    .icon {
+      fill: $grey-mid-grey;;
+    }
+}
+
+  .input-grp__label {
+    width: 100vw;
+    overflow: hidden;
+  }
+
+//   .input-grp__label:before {
+//     content: '';
+//     position: absolute;
+//     top: 0;
+//     bottom: 0;
+//     width: 25px;
+//     height: 25px;
+//     background: url('../my-code/icons/icon-heart-grey.svg#Rectangle-12') center / contain no-repeat;
+//     display: block;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+//   }
+
+
+// movie card
+
+.movieCard {
+  margin: 0.2rem 0;
+  position: relative;
+ 
+  
+
+  .movieCard__wrap {
+    position: relative;
+    margin: 0.2rem 0.3rem 0.2rem 0.3rem;
+  
+    .icon {
+      display: none;
+      position: absolute;
+      top: 1.2rem;
+      right: 6rem;
+     }
+
+    .movieCard__wrap-title {
+      display: none;
+      position: absolute;
+      bottom: 1.2rem;
+      left: 1.2rem;
+      @include theTheme('medium-min');
+     }
+    
+    &:hover {
+      opacity: 0.1;
+
+      .icon {
+        display: block;
+      }
+
+      .movieCard__wrap-title {
+        display: block;
+      }
+    }
+  }
+ 
+}
+
+// grid
+
+.grid {
+  display: grid;
+}
+
+.grid--items {
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 15px;
+  row-gap: 10px;
+}
+
+
+.grid--item {
+  grid-template-columns: repeat(1, 1fr);
+
+  .grid--item__timer{
+    font-size: 20px;
+    color: #7A8C99;
+    opacity: 1;
+  }
+  .grid--item__info {
+    margin: auto 10px 0 20px
+  }
+
+  .grid--item__item{
+    @include theTheme('bold');
+  }
+}
+
+@include tablet(){
+  .grid--items {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid--item {
+    grid-template-columns: repeat(2, 1fr);
+
+    .grid--item__image{
+      margin: 5px 30px;
+    }
+  }
+}
+
+
+@include desktop(){
+  .grid--items {
+    grid-template-columns: repeat(6, 1fr);
+  }
+};
+
+
+// flex
+
+.grid--item_labels {
+  display: flex;
+  justify-content: space-between;
+  @include theTheme('medium-min');
+  
+
+  .rate {
+
+    background: $main-yellow;
+    flex-grow: 1;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 1px solid $color-secundary;
+    text-align: center;
+    overflow: hidden;
+
+    .span-z {
+      float: right;
+      width: 50%;
+      height: 100%;
+      background: $grey-dark;
+ 
+      padding: 15px 8px;
+      }
+
+     .span-y {
+      float: left;
+      width: 50%;
+      height: 100%;
+      padding: 15px 0;
+     }
+
+    
+  }
+
+  .rate--y {
+    background: $main-red;
+  }
+}
+
+ .details {
+  @include theTheme('medium-min');
+
+  .details-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .details-title {
+    margin: 10px 0;
+    font-size: 20px;
+    color: #7A8C99
+  }
+ }
