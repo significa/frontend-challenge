@@ -1,12 +1,6 @@
 import React from 'react';
 
-export default function SelectedMovie({ data, goBack }) {
-  function addToFavourite() {
-    if (data.liked) data.liked = false;
-    else data.liked = true;
-  }
-
-  console.log(data);
+export default function SelectedMovie({ data, goBack, addToFavourite }) {
   return (
     <div className='grid grid--item'>
       <div className='grid--item__info'>
@@ -37,8 +31,10 @@ export default function SelectedMovie({ data, goBack }) {
             <span className='span-z'>96%</span>
           </div>
 
-          <button className='btn' onClick={() => addToFavourite()}>
-            <svg className={'icon' + (data.liked ? ' movieCard__wrap-liked' : '')}>
+          <button className='btn' onClick={() => addToFavourite(data)}>
+            <svg
+              className={'icon' + (data.liked ? ' icon-liked movieCard__wrap-liked' : '')}
+            >
               <use href='img/icons/icon-heart-grey.svg#Rectangle-12'></use>
             </svg>
             {data.liked ? 'Dislike' : 'Add to Favourite'}
