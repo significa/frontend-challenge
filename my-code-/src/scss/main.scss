@@ -36,6 +36,14 @@ $tabletView: 768px;
     // line-height: 1.4;
   }
 
+  .logo__image{
+   width: 130px;
+  }
+
+  .main {
+    height: 100vh;
+  }
+
   p {
     margin-top: 0;
   }
@@ -169,6 +177,7 @@ img {
     align-items: center;
     flex-wrap: nowrap;
     background: $grey-white;
+    margin-bottom: 20px;
 
     .icon {
         fill: $grey-white;
@@ -245,6 +254,11 @@ img {
         display: block;
       }
     }
+
+    .icon-liked {
+      fill: $grey-white;
+      display: block;
+    }
   }
  
 }
@@ -271,7 +285,8 @@ img {
     opacity: 1;
   }
   .grid--item__info {
-    margin: auto 10px 0 20px
+    margin: auto 10px 0 20px;
+    height: 100vh;
   }
 
   .grid--item__item{
@@ -289,6 +304,7 @@ img {
 
     .grid--item__image{
       margin: 5px 30px;
+          height: 100vh;
     }
   }
 }
@@ -336,6 +352,12 @@ img {
      }
 
     
+  }
+
+  .btn {
+    .icon-liked {
+      fill: $grey-white;
+    }
   }
 
   .rate--y {
