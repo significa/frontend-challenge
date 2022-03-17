@@ -3,7 +3,8 @@
 ## How to use this Repo
 
 - Clone Repo
-- Run npm install
+- cd my-code-
+- npm install
 
 
 ## Launch App
