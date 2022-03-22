@@ -1,33 +1,46 @@
-import React, {useState}  from 'react';
-import axios from 'axios'
+import React, {useState, useEffect}  from 'react';
+import axios from 'axios';
 import './App.css';
 
-import {SearchBox, SearchIcon, SearchInput, Placeholder, MovieListContainer, Container, Header} from './appStyle'
+import {SearchBox, SearchIcon, SearchInput, Placeholder, MovieListContainer, Container, Header, MovieList} from './appStyle';
 import MovieDetails from './components/MovieDetails';
+import MovieInfo from './components/MovieInfo';
 
 const API_KEY="7c62718b"
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [timeoutId, setTimeoutId] = useState()
 
-  const fetchData = async (searchString) => {
-    const response = await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`);
-      setMovies(response.data.Search);
-    };
-  
+  useEffect(() => {
+    const fetchData= async (searchString)=>{
+      setIsError(false)
+      setIsLoading(true);
+      try {
+        const response= await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`);
+        setMovies(response.data.Search)
+      } catch (error) {
+        setIsError(true)
+      }
+      
+      setIsLoading(false)
+    }
+    fetchData(searchQuery);
     
- 
+  }, [searchQuery]);
+  
   const handleOnChange = (e) => {
     setSelectedMovie("")
     clearTimeout(timeoutId);
     setSearchQuery(e.target.value);
-    const timeout = setTimeout(() => fetchData(e.target.value), 500);
-    setTimeoutId(timeout);
-  }
-
+    
+  };  
+ 
+  
   return (
     <Container>
       <Header>
@@ -41,19 +54,29 @@ function App() {
           />
         </SearchBox>
         </Header>
-        {selectedMovie && <MovieDetails selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>}
+        {selectedMovie && <MovieInfo selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie}/>}
         <MovieListContainer>
-        {movies?.length ? (
-          movies.map((movie, index) => (
-            <MovieDetails
-              key={index}
-              movie={movie}
-              setSelectedMovie={setSelectedMovie}
-            />
-          ))
-        ) : (
-          <Placeholder src="/react-movie-app/movie-icon.svg" />
-        )}
+          {isError && <div>Something went wrong....</div>}
+          {isLoading ? ( 
+            <div>Loading...</div>
+          ): (
+          <MovieList>
+            {movies?.length ? (
+              movies.map((movie, index) => (
+                <MovieDetails
+                  key={index}
+                  movie={movie}
+                  setSelectedMovie={setSelectedMovie}
+                />
+              ))
+            ) : (
+              <Placeholder src="/react-movie-app/movie-icon.svg" />
+            )}
+            
+          </MovieList>
+            
+          )}
+        
 
         </MovieListContainer>
         

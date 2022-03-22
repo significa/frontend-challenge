@@ -54,4 +54,5 @@ export const MovieListContainer=styled.div`
   gap: 25px;
   justify-content: space-evenly;
 `;
+export const MovieList=styled.div``
 
