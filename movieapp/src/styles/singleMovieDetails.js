@@ -23,9 +23,12 @@ export const Left=styled.div`
     margin-left: 40px;
     
     
+    
 `
 export const MovieImage=styled.img`
     border-radius: 5%;
+    width: 100%;
+    height:100%;
 `
 export const MovieTitle=styled.h1`
     font-size: 60px;
@@ -66,14 +69,14 @@ border-radius: 8px;
 `
 
 export const FavoriteButton=styled.button`
-border: 2px solid black;;
-color: #7a8c99;
+border: 1px solid black;
+color: ${props=>props.selected? 'white': '#7a8c99'};
 padding: 10px 10px;
 text-align: center;
 border-color: #353f4c;
 font-size: 16px;
 border-radius: 8px;
-background-color:#0a1014;
+background-color:${props=>props.selected? '#ff4040':'#0a1014' };
 cursor:pointer;
 `
 export const MovieDescriptionSection=styled.div`

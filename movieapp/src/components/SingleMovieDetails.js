@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {MovieImage, SingleMovieContainer, 
   Right, Left, TimeNYear, MovieTitle, Rating, 
   RatingPercent, FavoriteButton, MovieDescription, 
@@ -8,8 +8,44 @@ MovieCastTitle, MovieGenreTitle, MovieDirectorTitle, IMDbRating} from '../styles
 import RatingLogo from '../layout/Logos/logo-rotten-tomatoes.png';
 
 const SingleMovieDetails = (props) => {
-    const {movie}=props
-    console.log(movie)
+  const {movie}=props;
+  
+  const [favorite, setFavorite] = useState(false);
+  const [selected, setSelected]= useState(false)
+  const [buttonText, setButtonText]=useState('Add to favorite')
+  
+  
+  
+  const addFavorite=(imdbID)=>{
+    console.log('favorite clicked')
+    setFavorite(!favorite)
+    localStorage.setItem('imdbID', imdbID)
+    setSelected(!selected)
+    setButtonText('Added')
+  };
+
+
+  useEffect (()=>{
+    (async ()=> {
+      try {
+        let savedFavorite = await localStorage.getItem('imdbID');
+        if(savedFavorite) {
+        setFavorite(savedFavorite);
+        
+      } }
+      catch (error) {
+        console.log(error)
+      }
+    })()
+    
+  }, []);
+
+    
+
+
+
+
+
   return (
     <SingleMovieContainer>
         <Right>
@@ -23,7 +59,7 @@ const SingleMovieDetails = (props) => {
           <IMDbRating src={RatingLogo}/>
           50%
           </RatingPercent>
-          <FavoriteButton>Add to favorites</FavoriteButton>
+          <FavoriteButton selected={selected} onClick={addFavorite}>{buttonText}</FavoriteButton>
           <MovieDescriptionSection>
             <MoviePlotTitle>Plot</MoviePlotTitle>
           <MovieDescription>{movie.Plot}</MovieDescription>
