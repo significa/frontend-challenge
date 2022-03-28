@@ -5,8 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 
-Clone the repository https://github.com/Markotweyo/frontend-challenge.git
-In the project directory, you can  navigate to movieapp folder by using the following steps
+Clone the repository https://github.com/Markotweyo/frontend-challenge.git, after cloning the repo, you can  navigate to movieapp folder by using the following steps
 
 1. `cd frontend-challenge` to open root folder
 2. `git checkout react-app-dev` to branch to the development branch

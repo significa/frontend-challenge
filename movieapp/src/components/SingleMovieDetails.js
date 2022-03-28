@@ -19,8 +19,10 @@ const SingleMovieDetails = (props) => {
   const addFavorite=(imdbID)=>{
     console.log('favorite clicked')
     setFavorite(!favorite)
-    localStorage.setItem('imdbID', imdbID)
+    localStorage.setItem('imdbID', imdbID);
     setSelected(!selected)
+    setButtonText('Added')
+    
     
   };
 
@@ -31,7 +33,6 @@ const SingleMovieDetails = (props) => {
         let savedFavorite = await localStorage.getItem('imdbID');
         if(savedFavorite) {
         setFavorite(savedFavorite);
-        setButtonText('Added')
         
       } }
       catch (error) {
