@@ -1,10 +1,10 @@
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios';
 import './App.css';
+import searchBarIcon from './layout/Icons/icon-magnifier-grey.png';
+import EmptyState from './layout/Illustrations/illustration-empty-state.png'
 
-
-
-import {SearchBox, SearchIcon, SearchInput, Placeholder, MovieListContainer, Container, Header, MovieList} from './appStyle';
+import {SearchBox, SearchIcon, SearchInput, EmptySearch, SearchSuggestion, Placeholder, Offer, MovieListContainer, Container, Header, MovieList} from './appStyle';
 import MovieDetails from './components/MovieDetails';
 
 
@@ -37,13 +37,14 @@ const Homepage=() =>{
     
   }, [searchQuery]);
   
+  
   const handleOnChange = (e) => {
     setSelectedMovie("")
     clearTimeout(timeoutId);
     setSearchQuery(e.target.value);
     
   };  
- 
+  
   
   return (
     
@@ -51,9 +52,9 @@ const Homepage=() =>{
       <Header>
       Movie App
       <SearchBox>
-          <SearchIcon src="" />
+          <SearchIcon src={searchBarIcon} />
           <SearchInput
-            placeholder="Search Movie"
+            placeholder="Search Movies..."
             value={searchQuery}
             onChange={handleOnChange}
           />
@@ -67,6 +68,7 @@ const Homepage=() =>{
           <MovieList>
             {movies?.length ? (
               movies.map((movie, index) => (
+                
                 <MovieDetails
                   key={index}
                   movie={movie}
@@ -74,7 +76,13 @@ const Homepage=() =>{
                 />
               ))
             ) : (
-              <Placeholder src="/react-movie-app/movie-icon.svg" />
+              <EmptySearch>
+              <Placeholder src={EmptyState} />
+              <SearchSuggestion>
+                Don't know what to search?
+              </SearchSuggestion>
+              <Offer>Here's an offer you can't refuse</Offer>
+              </EmptySearch>
             )}
             
           </MovieList>

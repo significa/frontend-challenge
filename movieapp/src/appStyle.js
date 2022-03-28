@@ -28,8 +28,9 @@ export const SearchBox= styled.div`
   background-color: white;
   `;
 export const SearchIcon = styled.img`
-width: 32px;
-  height: 32px;
+width: 20px;
+  height: 20px;
+  background-color: white;
   `;
 export const SearchInput = styled.input`
   color: black;
@@ -39,13 +40,31 @@ export const SearchInput = styled.input`
   outline: none;
   margin-left: 15px;
   `;
+export const EmptySearch=styled.div``
 
 export const Placeholder = styled.img`
-  width: 120px;
-  height: 120px;
-  margin: 150px;
-  opacity: 50%;
+margin-top: 150px;
+align-items:center;
+justify-content: center;
+
+  
 `;
+export const SearchSuggestion=styled.div`
+  align-items:center;
+  justify-content: center;
+  text-align:center;
+  font-size: 24px;
+  color:#fff;
+`
+export const Offer=styled.div`
+align-items:center;
+margin: 8px;
+  justify-content: center;
+  text-align:center;
+  font-size: 16px;
+  color: #7a8c99;
+`
+
 export const MovieListContainer=styled.div`
   display: flex;
   flex-direction: row;

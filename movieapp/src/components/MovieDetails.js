@@ -6,16 +6,20 @@ import { useNavigate } from 'react-router';
 
 
 const MovieDetails = (props) => {
-    const {Title, Year, imdbID, Type, Poster}=props.movie
+    const {Poster, Title, Year, Type} =props.movie
     
     let navigate = useNavigate();
-    const handleClick=(props)=>{
-      navigate('/movie')
+    const handleClick=()=>{
+      navigate(`/movie${props.movie.imdbID}`, {
+        state: { type: 'movie', movie: props.movie },
+        
+      })
     }
   return (
    
     
     <MovieContainer
+    
      onClick={handleClick}>
       <CoverImage src={Poster} alt={Title} />
       <MovieName>{Title}</MovieName>
@@ -23,6 +27,7 @@ const MovieDetails = (props) => {
         <MovieInfo>Year : {Year}</MovieInfo>
         <MovieInfo>Type : {Type}</MovieInfo>
       </InfoColumn>
+      
     </MovieContainer>
     
   )
