@@ -20,6 +20,7 @@ import TextMain from "../components/Text/textMain";
 import TextDark from "../components/Text/textDark";
 import GoBackButton from "../components/Button/backButton";
 import Rating from "../components/Button/rateButton";
+import Alert from "../components/alert";
 
 interface movieType {
   imdbID: string;
@@ -39,6 +40,7 @@ interface movieType {
 
 const Detail = () => {
   const router = useRouter();
+  const [errorAlert, setErrorAlert] = useState(false);
   const [movie, setMovie] = useState<movieType>({
     imdbID: "",
     Title: "",
@@ -74,7 +76,7 @@ const Detail = () => {
         );
         setMovie(response.data);
       } catch (error) {
-        console.log(error);
+        error && setErrorAlert(true);
       }
     };
     getMovieDetails();
@@ -84,6 +86,7 @@ const Detail = () => {
       <Head>
         <title>Details</title>
       </Head>
+      {errorAlert && <Alert />}
       <PageWrapper>
         <Grid container spacing={3}>
           <Grid item xs={6} md={12}>

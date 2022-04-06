@@ -40,7 +40,7 @@ const Home = () => {
       const movieList = response.data.Search;
       setMovies(movieList);
     } catch (error) {
-      setErrorAlert(true);
+      error && setErrorAlert(true);
     }
   };
   //handle text input value change
