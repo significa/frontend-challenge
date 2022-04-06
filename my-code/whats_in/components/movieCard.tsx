@@ -11,19 +11,28 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Link from "next/link";
 import NoMovieAvailable from "../components/emptyMovie";
-
 interface movieCard {
   movies: [
     {
       imdbID: string;
       Title: string;
       Poster: string;
-      Year:string;
+      Year: string;
     }
   ];
 }
 
 const TextBody = ({ movies }: movieCard) => {
+  //set favorite movies
+  const saveFavoriteMovie = (movieId: string) => {
+    let favoriteList: any = [];
+    let favMovieId = movieId;
+    favoriteList.push(favMovieId);
+    localStorage.setItem("movieId", favoriteList);
+  };
+  //get favorite movies
+  let favoriteMovieId = localStorage.getItem("movieId");
+
   return (
     <>
       {(movies || {}).length ? (
@@ -63,12 +72,15 @@ const TextBody = ({ movies }: movieCard) => {
                           aria-label="add to favorites"
                           onClick={(event) => {
                             event.stopPropagation();
+                            saveFavoriteMovie(movie?.imdbID);
                           }}
                         >
                           <StyledRating
                             size="large"
                             max={1}
-                            defaultValue={0}
+                            defaultValue={
+                              movie?.imdbID === favoriteMovieId ? 1 : 0
+                            }
                             icon={<FavoriteIcon fontSize="inherit" />}
                             emptyIcon={
                               <FavoriteBorderIcon fontSize="inherit" />
