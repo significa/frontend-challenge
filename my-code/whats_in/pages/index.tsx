@@ -8,10 +8,6 @@ import Alert from "../components/alert";
 import MovieCard from "../components/movieCard";
 import { Key } from "react";
 
-interface movie {
-  index: Key;
-}
-
 interface movieType {
   movies: [
     {

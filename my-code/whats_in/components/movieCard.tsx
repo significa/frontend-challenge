@@ -11,11 +11,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Link from "next/link";
 import NoMovieAvailable from "../components/emptyMovie";
-import {  Key } from "react";
-
-interface movieType {
-  length: any;
-}
 
 interface movieCard {
   movies: [
@@ -24,7 +19,6 @@ interface movieCard {
       Title: string;
       Poster: string;
       Year:string;
-      index: Key ;
     }
   ];
 }
