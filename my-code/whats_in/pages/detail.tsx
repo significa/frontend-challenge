@@ -89,7 +89,7 @@ const Detail = () => {
         <title>Details</title>
       </Head>
       {errorAlert && <Alert />}
-      {!loader ? (
+      {loader ? (
         <Loader />
       ) : (
         <PageWrapper>
