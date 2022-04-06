@@ -52,7 +52,7 @@ const TextBody = ({ movies }: movieCard) => {
                       height={250}
                       title={movie?.Title}
                       image={
-                        movie?.Poster !== ""
+                        movie?.Poster !== "N/A"
                           ? `${movie?.Poster}`
                           : `no-movie.png`
                       }

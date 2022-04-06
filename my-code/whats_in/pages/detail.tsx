@@ -162,7 +162,7 @@ const Detail = () => {
               component="img"
               width="auto"
               height="auto"
-              image={`${Poster}`}
+              image={Poster !== "N/A" ? `${Poster}` : `no-movie.png`}
             />
           </Grid>
         </Grid>
