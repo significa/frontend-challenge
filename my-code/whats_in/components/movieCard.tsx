@@ -28,10 +28,13 @@ const TextBody = ({ movies }: movieCard) => {
     let favoriteList: any = [];
     let favMovieId = movieId;
     favoriteList.push(favMovieId);
-    localStorage.setItem("movieId", favoriteList);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("movieId", favoriteList);
+    }
   };
   //get favorite movies
-  let favoriteMovieId = localStorage.getItem("movieId");
+  let favoriteMovieId =
+    typeof window !== "undefined" ? localStorage.getItem("movieId") : null;
 
   return (
     <>
