@@ -8,19 +8,18 @@ import {
   Stack,
   Button,
   CardMedia,
+  Typography,
+  Avatar,
 } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import HubIcon from "@mui/icons-material/Hub";
 import { Item, PageWrapper, Badge } from "../styles";
-import axios from "axios";
-import TextBody from "../components/Text/textBody";
-import TextLight from "../components/Text/textLight";
-import TextMain from "../components/Text/textMain";
-import TextDark from "../components/Text/textDark";
-import GoBackButton from "../components/Button/backButton";
-import Rating from "../components/Button/rateButton";
-import Alert from "../components/alert";
-import Loader from "../components/spinner";
+import TextLight from "../components/Text/Text";
+import GoBackButton from "../components/Button/BackButton";
+import Rating from "../components/Button/RateButton";
+import Alert from "../components/Alert";
+import Loader from "../components/Spinner";
+import Image from "next/image";
 
 interface movieType {
   imdbID: string;
@@ -68,27 +67,45 @@ const Detail = () => {
     Year,
     Ratings,
   } = movie;
+  const [open, setOpen] = useState(true);
+  const closeAlert = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     const getMovieDetails = async () => {
       try {
-        const response = await axios.get(
-          `http://www.omdbapi.com/?i=${movieId}&apikey=d3e8c483`
-        );
-        setMovie(response.data);
-        setLoader(!response.data.Response);
+        const res = await fetch(`/api/getMoviesById?id=${movieId}`);
+        const movieDetail = await res.json();
+        setMovie(movieDetail);
+        setLoader(!movieDetail.Response);
       } catch (error) {
         error && setErrorAlert(true);
       }
     };
     getMovieDetails();
   }, [movieId]);
+
+  //set favorite movies
+  const saveFavoriteMovie = (movieId: string) => {
+    let favoriteList: any = [];
+    let favMovieId = movieId;
+    favoriteList.push(favMovieId);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("movieId", favoriteList);
+    }
+  };
+
+  //get favorite movies
+  let favoriteMovieId =
+    typeof window !== "undefined" ? localStorage.getItem("movieId") : null;
+
   return (
     <>
       <Head>
         <title>Details</title>
       </Head>
-      {errorAlert && <Alert />}
+      {errorAlert && <Alert open={open} closeAlert={closeAlert} />}
       {loader ? (
         <Loader />
       ) : (
@@ -110,18 +127,40 @@ const Detail = () => {
                   }
                   spacing={2}
                 >
-                  <TextDark title={Runtime} />
-                  <TextDark title={Year} />
+                  <Typography
+                    variant="subtitle1"
+                    gutterBottom
+                    color="primary.dark"
+                  >
+                    {Runtime}
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    gutterBottom
+                    color="primary.dark"
+                  >
+                    {Year}
+                  </Typography>
                   <Badge label={Rated} />
                 </Stack>
 
-                <TextMain title={Title} />
+                <Typography
+                  variant="h2"
+                  gutterBottom
+                  color="primary.contrastText"
+                  sx={{ fontWeight: 750, py: 2 }}
+                >
+                  {Title}
+                </Typography>
 
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                   <ButtonGroup disableElevation variant="contained">
-                    <Button sx={{ backgroundColor: "#ffa500", color: "#000" }}>
-                      IMDB
-                    </Button>
+                    <Image
+                      src="/logo-imdb.png"
+                      alt="imdb logo"
+                      width={50}
+                      height={20}
+                    />
                     <Rating title={Ratings ? Ratings[0]?.Value : "N/A"} />
                   </ButtonGroup>
                   <ButtonGroup disableElevation variant="contained">
@@ -130,34 +169,75 @@ const Detail = () => {
                     </Button>
                     <Rating title={Ratings ? Ratings[1]?.Value : "N/A"} />
                   </ButtonGroup>
-                  <Button
-                    variant="outlined"
-                    startIcon={<FavoriteBorderIcon />}
-                    sx={{
-                      textTransform: "capitalize",
-                      color: "#808080",
-                      borderColor: "#808080",
-                    }}
-                  >
-                    Add to favourites
-                  </Button>
+                  {movie?.imdbID === favoriteMovieId ? (
+                    <Button
+                      variant="contained"
+                      startIcon={<FavoriteBorderIcon />}
+                      sx={{
+                        textTransform: "capitalize",
+                        color: "#fff",
+                        backgroundColor: "#FF4040",
+                      }}
+                    >
+                      Added
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outlined"
+                      startIcon={<FavoriteBorderIcon />}
+                      sx={{
+                        textTransform: "capitalize",
+                        color: "#808080",
+                        borderColor: "#1B2329",
+                      }}
+                      onClick={() => {
+                        saveFavoriteMovie(movie?.imdbID);
+                      }}
+                    >
+                      Add to favourite
+                    </Button>
+                  )}
                 </Stack>
 
                 <Stack direction="column" spacing={2} sx={{ py: 4 }}>
-                  <TextDark title="Plot" />
-                  <TextBody title={Plot} />
+                  <Typography
+                    variant="subtitle1"
+                    gutterBottom
+                    color="primary.dark"
+                  >
+                    Plot
+                  </Typography>
+                  <TextLight title={Plot} />
                 </Stack>
                 <Stack direction="row" spacing={4}>
                   <div>
-                    <TextDark title="Cast" />
+                    <Typography
+                      variant="subtitle1"
+                      gutterBottom
+                      color="primary.dark"
+                    >
+                      Cast
+                    </Typography>
                     <TextLight title={Actors} />
                   </div>
                   <div>
-                    <TextDark title="Genre" />
+                    <Typography
+                      variant="subtitle1"
+                      gutterBottom
+                      color="primary.dark"
+                    >
+                      Genre
+                    </Typography>
                     <TextLight title={Genre} />
                   </div>
                   <div>
-                    <TextDark title="Director" />
+                    <Typography
+                      variant="subtitle1"
+                      gutterBottom
+                      color="primary.dark"
+                    >
+                      Director
+                    </Typography>
                     <TextLight title={Director} />
                   </div>
                 </Stack>

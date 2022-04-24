@@ -22,7 +22,7 @@ export default function handler(
     const getMovieDetails = async () => {
       try {
         const response = await axios.get(
-          `http://www.omdbapi.com/?i=${movieId}&apikey=d3e8c483`
+          `http://www.omdbapi.com/?i=${movieId}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`
         );
         res.send(response.data);
       } catch (error) {

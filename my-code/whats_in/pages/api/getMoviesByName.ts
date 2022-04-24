@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import axios from "axios";
-
 // API TEST functionality (gets the james bond movie details by name )
 //http:localhost:3000/api/getMoviesByName?name=james bond
 
@@ -16,10 +15,9 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   const movieName = req.query.name;
-
   if (movieName) {
     const getMoviesByName = async () => {
-      const url = `http://www.omdbapi.com/?s=${movieName}&apikey=d3e8c483`;
+      const url = `http://www.omdbapi.com/?s=${movieName}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`;
       try {
         const response = await axios.get(url);
         const movieList = response.data.Search;

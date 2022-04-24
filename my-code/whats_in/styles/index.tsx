@@ -34,8 +34,8 @@ export const PageWrapper = styled(Box)(() => ({
 
 export const Badge = styled(Chip)(() => ({
   borderRadius: 1,
-  color: "#FAFAFA",
-  backgroundColor: "#808080",
+  color: "#0A1014",
+  backgroundColor: "#7A8C99",
 }));
 
 export const StyledRating = styled(Rating)({

@@ -10,7 +10,8 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Link from "next/link";
-import NoMovieAvailable from "../components/emptyMovie";
+import NoMovieAvailable from "./EmptyMovie";
+
 interface movieCard {
   movies: [
     {
@@ -84,9 +85,9 @@ const TextBody = ({ movies }: movieCard) => {
                             defaultValue={
                               movie?.imdbID === favoriteMovieId ? 1 : 0
                             }
-                            icon={<FavoriteIcon fontSize="inherit" />}
+                            icon={<FavoriteIcon sx={{ fill:"#ffff"}} />}
                             emptyIcon={
-                              <FavoriteBorderIcon fontSize="inherit" />
+                              <FavoriteBorderIcon sx={{ fill:"#ffff"}} />
                             }
                           />
                         </IconButton>

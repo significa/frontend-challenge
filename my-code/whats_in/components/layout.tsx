@@ -3,7 +3,7 @@ import { Main, Header } from "../styles";
 import Image from "next/image";
 
 interface Props {
-  children: any;
+  children: JSX.Element;
 }
 
 const Layout = ({ children }: Props) => {

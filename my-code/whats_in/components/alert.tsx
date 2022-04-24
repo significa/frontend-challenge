@@ -1,11 +1,18 @@
 import * as React from "react";
-import Alert from "@mui/material/Alert";
+import { Alert, Snackbar } from "@mui/material";
 
-const Alerts = () => {
+const Alerts = ({ open, closeAlert }: { open: boolean; closeAlert: () => void}) => {
   return (
-    <div>
-      <Alert severity="error">Movie Not Found</Alert>
-    </div>
+    <Snackbar
+      anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      open={open}
+      autoHideDuration={2000}
+      onClose={closeAlert}
+    >
+      <Alert severity="error" color="error" variant="filled">
+        Movie not found
+      </Alert>
+    </Snackbar>
   );
 };
 export default Alerts;
