@@ -68,6 +68,8 @@ const Detail = () => {
     Ratings,
   } = movie;
   const [open, setOpen] = useState(true);
+  const [loading, setLoading] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
   const closeAlert = () => {
     setOpen(false);
   };
@@ -88,6 +90,8 @@ const Detail = () => {
 
   //set favorite movies
   const saveFavoriteMovie = (movieId: string) => {
+    setSuccess(false);
+    setLoading(true);
     let favoriteList: any = [];
     let favMovieId = movieId;
     favoriteList.push(favMovieId);
@@ -158,18 +162,21 @@ const Detail = () => {
                     <Image
                       src="/logo-imdb.png"
                       alt="imdb logo"
-                      width={50}
+                      width={55}
                       height={20}
                     />
-                    <Rating title={Ratings ? Ratings[0]?.Value : "N/A"} />
+                    <Rating title={Ratings !== "" ? Ratings[0]?.Value : "N/A"} />
                   </ButtonGroup>
                   <ButtonGroup disableElevation variant="contained">
-                    <Button sx={{ backgroundColor: "red", color: "#fff" }}>
-                      <HubIcon />
-                    </Button>
-                    <Rating title={Ratings ? Ratings[1]?.Value : "N/A"} />
+                  <Image
+                      src="/logo-rotten-tomatoe.png"
+                      alt="imdb logo"
+                      width={45}
+                      height={20}
+                    />
+                    <Rating title={Ratings !== "" ? Ratings[1]?.Value : "N/A"} />
                   </ButtonGroup>
-                  {movie?.imdbID === favoriteMovieId ? (
+                  { !success && movie?.imdbID === favoriteMovieId  ? (
                     <Button
                       variant="contained"
                       startIcon={<FavoriteBorderIcon />}
@@ -184,6 +191,7 @@ const Detail = () => {
                   ) : (
                     <Button
                       variant="outlined"
+                      disabled={loading}
                       startIcon={<FavoriteBorderIcon />}
                       sx={{
                         textTransform: "capitalize",

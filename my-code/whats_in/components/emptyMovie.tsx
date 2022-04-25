@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const EmptyMovie = () => {
   return (
-    <Grid item xs={12} md={12} sx={{ mt: 8 }}>
+    <Grid item xs={12} md={12} sx={{ mt: 15 }}>
       <Stack
         direction="column-reverse"
         justifyContent="center"
@@ -30,7 +30,7 @@ const EmptyMovie = () => {
         <Image
           src="/illustration-empty-state.png"
           alt="movie poster"
-          width={500}
+          width={420}
           height={200}
         />
       </Stack>
