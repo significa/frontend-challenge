@@ -165,18 +165,18 @@ const Detail = () => {
                       width={55}
                       height={20}
                     />
-                    <Rating title={Ratings !== "" ? Ratings[0]?.Value : "N/A"} />
+                    <Rating title={Ratings ? Ratings[0]?.Value : "N/A"} />
                   </ButtonGroup>
                   <ButtonGroup disableElevation variant="contained">
-                  <Image
+                    <Image
                       src="/logo-rotten-tomatoe.png"
                       alt="imdb logo"
                       width={45}
                       height={20}
                     />
-                    <Rating title={Ratings !== "" ? Ratings[1]?.Value : "N/A"} />
+                    <Rating title={Ratings ? Ratings[1]?.Value : "N/A"} />
                   </ButtonGroup>
-                  { !success && movie?.imdbID === favoriteMovieId  ? (
+                  {!success && movie?.imdbID === favoriteMovieId ? (
                     <Button
                       variant="contained"
                       startIcon={<FavoriteBorderIcon />}
