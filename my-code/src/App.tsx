@@ -1,10 +1,12 @@
+import { BrowserRouter } from "react-router-dom"
+import { Router } from "./Pages/Router"
 
 function App() {
 
   return (
-    <div className="App">
-      Yo, significa!
-    </div>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   )
 }
 
