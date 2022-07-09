@@ -1,14 +1,27 @@
 import styled from 'styled-components';
 
 export const MoviesListContainer = styled.div`
-    width: 100%;
+    width: 95%;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 180px);
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     justify-content: center;
+    place-items: center;
     gap: 1rem;
+    margin: 0 auto;
+`;
 
-    @media (max-width: 768px) {
-        gap: .7rem;
-    }
+export const EmptyState = styled.div<{ moviesFound: number }>`
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    ${({ moviesFound }) => moviesFound === 0 && `
+        display: flex;
+    `}
 `;

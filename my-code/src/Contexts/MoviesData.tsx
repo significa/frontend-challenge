@@ -36,11 +36,19 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMoviesData(search: string) {
-        if (search.length === 0) return setMovies([])
-        if (search.length > 0 && search.length < 3) return
+        if (search.length > 0 && search.length < 3) return;
+
         setIsLoading(true)
+        if (search.length === 0) return (
+            setMovies([]),
+            setIsLoading(false)
+        )
+
         const response = await axios.get(`http://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
-        if (response.data.Response === 'False') return
+        if (response.data.Response === 'False') return (
+            setMovies([]),
+            setIsLoading(false)
+        )
         setMovies(response.data.Search)
         setIsLoading(false)
     }
