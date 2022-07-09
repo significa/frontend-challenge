@@ -6,12 +6,12 @@ interface MoviesDataProviderProps {
 }
 
 interface MoviesDataContextProps {
-    movies: Movie[];
+    movies: MovieProps[];
     getMoviesData: (search: string) => void;
     isLoading: boolean;
 }
 
-interface Movie {
+export interface MovieProps {
     Actors: string;
     Awards: string;
     Country: string;
@@ -32,7 +32,7 @@ const MoviesDataContext = createContext({} as MoviesDataContextProps)
 
 export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
 
-    const [movies, setMovies] = useState<Movie[]>([])
+    const [movies, setMovies] = useState<MovieProps[]>([])
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMoviesData(search: string) {

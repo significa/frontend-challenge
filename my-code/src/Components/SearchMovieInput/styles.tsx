@@ -8,6 +8,7 @@ export const SearchMoviesInputContainer = styled.div`
     align-items: center;
     background-color: ${theme.colors.white};
     border-radius: 4px;
+    margin-bottom: 32px;
 `;
 
 export const SearchIcon = styled.img`
