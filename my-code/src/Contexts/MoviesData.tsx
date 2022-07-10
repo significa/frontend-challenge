@@ -1,5 +1,5 @@
 import axios from "axios";
-import { createContext, ReactNode, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface MoviesDataProviderProps {
     children: ReactNode;
@@ -40,7 +40,9 @@ const MoviesDataContext = createContext({} as MoviesDataContextProps)
 export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
 
     const [movies, setMovies] = useState<MovieProps[]>([])
-    const [favouriteMovies, setFavouriteMovies] = useState<FavouriteMoviesProps[]>([])
+    const [favouriteMovies, setFavouriteMovies] = useState<FavouriteMoviesProps[]>(
+        JSON.parse(localStorage.getItem('favouriteMovies') || '[]')
+    )
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMoviesData(search: string) {
@@ -73,6 +75,10 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
     function isFavourite(movieID: string) {
         return (favouriteMovies.some(movie => movie.imdbID === movieID))
     }
+
+    useEffect(() => {
+        localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies))
+    }, [favouriteMovies])
 
     return (
         <MoviesDataContext.Provider value={{ movies, getMoviesData, favouriteMovies, isFavourite, addToFavourites, isLoading }}>
