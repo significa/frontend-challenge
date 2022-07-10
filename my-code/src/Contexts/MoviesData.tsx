@@ -7,7 +7,7 @@ interface MoviesDataProviderProps {
 
 interface MoviesDataContextProps {
     movies: MovieProps[];
-    getMoviesData: (search: string) => void;
+    getMoviesData: (search: string) => Promise<void>;
     isLoading: boolean;
 }
 
