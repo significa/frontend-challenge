@@ -11,7 +11,24 @@ export const MoviePoster = styled.img`
     width: 180px;
     height: 240px;
     border-radius: 3px;
+`;
 
+export const FavouriteIcon = styled.div<{ isFavourite: boolean }>`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+    cursor: pointer;
+
+    :hover{
+        opacity: 1;
+    }
+
+    ${({ isFavourite }) => isFavourite && `
+        opacity: 1;
+    `}
 `;
 
 export const MovieDetails = styled.div`
@@ -23,7 +40,7 @@ export const MovieDetails = styled.div`
     border-radius: 3px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     opacity: 0;
     transition: all 0.2s ease-in-out;
     z-index: 1;
@@ -31,19 +48,13 @@ export const MovieDetails = styled.div`
     :hover {
         opacity: 1;
 
-        & + ${MoviePoster} {
+        & + ${FavouriteIcon} {
+            opacity: 1;
+        }
+        & + ${FavouriteIcon} + ${MoviePoster} {
             filter: brightness(0.5);
         }
     }
-
-`;
-
-export const FavoriteIcon = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    padding: .5rem;
-    cursor: pointer;
 `;
 
 export const MovieInfo = styled.div`

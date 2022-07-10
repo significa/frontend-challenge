@@ -8,10 +8,13 @@ interface MoviesDataProviderProps {
 interface MoviesDataContextProps {
     movies: MovieProps[];
     getMoviesData: (search: string) => Promise<void>;
+    favouriteMovies: FavouriteMoviesProps[];
+    addToFavourites: (movieID: string) => void;
+    isFavourite: (movieID: string) => boolean;
     isLoading: boolean;
 }
 
-export interface MovieProps {
+interface MovieProps {
     Actors: string;
     Awards: string;
     Country: string;
@@ -28,11 +31,16 @@ export interface MovieProps {
     imdbID: string;
 }
 
+interface FavouriteMoviesProps {
+    imdbID: string;
+}
+
 const MoviesDataContext = createContext({} as MoviesDataContextProps)
 
 export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
 
     const [movies, setMovies] = useState<MovieProps[]>([])
+    const [favouriteMovies, setFavouriteMovies] = useState<FavouriteMoviesProps[]>([])
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMoviesData(search: string) {
@@ -53,8 +61,21 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
         setIsLoading(false)
     }
 
+    function addToFavourites(movieID: string) {
+        if (favouriteMovies.some(movie => movie.imdbID === movieID)) {
+            return setFavouriteMovies(favouriteMovies.filter(movie => movie.imdbID !== movieID))
+        }
+        setFavouriteMovies([{ imdbID: movieID }, ...favouriteMovies])
+        console.log(favouriteMovies)
+    }
+
+
+    function isFavourite(movieID: string) {
+        return (favouriteMovies.some(movie => movie.imdbID === movieID))
+    }
+
     return (
-        <MoviesDataContext.Provider value={{ movies, getMoviesData, isLoading }}>
+        <MoviesDataContext.Provider value={{ movies, getMoviesData, favouriteMovies, isFavourite, addToFavourites, isLoading }}>
             {children}
         </MoviesDataContext.Provider>
     )
