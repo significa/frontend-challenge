@@ -34,7 +34,7 @@ export function MovieDetailsProvider({ children }: MovieDetailsProviderProps) {
 
     async function getMovieInfo(imdbID: string) {
         setIsLoading(true)
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=23fc3dfd&i=${imdbID}`)
+        const response = await axios.get(`https://www.omdbapi.com/?apikey=23fc3dfd&i=${imdbID}`)
         setMovieInfo(response.data)
         setIsLoading(false)
     }

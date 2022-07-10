@@ -54,7 +54,7 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
             setIsLoading(false)
         )
 
-        const response = await axios.get(`http://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
+        const response = await axios.get(`https://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
         if (response.data.Response === 'False') return (
             setMovies([]),
             setIsLoading(false)
@@ -68,7 +68,6 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
             return setFavouriteMovies(favouriteMovies.filter(movie => movie.imdbID !== movieID))
         }
         setFavouriteMovies([{ imdbID: movieID }, ...favouriteMovies])
-        console.log(favouriteMovies)
     }
 
 
