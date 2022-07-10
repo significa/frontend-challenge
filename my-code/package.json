@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "wrap": "yarn install & vite"
   },
   "dependencies": {
     "@types/styled-components": "^5.1.25",
