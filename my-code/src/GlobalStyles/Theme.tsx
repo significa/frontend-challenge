@@ -21,9 +21,9 @@ export const theme = {
             bold: 700,
         },
         size: {
-            88: '88px',
-            24: '24px',
-            20: '20px',
+            88: '5.5rem',
+            24: '1.5rem',
+            20: '1.25rem',
         },
         colors: {
             secondary: '#7A8C99',
