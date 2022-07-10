@@ -1,6 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useMovies } from '../../Contexts/MoviesData';
+import { theme } from '../../GlobalStyles/Theme';
 import { MovieCard } from '../MovieCard';
 import { EmptyState, MoviesListContainer } from './styles';
 
@@ -14,9 +15,9 @@ export function MoviesList() {
         <MoviesListContainer>
             {isLoading ? (
                 <>
-                    <Skeleton width={180} height={240} />
-                    <Skeleton width={180} height={240} />
-                    <Skeleton width={180} height={240} />
+                    <Skeleton width={180} height={240} baseColor={theme.colors.midGrey} highlightColor={theme.colors.dark} />
+                    <Skeleton width={180} height={240} baseColor={theme.colors.midGrey} highlightColor={theme.colors.dark} />
+                    <Skeleton width={180} height={240} baseColor={theme.colors.midGrey} highlightColor={theme.colors.dark} />
                 </>
             ) : (
                 movies.length > 0 ? (

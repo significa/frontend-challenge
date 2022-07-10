@@ -8,6 +8,7 @@ interface MovieDetailsProviderProps {
 interface MovieDetailsContextProps {
     getMovieInfo: (imdbID: string) => Promise<void>
     movieInfo: MovieInfoProps
+    isLoading: boolean
 }
 
 interface MovieInfoProps {
@@ -29,15 +30,17 @@ const MovieDetailsContext = createContext({} as MovieDetailsContextProps)
 export function MovieDetailsProvider({ children }: MovieDetailsProviderProps) {
 
     const [movieInfo, setMovieInfo] = useState({} as MovieInfoProps)
+    const [isLoading, setIsLoading] = useState(false)
 
     async function getMovieInfo(imdbID: string) {
+        setIsLoading(true)
         const response = await axios.get(`http://www.omdbapi.com/?apikey=23fc3dfd&i=${imdbID}`)
         setMovieInfo(response.data)
-        console.log(response)
+        setIsLoading(false)
     }
 
     return (
-        <MovieDetailsContext.Provider value={{ getMovieInfo, movieInfo }}>
+        <MovieDetailsContext.Provider value={{ getMovieInfo, movieInfo, isLoading }}>
             {children}
         </MovieDetailsContext.Provider>
     );

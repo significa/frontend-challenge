@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { useMovieDetails } from '../../Contexts/MovieDetails';
 import { FavoriteIcon, MovieCardContainer, MovieDetails, MovieInfo, MoviePoster } from './styles';
 import heartIcon from '/icons/icon-heart-white.svg';
 
@@ -12,9 +13,11 @@ interface MovieCardProps {
 export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
 
     const navigate = useNavigate()
+    const { getMovieInfo } = useMovieDetails()
 
     function handleClick() {
         navigate(`/movie/${imdbID}`)
+        getMovieInfo(imdbID)
     }
 
     return (
