@@ -3,6 +3,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useMovieDetails } from '../../Contexts/MovieDetails';
+import { useMovies } from '../../Contexts/MoviesData';
 import { theme } from '../../GlobalStyles/Theme';
 import { AddToFavouritesButton, ArrowIcon, InfoHeader, MovieDetailsContainer, MovieInfoContainer, MoviePoster, MoviePosterContainer, MovieTitle, Rated, Rating, RatingLogo, RatingsContainer, Runtime, TechnicalInfo, TechnicalInfoContainer, TechnicalInfoTitle, Year } from './styles';
 import arrowIcon from '/icons/icon-arrow-white.svg';
@@ -12,6 +13,7 @@ import rottenTomatoesLogo from '/logos/logo-rotten-tomatoes.svg';
 
 export function MovieDetails() {
 
+    const { isFavourite, addToFavourites } = useMovies()
     const { movieInfo, getMovieInfo, isLoading } = useMovieDetails()
     const { id } = useParams()
     const navigate = useNavigate()
@@ -45,9 +47,12 @@ export function MovieDetails() {
                                         <p>{rating.Value}</p>
                                     </Rating>
                                 ))}
-                                <AddToFavouritesButton>
+                                <AddToFavouritesButton
+                                    isFavourite={isFavourite(movieInfo.imdbID)}
+                                    onClick={() => (addToFavourites(movieInfo.imdbID))}
+                                >
                                     <img src={heartIcon} alt="Add to favourites" />
-                                    <p>Add to favourites</p>
+                                    <p>{isFavourite(movieInfo.imdbID) ? 'Added' : 'Add to favourites'}</p>
                                 </AddToFavouritesButton>
                             </RatingsContainer>
                             <TechnicalInfoContainer>

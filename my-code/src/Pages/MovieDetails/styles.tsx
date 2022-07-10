@@ -104,7 +104,7 @@ export const RatingLogo = styled.img`
     padding: .5rem;
 `;
 
-export const AddToFavouritesButton = styled.div`
+export const AddToFavouritesButton = styled.div<{ isFavourite: boolean }>`
     flex: 1;
     display: flex;
     align-items: center;
@@ -133,6 +133,14 @@ export const AddToFavouritesButton = styled.div`
             color: ${theme.colors.white};
         }
     }
+
+    ${({ isFavourite }) => isFavourite && `
+        background-color: ${theme.colors.red};
+        img, p {
+            filter: brightness(1);
+            color: ${theme.colors.white};
+        }
+    `}
 `;
 
 export const TechnicalInfoContainer = styled.div`
