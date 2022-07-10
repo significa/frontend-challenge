@@ -12,7 +12,7 @@ export const MoviesListContainer = styled.div`
 `;
 
 export const EmptyState = styled.div<{ moviesFound: number }>`
-    margin-top: 100%;
+    margin-top: 20%;
     transform: translateY(-50%);
     display: none;
     flex-direction: column;
@@ -25,7 +25,16 @@ export const EmptyState = styled.div<{ moviesFound: number }>`
     `}
 
     img{
-        width: 100%;
+        width: 30%;
+    }
+
+
+    @media (max-width: 800px) {        
+        margin-top: 100%;
+
+        img{
+            width: 100%;
+        }
     }
 
 `;
