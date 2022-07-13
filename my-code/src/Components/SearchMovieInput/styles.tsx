@@ -1,9 +1,10 @@
+import { DebounceInput } from 'react-debounce-input';
 import styled from 'styled-components';
 import { theme } from '../../GlobalStyles/Theme';
 
 export const SearchMoviesInputContainer = styled.div`
     width: 100%;
-    height: 44px;
+    height: 2.75rem;
     display: flex;
     align-items: center;
     background-color: ${theme.colors.white};
@@ -15,7 +16,7 @@ export const SearchIcon = styled.img`
     margin: 0 .5rem 0 1rem;
 `;
 
-export const SearchInput = styled.input`
+export const SearchInput = styled(DebounceInput)`
     width: 100%;
     height: 100%;
     background-color: transparent;
