@@ -19,69 +19,75 @@ export function MovieDetails() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        !movieInfo.imdbID && getMovieInfo(id!)
+       getMovieInfo(id!)
     }, [id])
-
+    
+    if (isLoading) {
+	    return (
+	      <MovieDetailsContainer>
+	        <Skeleton
+	          width={"85vw"}
+	          height={"95vh"}
+	          baseColor={theme.colors.midGrey}
+	          highlightColor={theme.colors.dark}
+	        />
+	      </MovieDetailsContainer>
+	    );
+	  }
+      
     return (
         <MovieDetailsContainer>
-            {isLoading ?
-                <Skeleton width={'85vw'} height={'95vh'} baseColor={theme.colors.midGrey} highlightColor={theme.colors.dark} /> :
-                movieInfo.imdbID && (
-                    <>
-                        <MovieInfoContainer>
-                            <ArrowIcon
-                                src={arrowIcon}
-                                alt="click to go back"
-                                onClick={() => navigate('/')}
-                            />
-                            <InfoHeader>
-                                <Runtime>{movieInfo.Runtime}</Runtime>
-                                <Year>{movieInfo.Year}</Year>
-                                <Rated>{movieInfo.Rated}</Rated>
-                            </InfoHeader>
-                            <MovieTitle>{movieInfo.Title}</MovieTitle>
-                            <RatingsContainer>
-                                {movieInfo.Ratings.slice(0, 2).map((rating, index) => (
-                                    <Rating key={index}>
-                                        <RatingLogo src={rating.Source === 'Internet Movie Database' ? imdbLogo : rottenTomatoesLogo} alt={rating.Source} />
-                                        <p>{rating.Value}</p>
-                                    </Rating>
-                                ))}
-                                <AddToFavouritesButton
-                                    isFavourite={isFavourite(movieInfo.imdbID)}
-                                    onClick={() => (addToFavourites(movieInfo.imdbID))}
-                                >
-                                    <img src={heartIcon} alt="Add to favourites" />
-                                    <p>{isFavourite(movieInfo.imdbID) ? 'Added' : 'Add to favourites'}</p>
-                                </AddToFavouritesButton>
-                            </RatingsContainer>
-                            <TechnicalInfoContainer>
-                                <TechnicalInfo>
-                                    <TechnicalInfoTitle>Cast</TechnicalInfoTitle>
-                                    {movieInfo.Actors.split(',').map((actor, index) => (
-                                        <p key={index}>{actor}</p>
-                                    ))}
-                                </TechnicalInfo>
-                                <TechnicalInfo>
-                                    <TechnicalInfoTitle>Genre</TechnicalInfoTitle>
-                                    {movieInfo.Genre.split(',').map((genre, index) => (
-                                        <p key={index}>{genre}</p>
-                                    ))}
-                                </TechnicalInfo>
-                                <TechnicalInfo>
-                                    <TechnicalInfoTitle>Director</TechnicalInfoTitle>
-                                    {movieInfo.Director.split(',').map((director, index) => (
-                                        <p key={index}>{director}</p>
-                                    ))}
-                                </TechnicalInfo>
-                            </TechnicalInfoContainer>
-                        </MovieInfoContainer>
-                        <MoviePosterContainer>
-                            <MoviePoster src={movieInfo.Poster} alt={movieInfo.Poster} />
-                        </MoviePosterContainer>
-                    </>
-                )
-            }
+            <MovieInfoContainer>
+                <ArrowIcon
+                    src={arrowIcon}
+                    alt="Back"
+                    onClick={() => navigate('/')}
+                />
+                <InfoHeader>
+                    <Runtime>{movieInfo.Runtime}</Runtime>
+                    <Year>{movieInfo.Year}</Year>
+                    <Rated>{movieInfo.Rated}</Rated>
+                </InfoHeader>
+                <MovieTitle>{movieInfo.Title}</MovieTitle>
+                <RatingsContainer>
+                    {movieInfo.Ratings.slice(0, 2).map((rating, index) => (
+                        <Rating key={index}>
+                            <RatingLogo src={rating.Source === 'Internet Movie Database' ? imdbLogo : rottenTomatoesLogo} alt={rating.Source} />
+                            <p>{rating.Value}</p>
+                        </Rating>
+                    ))}
+                    <AddToFavouritesButton
+                        isFavourite={isFavourite(movieInfo.imdbID)}
+                        onClick={() => (addToFavourites(movieInfo.imdbID))}
+                    >
+                        <img src={heartIcon} alt="Add to favourites" />
+                        <p>{isFavourite(movieInfo.imdbID) ? 'Added' : 'Add to favourites'}</p>
+                    </AddToFavouritesButton>
+                </RatingsContainer>
+                <TechnicalInfoContainer>
+                    <TechnicalInfo>
+                        <TechnicalInfoTitle>Cast</TechnicalInfoTitle>
+                        {movieInfo.Actors.split(',').map((actor, index) => (
+                            <p key={index}>{actor}</p>
+                        ))}
+                    </TechnicalInfo>
+                    <TechnicalInfo>
+                        <TechnicalInfoTitle>Genre</TechnicalInfoTitle>
+                        {movieInfo.Genre.split(',').map((genre, index) => (
+                            <p key={index}>{genre}</p>
+                        ))}
+                    </TechnicalInfo>
+                    <TechnicalInfo>
+                        <TechnicalInfoTitle>Director</TechnicalInfoTitle>
+                        {movieInfo.Director.split(',').map((director, index) => (
+                            <p key={index}>{director}</p>
+                        ))}
+                    </TechnicalInfo>
+                </TechnicalInfoContainer>
+            </MovieInfoContainer>
+            <MoviePosterContainer>
+                <MoviePoster src={movieInfo.Poster} alt={movieInfo.Poster} />
+            </MoviePosterContainer>
         </MovieDetailsContainer>
     );
 }
