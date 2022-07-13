@@ -76,39 +76,36 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMoviesData(search: string) {
-        if (search.length > 0 && search.length < 3) return;
-
         setIsLoading(true)
-        if (search.length === 0) return (
+        if (search.length === 0) {
             setMovies([]),
             setIsLoading(false)
-        )
+            return
+        }
 
-        const response = await axios.get(`https://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
-        if (response.data.Response === 'False') return (
+        try{
+            const response = await axios.get(`https://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
+            setMovies(response.data.Search)
+            setIsLoading(false)
+        } catch(e) {
             setMovies([]),
             setIsLoading(false)
-        )
-        setMovies(response.data.Search)
-        console.log(response.data)
-        setIsLoading(false)
+        }
     }
 
     function addToFavourites(movieID: string) {
-        if (favouriteMovies.some(movie => movie.imdbID === movieID)) {
-            return setFavouriteMovies(favouriteMovies.filter(movie => movie.imdbID !== movieID))
+        if (isFavourite(movieID)) {
+            setFavouriteMovies(favouriteMovies.filter(movie => movie.imdbID !== movieID))
+            localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies)) // If already in favourites, remove it
+            return 
         }
         setFavouriteMovies([{ imdbID: movieID }, ...favouriteMovies])
+        localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies)) // If not in favourites, add it
     }
-
 
     function isFavourite(movieID: string) {
         return (favouriteMovies.some(movie => movie.imdbID === movieID))
     }
-
-    useEffect(() => {
-        localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies))
-    }, [favouriteMovies])
 
     return (
         <MoviesDataContext.Provider value={{ movies, getMoviesData, favouriteMovies, isFavourite, addToFavourites, isLoading }}>
