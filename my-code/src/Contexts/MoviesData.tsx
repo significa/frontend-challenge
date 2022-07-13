@@ -35,7 +35,37 @@ interface FavouriteMoviesProps {
     imdbID: string;
 }
 
-const MoviesDataContext = createContext({} as MoviesDataContextProps)
+const MoviesDataContext = createContext<MoviesDataContextProps>({
+    movies: [{
+        Actors: '',
+        Awards: '',
+        Country: '',
+        Director: '',
+        Genre: '',
+        Language: '',
+        Metascore: '',
+        Plot: '',
+        Poster: '',
+        Released: '',
+        Title: '',
+        Year: '',
+        imdbRating: '',
+        imdbID: '',
+    }],
+    getMoviesData: async () => {
+        return;
+    },
+    favouriteMovies: [{
+        imdbID: '',
+    }],
+    addToFavourites: () => {
+        return;
+    },
+    isFavourite: () => {
+        return ( false );
+    },
+    isLoading: false
+})
 
 export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
 
