@@ -19,8 +19,10 @@ export function SearchMovieInput() {
             <SearchInput
                 type="text"
                 placeholder="Search for movies..."
+                minLength={1}
+                debounceTimeout={500}
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
             />
         </SearchMoviesInputContainer>
     );
