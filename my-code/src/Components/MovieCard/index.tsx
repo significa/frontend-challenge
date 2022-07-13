@@ -16,7 +16,6 @@ export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
 
     const navigate = useNavigate()
     const { isFavourite, addToFavourites } = useMovies()
-    const { getMovieInfo } = useMovieDetails()
 
     function handleClick() {
         navigate(`/movie/${imdbID}`)

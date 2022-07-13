@@ -8,9 +8,9 @@ export const MovieCardContainer = styled.div`
 
 export const MoviePoster = styled.img`
     position: relative;
-    width: 180px;
-    height: 240px;
-    border-radius: 3px;
+    width: 11.25rem;
+    height: 15rem;
+    border-radius: 5.3px;
 `;
 
 export const FavouriteIcon = styled.div<{ isFavourite: boolean }>`

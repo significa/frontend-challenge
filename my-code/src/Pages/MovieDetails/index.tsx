@@ -23,18 +23,18 @@ export function MovieDetails() {
     }, [id])
     
     if (isLoading) {
-	    return (
-	      <MovieDetailsContainer>
-	        <Skeleton
-	          width={"85vw"}
-	          height={"95vh"}
-	          baseColor={theme.colors.midGrey}
-	          highlightColor={theme.colors.dark}
-	        />
-	      </MovieDetailsContainer>
-	    );
-	  }
-      
+        return (
+            <MovieDetailsContainer>
+            <Skeleton
+                width={"85vw"}
+                height={"95vh"}
+                baseColor={theme.colors.midGrey}
+                highlightColor={theme.colors.dark}
+            />
+            </MovieDetailsContainer>
+        );
+    }
+
     return (
         <MovieDetailsContainer>
             <MovieInfoContainer>
