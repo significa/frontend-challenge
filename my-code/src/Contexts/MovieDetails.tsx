@@ -25,11 +25,41 @@ interface MovieInfoProps {
     Poster: string
 }
 
-const MovieDetailsContext = createContext({} as MovieDetailsContextProps)
+const MovieDetailsContext = createContext<MovieDetailsContextProps>({
+    getMovieInfo: async () => {
+        return;
+      },
+      movieInfo: {
+        imdbID: '',
+        Runtime: '',
+        Year: '',
+        Rated: '',
+        Title: '',
+        Ratings: [{ Source: '', Value: '' }],
+        Plot: '',
+        Actors: '',
+        Genre: '',
+        Director: '',
+        Poster: ''
+      },
+      isLoading: false,
+})
 
 export function MovieDetailsProvider({ children }: MovieDetailsProviderProps) {
 
-    const [movieInfo, setMovieInfo] = useState({} as MovieInfoProps)
+    const [movieInfo, setMovieInfo] = useState<MovieInfoProps>({
+        imdbID: '',
+        Runtime: '',
+        Year: '',
+        Rated: '',
+        Title: '',
+        Ratings: [{ Source: '', Value: '' }],
+        Plot: '',
+        Actors: '',
+        Genre: '',
+        Director: '',
+        Poster: ''
+    })
     const [isLoading, setIsLoading] = useState(false)
 
     async function getMovieInfo(imdbID: string) {
