@@ -60,6 +60,7 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
             setIsLoading(false)
         )
         setMovies(response.data.Search)
+        console.log(response.data)
         setIsLoading(false)
     }
 

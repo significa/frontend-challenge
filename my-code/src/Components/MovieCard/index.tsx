@@ -20,7 +20,6 @@ export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
 
     function handleClick() {
         navigate(`/movie/${imdbID}`)
-        getMovieInfo(imdbID)
     }
 
     return (
