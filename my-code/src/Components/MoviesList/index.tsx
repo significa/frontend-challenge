@@ -20,7 +20,7 @@ export function MoviesList() {
                 {
                     range(0, 9).map((index) => (
                         <Skeleton
-                            key={index} 
+                            key={index}
                             width={"11.25rem"}
                             height={"15rem"}
                             baseColor={theme.colors.midGrey}
@@ -38,9 +38,9 @@ export function MoviesList() {
                 movies.map(movie => (
                     <MovieCard
                         key={movie.imdbID}
-                        Poster={movie.Poster}
-                        Title={movie.Title}
-                        Year={movie.Year}
+                        poster={movie.Poster}
+                        title={movie.Title}
+                        year={movie.Year}
                         imdbID={movie.imdbID}
                     />
                 ))

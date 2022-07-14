@@ -1,18 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import { useMovieDetails } from '../../Contexts/MovieDetails';
 import { useMovies } from '../../Contexts/MoviesData';
 import { FavouriteIcon, MovieCardContainer, MovieDetails, MovieInfo, MoviePoster } from './styles';
 import fullHeartIcon from '/icons/icon-heart-full.svg';
 import whiteHeartIcon from '/icons/icon-heart-white.svg';
 
-interface MovieCardProps {
-    Poster: string
-    Title: string
-    Year: string
+interface MovieCardType {
+    poster: string
+    title: string
+    year: string
     imdbID: string
 }
 
-export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
+export function MovieCard({ imdbID, poster, title, year }: MovieCardType) {
 
     const navigate = useNavigate()
     const { isFavourite, addToFavourites } = useMovies()
@@ -25,8 +24,8 @@ export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
         <MovieCardContainer>
             <MovieDetails>
                 <MovieInfo onClick={handleClick}>
-                    <h2>{Title}</h2>
-                    <p>{Year.length === 5 ? `${Year} OnGoing` : Year}</p>
+                    <h2>{title}</h2>
+                    <p>{year.length === 5 ? `${year} OnGoing` : year}</p>
                 </MovieInfo>
             </MovieDetails>
             <FavouriteIcon isFavourite={isFavourite(imdbID)}>
@@ -36,7 +35,7 @@ export function MovieCard({ imdbID, Poster, Title, Year }: MovieCardProps) {
                     alt="Add to favourites"
                 />
             </FavouriteIcon>
-            <MoviePoster src={Poster != 'N/A' ? Poster : 'https://image-placeholder.com/images/actual-size/180x240.png'} alt={Title} />
+            <MoviePoster src={poster != 'N/A' ? poster : 'https://image-placeholder.com/images/actual-size/180x240.png'} alt={title} />
         </MovieCardContainer>
     );
 }
