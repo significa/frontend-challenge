@@ -1,20 +1,20 @@
 import axios from "axios";
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-interface MoviesDataProviderProps {
+interface MoviesDataProviderType {
     children: ReactNode;
 }
 
-interface MoviesDataContextProps {
-    movies: MovieProps[];
+interface MoviesDataContextType {
+    movies: MovieType[];
     getMoviesData: (search: string) => Promise<void>;
-    favouriteMovies: FavouriteMoviesProps[];
+    favouriteMovies: Pick<MovieType, 'imdbID'>[];
     addToFavourites: (movieID: string) => void;
     isFavourite: (movieID: string) => boolean;
     isLoading: boolean;
 }
 
-interface MovieProps {
+export interface MovieType {
     Actors: string;
     Awards: string;
     Country: string;
@@ -31,11 +31,7 @@ interface MovieProps {
     imdbID: string;
 }
 
-interface FavouriteMoviesProps {
-    imdbID: string;
-}
-
-const MoviesDataContext = createContext<MoviesDataContextProps>({
+const MoviesDataContext = createContext<MoviesDataContextType>({
     movies: [{
         Actors: '',
         Awards: '',
@@ -62,15 +58,15 @@ const MoviesDataContext = createContext<MoviesDataContextProps>({
         return;
     },
     isFavourite: () => {
-        return ( false );
+        return (false);
     },
     isLoading: false
 })
 
-export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
+export function MoviesDataProvider({ children }: MoviesDataProviderType) {
 
-    const [movies, setMovies] = useState<MovieProps[]>([])
-    const [favouriteMovies, setFavouriteMovies] = useState<FavouriteMoviesProps[]>(
+    const [movies, setMovies] = useState<MovieType[]>([])
+    const [favouriteMovies, setFavouriteMovies] = useState<Pick<MovieType, 'imdbID'>[]>(
         JSON.parse(localStorage.getItem('favouriteMovies') || '[]')
     )
     const [isLoading, setIsLoading] = useState(false)
@@ -79,17 +75,17 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
         setIsLoading(true)
         if (search.length === 0) {
             setMovies([]),
-            setIsLoading(false)
+                setIsLoading(false)
             return
         }
 
-        try{
+        try {
             const response = await axios.get(`https://www.omdbapi.com/?apikey=23fc3dfd&s=${search}`)
             setMovies(response.data.Search)
             setIsLoading(false)
-        } catch(e) {
+        } catch (e) {
             setMovies([]),
-            setIsLoading(false)
+                setIsLoading(false)
         }
     }
 
@@ -97,7 +93,7 @@ export function MoviesDataProvider({ children }: MoviesDataProviderProps) {
         if (isFavourite(movieID)) {
             setFavouriteMovies(favouriteMovies.filter(movie => movie.imdbID !== movieID))
             localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies)) // If already in favourites, remove it
-            return 
+            return
         }
         setFavouriteMovies([{ imdbID: movieID }, ...favouriteMovies])
         localStorage.setItem('favouriteMovies', JSON.stringify(favouriteMovies)) // If not in favourites, add it

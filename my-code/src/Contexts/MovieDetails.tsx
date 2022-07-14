@@ -1,17 +1,17 @@
 import axios from 'axios';
 import { createContext, ReactNode, useContext, useState } from 'react';
 
-interface MovieDetailsProviderProps {
+interface MovieDetailsProviderType {
     children: ReactNode
 }
 
-interface MovieDetailsContextProps {
+interface MovieDetailsContextType {
     getMovieInfo: (imdbID: string) => Promise<void>
-    movieInfo: MovieInfoProps
+    movieInfo: MovieInfoType
     isLoading: boolean
 }
 
-interface MovieInfoProps {
+interface MovieInfoType {
     imdbID: string
     Runtime: string
     Year: string
@@ -25,11 +25,11 @@ interface MovieInfoProps {
     Poster: string
 }
 
-const MovieDetailsContext = createContext<MovieDetailsContextProps>({
+const MovieDetailsContext = createContext<MovieDetailsContextType>({
     getMovieInfo: async () => {
         return;
-      },
-      movieInfo: {
+    },
+    movieInfo: {
         imdbID: '',
         Runtime: '',
         Year: '',
@@ -41,13 +41,13 @@ const MovieDetailsContext = createContext<MovieDetailsContextProps>({
         Genre: '',
         Director: '',
         Poster: ''
-      },
-      isLoading: false,
+    },
+    isLoading: false,
 })
 
-export function MovieDetailsProvider({ children }: MovieDetailsProviderProps) {
+export function MovieDetailsProvider({ children }: MovieDetailsProviderType) {
 
-    const [movieInfo, setMovieInfo] = useState<MovieInfoProps>({
+    const [movieInfo, setMovieInfo] = useState<MovieInfoType>({
         imdbID: '',
         Runtime: '',
         Year: '',

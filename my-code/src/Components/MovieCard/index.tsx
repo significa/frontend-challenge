@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import { useMovies } from '../../Contexts/MoviesData';
+import { MovieType, useMovies } from '../../Contexts/MoviesData';
 import { FavouriteIcon, MovieCardContainer, MovieDetails, MovieInfo, MoviePoster } from './styles';
 import fullHeartIcon from '/icons/icon-heart-full.svg';
 import whiteHeartIcon from '/icons/icon-heart-white.svg';
 
 interface MovieCardType {
-    poster: string
-    title: string
-    year: string
-    imdbID: string
+    imdbID: MovieType['imdbID'];
+    title: MovieType['Title'];
+    poster: MovieType['Poster'];
+    year: MovieType['Year'];
 }
 
 export function MovieCard({ imdbID, poster, title, year }: MovieCardType) {
