@@ -21,7 +21,6 @@ body {
 /* Container System */
 @media only screen and (max-width: 576px) {
   .container {
-    width: 100%;
     margin-left: auto;
     margin-right: auto;
     padding: 0rem 1rem;
