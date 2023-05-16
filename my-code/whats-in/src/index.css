@@ -54,21 +54,43 @@ body {
 }
 
 @media only screen and (max-width: 576px) {
-  .header {
-    grid-column: span 12;
-    padding: 1.5rem 0rem;
+  .movie-card {
+    grid-column: span 6;
+    height: 240px;
   }
 }
 
 @media only screen and (min-width: 576px) {
-  .header {
-    grid-column: span 12;
-    padding: 1.5rem 0rem;
+  .movie-card {
+    grid-column: span 4;
+    height: 240px;
   }
 }
 
 @media only screen and (min-width: 992px) {
+  .movie-card {
+    grid-column: span 2;
+    height: 240px;
+  }
+}
 
+/* General Styles */
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+/* General components */
+.header {
+  grid-column: span 12;
+  padding: 1.5rem 0rem;
 }
 
 .search {
@@ -93,7 +115,7 @@ body {
 .search__input::placeholder {
   position: absolute;
   left: 2.5rem;
-  color: var(--lightgrey); 
+  color: var(--white); 
 }
 
 .search__icon {
@@ -103,3 +125,71 @@ body {
   transform: translate(0%, -50%);
 }
 
+.empty {
+  grid-column: span 12;
+  margin: auto;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.empty__image {
+  width: 396px;
+  max-width: 100%;
+  height: auto;
+}
+
+.empty__subheader--lightgrey {
+  color: var(--lightgrey);
+}
+
+.movie-card {
+  height: 240px;
+  position: relative;
+  transition: all;
+}
+
+.movie-card__overlay {
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  right: 0rem;
+  bottom: 0rem;
+  background-color: var(--grey);
+  opacity: 0;
+  padding: 0.75rem;
+}
+
+.movie-card:hover .movie-card__overlay{
+  opacity: .9;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.movie-card__like {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: .75rem;
+  cursor: pointer;
+}
+
+.movie-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-card__description {
+  position: absolute;
+  bottom: .75rem;
+  left: .75rem;
+}
+
+.movie-card__description__title{
+  margin: 0rem;
+}
+
+.movie-card__description__year {
+  margin-top: .2rem;
+  margin-bottom: 0rem;
+}
