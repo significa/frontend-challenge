@@ -5,15 +5,12 @@ import Moviepage from './pages/Movie'
 function App() {
   return (
     <div className='container'>
-      <div className='grid'>
-        <div className='item'></div>
-        <Router>
-          <Routes>
-              <Route exact path="/" element={<Homepage/>}/>
-              <Route path="/movie" element={<Moviepage />}/>
-          </Routes>
-        </Router>
-      </div>
+      <Router>
+        <Routes>
+            <Route exact path="/" element={<Homepage/>}/>
+            <Route path="/movie" element={<Moviepage />}/>
+        </Routes>
+      </Router>
     </div>
   );
 }

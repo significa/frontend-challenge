@@ -1,5 +1,7 @@
 export default function Homepage() {
     return (
-        <p>Homepage</p>
+        <div className="grid">
+            <div className="item"></div>
+        </div>
     )
 }
