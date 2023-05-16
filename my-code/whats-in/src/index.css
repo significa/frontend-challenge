@@ -81,6 +81,12 @@ h2 {
   color: var(--white);
 }
 
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
 /* General components */
 .header {
   grid-column: span 12;
@@ -139,6 +145,7 @@ h2 {
 .movie-card {
   height: 240px;
   position: relative;
+  transition: all;
 }
 
 .movie-card__overlay {
@@ -149,14 +156,40 @@ h2 {
   bottom: 0rem;
   background-color: var(--grey);
   opacity: 0;
+  padding: 0.75rem;
 }
 
 .movie-card:hover .movie-card__overlay{
   opacity: .9;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.movie-card__like {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: .75rem;
+  cursor: pointer;
 }
 
 .movie-card__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.movie-card__description {
+  position: absolute;
+  bottom: .75rem;
+  left: .75rem;
+}
+
+.movie-card__description__title{
+  margin: 0rem;
+}
+
+.movie-card__description__year {
+  margin-top: .2rem;
+  margin-bottom: 0rem;
 }
