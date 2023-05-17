@@ -91,18 +91,27 @@ body {
 /* General Styles */
 h1 {
   font-size: 5rem;
+  line-height: 88px;
 }
 
 h2 {
   font-size: 1.5rem;
-  font-weight: 700;
-  color: $white;
+  line-height: 30px;
 }
 
 h3 {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: $white;
+  line-height: 28px;
+}
+
+p {
+  font-size: 1rem;
+  letter-spacing: 0.16;
+  line-height: 24px;
+}
+
+.label {
+  padding: 4px 6px;
 }
 
 /* General, Homepage and Movie page components */
@@ -214,37 +223,75 @@ h3 {
   margin-bottom: 0rem;
 }
 
-.movie-info__details {
-  display: flex;
-  align-items: center;
-
-  .movie-info__duration, .movie-info__year {
+.movie-info {
+  &__details {
     display: flex;
     align-items: center;
-    font-weight: 400;
-    color: $lightgrey;
-    margin-right: .5rem;
-
-    &::after {
-      content: "";
-      display: inline-flex;
-      width: 4px;
-      height: 4px;
-      background-color: #7A8C99;
-      border-radius: 50px;
-      margin-left: .5rem;
+  
+    &--duration, &--year {
+      display: flex;
+      align-items: center;
+      font-weight: 400;
+      color: $lightgrey;
+      margin-right: .5rem;
+  
+      &::after {
+        content: "";
+        display: inline-flex;
+        width: 4px;
+        height: 4px;
+        background-color: #7A8C99;
+        border-radius: 50px;
+        margin-left: .5rem;
+      }
+    }
+  
+    .movie-info__label {
+      @extend .label;
+    
+      font-weight: 500;
+      color: #0A1014;
+      background-color: $lightgrey;
+      border-radius: 4px;
     }
   }
-
-  .movie-info__classification {
-    font-weight: 500;
-    color: #0A1014;
-    background-color: $lightgrey;
-    padding: 4px 6px;
-    border-radius: 4px;
+  
+  &__title {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  &__rating-bar {
+    display: flex;
+    align-items: center;
+  
+    &--item {
+      display: flex;
+      
+      &__image {
+        height: 1.1rem;
+        padding: 10px 8px;
+        width: 100%;
+        object-fit: contain;
+        background-color: $yellow;
+        border-radius: 4px 0px 0px 4px;
+      }
+      
+      &__text {
+        margin: 0rem;
+        display: flex;
+        align-items: center;
+        padding: 0rem 8px 0rem 8px;
+        border: 1px solid $midgrey;
+        border-radius: 0px 4px 4px 0px;
+      }
+    }
   }
 }
 
+
+
+// TODO
 .movie-image {
 
 }
