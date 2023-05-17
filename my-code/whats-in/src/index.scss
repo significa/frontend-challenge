@@ -89,6 +89,10 @@ body {
 }
 
 /* General Styles */
+h1 {
+  font-size: 5rem;
+}
+
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
@@ -214,8 +218,30 @@ h3 {
   display: flex;
   align-items: center;
 
-  & __classification {
-    background-color: $midgrey;
+  .movie-info__duration, .movie-info__year {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    color: $lightgrey;
+    margin-right: .5rem;
+
+    &::after {
+      content: "";
+      display: inline-flex;
+      width: 4px;
+      height: 4px;
+      background-color: #7A8C99;
+      border-radius: 50px;
+      margin-left: .5rem;
+    }
+  }
+
+  .movie-info__classification {
+    font-weight: 500;
+    color: #0A1014;
+    background-color: $lightgrey;
+    padding: 4px 6px;
+    border-radius: 4px;
   }
 }
 
