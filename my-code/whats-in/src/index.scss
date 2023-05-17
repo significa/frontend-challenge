@@ -114,6 +114,12 @@ p {
   padding: 4px 6px;
 }
 
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 /* General, Homepage and Movie page components */
 
 .search {
@@ -191,13 +197,8 @@ p {
   }
 }
 
-.button-icon {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 .movie-card__like {
+  @extend .button;
   position: absolute;
   right: .75rem;
 }
@@ -224,6 +225,10 @@ p {
 }
 
 .movie-info {
+  &__button {
+    @extend .button;
+  }
+
   &__details {
     display: flex;
     align-items: center;
@@ -265,16 +270,23 @@ p {
     display: flex;
     align-items: center;
   
-    &--item {
+    &__item {
       display: flex;
+      margin-right: 1rem;
       
       &__image {
-        height: 1.1rem;
-        padding: 10px 8px;
+        height: 1rem;
+        padding: 12px 8px;
         width: 100%;
         object-fit: contain;
         background-color: $yellow;
         border-radius: 4px 0px 0px 4px;
+      }
+
+      &__image--red {
+        @extend  .movie-info__rating-bar__item__image;
+        padding: 12px;
+        background-color: $red;
       }
       
       &__text {
@@ -284,6 +296,29 @@ p {
         padding: 0rem 8px 0rem 8px;
         border: 1px solid $midgrey;
         border-radius: 0px 4px 4px 0px;
+      }
+    }
+
+    &__button {
+      @extend .button;
+      display: flex;
+      align-items: center;
+      color: $lightgrey;
+      border: 1px solid $midgrey;
+      border-radius: 4px;
+      padding: 10px 16px;
+      font-size: 1rem;
+      transition: all .3s;
+
+      &__icon {
+        width: 16px;
+        margin-right: .6rem;
+      }
+
+      &:hover {
+        color: $white;
+        border-color: $red;
+        transition: all .3s;
       }
     }
   }

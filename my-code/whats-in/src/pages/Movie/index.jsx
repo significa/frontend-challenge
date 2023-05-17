@@ -1,6 +1,8 @@
 import React from 'react'
 import iconBack from '../../images/icon-arrow-grey.svg'
 import logoImdb from '../../images/logo-imdb.svg'
+import logoRottenTomatoes from '../../images/logo-rotten-tomatoes.svg'
+import iconLike from '../../images/icon-heart-grey.svg'
 
 export default function Moviepage() {
     const handleClick = () => {
@@ -10,7 +12,7 @@ export default function Moviepage() {
     return(
         <div className="grid">
             <div className="movie-info">
-                <button className='button-icon' onClick={handleClick}>
+                <button className='movie-info__button' onClick={handleClick}>
                     <img src={iconBack} alt="Back button link" />
                 </button>
                 <div className='movie-info__details'>
@@ -20,10 +22,18 @@ export default function Moviepage() {
                 </div>
                 <h1 className='movie-info__title'>What We Do in the Shadows</h1>
                 <div className='movie-info__rating-bar'>
-                    <div className='movie-info__rating-bar--item'>
-                        <img className='movie-info__rating-bar--item__image' src={logoImdb} alt="Imdb logo" />
-                        <p className='movie-info__rating-bar--item__text'>7.6/10</p>
+                    <div className='movie-info__rating-bar__item'>
+                        <img className='movie-info__rating-bar__item__image' src={logoImdb} alt="Imdb logo" />
+                        <p className='movie-info__rating-bar__item__text'>7.6/10</p>
                     </div>
+                    <div className='movie-info__rating-bar__item'>
+                        <img className='movie-info__rating-bar__item__image--red' src={logoRottenTomatoes} alt="Imdb logo" />
+                        <p className='movie-info__rating-bar__item__text'>96%</p>
+                    </div>
+                    <button className='movie-info__rating-bar__button'>
+                        <img src={iconLike} className='movie-info__rating-bar__button__icon' alt="Add to favorite button" />
+                        Add to favourites
+                    </button>
                 </div>
             </div>
             <div className="movie-image">
