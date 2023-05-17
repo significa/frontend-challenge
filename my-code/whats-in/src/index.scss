@@ -248,7 +248,7 @@ p {
     display: flex;
     align-items: center;
   
-    &--duration, &--year {
+    &__duration, &__year {
       display: flex;
       align-items: center;
       font-weight: 400;
@@ -265,8 +265,8 @@ p {
         margin-left: .5rem;
       }
     }
-  
-    .movie-info__label {
+
+    &__label {
       @extend .label;
     
       font-weight: 500;

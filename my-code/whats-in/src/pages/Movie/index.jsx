@@ -17,9 +17,9 @@ export default function Moviepage() {
                     <img src={iconBack} alt="Back button link" />
                 </button>
                 <div className='movie-info__details'>
-                    <h3 className='movie-info__details--duration'>86 min</h3>
-                    <h3 className='movie-info__details--year'>2014</h3>
-                    <span className='movie-info__details--label'>R</span>
+                    <h3 className='movie-info__details__duration'>86 min</h3>
+                    <h3 className='movie-info__details__year'>2014</h3>
+                    <span className='movie-info__details__label'>R</span>
                 </div>
                 <h1 className='movie-info__title'>What We Do in the Shadows</h1>
                 <div className='movie-info__rating-bar'>
