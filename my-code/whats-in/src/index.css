@@ -87,7 +87,7 @@ h3 {
   color: var(--white);
 }
 
-/* General components */
+/* General, Homepage and Movie page components */
 .header {
   grid-column: span 12;
   padding: 1.5rem 0rem;
