@@ -3,6 +3,7 @@ import iconBack from '../../images/icon-arrow-grey.svg'
 import logoImdb from '../../images/logo-imdb.svg'
 import logoRottenTomatoes from '../../images/logo-rotten-tomatoes.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
+import iconLikeWhite from '../../images/icon-heart-white.svg'
 
 export default function Moviepage() {
     const handleClick = () => {
@@ -32,7 +33,8 @@ export default function Moviepage() {
                     </div>
                     <button className='movie-info__rating-bar__button'>
                         <img src={iconLike} className='movie-info__rating-bar__button__icon' alt="Add to favorite button" />
-                        Add to favourites
+                        <img src={iconLikeWhite} className='movie-info__rating-bar__button__icon--white' alt="Add to favorite button" />
+                        <p className='movie-info__rating-bar__button__text'>Add to favourites</p>
                     </button>
                 </div>
             </div>

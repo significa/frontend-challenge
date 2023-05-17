@@ -7,7 +7,6 @@ $yellow: #FF9F1C;
 $red: #FF4040;
 $green: #2EC4B6;
 
-
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -120,7 +119,7 @@ p {
   cursor: pointer;
 }
 
-/* General, Homepage and Movie page components */
+/* Homepage and Movie page components */
 
 .search {
   grid-column: span 12;
@@ -306,25 +305,42 @@ p {
       color: $lightgrey;
       border: 1px solid $midgrey;
       border-radius: 4px;
-      padding: 10px 16px;
+      padding: 8px 16px;
       font-size: 1rem;
       transition: all .3s;
+      position: relative;
 
       &__icon {
         width: 16px;
-        margin-right: .6rem;
+        position: absolute;
+        opacity: 1;
+      }
+
+      &__icon--white {
+        @extend .movie-info__rating-bar__button__icon;
+        opacity: 0;
       }
 
       &:hover {
         color: $white;
         border-color: $red;
         transition: all .3s;
+
+        .movie-info__rating-bar__button__icon {
+          opacity: 0;
+        }
+
+        .movie-info__rating-bar__button__icon--white {
+          opacity: 1;
+        }
+      }
+
+      &__text {
+        margin: 0rem 0rem 0rem 1.5rem;
       }
     }
   }
 }
-
-
 
 // TODO
 .movie-image {
