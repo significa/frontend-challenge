@@ -1,21 +1,20 @@
-:root {
-  --dark: #0A1014;
-  --grey: #1B2329;
-  --midgrey: #353F4C;
-  --lightgrey: #7A8C99;
-  --white: #fff;
-  --yellow: #FF9F1C;
-  --red: #FF4040;
-  --green: #2EC4B6;
-}
+$dark: #0A1014;
+$grey: #1B2329;
+$midgrey: #353F4C;
+$lightgrey: #7A8C99;
+$white: #fff;
+$yellow: #FF9F1C;
+$red: #FF4040;
+$green: #2EC4B6;
+
 
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--dark);
-  color: var(--white);
+  background-color: $dark;
+  color: $white;
 }
 
 /* Container System */
@@ -58,12 +57,27 @@ body {
     grid-column: span 6;
     height: 240px;
   }
+
+  .movie-info, 
+  .movie-image {
+    grid-column: span 12;
+  }
 }
 
 @media only screen and (min-width: 576px) {
   .movie-card {
     grid-column: span 4;
     height: 240px;
+  }
+
+  .movie-info {
+    grid-column: span 6;
+
+  }
+
+  .movie-image {
+    grid-column: span 6;
+
   }
 }
 
@@ -78,20 +92,16 @@ body {
 h2 {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--white);
+  color: $white;
 }
 
 h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--white);
+  color: $white;
 }
 
 /* General, Homepage and Movie page components */
-.header {
-  grid-column: span 12;
-  padding: 1.5rem 0rem;
-}
 
 .search {
   grid-column: span 12;
@@ -115,7 +125,7 @@ h3 {
 .search__input::placeholder {
   position: absolute;
   left: 2.5rem;
-  color: var(--white); 
+  color: $white; 
 }
 
 .search__icon {
@@ -139,7 +149,7 @@ h3 {
 }
 
 .empty__subheader--lightgrey {
-  color: var(--lightgrey);
+  color: $lightgrey;
 }
 
 .movie-card {
@@ -154,23 +164,29 @@ h3 {
   top: 0rem;
   right: 0rem;
   bottom: 0rem;
-  background-color: var(--grey);
+  background-color: $grey;
   opacity: 0;
   padding: 0.75rem;
 }
 
-.movie-card:hover .movie-card__overlay{
-  opacity: .9;
-  transition: all .2s;
+.movie-card:hover {
+  
+  & .movie-card__overlay {
+    opacity: .9;
+    transition: all .2s;
+    cursor: pointer;
+  }
+}
+
+.button-icon {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
 }
 
 .movie-card__like {
-  background-color: transparent;
-  border: none;
   position: absolute;
   right: .75rem;
-  cursor: pointer;
 }
 
 .movie-card__image {
@@ -192,4 +208,17 @@ h3 {
 .movie-card__description__year {
   margin-top: .2rem;
   margin-bottom: 0rem;
+}
+
+.movie-info__details {
+  display: flex;
+  align-items: center;
+
+  & __classification {
+    background-color: $midgrey;
+  }
+}
+
+.movie-image {
+
 }

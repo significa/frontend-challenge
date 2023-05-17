@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import logotype from '../../images/logo.svg'
+import React, { useState } from 'react'
 import iconSearch from '../../images/icon-magnifier-grey.svg'
 import emptyImage from '../../images/illustration-empty-state@2x.png'
 import movieImage from '../../images/removeaftertest.png'
@@ -30,7 +29,7 @@ export default function Homepage() {
             <div className='movie-card'>
                 <img className='movie-card__image' src={movieImage} alt="Movie card" />
                 <div className='movie-card__overlay'>
-                    <button className='movie-card__like' onClick={handleClick}>
+                    <button className='button-icon movie-card__like' onClick={handleClick}>
                         <img src={liked ? iconLiked : iconLike} alt="Like button" />
                     </button>
                     <div className='movie-card__description'>

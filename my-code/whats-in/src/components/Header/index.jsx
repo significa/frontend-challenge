@@ -1,4 +1,5 @@
 import logotype from '../../images/logo.svg'
+import './Header.scss'
 
 export default function Header() {
     return (
