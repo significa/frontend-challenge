@@ -16,6 +16,16 @@ body {
   color: $white;
 }
 
+ul {
+  margin:0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    line-height: 1.5;
+  }
+}
+
 /* Container System */
 @media only screen and (max-width: 576px) {
   .container {
@@ -117,6 +127,12 @@ p {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.section-title {
+  color: $lightgrey;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 /* Homepage and Movie page components */
@@ -337,6 +353,36 @@ p {
 
       &__text {
         margin: 0rem 0rem 0rem 1.5rem;
+      }
+    }
+  }
+
+  &__plot {
+    margin-top: 3rem;
+    
+    &__title {
+      @extend .section-title;
+    }
+
+    &__text {
+      margin-top: 1rem;
+      color: $white;
+    }
+  }
+
+  &__smaller {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+
+    &__item {
+      
+      &__title {
+        @extend .section-title;
+      }
+
+      &__list {
+        margin-top: 1rem;
       }
     }
   }

@@ -37,6 +37,35 @@ export default function Moviepage() {
                         <p className='movie-info__rating-bar__button__text'>Add to favourites</p>
                     </button>
                 </div>
+                <div className='movie-info__plot'>
+                    <span className='movie-info__plot__title'>Plot</span>
+                    <p className='movie-info__plot__text'>Viago, Deacon, and Vladislav are vampires who are finding that modern life has them struggling with the mundane - like paying rent, keeping up with the chore wheel, trying to get into nightclubs, and overcoming flatmate conflicts.</p>
+                </div>
+                <div className='movie-info__smaller'>
+                    <div className='movie-info__smaller__item'>
+                        <span className='movie-info__smaller__item__title'>Cast</span>
+                        <ul className='movie-info__smaller__item__list'>
+                            <li>Jemaine Clemet</li>
+                            <li>Cori Gonzalez-Macuer</li>
+                            <li>Taika waititi</li>
+                            <li>Honny Brugh</li>
+                        </ul>
+                    </div>
+                    <div className='movie-info__smaller__item'>
+                        <span className='movie-info__smaller__item__title'>Cast</span>
+                        <ul className='movie-info__smaller__item__list'>
+                            <li>Comedy</li>
+                            <li>Horror</li>
+                        </ul>
+                    </div>
+                    <div className='movie-info__smaller__item'>
+                        <span className='movie-info__smaller__item__title'>Cast</span>
+                        <ul className='movie-info__smaller__item__list'>
+                            <li>Jemaine Clement</li>
+                            <li>Taika Waititi</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div className="movie-image">
                 <img src="" alt="" />
