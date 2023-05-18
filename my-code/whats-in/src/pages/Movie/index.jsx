@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import iconBack from '../../images/icon-arrow-grey.svg'
 import logoImdb from '../../images/logo-imdb.svg'
 import logoRottenTomatoes from '../../images/logo-rotten-tomatoes.svg'
@@ -7,14 +9,16 @@ import iconLikeWhite from '../../images/icon-heart-white.svg'
 import movieImageLarge from '../../images/removeaftertest2.png'
 
 export default function Moviepage() {
-    const handleClick = () => {
+    const navigation = useNavigate();
 
+    const handleNavigation = () => {
+        navigation(-1)
     }
 
     return(
         <div className="grid">
             <div className="movie-info">
-                <button className='movie-info__button' onClick={handleClick}>
+                <button className='movie-info__button' onClick={handleNavigation}>
                     <img src={iconBack} alt="Back button link" />
                 </button>
                 <div className='movie-info__details'>
