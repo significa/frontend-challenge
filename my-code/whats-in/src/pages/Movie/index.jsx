@@ -4,6 +4,7 @@ import logoImdb from '../../images/logo-imdb.svg'
 import logoRottenTomatoes from '../../images/logo-rotten-tomatoes.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
 import iconLikeWhite from '../../images/icon-heart-white.svg'
+import movieImageLarge from '../../images/removeaftertest2.png'
 
 export default function Moviepage() {
     const handleClick = () => {
@@ -67,8 +68,8 @@ export default function Moviepage() {
                     </div>
                 </div>
             </div>
-            <div className="movie-image">
-                <img src="" alt="" />
+            <div className="movie-poster">
+                <img src={movieImageLarge} className='movie-poster__image' alt="Movie poster" />
             </div>
         </div>
     )

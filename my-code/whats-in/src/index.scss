@@ -68,7 +68,7 @@ ul {
   }
 
   .movie-info, 
-  .movie-image {
+  .movie-poster {
     grid-column: span 12;
   }
 }
@@ -79,13 +79,9 @@ ul {
     height: 240px;
   }
 
-  .movie-info {
-    grid-column: span 6;
-
-  }
-
-  .movie-image {
-    grid-column: span 6;
+  .movie-info, 
+  .movie-poster {
+    grid-column: span 12;
 
   }
 }
@@ -94,6 +90,12 @@ ul {
   .movie-card {
     grid-column: span 2;
     height: 240px;
+  }
+
+  .movie-info, 
+  .movie-poster {
+    grid-column: span 6;
+
   }
 }
 
@@ -277,7 +279,7 @@ p {
   }
   
   &__title {
-    margin-top: 1rem;
+    margin-top: .5rem;
     margin-bottom: 2rem;
   }
   
@@ -388,7 +390,13 @@ p {
   }
 }
 
-// TODO
-.movie-image {
+.movie-poster {
+  padding: 3rem;
 
+  &__image {
+    border-radius: 8px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
