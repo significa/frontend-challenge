@@ -4,12 +4,16 @@ import Moviepage from './pages/Movie'
 import Header from './components/Header'
 
 function App() {
+  const handleRedirect = (movie) => {
+    console.log(movie)
+  }
+
   return (
     <Router>
       <div className='container'>
         <Header />
           <Routes>
-              <Route exact path="/" element={<Homepage/>}/>
+              <Route exact path="/" element={<Homepage onSelect={handleRedirect}/>}/>
               <Route path="/movie" element={<Moviepage />}/>
           </Routes>
       </div>
@@ -18,3 +22,4 @@ function App() {
 }
 
 export default App;
+ 
