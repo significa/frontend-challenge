@@ -5,15 +5,15 @@ import Header from './components/Header'
 
 function App() {
   return (
-    <div className='container'>
-      <Header />
-      <Router>
-        <Routes>
-            <Route exact path="/" element={<Homepage/>}/>
-            <Route path="/movie" element={<Moviepage />}/>
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <div className='container'>
+        <Header />
+          <Routes>
+              <Route exact path="/" element={<Homepage/>}/>
+              <Route path="/movie" element={<Moviepage />}/>
+          </Routes>
+      </div>
+    </Router>
   );
 }
 
