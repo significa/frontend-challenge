@@ -69,6 +69,7 @@ export default function Moviepage() {
                 </div>
             </div>
             <div className="movie-poster">
+                <div className='movie-poster__overlay'></div>
                 <img src={movieImageLarge} className='movie-poster__image' alt="Movie poster" />
             </div>
         </div>
