@@ -68,13 +68,32 @@ ul {
   .movie-info {
     grid-column: span 12;
     order: 2;
+
+    &__details {
+      color: $white;
+
+        &__duration, &__year {
+          &::after {
+            background-color: $white;
+          }
+        }
+
+        &__label {
+          color: $dark;
+          background-color: $white;
+        }
+    }
   }
 
   .movie-poster {
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -10;
     order: 1;
-    padding: 0rem;
-    margin: 0rem -1rem;
+    margin: -6rem -1rem 0rem -1rem;
     height: 400px;
     grid-column: span 12;
 
@@ -106,6 +125,21 @@ ul {
   .movie-info {
     order: 1;
     grid-column: span 12;
+
+    &__details {
+      color: $lightgrey;
+
+      &__duration, &__year {
+        &::after {
+          background-color: $lightgrey;
+        }
+      }
+
+      &__label {
+        color: $dark;
+        background-color: $lightgrey;
+      }
+    }
   }
 
   .movie-poster {
@@ -296,7 +330,6 @@ p {
       display: flex;
       align-items: center;
       font-weight: 400;
-      color: $lightgrey;
       margin-right: .5rem;
   
       &::after {
@@ -304,7 +337,6 @@ p {
         display: inline-flex;
         width: 4px;
         height: 4px;
-        background-color: #7A8C99;
         border-radius: 50px;
         margin-left: .5rem;
       }
@@ -314,8 +346,6 @@ p {
       @extend .label;
     
       font-weight: 500;
-      color: #0A1014;
-      background-color: $lightgrey;
       border-radius: 4px;
     }
   }
