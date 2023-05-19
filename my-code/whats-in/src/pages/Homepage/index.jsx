@@ -6,29 +6,23 @@ import Loading from '../../components/Loading'
 import Empty from '../../components/Empty'
 
 export default function Homepage({ handleSearch, movies, handleMovieSelection, isLoading }) {
+    const [likedMovies, setLikedMovies] = useState([]);
+
     const handleChange = (event) => {
         handleSearch(event.target.value)
     }
-
-    const handleLike = (e, movie) => {
-        e.stopPropagation()
-        setLikedMovies((prevLikedMovies) => {
-            if (prevLikedMovies.find((likedMovie) => likedMovie.imdbID === movie.imdbID)) {
-              return prevLikedMovies.filter((likedMovie) => likedMovie.imdbID !== movie.imdbID);
-            } else {
-              return [...prevLikedMovies, movie];
-            }
-          });
-    }
-
+    
     const handleSelection = (movie) => {
         handleMovieSelection(movie)
     }
 
-    const [likedMovies, setLikedMovies] = useState([]);
+    const handleLike = (e, movie) => {
+        e.stopPropagation()
+        setLikedMovies([...likedMovies, movie]);
+    }
 
     const isMovieLiked = (movie) => {
-    return likedMovies.some((likedMovie) => likedMovie.imdbID === movie.imdbID);
+        return likedMovies.some((likedMovie) => likedMovie.imdbID === movie.imdbID);
     };
     
     return (
