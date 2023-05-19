@@ -1,41 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import emptyImage from '../../images/illustration-empty-state@2x.png'
+import iconSearch from '../../images/icon-magnifier-grey.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
 import iconLiked from '../../images/icon-heart-full.svg'
-import Search from '../../components/Search'
 
 
-export default function Homepage( {onSelect} ) {
-    const [movies, setMovies] = useState()
+export default function Homepage({ handleSearch, movies }) {
+    // const [movies, setMovies] = useState()
     const [liked, setLiked] = useState(false)
+
+    const handleChange = (event) => {
+        handleSearch(event.target.value)
+    }
 
     const handleLike = () => {
         setLiked(!liked)
     }
-
-    const handleSearch = (text) => {
-        fetch(`https://www.omdbapi.com/?s=${text}&apikey=22d53272`)
-        .then(response => response.json())
-        .then(data => setMovies(data.Search))
-        .catch(error => {
-            console.error(error);
-        })
-    }
-
-    const handleClick = (movie) => {
-        onSelect(movie)
-    }
-
+    
     return (
         <div className="grid">
-            <Search onSearch={handleSearch} />
+            <div className='search'>
+                <input onChange={handleChange} className='search__input' type="text" placeholder='Search movies...'/>
+                <img className='search__icon' src={iconSearch} alt="Search icon" />
+            </div>
             {/* <div className='empty'>
                 <img className='empty__image' src={emptyImage} alt="Empty search" />
                 <h2>Don’t know what to search?</h2>
                 <p className='empty__subheader--lightgrey'>Here’s an offer you can’t refuse</p>
             </div> */}
             {movies && (movies.map((movie) => (
-                <div onClick={() => handleClick(movie)} className='movie-card'>
+                <div className='movie-card' key={movie.imdbID}>
                     <img className='movie-card__image' src={movie.Poster} alt="Movie card" />
                     <div className='movie-card__overlay'>
                         <button className='button-icon movie-card__like' onClick={handleLike}>
