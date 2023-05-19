@@ -1,18 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import iconBack from '../../images/icon-arrow-grey.svg'
 import logoImdb from '../../images/logo-imdb.svg'
 import logoRottenTomatoes from '../../images/logo-rotten-tomatoes.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
 import iconLikeWhite from '../../images/icon-heart-white.svg'
-import movieImageLarge from '../../images/removeaftertest2.png'
 
 export default function Moviepage( {movie} ) {
     const navigation = useNavigate();
 
     const handleNavigation = () => {
         navigation(-1)
+    }
+
+    const checkRating = () => {
+        const rottenTomatoesRating = movie.Ratings.find((rating) => rating.Source === "Rotten Tomatoes");
+        return rottenTomatoesRating ? rottenTomatoesRating.Value : 'N/A'
+    }
+
+    const formatDetailsList = (info) => {
+        return info.split(', ').map((item) =>  <li>{item}</li>)
     }
 
     return(
@@ -22,19 +29,19 @@ export default function Moviepage( {movie} ) {
                     <img src={iconBack} alt="Back button link" />
                 </button>
                 <div className='movie-info__details'>
-                    <h3 className='movie-info__details__duration'>86 min</h3>
-                    <h3 className='movie-info__details__year'>{movie.Year}</h3>
-                    <span className='movie-info__details__label'>R</span>
+                    <h3 className='movie-info__details__duration'>{movie?.Runtime}</h3>
+                    <h3 className='movie-info__details__year'>{movie?.Year}</h3>
+                    <span className='movie-info__details__label'>{movie?.Rated}</span>
                 </div>
-                <h1 className='movie-info__title'>{movie.Title}</h1>
+                <h1 className='movie-info__title'>{movie?.Title}</h1>
                 <div className='movie-info__rating-bar'>
                     <div className='movie-info__rating-bar__item'>
                         <img className='movie-info__rating-bar__item__image' src={logoImdb} alt="Imdb logo" />
-                        <p className='movie-info__rating-bar__item__text'>7.6/10</p>
+                        <p className='movie-info__rating-bar__item__text'>{movie?.imdbRating}</p>
                     </div>
                     <div className='movie-info__rating-bar__item'>
                         <img className='movie-info__rating-bar__item__image--red' src={logoRottenTomatoes} alt="Imdb logo" />
-                        <p className='movie-info__rating-bar__item__text'>96%</p>
+                        <p className='movie-info__rating-bar__item__text'>{checkRating()}</p>
                     </div>
                     <button className='movie-info__rating-bar__button'>
                         <img src={iconLike} className='movie-info__rating-bar__button__icon' alt="Add to favorite button" />
@@ -44,37 +51,32 @@ export default function Moviepage( {movie} ) {
                 </div>
                 <div className='movie-info__plot'>
                     <span className='movie-info__plot__title'>Plot</span>
-                    <p className='movie-info__plot__text'>Viago, Deacon, and Vladislav are vampires who are finding that modern life has them struggling with the mundane - like paying rent, keeping up with the chore wheel, trying to get into nightclubs, and overcoming flatmate conflicts.</p>
+                    <p className='movie-info__plot__text'>{movie.Plot}</p>
                 </div>
                 <div className='movie-info__smaller'>
                     <div className='movie-info__smaller__item'>
                         <span className='movie-info__smaller__item__title'>Cast</span>
                         <ul className='movie-info__smaller__item__list'>
-                            <li>Jemaine Clemet</li>
-                            <li>Cori Gonzalez-Macuer</li>
-                            <li>Taika waititi</li>
-                            <li>Honny Brugh</li>
+                            {formatDetailsList(movie.Actors)}
                         </ul>
                     </div>
                     <div className='movie-info__smaller__item'>
-                        <span className='movie-info__smaller__item__title'>Cast</span>
+                        <span className='movie-info__smaller__item__title'>Genre</span>
                         <ul className='movie-info__smaller__item__list'>
-                            <li>Comedy</li>
-                            <li>Horror</li>
+                            {formatDetailsList(movie.Genre)}
                         </ul>
                     </div>
                     <div className='movie-info__smaller__item'>
-                        <span className='movie-info__smaller__item__title'>Cast</span>
+                        <span className='movie-info__smaller__item__title'>Director</span>
                         <ul className='movie-info__smaller__item__list'>
-                            <li>Jemaine Clement</li>
-                            <li>Taika Waititi</li>
+                            {formatDetailsList(movie.Director)}
                         </ul>
                     </div>
                 </div>
             </div>
             <div className="movie-poster">
                 <div className='movie-poster__overlay'></div>
-                <img src={movieImageLarge} className='movie-poster__image' alt="Movie poster" />
+                <img src={movie?.Poster} className='movie-poster__image' alt="Movie poster" />
             </div>
         </div>
     )
