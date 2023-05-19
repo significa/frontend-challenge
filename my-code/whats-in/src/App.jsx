@@ -52,7 +52,7 @@ function App() {
     <div className='container'>
       <Header />
         <Routes>
-            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection} isLoading={isLoading}/>}/>
+            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection} isLoading={isLoading} />}/>
             <Route path="/movie" element={<Moviepage movie={selectedMovieInfo} />}/>
         </Routes>
     </div>
