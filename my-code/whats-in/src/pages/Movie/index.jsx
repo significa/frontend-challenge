@@ -8,7 +8,7 @@ import iconLike from '../../images/icon-heart-grey.svg'
 import iconLikeWhite from '../../images/icon-heart-white.svg'
 import movieImageLarge from '../../images/removeaftertest2.png'
 
-export default function Moviepage() {
+export default function Moviepage( {movie} ) {
     const navigation = useNavigate();
 
     const handleNavigation = () => {
@@ -23,10 +23,10 @@ export default function Moviepage() {
                 </button>
                 <div className='movie-info__details'>
                     <h3 className='movie-info__details__duration'>86 min</h3>
-                    <h3 className='movie-info__details__year'>2014</h3>
+                    <h3 className='movie-info__details__year'>{movie.Year}</h3>
                     <span className='movie-info__details__label'>R</span>
                 </div>
-                <h1 className='movie-info__title'>What We Do in the Shadows</h1>
+                <h1 className='movie-info__title'>{movie.Title}</h1>
                 <div className='movie-info__rating-bar'>
                     <div className='movie-info__rating-bar__item'>
                         <img className='movie-info__rating-bar__item__image' src={logoImdb} alt="Imdb logo" />

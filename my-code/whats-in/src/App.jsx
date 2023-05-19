@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react'
 import Homepage from './pages/Homepage'
 import Moviepage from './pages/Movie'
@@ -7,6 +7,8 @@ import Header from './components/Header'
 function App() {
   const [searchText, setSearchText] = useState('')
   const [movies, setMovies] = useState()
+  const [selectedMovie, setSelectedMovie] = useState(null)
+  const navigate = useNavigate()
 
   const handleSearch = (text) => {
     setSearchText(text)
@@ -21,16 +23,19 @@ function App() {
     })
   }, [searchText])
 
+  const handleMovieSelection = (movie) => {
+    setSelectedMovie(movie)
+    navigate('/movie');
+  }
+
   return (
-    <Router>
-      <div className='container'>
-        <Header />
-          <Routes>
-              <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies}/>}/>
-              <Route path="/movie" element={<Moviepage />}/>
-          </Routes>
-      </div>
-    </Router>
+    <div className='container'>
+      <Header />
+        <Routes>
+            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection}/>}/>
+            <Route path="/movie" element={<Moviepage movie={selectedMovie} />}/>
+        </Routes>
+    </div>
   );
 }
 

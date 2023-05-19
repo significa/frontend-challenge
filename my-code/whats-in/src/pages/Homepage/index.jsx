@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 // import emptyImage from '../../images/illustration-empty-state@2x.png'
 import iconSearch from '../../images/icon-magnifier-grey.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
 import iconLiked from '../../images/icon-heart-full.svg'
 
 
-export default function Homepage({ handleSearch, movies }) {
-    // const [movies, setMovies] = useState()
+export default function Homepage({ handleSearch, movies, handleMovieSelection }) {
     const [liked, setLiked] = useState(false)
 
     const handleChange = (event) => {
@@ -15,6 +14,11 @@ export default function Homepage({ handleSearch, movies }) {
 
     const handleLike = () => {
         setLiked(!liked)
+    }
+
+    const handleSelection = (movie) => {
+        // console.log(movie)
+        handleMovieSelection(movie)
     }
     
     return (
@@ -29,7 +33,7 @@ export default function Homepage({ handleSearch, movies }) {
                 <p className='empty__subheader--lightgrey'>Here’s an offer you can’t refuse</p>
             </div> */}
             {movies && (movies.map((movie) => (
-                <div className='movie-card' key={movie.imdbID}>
+                <div onClick={() => handleSelection(movie)} className='movie-card' key={movie.imdbID}>
                     <img className='movie-card__image' src={movie.Poster} alt="Movie card" />
                     <div className='movie-card__overlay'>
                         <button className='button-icon movie-card__like' onClick={handleLike}>
