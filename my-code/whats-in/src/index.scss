@@ -213,6 +213,11 @@ p {
   font-weight: 600;
 }
 
+.header {
+  grid-column: span 12;
+  padding: 1.5rem 0rem;
+}
+
 /* Homepage and Movie page components */
 
 .search {
@@ -247,6 +252,7 @@ p {
   transform: translate(0%, -50%);
 }
 
+// Empty state
 .empty {
   grid-column: span 12;
   margin: auto;
@@ -262,6 +268,27 @@ p {
 
 .empty__subheader--lightgrey {
   color: $lightgrey;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Loading state
+.loading {
+  margin: 300px;
+  grid-column: span 12;
+}
+
+.film-reel {
+  width: 40px;
+  height: 40px;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+  border-top-color: #000;
+  animation: spin 1s infinite linear;
+  margin: 0 auto;
 }
 
 .movie-card {
