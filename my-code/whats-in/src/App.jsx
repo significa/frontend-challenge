@@ -5,10 +5,12 @@ import Moviepage from './pages/Movie'
 import Header from './components/Header'
 
 function App() {
+  const API_KEY = process.env.REACT_APP_API_KEY
   const [searchText, setSearchText] = useState('')
   const [movies, setMovies] = useState()
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [selectedMovieInfo, setSelectedMovieInfo] = useState()
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
   const handleSearch = (text) => {
@@ -16,7 +18,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?s=${searchText}&apikey=22d53272`)
+    fetch(`https://www.omdbapi.com/?s=${searchText}&apikey=${API_KEY}`)
     .then(response => response.json())
     .then(data => setMovies(data.Search))
     .catch(error => {
@@ -30,15 +32,19 @@ function App() {
 
   useEffect(() => {
     if (selectedMovie && selectedMovie.imdbID) {
-      fetch(`http://www.omdbapi.com/?i=${selectedMovie.imdbID}&apikey=22d53272`)
+      setIsLoading(true)
+      fetch(`https://www.omdbapi.com/?i=${selectedMovie.imdbID}&apikey=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
           setSelectedMovieInfo(data)
           navigate('/movie')
         })
         .catch(error => {
-          console.error(error);
-        });
+          console.error(error)
+        })
+        .finally(() => {
+          setIsLoading(false)
+        })
     }
   }, [selectedMovie]);
 
@@ -46,7 +52,7 @@ function App() {
     <div className='container'>
       <Header />
         <Routes>
-            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection}/>}/>
+            <Route exact path="/" element={<Homepage isLoading={isLoading} handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection}/>}/>
             <Route path="/movie" element={<Moviepage movie={selectedMovieInfo} />}/>
         </Routes>
     </div>
