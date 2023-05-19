@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import emptyImage from '../../images/illustration-empty-state@2x.png'
+import emptyImage from '../../images/illustration-empty-state@2x.png'
 import iconSearch from '../../images/icon-magnifier-grey.svg'
 import iconLike from '../../images/icon-heart-grey.svg'
 import iconLiked from '../../images/icon-heart-full.svg'
@@ -17,7 +17,6 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection })
     }
 
     const handleSelection = (movie) => {
-        // console.log(movie)
         handleMovieSelection(movie)
     }
     
@@ -27,12 +26,7 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection })
                 <input onChange={handleChange} className='search__input' type="text" placeholder='Search movies...'/>
                 <img className='search__icon' src={iconSearch} alt="Search icon" />
             </div>
-            {/* <div className='empty'>
-                <img className='empty__image' src={emptyImage} alt="Empty search" />
-                <h2>Don’t know what to search?</h2>
-                <p className='empty__subheader--lightgrey'>Here’s an offer you can’t refuse</p>
-            </div> */}
-            {movies && (movies.map((movie) => (
+            {movies ? (movies.map((movie) => (
                 <div onClick={() => handleSelection(movie)} className='movie-card' key={movie.imdbID}>
                     <img className='movie-card__image' src={movie.Poster} alt="Movie card" />
                     <div className='movie-card__overlay'>
@@ -46,6 +40,12 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection })
                     </div>
                 </div>
                 ))
+            ): (
+            <div className='empty'>
+                <img className='empty__image' src={emptyImage} alt="Empty search" />
+                <h2>Don’t know what to search?</h2>
+                <p className='empty__subheader--lightgrey'>Here’s an offer you can’t refuse</p>
+            </div>
             )}
         </div>
     )
