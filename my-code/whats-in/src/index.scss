@@ -213,6 +213,11 @@ p {
   font-weight: 600;
 }
 
+.header {
+  grid-column: span 12;
+  padding: 1.5rem 0rem;
+}
+
 /* Homepage and Movie page components */
 
 .search {
@@ -222,8 +227,8 @@ p {
 
 .search__input {
   position: relative;
-  width: 100%;
-  padding: .8rem 0rem .8rem 0rem;
+  width: calc(100% - 2.5rem);
+  padding: .8rem 0rem .8rem 2.5rem;
   border-radius: 0.25rem;
   border: none;
   font-size: 1rem;
@@ -231,13 +236,12 @@ p {
 
 .search__input:focus-visible {
   outline: none;
-  padding-left: 2.5rem;
 }
 
 .search__input::placeholder {
   position: absolute;
   left: 2.5rem;
-  color: $white; 
+  color: $lightgrey; 
 }
 
 .search__icon {
@@ -247,6 +251,7 @@ p {
   transform: translate(0%, -50%);
 }
 
+// Empty state
 .empty {
   grid-column: span 12;
   margin: auto;
@@ -262,6 +267,27 @@ p {
 
 .empty__subheader--lightgrey {
   color: $lightgrey;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Loading state
+.loading {
+  margin-top: 300px;
+  grid-column: span 12;
+}
+
+.film-reel {
+  width: 40px;
+  height: 40px;
+  border: 10px solid $red;
+  border-radius: 50%;
+  border-top-color: $midgrey;
+  animation: spin 1s infinite linear;
+  margin: 0 auto;
 }
 
 .movie-card {
@@ -282,18 +308,28 @@ p {
 }
 
 .movie-card:hover {
-  
   & .movie-card__overlay {
     opacity: .9;
     transition: all .2s;
     cursor: pointer;
+  }
+
+  & .movie-card__like {
+    opacity: 1;
   }
 }
 
 .movie-card__like {
   @extend .button;
   position: absolute;
+  top: 0.75rem;
   right: .75rem;
+  opacity: 0;
+  z-index: 10;
+
+  &.liked {
+    opacity: 1 !important;
+  }
 }
 
 .movie-card__image {
