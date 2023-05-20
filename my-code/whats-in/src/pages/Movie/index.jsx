@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import iconBack from '../../images/icon-arrow-grey.svg'
 import logoImdb from '../../images/logo-imdb.svg'
