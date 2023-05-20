@@ -444,8 +444,9 @@ p {
         opacity: 1;
       }
 
-      &__icon--white {
-        @extend .movie-info__rating-bar__button__icon;
+      .movie-info__rating-bar__button__icon__white {
+        width: 16px;
+        position: absolute;
         opacity: 0;
       }
 
@@ -458,13 +459,19 @@ p {
           opacity: 0;
         }
 
-        .movie-info__rating-bar__button__icon--white {
+        .movie-info__rating-bar__button__icon__white {
           opacity: 1;
         }
       }
 
       &__text {
         margin: 0rem 0rem 0rem 1.5rem;
+      }
+
+      &.active {
+        color: white;
+        border: 1px solid transparent;
+        background-color: $red;
       }
     }
   }

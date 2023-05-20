@@ -50,12 +50,11 @@ function App() {
   }, [selectedMovie]);
 
   const handleLike = (movie) => {
-    setLikedMovies([...likedMovies, movie])
-    console.log(likedMovies)
+    setLikedMovies((prevMovies) => [...prevMovies, movie])
   }
 
   const isMovieLiked = (movie) => {
-      return likedMovies.find((likedMovie) => likedMovie.imdbID === movie.imdbID);
+      return likedMovies.find((likedMovie) => likedMovie.imdbID === movie.imdbID) || false;
   };
 
   return (
@@ -63,7 +62,7 @@ function App() {
       <Header />
         <Routes>
             <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection} isLoading={isLoading} handleLike={handleLike} isMovieLiked={isMovieLiked} />}/>
-            <Route path="/movie" element={<Moviepage movie={selectedMovieInfo} />}/>
+            <Route path="/movie" element={<Moviepage movie={selectedMovieInfo} isMovieLiked={isMovieLiked} likedMovies={likedMovies} handleLike={handleLike}/>}/>
         </Routes>
     </div>
   );
