@@ -47,6 +47,7 @@ function App() {
         .then(data => {
           setSelectedMovieInfo(data)
           navigate('/movie')
+          setSelectedMovie(null)
         })
         .catch(error => {
           console.error(error)
