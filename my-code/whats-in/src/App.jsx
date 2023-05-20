@@ -29,6 +29,7 @@ function App() {
   
   const handleMovieSelection = (movie) => {
     setSelectedMovie(movie)
+    navigate('/movie')
   }
 
   useEffect(() => {
