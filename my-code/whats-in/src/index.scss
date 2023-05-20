@@ -252,22 +252,27 @@ p {
 }
 
 // Empty state
-.empty {
+.state {
   grid-column: span 12;
   margin: auto;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 8%;
+  
+  &__image {
+    width: 396px;
+    max-width: 100%;
+    height: auto;
+
+    &--not-found {
+      width: 320px;
+    }
+  }
+  
+  &__subheader--lightgrey {
+    color: $lightgrey;
+  }
 }
 
-.empty__image {
-  width: 396px;
-  max-width: 100%;
-  height: auto;
-}
-
-.empty__subheader--lightgrey {
-  color: $lightgrey;
-}
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
