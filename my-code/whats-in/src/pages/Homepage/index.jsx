@@ -5,8 +5,7 @@ import iconLiked from '../../images/icon-heart-full.svg'
 import Loading from '../../components/Loading'
 import Empty from '../../components/Empty'
 
-export default function Homepage({ handleSearch, movies, handleMovieSelection, isLoading }) {
-    const [likedMovies, setLikedMovies] = useState([]);
+export default function Homepage({ handleSearch, movies, handleMovieSelection, isLoading, handleLike, isMovieLiked }) {
 
     const handleChange = (event) => {
         handleSearch(event.target.value)
@@ -16,14 +15,10 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection, i
         handleMovieSelection(movie)
     }
 
-    const handleLike = (e, movie) => {
+    const handleClick = (e, movie) => {
         e.stopPropagation()
-        setLikedMovies([...likedMovies, movie]);
+        handleLike(movie)
     }
-
-    const isMovieLiked = (movie) => {
-        return likedMovies.some((likedMovie) => likedMovie.imdbID === movie.imdbID);
-    };
     
     return (
         <div className="grid">
@@ -37,7 +32,7 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection, i
                     movies.map((movie) => (
                     <div onClick={() => handleSelection(movie)} className="movie-card" key={movie.imdbID}>
                         <img className="movie-card__image" src={movie.Poster} alt="Movie card" />
-                        <button className={`button-icon movie-card__like ${isMovieLiked(movie) ? 'liked' : ''}`} onClick={(e) => handleLike(e, movie)}>
+                        <button onClick={(e) => handleClick(e, movie)} className={`button-icon movie-card__like ${isMovieLiked(movie) ? 'liked' : ''}`}>
                             <img src={isMovieLiked(movie) ? iconLiked : iconLike} alt="Like button" />
                         </button>
                         <div className="movie-card__overlay">

@@ -294,6 +294,8 @@ p {
   height: 240px;
   position: relative;
   transition: all;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 .movie-card__overlay {

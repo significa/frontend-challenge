@@ -11,6 +11,7 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [selectedMovieInfo, setSelectedMovieInfo] = useState()
   const [isLoading, setIsLoading] = useState(false)
+  const [likedMovies, setLikedMovies] = useState([]);
   const navigate = useNavigate()
 
   const handleSearch = (text) => {
@@ -48,11 +49,20 @@ function App() {
     }
   }, [selectedMovie]);
 
+  const handleLike = (movie) => {
+    setLikedMovies([...likedMovies, movie])
+    console.log(likedMovies)
+  }
+
+  const isMovieLiked = (movie) => {
+      return likedMovies.find((likedMovie) => likedMovie.imdbID === movie.imdbID);
+  };
+
   return (
     <div className='container'>
       <Header />
         <Routes>
-            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection} isLoading={isLoading} />}/>
+            <Route exact path="/" element={<Homepage handleSearch={handleSearch} movies={movies} handleMovieSelection={handleMovieSelection} isLoading={isLoading} handleLike={handleLike} isMovieLiked={isMovieLiked} />}/>
             <Route path="/movie" element={<Moviepage movie={selectedMovieInfo} />}/>
         </Routes>
     </div>
