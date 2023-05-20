@@ -4,6 +4,7 @@ import iconLike from '../../images/icon-heart-grey.svg'
 import iconLiked from '../../images/icon-heart-full.svg'
 import Loading from '../../components/Loading'
 import Empty from '../../components/Empty'
+import NotFound from '../../components/Notfound'
 
 export default function Homepage({ handleSearch, movies, handleMovieSelection, isLoading, handleLike, isMovieLiked }) {
 
@@ -44,8 +45,11 @@ export default function Homepage({ handleSearch, movies, handleMovieSelection, i
                     </div>
                     ))
                 ) : (
-                    <Empty />
+                    <>
+                        {movies && movies.length > 0 ? <Empty /> : <NotFound />}
+                    </>
                 )}
+                {console.log(movies)}
         </div>
     )
 }

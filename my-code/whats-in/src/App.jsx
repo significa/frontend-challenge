@@ -17,16 +17,16 @@ function App() {
   const handleSearch = (text) => {
     setSearchText(text)
   }
-
+  
   useEffect(() => {
     fetch(`https://www.omdbapi.com/?s=${searchText}&apikey=${API_KEY}`)
     .then(response => response.json())
-    .then(data => setMovies(data.Search))
+    .then(data => {setMovies(data.Search)})
     .catch(error => {
-        console.error(error);
+      console.error(error);
     })
   }, [searchText])
-
+  
   const handleMovieSelection = (movie) => {
     setSelectedMovie(movie)
   }
