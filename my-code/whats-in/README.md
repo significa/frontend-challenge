@@ -35,63 +35,6 @@ To accomplish the challenge, I utilized the following technologies and tools:
 1.  Run it with `npm start`
 2.  Preview it in http://localhost:3000/
 
-## Folder structure
-
-significa-frontend-challenge/
-  ├── layout/
-  ├── my-code/
-  |   ├── whats-in/
-  |   |   ├── node_modules/
-  |   |   ├── package-lock.json
-  |   |   ├── package.json
-  |   |   ├── public/
-  |   |   └── README.md
-  |   |   ├── src/
-  |   |   |   ├── App.jsx
-  |   |   |   ├── components/
-  |   |   |   |   ├── Empty.jsx
-  |   |   |   |   ├── Header.jsx
-  |   |   |   |   ├── Loading.jsx
-  |   |   |   |   └── Notfound.jsx
-  |   |   |   ├── images/
-  |   |   |   ├── index.jsx
-  |   |   |   ├── index.scss
-  |   |   |   ├── pages/
-  |   |   |   |   ├── Homepage/
-  |   |   |   |   |   └── index.jsx
-  |   |   |   |   └── Movie/
-  |   |   |   |       └── index.jsx
-  |   |   |   └── App.js
-  |   |   └── package.json
-  |__ README.md
-
 ## Contributing
 
 Contributions are super welcomed! If you find any issues or want to enhance the app, feel free to submit your pull request.
-
-.
-├── build                   # Compiled files (alternatively `dist`)
-├── docs                    # Documentation files (alternatively `doc`)
-├── src                     # Source files (alternatively `lib` or `app`)
-├── test                    # Automated tests (alternatively `spec` or `tests`)
-├── tools                   # Tools and utilities
-├── LICENSE
-└── README.md
-
-├── src
-│   ├── controller
-│   │   ├── **/*.css
-│   ├── views
-│   ├── model
-│   ├── index.js
-├── public
-│   ├── css
-│   │   ├── **/*.css
-│   ├── images
-│   ├── js
-│   ├── index.html
-├── dist or build
-├── node_modules
-├── package.json
-├── package-lock.json 
-└── .gitignore
