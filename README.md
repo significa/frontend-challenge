@@ -69,3 +69,29 @@ significa-frontend-challenge/
 
 Contributions are super welcomed! If you find any issues or want to enhance the app, feel free to submit your pull request.
 
+.
+├── build                   # Compiled files (alternatively `dist`)
+├── docs                    # Documentation files (alternatively `doc`)
+├── src                     # Source files (alternatively `lib` or `app`)
+├── test                    # Automated tests (alternatively `spec` or `tests`)
+├── tools                   # Tools and utilities
+├── LICENSE
+└── README.md
+
+├── src
+│   ├── controller
+│   │   ├── **/*.css
+│   ├── views
+│   ├── model
+│   ├── index.js
+├── public
+│   ├── css
+│   │   ├── **/*.css
+│   ├── images
+│   ├── js
+│   ├── index.html
+├── dist or build
+├── node_modules
+├── package.json
+├── package-lock.json 
+└── .gitignore
