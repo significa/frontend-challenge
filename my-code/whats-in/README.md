@@ -1,70 +1,71 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What's in Challenge Solution - IMDb Movie Search App
 
-## Available Scripts
+I completed the Significa's React application challenge by building an IMDb movie search app. The challenge involved creating a functional and responsive app based on the provided screens as a reference. Throughout the development process, I retrieved JSON content from IMDb's API using a search mechanism, filtered the data, and displayed it on the movie's detailed page. I implemented a Like feature that works seamlessly within the app and designed two extra screens to predict responsiveness and a Not found component.
 
-In the project directory, you can run:
+### Preview Extra screens
 
-### `npm start`
+https://xd.adobe.com/view/9af3807a-1e37-426f-915d-f3c35f3a1ae9-cfa0/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To accomplish the challenge, I utilized the following technologies and tools:
 
-### `npm test`
+* **React:** React as the framework for building the application;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* **Create React App:**  I used Create React App as a boilerplate to quickly set up the initial project structure and build configuration;
 
-### `npm run build`
+* **React Router:**  I employed React Router to handle routing within the application, ensuring seamless navigation between different pages;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* **BEM:** Followed the BEM naming convention to write modular and scalable CSS code for enhanced maintainability;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Sass:** Utilized Sass for improved code organization and maintainability;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Adobe XD:** Utilized Adobe XD for designing two extra screens, one to predict the responsive behavior and one to illustrate the Not found state.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Getting Started
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1.  Clone this repository: git clone https://github.com/fernanda-freitas/significa-frontend-challenge
+2.  Navigate to the project directory: `cd significa-frontend-challenge/my-code/whats-in/`
+3.  Install the dependencies: `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1.  Run it with `npm start`
+2.  Preview it in http://localhost:3000/
 
-## Learn More
+## Folder structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+significa-frontend-challenge/
+  ├── layout/
+  ├── my-code/
+  |   ├── whats-in/
+  |   |   ├── node_modules/
+  |   |   ├── package-lock.json
+  |   |   ├── package.json
+  |   |   ├── public/
+  |   |   └── README.md
+  |   |   ├── src/
+  |   |   |   ├── App.jsx
+  |   |   |   ├── components/
+  |   |   |   |   ├── Empty.jsx
+  |   |   |   |   ├── Header.jsx
+  |   |   |   |   ├── Loading.jsx
+  |   |   |   |   └── Notfound.jsx
+  |   |   |   ├── images/
+  |   |   |   ├── index.jsx
+  |   |   |   ├── index.scss
+  |   |   |   ├── pages/
+  |   |   |   |   ├── Homepage/
+  |   |   |   |   |   └── index.jsx
+  |   |   |   |   └── Movie/
+  |   |   |   |       └── index.jsx
+  |   |   |   └── App.js
+  |   |   └── package.json
+  |__ README.md
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+Contributions are super welcomed! If you find any issues or want to enhance the app, feel free to submit your pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
