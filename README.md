@@ -1,65 +1,71 @@
-<img width="179" alt="screen shot 2018-04-11 at 14 55 21" src="https://user-images.githubusercontent.com/4838076/38634265-6545f090-3d98-11e8-8869-c5e477648fdf.png">
 
-[Significa](https://significa.pt/) is an Oporto based digital studio founded in late 2013. Despite being specialised in Interaction Design and Brand Development, we believe that good design thinking can answer almost any question and solve most problems. We aim to provide meaningful design solutions to achieve the best user engagement possible in any situation.
+## What's in Challenge Solution - IMDb Movie Search App
 
-## About the challenge
+I completed the Significa's React application challenge by building an IMDb movie search app. The challenge involved creating a functional and responsive app based on the provided screens as a reference. Throughout the development process, I retrieved JSON content from IMDb's API using a search mechanism, filtered the data, and displayed it on the movie's detailed page. I implemented a Like feature that works seamlessly within the app and designed two extra screens to predict responsiveness and a Not found component.
 
-This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+### Preview Extra screens
 
-You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
+https://xd.adobe.com/view/9af3807a-1e37-426f-915d-f3c35f3a1ae9-cfa0/
 
-### The app should be a movie search with two pages:
+### Technologies Used
 
-* **Home page:** search field and a list with the results;
+To accomplish the challenge, I utilized the following technologies and tools:
 
-  _Think about empty state, loading state and movie not found_
+* **React:** React as the framework for building the application;
 
-* **Movie page:** movie details page;
+* **Create React App:**  I used Create React App as a boilerplate to quickly set up the initial project structure and build configuration;
 
-  _Think about loading state and movie not found_
+* **React Router:**  I employed React Router to handle routing within the application, ensuring seamless navigation between different pages;
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
+* **BEM:** Followed the BEM naming convention to write modular and scalable CSS code for enhanced maintainability;
+
+* **Sass:** Utilized Sass for improved code organization and maintainability;
+
+* **Adobe XD:** Utilized Adobe XD for designing two extra screens, one to predict the responsive behavior and one to illustrate the Not found state.
+
 
 ## Getting Started
 
-1.  Fork this repository to your personal account;
-2.  Create a branch with your name;
-3.  Solve the challenge in the best way you can;
+1.  Clone this repository: git clone https://github.com/fernanda-freitas/significa-frontend-challenge
+2.  Navigate to the project directory: `cd significa-frontend-challenge/my-code/whats-in/`
+3.  Install the dependencies: `npm install`
 
-**Send us your code in one of two ways.**
+## Usage
 
-1.  Send us a PR;
-2.  Send us an email with your code in a zip to: hello@significa.pt
+1.  Run it with `npm start`
+2.  Preview it in http://localhost:3000/
 
-### Tips
+## Folder structure
 
-* Write a good README with basic information (e.g.: how to start the project and how to build it);
-* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
-* Feel free to work and improve on the available designs. Think of them as guidelines.
-* There's a "like" button on the details page. It would be great if this information is persistent!
-* Prefer to use a css methodology, such as BEM, ITCSS, etc;
-* Asking questions is good. We will not penalize you for asking questions;
-* The API server is sometimes slow, so think about loading and empty states throughout your application;
-* We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
-* Unit testing will be greatly valued;
-* The git history will be evaluated;
-* Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
+significa-frontend-challenge/
+  ├── layout/
+  ├── my-code/
+  |   ├── whats-in/
+  |   |   ├── node_modules/
+  |   |   ├── package-lock.json
+  |   |   ├── package.json
+  |   |   ├── public/
+  |   |   └── README.md
+  |   |   ├── src/
+  |   |   |   ├── App.jsx
+  |   |   |   ├── components/
+  |   |   |   |   ├── Empty.jsx
+  |   |   |   |   ├── Header.jsx
+  |   |   |   |   ├── Loading.jsx
+  |   |   |   |   └── Notfound.jsx
+  |   |   |   ├── images/
+  |   |   |   ├── index.jsx
+  |   |   |   ├── index.scss
+  |   |   |   ├── pages/
+  |   |   |   |   ├── Homepage/
+  |   |   |   |   |   └── index.jsx
+  |   |   |   |   └── Movie/
+  |   |   |   |       └── index.jsx
+  |   |   |   └── App.js
+  |   |   └── package.json
+  |__ README.md
 
-### Necessary information
+## Contributing
 
-#### API:
+Contributions are super welcomed! If you find any issues or want to enhance the app, feel free to submit your pull request.
 
-We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
-
-#### Screens / Assets / Styleguide:
-
-Take a look at the `/layout` folder, there you will find everything you need.
-
-[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
-[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
-
-### Contact or doubts
-
-Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: hello@significa.pt
-
-_Break a leg!_
