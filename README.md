@@ -32,7 +32,7 @@ To accomplish the challenge, I utilized the following technologies and tools:
 
 ## Getting Started
 
-1.  Clone this repository: git clone https://github.com/fernanda-freitas/significa-frontend-challenge
+1.  Clone this repository: `git clone https://github.com/fernanda-freitas/significa-frontend-challenge`
 2.  Navigate to the project directory: `cd significa-frontend-challenge/my-code/whats-in/`
 3.  Install the dependencies: `npm install`
 
