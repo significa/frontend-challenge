@@ -5,7 +5,7 @@ I completed the Significa's React application challenge by building an IMDb movi
 
 ## Preview Extra screens
 
-https://xd.adobe.com/view/9af3807a-1e37-426f-915d-f3c35f3a1ae9-cfa0/
+[https://xd.adobe.com/view/9af3807a-1e37-426f-915d-f3c35f3a1ae9-cfa0/](https://xd.adobe.com/view/9af3807a-1e37-426f-915d-f3c35f3a1ae9-cfa0/){:target="_blank"}
 
 ## Technologies Used
 
