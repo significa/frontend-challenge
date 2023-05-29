@@ -16,4 +16,4 @@ A calendar picker that can
 
 ## Necessary information
 
-- [Figma prototype]()
+- [Figma prototype](https://www.figma.com/file/rjtEKiv5QIOJiBprppqUVr/Dev-challenge---Calendar?type=design&node-id=0%3A1&t=ojJeRg2Y4UBcTVKJ-1)

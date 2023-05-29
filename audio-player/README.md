@@ -19,5 +19,5 @@ An audio player able to
 
 ## Necessary information
 
-- [Figma prototype]()
+- [Figma prototype](https://www.figma.com/file/jbkDpuET4jQVQmJZqN8Hgd/Dev-challenge---Media-player?type=design&node-id=201%3A4165&t=98lin7BvmyS01ouM-1)
 - [Audio and cover files](./audio-player-assets.zip)
