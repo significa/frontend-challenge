@@ -1,65 +1,55 @@
-<img width="179" alt="screen shot 2018-04-11 at 14 55 21" src="https://user-images.githubusercontent.com/4838076/38634265-6545f090-3d98-11e8-8869-c5e477648fdf.png">
+# About Significa
 
-[Significa](https://significa.pt/) is an Oporto based digital studio founded in late 2013. Despite being specialised in Interaction Design and Brand Development, we believe that good design thinking can answer almost any question and solve most problems. We aim to provide meaningful design solutions to achieve the best user engagement possible in any situation.
+Significa is a digital product agency based in Porto, Portugal. We specialize in creating user-centered designs for websites, mobile apps, and other digital products. Our services include user research, user experience design, interface design, back-end and front-end development.
 
-## About the challenge
+Significa's approach is based on the principles of human-centered design, which involves understanding the needs and behaviors of users in order to create products that are intuitive, effective, and enjoyable to use. We work with a range of clients, from startups to established businesses, in industries such as healthcare, finance, and education.
 
-This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+In addition to our design services, we are also committed to push the boundaries of engineering by establishing a set of high-quality standards that command our development efforts to deliver the best possible digital products.
 
-You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
+Overall, Significa is a leading digital product agency in Portugal, known for our expertise in human-centered design and high-quality development.
 
-### The app should be a movie search with two pages:
+# About the challenges
 
-* **Home page:** search field and a list with the results;
+These challenges are made for those who – for any reason – don't have any project or code samples that allows us to analyse and evaluate their capabilities with accuracy.
 
-  _Think about empty state, loading state and movie not found_
+We know that, in certain cases, these challenges have to be solved in your own personal free time, so we tried our best to make them as easy or as complex as you decide to make them, hopefully without having too much impact in your personal life. Most times, even an incomplete challenge can give us enough information on what you're capable of.
 
-* **Movie page:** movie details page;
+## Challenges
 
-  _Think about loading state and movie not found_
+You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build the best app possible.
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
+### A) Movie search
 
-## Getting Started
+This challenge is more data-driven. You will have to build an app that lists movies and shows some details.
 
-1.  Fork this repository to your personal account;
-2.  Create a branch with your name;
-3.  Solve the challenge in the best way you can;
+- **[Movie search instructions](/movie-search)**
 
-**Send us your code in one of two ways.**
+### B) UI Challenges
 
-1.  Send us a PR;
-2.  Send us an email with your code in a zip to: hello@significa.pt
+These challenges are more design-driven. Attention to detail and perfectionism is what we're looking for.
+
+Choose one of the following:
+
+- **[Audio player](/audio-player)**
+- **[Calendar picker](/calendar-picker)**
+
+## How to participate
+
+1. Choose your challenge and read the instructions. If needed, clone or download this repo.
+1. Solve the challenge in the best way you can;
+1. Send us an email to development@significa.co with a zip of your code or a link to your repo.
 
 ### Tips
 
-* Write a good README with basic information (e.g.: how to start the project and how to build it);
-* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
-* Feel free to work and improve on the available designs. Think of them as guidelines.
-* There's a "like" button on the details page. It would be great if this information is persistent!
-* Prefer to use a css methodology, such as BEM, ITCSS, etc;
-* Asking questions is good. We will not penalize you for asking questions;
-* The API server is sometimes slow, so think about loading and empty states throughout your application;
-* We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
-* Unit testing will be greatly valued;
-* The git history will be evaluated;
-* Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
-
-### Necessary information
-
-#### API:
-
-We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
-
-#### Screens / Assets / Styleguide:
-
-Take a look at the `/layout` folder, there you will find everything you need.
-
-[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
-[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
+- Write a good README with basic information (e.g.: how to start the project and how to build it);
+- Asking questions is good. We will not penalize you for asking questions;
+- We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
+- Unit testing will be greatly valued;
+- The git history will be considered;
+- Your code will be evaluated by: semantics, structure, legibility, elegance (among other factors);
 
 ### Contact or doubts
 
-Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: hello@significa.pt
+Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: development@significa.co
 
 _Break a leg!_
